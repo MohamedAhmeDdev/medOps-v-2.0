@@ -1,5 +1,6 @@
 import React  from "react";
 import { Link } from 'react-router-dom'
+import logo from '../assets/img/logo.jpg'
 
 
 function Aside({ sidebarOpen, toggleSidebar }) {
@@ -11,8 +12,8 @@ function Aside({ sidebarOpen, toggleSidebar }) {
          <span onClick={toggleSidebar}class="absolute top-0 right-0  p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden material-symbols-outlined">menu</span>
          <div class="flex flex-col items-center">
             <a class="px-8 py-6 m-0 text-sm whitespace-nowrap text-slate-700" href="javascript:;" target="_blank">
-              <img src="./assets/img/logo-ct.png" class=" h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
-              <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">Soft UI Dashboard</span>
+              <img src={logo} class=" mx-auto h-full max-w-full transition-all duration-200 ease-nav-brand max-h-8" alt="main_logo" />
+              <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand">MedOPs</span>
             </a>
           </div>
         </div>

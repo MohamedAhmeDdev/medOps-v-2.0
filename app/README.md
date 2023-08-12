@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+<!-- import React, { useEffect } from 'react';
+import { useNotification } from './NotificationContext';
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+const NotificationFetcher = () => {
+  const { dispatch } = useNotification();
 
-## Available Scripts
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        const response = await fetch('your-api-endpoint');
+        const notifications = await response.json();
 
-In the project directory, you can run:
+        notifications.forEach((notification) => {
+          dispatch({ type: 'ADD_NOTIFICATION', payload: notification });
+        });
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    };
 
-### `npm start`
+    fetchNotifications();
+  }, [dispatch]);
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  return null;
+};
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+export default NotificationFetcher;
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { useNotification } from './NotificationContext';
 
-### `npm run build`
+const NotificationComponent = () => {
+  const { state, dispatch } = useNotification();
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  const handleNotificationClick = (notificationId) => {
+    const clickedNotification = state.notifications.find(
+      (notification) => notification.id === notificationId
+    );
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    if (clickedNotification && !clickedNotification.read) {
+      dispatch({
+        type: 'MARK_NOTIFICATION_AS_READ',
+        payload: { id: clickedNotification.id },
+      });
+      // You can also update the backend API to mark the notification as read
+      // Here, we're only updating the state in this example
+    }
+  };
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  return (
+    <div>
+      <div className="absolute top-0 right-0 mt-1 flex items-center justify-center bg-green-500 rounded-full h-5 w-5 text-white text-sm font-bold">
+        {state.count}
+      </div>
+      <div className="flex flex-wrap -mx-3 py-5">
+        {state.notifications.map((notification) => (
+          <Link
+            to={`/SingleNotification/${notification.id}`}
+            key={notification.id}
+            className={`w-4/12 pt-3 p-4 ${
+              notification.read ? 'bg-gray-100' : 'bg-gray-50'
+            } rounded flex items-center justify-between`}
+            onClick={() => handleNotificationClick(notification.id)}
+          >
+            {/* Render notification details here */}
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default NotificationComponent; -->
