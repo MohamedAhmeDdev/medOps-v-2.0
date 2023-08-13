@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
+import UseSidebar from '../../utils/constant/useSidebar';
+
 
 function SingleOrderDelivery() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
+  const { sidebarOpen, toggleSidebar } = UseSidebar();
 
  return(
   <div className="flex flex-col h-screen overflow-hidden ">

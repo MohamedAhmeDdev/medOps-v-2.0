@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside';
+import UseSidebar from '../utils/constant/useSidebar';
 
 
 function Shift() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginClick = () => {
@@ -15,10 +16,6 @@ function Shift() {
     setIsLoggedIn(false);
   };
 
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
 
   return(
     <div className="flex flex-col h-screen overflow-hidden ">
