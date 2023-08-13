@@ -21,8 +21,8 @@ function Dashboard() {
         <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
           <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-          <main class="max-h-screen flex flex-col py-10 h-[100vh]"> 
-            <div class="w-full px-3 py-6 mx-auto">
+          <main class="max-h-screen flex flex-col py-5 h-[100vh]"> 
+            <div class="w-full px-3  mx-auto">
           
             <h6 class="pb-5 font-bold text-lg lg:text-4xl capitalize">Dashboard</h6>
 
