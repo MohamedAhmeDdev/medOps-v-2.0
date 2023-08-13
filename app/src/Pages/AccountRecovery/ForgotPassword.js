@@ -29,19 +29,17 @@ function ForgotPassword() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900">
     <div className="w-1/3 flex flex-col justify-center items-center bg-gray-800 py-8">
-      <h2 className="text-3xl text-white mb-4">Forgot Password</h2>
+      <h2 className="text-lg text-white mb-4">Forgot Password</h2>
       <form onSubmit={forgotPassword} className="w-2/3">
         <div className="mb-4">
-          <input type="email" className="w-full text-white text-lg bg-gray-700 rounded px-3 py-2 outline-none" placeholder="Email"
-          value={email} onChange={(e) => setEmail(e.target.value)} 
-          />
+          <input type="email" className="w-full text-white text-md bg-gray-700 rounded px-3 py-2 outline-none" value={email} onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2" >
           Submit
         </button>
-         <div className='pt-5 flex'>
+         <div className='pt-5 flex text-white'>
            <span class="material-symbols-outlined">arrow_back</span>
-          <Link to="/" className="text-white hover:text-white text-lg"><p className='flex items-center'>Go back</p></Link>
+          <Link to="/" className="text-white hover:text-white text-md"><p className='flex items-center'>Go back</p></Link>
         </div>
       </form>
     </div>

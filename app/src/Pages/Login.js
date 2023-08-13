@@ -63,17 +63,17 @@ function Login() {
     <div className="bg-gray-800 shadow-md rounded w-96 p-6 bg-opacity-50">
       <form onSubmit={loginAuth}>
         <div className="mb-2">
-          <label className="block text-gray-200 text-xl font-bold mb-2" htmlFor="username"> Username</label>
-          <input className="shadow appearance-none text-xl border rounded w-full py-3 px-3 border-none bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline" 
+          <label className="block text-gray-200 text-md lg:text-md font-bold mb-2" htmlFor="username"> Username</label>
+          <input className="shadow appearance-none text-md lg:text-md border rounded w-full py-3 px-3 border-none bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline" 
             value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username" 
           />
         </div>
         
         <div className="mb-3 relative">
-            <label className="block text-gray-200 text-xl font-bold mb-2" htmlFor="password">Password</label>
+            <label className="block text-gray-200 text-md lg:text-md font-bold mb-2" htmlFor="password">Password</label>
             <div className="flex items-center">
               <input
-                className="shadow appearance-none text-xl border rounded w-full py-3 px-3 border-none  bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                className="shadow appearance-none text-md lg:text-md border rounded w-full py-3 px-3 border-none  bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                 value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password"
                 type={passwordVisible ? 'text' : 'password'}
               />
@@ -87,7 +87,7 @@ function Login() {
             <button className="bg-blue-500 text-white font-bold text-5 py-2 px-5 rounded-sm focus:outline-none focus:shadow-outline border-none shadow-md" type="submit">
               login
             </button>
-              <Link to="/ForgotPassword" className="text-gray-400 hover:text-white text-xl">Forgot Password? </Link>
+              <Link to="/ForgotPassword" className="text-gray-400 hover:text-white text-lg">Forgot Password? </Link>
             </div>
       </form>
     </div>

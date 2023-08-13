@@ -76,28 +76,28 @@ function Dashboard() {
                   <div class="flex-auto p-4">
                     <div class="flex flex-wrap">
                     <div class="max-w-full px-3 mb-6  w-1/2">
-                       <h6 class="mb-2 font-bold">Full Name</h6>  
+                       <h6 class="mb-2 font-semebold">Full Name</h6>  
                         <div class="relative flex flex-row items-center flex-auto px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">Juma Ali</h6>                        
                         </div>
                       </div>
 
                       <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Job Title</h6>  
+                        <h6 class="mb-2 font-semebold">Job Title</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">Transporter</h6> 
                         </div>
                       </div>
 
                       <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Phone Number</h6>  
+                        <h6 class="mb-2 font-semebold">Phone Number</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">d65656</h6> 
                         </div>
                       </div>
 
                       <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Address</h6>  
+                        <h6 class="mb-2 font-semebold">Address</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">fdfd</h6> 
                         </div>
@@ -111,28 +111,28 @@ function Dashboard() {
                   <div class="p-4 pb-0 mb-0">
                     <div class="flex flex-wrap">
                       <div class="flex items-center flex-none px-3">
-                        <h6 class="mb-0 font-bold">Company Information</h6>
+                        <h6 class="mb-0 font-semebold">Company Information</h6>
                       </div>          
                     </div>
                   </div>
                   <div class="flex-auto pt-10 p-4">
                     <div class="flex flex-wrap">
                       <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Manager</h6>  
+                        <h6 class="mb-2 font-semebold">Manager</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">cane</h6> 
                         </div>
                       </div>
 
                       <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Phone Number</h6>  
+                        <h6 class="mb-2 font-semebold">Phone Number</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">d65656</h6> 
                         </div>
                       </div>
 
                         <div class="max-w-full px-3 mb-6  w-1/2">
-                        <h6 class="mb-2 font-bold">Address</h6>  
+                        <h6 class="mb-2 font-semebold">Address</h6>  
                         <div class="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                           <h6 class="mb-0 text-lg mx-auto">fdfd</h6> 
                         </div>
