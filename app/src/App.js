@@ -134,11 +134,11 @@ function App() {
           
 
       
-          <Route path="/Logistics" element={<LogisticDashboard/>}/>
-          <Route path="/Logistics/Medicine" element={<LogisticsMedicine/>}/>
-          <Route path="/Logistics/Medicine/:id" element={<LogisticsUpdateMedicine/>}/>
-          <Route path="/Logistics/Order" element={<LogisticsOrder/>}/>
-          <Route path="/Logistics/SingleOrder/:id" element={<LogisticsSingleOrder/>}/>
+          <Route path="/logistics" element={<LogisticDashboard/>}/>
+          <Route path="/medicine" element={<LogisticsMedicine/>}/>
+          <Route path="/medicineU" element={<LogisticsUpdateMedicine/>}/>
+          <Route path="/order" element={<LogisticsOrder/>}/>
+          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/>
          
 
 
