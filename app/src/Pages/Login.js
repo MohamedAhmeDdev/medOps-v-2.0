@@ -62,22 +62,20 @@ function Login() {
     <div className="flex justify-center items-center min-h-screen bg-image">
     <div className="bg-gray-800 shadow-md rounded w-96 p-6 bg-opacity-50">
       <form onSubmit={loginAuth}>
-        <div className="mb-2">
+        <div className="mb-2  w-72 mx-auto">
           <label className="block text-gray-200 text-md lg:text-md font-bold mb-2" htmlFor="username"> Username</label>
-          <input className="shadow appearance-none text-md lg:text-md border rounded w-full py-3 px-3 border-none bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline" 
+          <input className="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-gray-600 text-gray-200 focus:shadow-outline focus:outline-blue-400 focus:outline outline-offset-2 outline-2" 
             value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="Username" 
           />
         </div>
         
-        <div className="mb-3 relative">
+        <div className="mb-3 relative w-72 mx-auto">
             <label className="block text-gray-200 text-md lg:text-md font-bold mb-2" htmlFor="password">Password</label>
             <div className="flex items-center">
-              <input
-                className="shadow appearance-none text-md lg:text-md border rounded w-full py-3 px-3 border-none  bg-opacity-75 bg-gray-600 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
-                value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password"
-                type={passwordVisible ? 'text' : 'password'}
+              <input className="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-gray-600 text-gray-200 focus:shadow-outline focus:outline-blue-400 focus:outline outline-offset-2 outline-2" 
+                value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password" type={passwordVisible ? 'text' : 'password'}
               />
-              <div className="absolute top-16 right-3 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
+              <div className="absolute top-14 right-3 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
                 {passwordVisible ? <span class="material-symbols-outlined">visibility</span> : <span class="material-symbols-outlined">visibility_off</span>}
               </div>
             </div>
