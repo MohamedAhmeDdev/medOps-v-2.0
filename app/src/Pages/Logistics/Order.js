@@ -132,7 +132,7 @@ function Order() {
                               </tr>
                             </tbody>
                           </table>
-                            <div className="grid w-full place-items-right rounded-lg p-6 lg:overflow-visible">
+                            <div className="grid w-full place-items-right rounded-lg p-6">
                                   <nav>
                                       <ul className="flex">
                                           <li>

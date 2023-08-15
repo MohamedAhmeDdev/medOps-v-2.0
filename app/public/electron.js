@@ -6,7 +6,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: __dirname + '/logo.jpg',
+    icon: __dirname + '/favicon',
     webPreferences: {
       preload: Path.join(__dirname, 'preload.js')
     }

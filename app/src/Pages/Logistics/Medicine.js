@@ -6,6 +6,12 @@ import UseSidebar from '../../utils/constant/useSidebar';
 
 function Medicine() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
 
 
   return (
@@ -20,10 +26,41 @@ function Medicine() {
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
 
           <nav className="bg-white py-2.5">
-                <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
+              <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
                   <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for Order" />
-                    </div>                     
+                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for medicine"/>
+                  </div>   
+
+                  <div className=" mx-auto">                       
+                    <div className="flex items-center">
+                       <div className="max-w-6xl px-4 mx-auto">
+                          <div className="relative inline-block text-left">       
+                              <button onClick={toggleDropdown} type="button" className="inline-flex justify-center  w-56 px-4 py-2 text-sm bg-gray-200 font-medium rounded-lg focus:outline-none">
+                                Filter Medicine
+                                <svg
+                                  className={`w-4 h-4 ml-2 -mr-1 fill-current ${ isOpen?'rotate-180':'rotate-0' }`}xmlns="http://www.w3.org/2000/svg" style={{ marginTop:'3px'}}><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                </svg>
+                              </button>
+                       
+                            {isOpen && (
+                              <div className="absolute  w-56 mt-2 origin-top-right bg-white shadow-lg rounded-2xl ring-black ring-opacity-5 focus:outline-none" onClick={() => setIsOpen(false)}>
+                                <div className="py-1">
+                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Pain Killer</p>
+                                </div>
+
+                                <div class="py-1">
+                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Antibiotics</p>
+                                </div>
+
+                                <div class="py-1">
+                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">etc</p>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                       </div>
+                    </div>
+                  </div>                   
               </div>
             </nav>
 
@@ -36,7 +73,7 @@ function Medicine() {
                   <div className="flex-none w-full max-w-full">
                     <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid rounded-2xl bg-clip-border">     
                       <div className="flex-auto px-0 pt-0 pb-2">
-                        <div className="p-0 overflow-x-auto">
+                        <div className="p-0 overflow-x-auto ">
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
@@ -132,7 +169,7 @@ function Medicine() {
                               </tr>
                             </tbody>
                           </table>
-                            <div className="grid w-full place-items-right overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+                            <div className="grid w-full place-items-right rounded-lg p-6">
                                 <nav>
                                     <ul className="flex">
                                         <li>
