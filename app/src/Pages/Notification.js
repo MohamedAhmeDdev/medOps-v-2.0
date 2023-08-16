@@ -35,15 +35,15 @@ function Notification() {
                           <div className="rounded bg-gray-100 px-2 py-5">
                               <div className=" flex items-center justify-between">
                                 <div className='flex'>
-                                    <div className="focus:outline-none w-14 h-14 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-4xl text-black'>A</p>
+                                    <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
+                                      <p className='text-lg text-black'>A</p>
                                     </div>
                                     <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-xl">Manager</span></p>                          
-                                      <p className="focus:outline-none text-lg leading-none">maanyu</p>                          
+                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
+                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
                                     </div>
                                 </div>
-                                  <p className='text-black text-md uppercase'>12:00 Pm</p>                      
+                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
                               </div>                 
                           <div>
                           <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
@@ -57,15 +57,15 @@ function Notification() {
                           <div className="rounded bg-gray-100 px-2 py-5">
                               <div className=" flex items-center justify-between">
                                 <div className='flex'>
-                                    <div className="focus:outline-none w-14 h-14 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-4xl text-black'>A</p>
+                                    <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
+                                      <p className='text-lg text-black'>A</p>
                                     </div>
                                     <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-xl">Manager</span></p>                          
-                                      <p className="focus:outline-none text-lg leading-none">maanyu</p>                          
+                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
+                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
                                     </div>
                                 </div>
-                                  <p className='text-black text-md uppercase'>12:00 Pm</p>                      
+                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
                               </div>                 
                           <div>
                           <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
@@ -80,15 +80,15 @@ function Notification() {
                           <div className="rounded bg-gray-100 px-2 py-5">
                               <div className=" flex items-center justify-between">
                                 <div className='flex'>
-                                    <div className="focus:outline-none w-14 h-14 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-4xl text-black'>A</p>
+                                    <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
+                                      <p className='text-lg text-black'>A</p>
                                     </div>
                                     <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-xl">Manager</span></p>                          
-                                      <p className="focus:outline-none text-lg leading-none">maanyu</p>                          
+                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
+                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
                                     </div>
                                 </div>
-                                  <p className='text-black text-md uppercase'>12:00 Pm</p>                      
+                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
                               </div>                 
                           <div>
                           <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
