@@ -25,7 +25,7 @@ function Notification() {
 
           <div className="flex flex-wrap -mx-3 py-5 pb-10">
           <div className="flex-none w-full max-w-full px-3">
-            <div className="flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid  rounded-2xl"> 
+            <div className="flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid  rounded-lg"> 
 
               <div className="flex-auto  pt-0 pb-2">
                 <div className="overflow-x-auto px-2 pt-3">

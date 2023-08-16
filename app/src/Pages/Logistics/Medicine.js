@@ -35,7 +35,7 @@ function Medicine() {
                     <div className="flex items-center">
                        <div className="max-w-6xl px-4 mx-auto">
                           <div className="relative inline-block text-left">       
-                              <button onClick={toggleDropdown} type="button" className="inline-flex justify-center  w-56 px-4 py-2 text-sm bg-gray-200 font-medium rounded-lg focus:outline-none">
+                              <button onClick={toggleDropdown} type="button" className="inline-flex justify-center  lg:w-56 px-4 py-2 text-sm bg-gray-200 font-medium rounded-lg focus:outline-none">
                                 Filter Medicine
                                 <svg
                                   className={`w-4 h-4 ml-2 -mr-1 fill-current ${ isOpen?'rotate-180':'rotate-0' }`}xmlns="http://www.w3.org/2000/svg" style={{ marginTop:'3px'}}><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
@@ -43,9 +43,9 @@ function Medicine() {
                               </button>
                        
                             {isOpen && (
-                              <div className="absolute  w-56 mt-2 origin-top-right bg-white shadow-lg rounded-2xl ring-black ring-opacity-5 focus:outline-none" onClick={() => setIsOpen(false)}>
+                              <div className="absolute  w-36 lg:w-56 mt-2 origin-top-right bg-white shadow-lg rounded-2xl ring-black ring-opacity-5 focus:outline-none" onClick={() => setIsOpen(false)}>
                                 <div className="py-1">
-                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Pain Killer</p>
+                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Pain Killer</p>
                                 </div>
 
                                 <div class="py-1">
@@ -71,7 +71,7 @@ function Medicine() {
 
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
-                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid rounded-2xl bg-clip-border">     
+                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border">     
                       <div className="flex-auto px-0 pt-0 pb-2">
                         <div className="p-0 overflow-x-auto ">
                           <table className="min-w-full divide-y divide-gray-200 ">
@@ -90,80 +90,80 @@ function Medicine() {
                           </thead>
                             <tbody className="bg-white ">
                               <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                    < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>  
                               <tr>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>
                               <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>       
                               <tr>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>   
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>   
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>  
                               </tr>
                               <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>     
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>     
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                    < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                   </td>
                               </tr>
                               <tr>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td> 
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td> 
+                                <td className="p-4 text-md text-center font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>     
                               </tr>

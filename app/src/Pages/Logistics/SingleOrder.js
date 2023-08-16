@@ -31,7 +31,7 @@ function SingleOrder() {
 
           <div className="flex flex-wrap pb-20 -mx-3">
           <div className="w-full max-w-full px-3 mt-6 ">
-          <div className="relative flex flex-col min-w-0 break-words bg-white border-0 rounded-2xl bg-clip-border">
+          <div className="relative flex flex-col min-w-0 break-words bg-white border-0 rounded-lg bg-clip-border">
               <div className="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
                 <h6 className="mb-0 text-xl">Orders</h6>
               </div>

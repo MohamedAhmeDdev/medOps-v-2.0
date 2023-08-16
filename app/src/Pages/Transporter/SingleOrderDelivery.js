@@ -24,7 +24,7 @@ function SingleOrderDelivery() {
 
          <div className="flex flex-wrap pb-20 -mx-3">
           <div className="w-full max-w-full px-3 mt-6 md:w-7/12 md:flex-none">
-          <div className="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
+          <div className="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-lg bg-clip-border">
               <div className="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
                 <h6 className="mb-0 text-xl">Orders</h6>
               </div>
@@ -33,8 +33,8 @@ function SingleOrderDelivery() {
                 <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-100">
                     <div className="flex items-center">
                       <div className="flex flex-col">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>
-                      <span className="mb-2 text-md">Maramoja</span>
+                      <span className="mb-2 font-semibold text-md lg:text-lg capitalize">Medicine Name</span>
+                      <span className="mb-2 text-md capitalize">Maramoja</span>
                       </div>
                     </div>
 
@@ -47,8 +47,8 @@ function SingleOrderDelivery() {
                   <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-100">
                     <div className="flex items-center">
                       <div className="flex flex-col">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>
-                      <span className="mb-2 text-md">Maramoja</span>
+                      <span className="mb-2 font-semibold text-md lg:text-lg capitalize">Medicine Name</span>
+                      <span className="mb-2 text-md capitalize">Maramoja</span>
                       </div>
                     </div>
 
@@ -63,7 +63,7 @@ function SingleOrderDelivery() {
           </div>
           </div>
           <div className="w-full max-w-full px-3 mt-6 md:w-5/12 md:flex-none">
-          <div className="relative flex flex-col h-full min-w-0 mb-6 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">    
+          <div className="relative flex flex-col h-full min-w-0 mb-6 break-words bg-white border-0 shadow-soft-xl rounded-lg bg-clip-border">    
               <div className="flex-auto p-4 pt-6">
                 <h6 className="my-4 font-bold leading-tight uppercase text-xs text-slate-500">Customer information</h6>
                 <ul className="flex flex-col px-10 mb-0 rounded-lg">
@@ -84,7 +84,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">January 13, 2023 7:22 PM</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">January 13, 2023 7:22 PM</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -94,7 +94,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                    <span className="bg-green-200 text-green-800 text-md  mr-2 px-2.5 rounded-lg border border-green-100">Cancelled</span>
+                    <span className="bg-green-200 text-green-400 text-md font-medium  mr-2 px-2.5 rounded-lg border border-green-50">Cancelled</span>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -104,7 +104,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">eastleigh</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">eastleigh</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -124,7 +124,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">Mohamed ahmed</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">Mohamed ahmed</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">

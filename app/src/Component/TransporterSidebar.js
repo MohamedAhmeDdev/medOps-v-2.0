@@ -43,7 +43,7 @@ function TransporterSidebar({ sidebarOpen, toggleSidebar }) {
             <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
             <span className="material-symbols-outlined">timer</span>
             </div>
-            <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Clock in</span>
+            <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Shift</span>
           </Link>
         </li>
 
