@@ -6,3 +6,16 @@
     background-repeat: no-repeat;
   }
   
+  /* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #8888883e;
+	border-radius: 5px;
+}
+
+
