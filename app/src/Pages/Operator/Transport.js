@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
+import { Link } from 'react-router-dom';
 
 
 function Transport() {
@@ -32,6 +33,7 @@ function Transport() {
                           <th className="px-4 py-3 font-medium text-center  border-b border-gray-400 text-md lg:text-lg border-b-solid whitespace-nowrap text-black">Truck_Number</th>
                           <th className="px-4 py-3 font-medium text-center  border-b border-gray-400 text-md lg:text-lg border-b-solid whitespace-nowrap text-black">Driving_License</th>
                           <th className="px-4 py-3 font-medium text-center  border-b border-gray-400 text-md lg:text-lg border-b-solid whitespace-nowrap text-black">Status</th>
+                          <th className="px-4 py-3 font-medium text-center  border-b border-gray-400 text-md lg:text-lg border-b-solid whitespace-nowrap text-black">Deliveries</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -42,6 +44,9 @@ function Transport() {
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">
                             <span className="bg-green-200 text-green-400 text-md font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-green-100">AVAILABLE</span>
                           </td>
+                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                            <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
+                        </td>
                         </tr>
                         <tr>
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent capitalize">cane</td>
@@ -50,6 +55,9 @@ function Transport() {
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">
                             <span className="bg-red-200 text-red-400 text-md font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-red-100">Not AVAILABLE</span>
                           </td>
+                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                            <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
+                        </td>
                         </tr>     
                       </tbody>
                     </table>
