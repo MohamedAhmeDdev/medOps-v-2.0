@@ -122,15 +122,15 @@ function App() {
 
      
           
-            <Route path="/Operator" element={<OperatorDashboard/>}/>
-            <Route path="/Operator/Delivery" element={<OperatorDelivery/>}/>
-            <Route path="/Operator/Medicine" element={<OperatorMedicine/>}/>
-            <Route path="/Operator/Orders" element={<OperatorOrders/>}/>
-            <Route path="/Operator/SingleOrder/:id" element={<OperatorSingleOrder/>}/>
-            <Route path="/Operator/Supplier" element={<OperatorSupplier/>}/>
-            <Route path="/Operator/Transport" element={<OperatorTransport/>}/>
-            <Route path="/Operator/Staff" element={<OperatorStaff/>}/>
-            <Route path="/Operator/User" element={<OperatorUser/>} />
+            <Route path="/operator" element={<OperatorDashboard/>}/>
+            <Route path="/delivery" element={<OperatorDelivery/>}/>
+            <Route path="/medicine" element={<OperatorMedicine/>}/>
+            <Route path="/orders" element={<OperatorOrders/>}/>
+            <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
+            <Route path="/supplier" element={<OperatorSupplier/>}/>
+            <Route path="/transport" element={<OperatorTransport/>}/>
+            <Route path="/staff" element={<OperatorStaff/>}/>
+            <Route path="/user" element={<OperatorUser/>} />
           
 
       

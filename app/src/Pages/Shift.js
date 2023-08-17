@@ -33,7 +33,7 @@ function Shift() {
           <h6 className='text-lg py-3 font-bold'>Clock IN </h6>
           <div className={`w-72 px-3 space-x-5 mb-6 sm:flex-none xl:mb-0 ${isLoggedIn ? 'slide-left' : ''}`}>
             <div className="relative flex flex-col bg-white shadow-soft-xl rounded-lg bg-clip-border">
-              <div className="flex flex-row py-4">
+              <div className="flex flex-row py-2">
                 <div className="px-3 text-right basis-1/3">
                   <button className={`w-20 h-12 text-center rounded-lg bg-red-500 text-white ${ isLoggedIn ? 'hidden' : '' }`} onClick={handleLoginClick}> Login </button>
                 </div>
