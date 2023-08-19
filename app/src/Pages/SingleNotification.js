@@ -14,7 +14,7 @@ function SingleNotification() {
       
           <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       
-          <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+          <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
             <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       
             <main class="max-h-screen flex flex-col  h-[100vh]"> 

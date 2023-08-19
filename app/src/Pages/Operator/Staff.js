@@ -12,7 +12,7 @@ function Staff() {
     
         <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
     
-        <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
           <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
     
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
@@ -23,22 +23,22 @@ function Staff() {
                   </div>       
               </div>
              </nav>
-            <div className="w-full px-3 lg:px-6 py-6 mx-auto">
-            <h6 className="pb-5 font-bold text-2xl lg:text-4xl capitalize">Staff</h6> 
+            <div className="w-full  py-6 mx-auto">
+            <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-4xl capitalize">Staff</h6> 
 
             <div className="flex flex-wrap py-5">
             <div className="flex-none w-full max-w-full pb-5">
-              <div className="relative flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg">
+              <div className="relative flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid">
                 <div className="flex-auto px-0 pt-0 pb-2">
                   <div className="p-0 overflow-x-auto">
                     <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
                       <thead className="align-bottom">
                         <tr>
-                          <th className="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Staff</th>
-                          <th className="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Phone_Number</th>
-                          <th className="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Address</th>
-                          <th className="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Role</th>
-                          <th className="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Shift Status</th>
+                          <th className="px-6 py-5 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Staff</th>
+                          <th className="px-6 py-5 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Phone_Number</th>
+                          <th className="px-6 py-5 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Address</th>
+                          <th className="px-6 py-5 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Role</th>
+                          <th className="px-6 py-5 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Shift Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -57,7 +57,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
+                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
                           </td>
                         </tr>
                         <tr>
@@ -75,7 +75,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
+                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
                           </td>
                         </tr>
                         <tr>
@@ -93,7 +93,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
+                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
                           </td>
                         </tr>
                         <tr>
@@ -111,7 +111,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
+                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
                           </td>
                         </tr>
                         <tr>
@@ -129,7 +129,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
+                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 text-sm  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Logged in</span>
                           </td>
                         </tr>
                         <tr>
@@ -147,7 +147,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight uppercase">Manager</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs rounded-1.8 px-3 py-1.5 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
+                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 text-xs  px-3 py-2 inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">Not Logged In</span>
                           </td>
                         </tr>
                       </tbody>

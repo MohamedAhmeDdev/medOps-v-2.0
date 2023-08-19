@@ -23,14 +23,14 @@ function Shift() {
   
       <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
-      <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
         <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
-        <div className="w-full px-3 lg:px-6 py-6 mx-auto">
-          <h6 className="pb-5 font-bold text-2xl lg:text-4xl capitalize">Shift</h6>
+        <div className="w-full py-6 mx-auto">
+          <h6 className="pb-5 font-bold text-2xl px-3 lg:px-6 lg:text-4xl capitalize">Shift</h6>
 
-          <h6 className='text-lg py-3 font-bold'>Clock IN </h6>
+          <h6 className='text-lg py-3 font-bold px-3 lg:px-6'>Clock IN </h6>
           <div className={`w-72 px-3 space-x-5 mb-6 sm:flex-none xl:mb-0 ${isLoggedIn ? 'slide-left' : ''}`}>
             <div className="relative flex flex-col bg-white shadow-soft-xl rounded-lg bg-clip-border">
               <div className="flex flex-row py-2">
@@ -46,9 +46,9 @@ function Shift() {
 
 
           <div className="flex flex-wrap py-5">
-          <div className="flex-none w-full max-w-full pb-5">
-            <div className="relative flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg">
-              <div className="p-6 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+            <div className="flex-none w-full max-w-full pb-2 lg:pb-1">
+            <div className="relative flex flex-col mb-1.5 break-words bg-white border-0 border-transparent border-solid">
+              <div className="p-3 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6 className='text-lg'>shift weekly report</h6>
               </div>
               <div className="flex-auto px-0 pt-0 pb-2">
@@ -64,49 +64,49 @@ function Shift() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED IN</span>
                         </td>
                       </tr>
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED IN</span>
                         </td>
                       </tr> 
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
                         </td>
                       </tr> 
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
                         </td>
                       </tr> 
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
                         </td>
                       </tr>      
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 aM</td>
-                         <td className="p-2 px-5 text-md text-center font-semibold text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 aM</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                           <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
                         </td>

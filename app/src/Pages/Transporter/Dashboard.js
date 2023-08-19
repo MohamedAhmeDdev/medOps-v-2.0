@@ -14,15 +14,15 @@ function Dashboard() {
 
         <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-        <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
           <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
           <main className="max-h-screen flex flex-col py-5 h-[100vh]"> 
-            <div className="w-full px-3  mx-auto">
+            <div className="w-full mx-auto">
           
-            <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Dashboard</h6>
+            <h6 className="pb-5 font-bold text-lg lg:text-4xl  px-3  capitalize">Dashboard</h6>
 
-            <div className="flex flex-wrap -mx-3">
+            <div className="flex flex-wrap -mx-3  px-3">
                 <div className="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
                   <div className="relative  break-words bg-white rounded-2xl bg-clip-border flex flex-col">
                     <div className="mx-auto item p-4">
@@ -60,11 +60,11 @@ function Dashboard() {
                   </div>
              </div>
 
-             <div className="max-w-full pb-20 lg:mb-0 lg:w-full lg:flex-none">
+             <div className="max-w-full px-3 pb-20 lg:mb-0 lg:w-full lg:flex-none">
                 <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border">
                   <div className="p-4 pb-0 mb-0">
                     <div className="flex flex-wrap">
-                      <div className="flex items-center flex-none px-3">
+                      <div className="flex items-center flex-none ">
                         <h6 className="mb-0 font-bold">Personal Information</h6>
                       </div>          
                     </div>

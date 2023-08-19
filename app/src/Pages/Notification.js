@@ -15,17 +15,17 @@ function Notification() {
   
       <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
-      <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
         <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
-        <div className="w-full px-2 lg:px-6 py-6 mx-auto">
+        <div className="w-full py-6 mx-auto">
         
-          <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Notifications</h6>
+          <h6 className="pb-5 font-bold text-lg px-2 lg:px-6 lg:text-4xl capitalize">Notifications</h6>
 
           <div className="flex flex-wrap -mx-3 py-5 pb-10">
           <div className="flex-none w-full max-w-full px-3">
-            <div className="flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid  rounded-lg"> 
+            <div className="flex flex-col mb-6 break-words border-0 border-transparent border-solid"> 
 
               <div className="flex-auto  pt-0 pb-2">
                 <div className="overflow-x-auto px-2 pt-3">

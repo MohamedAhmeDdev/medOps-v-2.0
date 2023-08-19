@@ -4,7 +4,7 @@ import React from 'react';
 function Navbar({ sidebarOpen, toggleSidebar  }) {
   return (
  
-   <nav className="relative flex bg-gray-50  items-center justify-between px-5 py-5  transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start">
+   <nav className="relative flex bg-gray-100  items-center justify-between px-5 py-5  transition-all shadow-none duration-250 ease-soft-in lg:flex-nowrap lg:justify-start">
            
         <div className="flex items-center">
           <div className="md:hidden">

@@ -3,7 +3,6 @@ import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
 import ReactToPrint from "react-to-print";
-// import { ipcRenderer } from 'electron';
 
 
 
@@ -18,7 +17,7 @@ function SingleOrder() {
 
     <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-    <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+    <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
       <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
       <main className="max-h-screen flex flex-col  h-[100vh]"> 
@@ -37,7 +36,7 @@ function SingleOrder() {
               </div>
               <div className="flex-auto p-4 pt-6">
                 <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-100">
+                <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit bg-gray-100">
                     <div className="flex items-center">
                       <div className="flex flex-col">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>
@@ -56,7 +55,7 @@ function SingleOrder() {
                     </div>
                   </li>
 
-                  <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-100">
+                  <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit bg-gray-100">
                     <div className="flex items-center">
                       <div className="flex flex-col">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>

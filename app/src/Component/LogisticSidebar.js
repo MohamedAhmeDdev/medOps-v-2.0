@@ -5,7 +5,7 @@ import logo from '../assets/img/logo.jpg'
 
 function LogisticSidebar({ sidebarOpen, toggleSidebar }) {
   return (
-    <aside  className={`flex flex-1 bg-gray-50 w-60 flex-none ${sidebarOpen ? 'block fixed md:static z-20' : 'hidden md:block'}`} style={{ height: '100vh', overflowY: 'auto' }}>
+    <aside  className={`flex flex-1 bg-gray-100 w-60 ${sidebarOpen ? 'block fixed md:static z-20' : 'hidden md:block'}`} style={{ height: '100vh', overflowY: 'auto' }}>
     <div className="">
        <div>
        <span onClick={toggleSidebar}className="absolute top-0 right-0  p-4 opacity-50 cursor-pointer fas fa-times text-slate-400 xl:hidden material-symbols-outlined">menu</span>

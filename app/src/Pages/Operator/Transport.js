@@ -14,7 +14,7 @@ function Transport() {
     
         <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
     
-        <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
           <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
     
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
@@ -42,7 +42,7 @@ function Transport() {
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">kbs 465fd</td>
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">64699</td>
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-green-200 text-green-400 text-md font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-green-100">AVAILABLE</span>
+                            <span className="bg-green-300 text-green-800 text-md  mr-2 px-2.5 py-0.5  border border-green-400">AVAILABLE</span>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
@@ -53,7 +53,7 @@ function Transport() {
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">Knd 4574</td>
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">5451</td>
                           <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-red-200 text-red-400 text-md font-medium mr-2 px-2.5 py-0.5 rounded-lg border border-red-100">Not AVAILABLE</span>
+                            <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">Not AVAILABLE</span>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>

@@ -13,7 +13,7 @@ function Supplier() {
   
       <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
-      <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
         <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
   
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
@@ -37,18 +37,18 @@ function Supplier() {
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">xy</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">ddd</td>
-                         <td className="p-2 px-5 text-md   text-center font-normal text-slate-400  border-b whitespace-nowrap">xy@gmail.com</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap">2526552</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">xy</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">ddd</td>
+                         <td className="p-2 px-5 text-md   text-center text-slate-400  border-b whitespace-nowrap">xy@gmail.com</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">2526552</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
                       </tr>
                       <tr>
-                        <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">cane</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">wew</td>
-                         <td className="p-2 px-5 text-md  text-center font-normal text-slate-400  border-b whitespace-nowrap">cone@gmail.com</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap">2526552</td>
-                         <td className="p-2 px-5 text-md text-center font-normal text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">cane</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">wew</td>
+                         <td className="p-2 px-5 text-md  text-center text-slate-400  border-b whitespace-nowrap">cone@gmail.com</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">2526552</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
                       </tr>     
                     </tbody>
                   </table>

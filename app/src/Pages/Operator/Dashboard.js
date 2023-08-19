@@ -2,23 +2,19 @@ import React, { useState } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
-import { UseAuthContext } from '../../utils/Hook/StaffAuth';
+
 
 function Dashboard() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
-  const { dispatch } = UseAuthContext ();
 
-  const handleClick = () => {
-    localStorage.removeItem("user"); // remove use from localStorage
-    dispatch({ type: "LOGOUT" }); //  dispatch log out action
-  };
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
     <div className="flex flex-1 relative">
 
       <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-      <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
         <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
         <main className="max-h-screen flex flex-col py-5 h-[100vh]"> 
@@ -75,29 +71,29 @@ function Dashboard() {
                 </div>
                 <div className="flex-auto p-4">
                   <div className="flex flex-wrap">
-                  <div className="max-w-full px-3 mb-6  w-1/2">
-                     <h6 className="mb-2 font-semebold">Full Name</h6>  
+                  <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                     <h6 className="mb-2">Full Name</h6>  
                       <div className="relative flex flex-row items-center flex-auto px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">Juma Ali</h6>                        
                       </div>
                     </div>
 
-                    <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Job Title</h6>  
+                    <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Job Title</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">Transporter</h6> 
                       </div>
                     </div>
 
-                    <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Phone Number</h6>  
+                    <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Phone Number</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">d65656</h6> 
                       </div>
                     </div>
 
-                    <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Address</h6>  
+                    <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Address</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">fdfd</h6> 
                       </div>
@@ -111,33 +107,32 @@ function Dashboard() {
                 <div className="p-4 pb-0 mb-0">
                   <div className="flex flex-wrap">
                     <div className="flex items-center flex-none px-3">
-                      <h6 className="mb-0 font-semebold">Company Information</h6>
+                      <h6 className="mb-0 font-bold">Company Information</h6>
                     </div>          
                   </div>
                 </div>
                 <div className="flex-auto pt-10 p-4">
                   <div className="flex flex-wrap">
-                    <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Manager</h6>  
+                    <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Manager</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">cane</h6> 
                       </div>
                     </div>
 
-                    <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Phone Number</h6>  
+                    <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Phone Number</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">d65656</h6> 
                       </div>
                     </div>
 
-                      <div className="max-w-full px-3 mb-6  w-1/2">
-                      <h6 className="mb-2 font-semebold">Address</h6>  
+                      <div className="max-w-full px-3 py-3 mb-6  w-1/2">
+                      <h6 className="mb-2">Address</h6>  
                       <div className="relative flex flex-row items-center flex-auto min-w-0 px-5 py-1 break-words bg-transparent border border-solid shadow-none rounded-md border-slate-300 bg-clip-border">
                         <h6 className="mb-0 text-lg mx-auto">fdfd</h6> 
                       </div>
                     </div>
-         
                   </div>
                 </div>
               </div>

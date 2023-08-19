@@ -18,7 +18,7 @@ function Medicine() {
 
         <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-        <div className="flex flex-col flex-1 bg-indigo-50 overflow-x-hidden overflow-y-auto">
+        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
           <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
@@ -87,72 +87,72 @@ function Medicine() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
-                              <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
+                              <tr className="bg-gray-50">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>  
                               <tr>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>
-                              <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
+                              <tr className="bg-gray-50 ">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>       
                               <tr>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>       
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
                               </tr>
-                              <tr className="bg-gray-100 ">
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>       
+                              <tr className="bg-gray-50 ">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
 
                               </tr>
                               <tr>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Mara moja</td>
-                                <td className="p-4 text-md font-normal text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">Cane Industry</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">44</td>       
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
-                                <td className="p-4 text-md font-normal text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>  
-                                <td className="p-4 text-md font-normal text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>      
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>      
                               </tr>
                             </tbody>
                           </table>
