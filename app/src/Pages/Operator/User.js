@@ -19,13 +19,14 @@ function User() {
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
               <nav className="bg-white py-2.5">
               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
-                  <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for User"/>
+                 <div className=" mx-auto">                       
+                      <input type="text" className="text-md w-40 relative flex-auto rounded-l-lg border border-solid border-gray-300 bg-white py-2.5 px-3 text-black focus:outline-none" placeholder="search for User" />
+                      <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
                   </div>       
               </div>
              </nav>
             <div className="w-full  py-6 mx-auto">
-            <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-4xl capitalize">User</h6> 
+            <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-lg capitalize">User</h6> 
 
             <div className="flex flex-wrap py-5">
             <div className="flex-none w-full max-w-full pb-5">
@@ -54,7 +55,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                         <tr>
@@ -69,7 +70,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                         <tr>
@@ -84,7 +85,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                         <tr>
@@ -99,7 +100,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                         <tr>
@@ -114,7 +115,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                         <tr>
@@ -129,7 +130,7 @@ function User() {
                             <p className="mb-0 text-sm leading-tight capitalize">new york</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight uppercase">user</p>
+                            <p className="mb-0 text-sm leading-tight">User</p>
                           </td>
                         </tr>
                       </tbody>

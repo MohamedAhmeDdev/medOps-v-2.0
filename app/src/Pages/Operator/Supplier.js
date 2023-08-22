@@ -18,7 +18,7 @@ function Supplier() {
   
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
         <div className="w-full px-3 lg:px-6 py-6 mx-auto">
-          <h6 className="pb-5 font-bold text-2xl lg:text-4xl capitalize">Supplier</h6> 
+          <h6 className="pb-5 font-bold text-2xl lg:text-lg capitalize">Supplier</h6> 
 
           <div className="flex flex-wrap py-5">
           <div className="flex-none w-full max-w-full pb-5">

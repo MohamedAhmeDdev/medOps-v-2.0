@@ -19,15 +19,16 @@ function Orders() {
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
         
             <nav className="bg-white py-2.5">
-                <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
-                  <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for Order" />
-                    </div>                     
-              </div>
+               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
+                 <div className=" mx-auto">                       
+                      <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
+                      <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
+                  </div>                    
+               </div>
             </nav>
           
             <div className="w-full py-6 mx-auto">
-            <h6 className="pb-5 font-bold text-4xl px-1.5 lg:px-6 capitalize">Orders</h6>
+            <h6 className="pb-5 font-bold text-lg px-1.5 lg:px-6 capitalize">Orders</h6>
 
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
@@ -37,11 +38,10 @@ function Orders() {
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Order Id</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Order Id</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Phone Number</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total Amount</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Status</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Action</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black"></th>
                               </tr>
                           </thead>
@@ -51,10 +51,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
                                 <td className="p-4 whitespace-nowrap">
-                                   <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                 <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 cursor-pointer px-2.5 py-1.5 rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                    <span className="bg-purple-100 rounded-md text-purple-500 text-sm mr-2 px-2.5 py-0.5 border border-purple-50">Pending</span>
                                 </td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>
@@ -65,10 +62,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> $2300</td>
                                 <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md cursor-pointer mr-2 px-2.5 py-1.5 rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                  <span className="bg-red-100 text-red-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-red-50">Cancelled</span>
                                 </td>
                                 <td className="p-4 text-md font-semibold text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>
@@ -79,10 +73,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-gray-400 text-center whitespace-nowrap">  $2300</td>
                                 <td className="p-4 whitespace-nowrap">
-                                   <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 px-2.5 py-1.5 cursor-pointer rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                 <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
                                 </td>
                                 <td className="p-4 text-md font-semibold text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>
@@ -93,10 +84,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>              
                                 <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 px-2.5 py-1.5 cursor-pointer rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                   <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-purple-50">Pending</span>
                                 </td>
                                 <td className="p-4 text-md font-semibold text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>
@@ -107,10 +95,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>              
                                 <td className="p-4 whitespace-nowrap">
-                                   <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 px-2.5 py-1.5 cursor-pointer rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                  <span className="bg-green-100 text-green-500 rounded-sm text-sm mr-2 px-2.5 py-0.5 border border-green-50">Delivered</span>
                                 </td>
                                 <td className="p-4 text-md font-semibold text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>
@@ -121,10 +106,7 @@ function Orders() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
                                 <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 py-0.5  border border-red-400">PENDING</span>
-                                </td>
-                                <td className="p-4 whitespace-nowrap">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 px-2.5 py-1.5 cursor-pointer rounded-md border border-green-100 capitalize">Confirm Order Packed</span>
+                                   <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-purple-50">Pending</span>
                                 </td>
                                 <td className="p-4 text-md font-semibold text-gray-400 whitespace-nowrap">
                                     <Link to='/SingleOrder' className="text-md font-semibold leading-tight text-slate-400"> View </Link>

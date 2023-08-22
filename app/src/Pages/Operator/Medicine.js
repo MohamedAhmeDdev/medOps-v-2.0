@@ -25,16 +25,17 @@ function Medicine() {
 
           <nav className="bg-white py-2.5">
               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
-                  <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for medicine"/>
-                  </div>   
-
+                 <div className=" mx-auto">                       
+                      <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
+                      <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
+                  </div>                    
+         
                   <div className=" mx-auto">                       
                     <div className="flex items-center">
-                       <div className="max-w-6xl px-4 mx-auto">
+                       <div className="mx-auto">
                           <div className="relative inline-block text-left">       
                               <button onClick={toggleDropdown} type="button" className="inline-flex justify-center  lg:w-56 px-4 py-2 text-sm bg-gray-200 font-medium rounded-lg focus:outline-none">
-                                Filter Medicine
+                                Filter By Category
                                 <svg
                                   className={`w-4 h-4 ml-2 -mr-1 fill-current ${ isOpen?'rotate-180':'rotate-0' }`}xmlns="http://www.w3.org/2000/svg" style={{ marginTop:'3px'}}><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                 </svg>
@@ -65,7 +66,7 @@ function Medicine() {
             <div className="w-full px-1.5 lg:px-6 py-6 mx-auto">
     
           
-            <h6 className="pb-5 font-bold text-4xl capitalize">Medicine</h6>
+            <h6 className="pb-5 font-bold text-lg capitalize">Medicine</h6>
 
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
@@ -75,15 +76,15 @@ function Medicine() {
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Medicine_Category</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine_Category</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Medicine</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Supplier</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Total_Quantity</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total_Quantity</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Price</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Barcode</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Aisle</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Expiry_Date</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Updated_Date</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Expiry_Date</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Updated_Date</th>
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
@@ -95,8 +96,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>  
                               <tr>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
@@ -106,8 +107,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>
                               <tr className="bg-gray-50 ">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
@@ -117,8 +118,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
                               </tr>       
                               <tr>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
@@ -128,8 +129,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
                               </tr>
                               <tr className="bg-gray-50 ">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
@@ -139,8 +140,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
 
                               </tr>
                               <tr>
@@ -151,8 +152,8 @@ function Medicine() {
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">7/5/2023</td>      
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>      
                               </tr>
                             </tbody>
                           </table>

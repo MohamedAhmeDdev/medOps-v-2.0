@@ -20,7 +20,7 @@ function Delivery() {
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
             <div className="w-full px-1.5 lg:px-6 py-6 mx-auto">
           
-            <h6 className="pb-5 font-bold text-4xl capitalize">Deliveries</h6>
+            <h6 className="pb-5 font-bold text-lg capitalize">Deliveries</h6>
 
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
@@ -43,7 +43,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-green-300 text-green-800 text-md mr-2 px-2.5 border border-green-400">DELIVERED</span>
+                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">Delivered</span>
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
@@ -55,7 +55,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-red-300 text-red-800 text-md mr-2 px-2.5 border border-red-400">Cancelled</span>
+                                  <span className="bg-red-100 text-red-400 rounded-md text-sm mr-2 px-2.5 border border-red-50">Cancelled</span>
                                 </td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
                                     <Link to='/singleOrder' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500"> View </Link>
@@ -66,7 +66,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-purple-300 text-purple-800 text-md mr-2 px-2.5 border border-purple-400">PENDING</span>
+                                  <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 border border-purple-50">Pending</span>
                                 </td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
                                     <Link to='/singleOrder' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500"> View </Link>
@@ -77,7 +77,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-300 text-orange-800 text-md mr-2 px-2.5 border border-orange-400">PACKED</span>
+                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
@@ -89,7 +89,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-300 text-orange-800 text-md mr-2 px-2.5 border border-orange-400">PACKED</span>
+                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
@@ -101,7 +101,7 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-300 text-orange-800 text-md mr-2 px-2.5 border border-orange-400">PACKED</span>
+                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
