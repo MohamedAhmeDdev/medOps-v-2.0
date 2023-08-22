@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
 
 
-function UpdateMedicine() {
-   const { sidebarOpen, toggleSidebar } = UseSidebar();
+function CreateCategory() {
+  const { sidebarOpen, toggleSidebar } = UseSidebar();
+
 
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
@@ -19,7 +20,7 @@ function UpdateMedicine() {
 
           <main className="max-h-screen flex flex-col  h-[100vh]">          
            <div className="w-full py-6 mx-auto">
-           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Update medicine</h6>
+           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Create Category medicine</h6>
 
               <div className="flex flex-wrap py-5">
                  <div className="flex-none w-full max-w-full">
@@ -74,7 +75,7 @@ function UpdateMedicine() {
                                     </div>
                                   </div>
 
-                                  <button type="button" className="px-8 mt-3 py-3 w-11/12 ml-5 font-bold leading-normal text-center text-white transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-lg hover:shadow-xs hover:-translate-y-px active:opacity-85">Update</button>
+                                  <button type="button" className="px-8 mt-3 py-3 w-11/12 ml-5 font-bold leading-normal text-center text-white transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-lg hover:shadow-xs hover:-translate-y-px active:opacity-85">Create</button>
                                 </div>
                               </div>
                           </div>
@@ -90,4 +91,4 @@ function UpdateMedicine() {
   )
 }
 
-export default UpdateMedicine
+export default CreateCategory

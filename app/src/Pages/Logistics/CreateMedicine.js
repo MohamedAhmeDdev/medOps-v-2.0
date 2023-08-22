@@ -5,21 +5,21 @@ import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
 
 
-function UpdateMedicine() {
-   const { sidebarOpen, toggleSidebar } = UseSidebar();
-
+function CreateMedicine() {
+  const { sidebarOpen, toggleSidebar } = UseSidebar();
+  
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
-      <div className="flex flex-1 relative">
+     <div className="flex flex-1 relative">
 
-        <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
+       <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-          <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
+       <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
+         <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
 
-          <main className="max-h-screen flex flex-col  h-[100vh]">          
+         <main className="max-h-screen flex flex-col  h-[100vh]">          
            <div className="w-full py-6 mx-auto">
-           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Update medicine</h6>
+           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">create medicine</h6>
 
               <div className="flex flex-wrap py-5">
                  <div className="flex-none w-full max-w-full">
@@ -74,7 +74,7 @@ function UpdateMedicine() {
                                     </div>
                                   </div>
 
-                                  <button type="button" className="px-8 mt-3 py-3 w-11/12 ml-5 font-bold leading-normal text-center text-white transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-lg hover:shadow-xs hover:-translate-y-px active:opacity-85">Update</button>
+                                  <button type="button" className="px-8 mt-3 py-3 w-11/12 ml-5 font-bold leading-normal text-center text-white transition-all ease-in bg-blue-500 border-0 rounded-lg shadow-md cursor-pointer text-lg hover:shadow-xs hover:-translate-y-px active:opacity-85">Create</button>
                                 </div>
                               </div>
                           </div>
@@ -84,10 +84,10 @@ function UpdateMedicine() {
               </div>       
            </div>
          </main>
-        </div>
-      </div>
-    </div>
-  )
+       </div>
+     </div>
+   </div>
+)
 }
 
-export default UpdateMedicine
+export default CreateMedicine

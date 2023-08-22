@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
 
 
-function UpdateMedicine() {
-   const { sidebarOpen, toggleSidebar } = UseSidebar();
+function UpdateMedicineCategory() {
+  const { sidebarOpen, toggleSidebar } = UseSidebar();
 
-  return (
+ return (
     <div className="flex flex-col h-screen overflow-hidden ">
       <div className="flex flex-1 relative">
 
@@ -19,7 +19,7 @@ function UpdateMedicine() {
 
           <main className="max-h-screen flex flex-col  h-[100vh]">          
            <div className="w-full py-6 mx-auto">
-           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Update medicine</h6>
+           <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Update medicine Category</h6>
 
               <div className="flex flex-wrap py-5">
                  <div className="flex-none w-full max-w-full">
@@ -90,4 +90,4 @@ function UpdateMedicine() {
   )
 }
 
-export default UpdateMedicine
+export default UpdateMedicineCategory

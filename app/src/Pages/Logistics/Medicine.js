@@ -28,8 +28,9 @@ function Medicine() {
           <nav className="bg-white py-2.5">
               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
                   <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-1/100 relative flex-auto rounded-lg border border-solid border-gray-300 bg-white py-2 px-3 text-black focus:outline-none" placeholder="search for medicine"/>
-                  </div>   
+                      <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
+                      <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
+                  </div> 
 
                   <div className=" mx-auto">                       
                     <div className="flex items-center">
@@ -48,11 +49,11 @@ function Medicine() {
                                     <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Pain Killer</p>
                                 </div>
 
-                                <div class="py-1">
+                                <div className="py-1">
                                     <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Antibiotics</p>
                                 </div>
 
-                                <div class="py-1">
+                                <div className="py-1">
                                     <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">etc</p>
                                 </div>
                               </div>
@@ -65,9 +66,17 @@ function Medicine() {
             </nav>
 
             <div className="w-full py-6 mx-auto">
-            <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-4xl capitalize">Medicine</h6>
-            
-               <div className="flex flex-wrap py-5">
+            <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Medicine</h6>
+            <Link to='/createMedicine'>
+                <div className="flex justify-end pr-5">
+                  <div className="flex hover:bg-blue-200 text-blue-800 text-sm cursor-pointer ml-auto px-2.5 py-1.5 rounded-md">
+                    <span className="material-symbols-outlined">add</span>
+                    <p className="text-md text-blue-800 capitalize">create medicine</p>
+                  </div>
+                </div>
+              </Link>
+
+               <div className="flex flex-wrap py-3">
                   <div className="flex-none w-full max-w-full">
                     <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid bg-clip-border">     
                       <div className="flex-auto px-0 pt-0 pb-2">
@@ -75,14 +84,14 @@ function Medicine() {
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Medicine_Category</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Medicine</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Total_Quantity</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Price</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Barcode</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Aisle</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Expiry_Date</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Updated_Date</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine_Category</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total_Quantity</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Price</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Barcode</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Aisle</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Expiry_Date</th>
+                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Updated_Date</th>
                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black"></th>
                               </tr>
                           </thead>
@@ -94,10 +103,10 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                   < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>  
                               <tr>
@@ -107,10 +116,10 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                  < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                  < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>
                               <tr className="bg-gray-50 ">
@@ -120,10 +129,10 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                  < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                  < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>
                               </tr>       
                               <tr>
@@ -134,9 +143,9 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>   
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                  < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>   
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
+                                  < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>  
                               </tr>
                               <tr className="bg-gray-50 ">
@@ -146,10 +155,10 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>     
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>     
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                   < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                   < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                   </td>
                               </tr>
                               <tr>
@@ -159,10 +168,10 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">Ksh 55</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">545445654</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">Aisle 5</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
-                                <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td> 
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td>
+                                <td className="p-4 text-sm text-center text-gray-900 whitespace-nowrap dark:text-gray-400">7/5/2023</td> 
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                  < Link to='/medicineU' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                  < Link to='/updateMedicine' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                 </td>     
                               </tr>
                             </tbody>
