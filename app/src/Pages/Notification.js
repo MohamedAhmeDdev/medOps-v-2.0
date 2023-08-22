@@ -21,7 +21,7 @@ function Notification() {
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
         <div className="w-full py-6 mx-auto">
         
-          <h6 className="pb-5 font-bold text-lg px-2 lg:px-6 lg:text-4xl capitalize">Notifications</h6>
+          <h6 className="pb-5 font-bold text-lg px-2 lg:px-6 lg:text-lg capitalize">Notifications</h6>
 
           <div className="flex flex-wrap -mx-3 py-5 pb-10">
           <div className="flex-none w-full max-w-full px-3">

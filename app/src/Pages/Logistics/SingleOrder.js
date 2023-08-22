@@ -25,7 +25,7 @@ function SingleOrder() {
           <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Order Id 5454</h6>
 
           <div className="w-full text-right">
-            <ReactToPrint trigger={() => <button className='hover:bg-blue-300 text-green-800 text-md cursor-pointer font-medium mr-2 px-2.5 py-1.5 border border-blue-400'>Print Shipping Label</button>} content={() => componentRef} />
+            <ReactToPrint trigger={() => <button className='hover:bg-blue-100 text-blue-500 text-sm cursor-pointer font-medium mr-2 px-2.5 py-1.5 border border-blue-400'>Print Shipping Label</button>} content={() => componentRef} />
           </div>
 
           <div className="flex flex-wrap pb-20 -mx-3">

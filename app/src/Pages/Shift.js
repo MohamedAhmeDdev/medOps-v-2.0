@@ -28,7 +28,7 @@ function Shift() {
   
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
         <div className="w-full py-6 mx-auto">
-          <h6 className="pb-5 font-bold text-2xl px-3 lg:px-6 lg:text-4xl capitalize">Shift</h6>
+          <h6 className="pb-5 font-bold text-2xl px-3 lg:px-6 lg:text-lg capitalize">Shift</h6>
 
           <h6 className='text-lg py-3 font-bold px-3 lg:px-6'>Clock IN </h6>
           <div className={`w-72 px-3 space-x-5 mb-6 sm:flex-none xl:mb-0 ${isLoggedIn ? 'slide-left' : ''}`}>
@@ -43,6 +43,8 @@ function Shift() {
               </div>
             </div>
           </div>
+
+          
 
 
           <div className="flex flex-wrap py-5">
@@ -68,7 +70,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED IN</span>
+                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged IN</span>
                         </td>
                       </tr>
                       <tr>
@@ -76,7 +78,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED IN</span>
+                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged IN</span>
                         </td>
                       </tr> 
                       <tr>
@@ -84,7 +86,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
+                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
                         </td>
                       </tr> 
                       <tr>
@@ -92,7 +94,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
+                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
                         </td>
                       </tr> 
                       <tr>
@@ -100,7 +102,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
+                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
                         </td>
                       </tr>      
                       <tr>
@@ -108,7 +110,7 @@ function Shift() {
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 aM</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline uppercase leading-none text-white">LOGGED Out</span>
+                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged  Out</span>
                         </td>
                       </tr> 
                     </tbody>

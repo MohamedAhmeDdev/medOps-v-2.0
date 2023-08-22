@@ -18,7 +18,7 @@ function Dashboard() {
           <main className="max-h-screen flex flex-col py-5 h-[100vh]"> 
             <div className="w-full px-3  mx-auto">
           
-            <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Dashboard</h6>
+            <h6 className="pb-5 font-bold text-lg lg:text-lg capitalize">Dashboard</h6>
 
             <div className="flex flex-wrap -mx-3">
                 <div className="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
