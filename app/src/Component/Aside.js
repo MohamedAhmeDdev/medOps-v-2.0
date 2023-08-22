@@ -14,8 +14,8 @@ function Aside({ sidebarOpen, toggleSidebar }) {
     <div>
       {/* <SupervisorSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} /> */}
       {/* <ManagerSideBar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} /> */}
-      <OperatorSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-      {/* <LogisticSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen}/> */}
+      {/* <OperatorSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} /> */}
+      <LogisticSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen}/>
       {/* <TransporterSidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen}/> */}
     </div> 
   )

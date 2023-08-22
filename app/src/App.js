@@ -57,13 +57,18 @@ import LogisticsMedicine from "./Pages/Logistics/Medicine";
 import LogisticsUpdateMedicine from "./Pages/Logistics/UpdateMedicine";
 import LogisticsOrder from "./Pages/Logistics/Order";
 import LogisticsSingleOrder from "./Pages/Logistics/SingleOrder";
+import LogisticsCreateCategory from "./Pages/Logistics/CreateCategory";
+import LogisticsCreateMedicine from "./Pages/Logistics/CreateMedicine";
+import LogisticsUpdateMedicineCategory from "./Pages/Logistics/UpdateMedicineCategory";
+import LogisticsMedicineCategory from "./Pages/Logistics/MedicineCategory";
+
+
 
 import TransporterDelivery from "./Pages/Transporter/Delivery";
 import TransporterSingleOrderDelivery from "./Pages/Transporter/SingleOrderDelivery";
 import TransportDashboard from "./Pages/Transporter/Dashboard";
 import Notification from "./Pages/Notification";
 import SingleNotification from "./Pages/SingleNotification";
-
 
 function App() { 
 
@@ -122,7 +127,7 @@ function App() {
 
      
           
-            <Route path="/operator" element={<OperatorDashboard/>}/>
+            {/* <Route path="/operator" element={<OperatorDashboard/>}/>
             <Route path="/delivery" element={<OperatorDelivery/>}/>
             <Route path="/medicine" element={<OperatorMedicine/>}/>
             <Route path="/orders" element={<OperatorOrders/>}/>
@@ -130,22 +135,26 @@ function App() {
             <Route path="/supplier" element={<OperatorSupplier/>}/>
             <Route path="/transport" element={<OperatorTransport/>}/>
             <Route path="/staff" element={<OperatorStaff/>}/>
-            <Route path="/user" element={<OperatorUser/>} />
+            <Route path="/user" element={<OperatorUser/>} /> */}
           
 
       
           <Route path="/logistics" element={<LogisticDashboard/>}/>
+          <Route path="/medicineCategory" element={<LogisticsMedicineCategory/>}/>
           <Route path="/medicine" element={<LogisticsMedicine/>}/>
-          <Route path="/medicineU" element={<LogisticsUpdateMedicine/>}/>
+          <Route path="/createCategory" element={<LogisticsCreateCategory/>}/>
+          <Route path="/createMedicine" element={<LogisticsCreateMedicine/>}/>
+          <Route path="/updateMedicineCategory" element={<LogisticsUpdateMedicineCategory/>}/>
+          <Route path="/updateMedicine" element={<LogisticsUpdateMedicine/>}/>
           <Route path="/order" element={<LogisticsOrder/>}/>
           <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/>
          
 
 
     
-            <Route path="/transporter" element={<TransportDashboard/>}/>
+            {/* <Route path="/transporter" element={<TransportDashboard/>}/>
             <Route path="/delivery" element={<TransporterDelivery/>}/>
-            <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/>
+            <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/> */}
           
        
         </Routes>
