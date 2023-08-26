@@ -127,7 +127,7 @@ function App() {
 
      
           
-            {/* <Route path="/operator" element={<OperatorDashboard/>}/>
+            <Route path="/operator" element={<OperatorDashboard/>}/>
             <Route path="/delivery" element={<OperatorDelivery/>}/>
             <Route path="/medicine" element={<OperatorMedicine/>}/>
             <Route path="/orders" element={<OperatorOrders/>}/>
@@ -135,11 +135,11 @@ function App() {
             <Route path="/supplier" element={<OperatorSupplier/>}/>
             <Route path="/transport" element={<OperatorTransport/>}/>
             <Route path="/staff" element={<OperatorStaff/>}/>
-            <Route path="/user" element={<OperatorUser/>} /> */}
+            <Route path="/user" element={<OperatorUser/>} />
           
 
       
-          <Route path="/logistics" element={<LogisticDashboard/>}/>
+          {/* <Route path="/logistics" element={<LogisticDashboard/>}/>
           <Route path="/medicineCategory" element={<LogisticsMedicineCategory/>}/>
           <Route path="/medicine" element={<LogisticsMedicine/>}/>
           <Route path="/createCategory" element={<LogisticsCreateCategory/>}/>
@@ -147,7 +147,7 @@ function App() {
           <Route path="/updateMedicineCategory" element={<LogisticsUpdateMedicineCategory/>}/>
           <Route path="/updateMedicine" element={<LogisticsUpdateMedicine/>}/>
           <Route path="/order" element={<LogisticsOrder/>}/>
-          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/>
+          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/> */}
          
 
 
