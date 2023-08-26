@@ -6,11 +6,18 @@ import UseSidebar from '../../utils/constant/useSidebar';
 
 function Medicine() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
-  const [isOpen, setIsOpen] = useState(false);
+  const [medicineDropdown, setMedicineDropdown] = useState(false);
+  const [aisleDropdown, setAisleDropdown] = useState(false);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setMedicineDropdown(!medicineDropdown);
   };
+
+
+  const toggleAisleDropdown = () => {
+    setAisleDropdown(!aisleDropdown);
+  };
+
 
   return (
      <div className="flex flex-col h-screen overflow-hidden ">
@@ -28,63 +35,71 @@ function Medicine() {
                  <div className=" mx-auto">                       
                       <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
                       <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
-                  </div>                    
-         
-                  <div className=" mx-auto">                       
-                    <div className="flex items-center">
-                       <div className="mx-auto">
-                          <div className="relative inline-block text-left">       
-                              <button onClick={toggleDropdown} type="button" className="inline-flex justify-center  lg:w-56 px-4 py-2 text-sm bg-gray-200 font-medium rounded-lg focus:outline-none">
-                                Filter By Category
-                                <svg
-                                  className={`w-4 h-4 ml-2 -mr-1 fill-current ${ isOpen?'rotate-180':'rotate-0' }`}xmlns="http://www.w3.org/2000/svg" style={{ marginTop:'3px'}}><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                </svg>
-                              </button>
-                       
-                            {isOpen && (
-                              <div className="absolute w-36 lg:w-56 mt-2 origin-top-right bg-white shadow-lg rounded-2xl ring-black ring-opacity-5 focus:outline-none" onClick={() => setIsOpen(false)}>
-                                <div className="py-1">
-                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Pain Killer</p>
-                                </div>
-
-                                <div class="py-1">
-                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Antibiotics</p>
-                                </div>
-
-                                <div class="py-1">
-                                    <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">etc</p>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                       </div>
-                    </div>
-                  </div>                   
+                  </div>                                       
               </div>
           </nav>
 
-            <div className="w-full px-1.5 lg:px-6 py-6 mx-auto">
-    
-          
-            <h6 className="pb-5 font-bold text-lg capitalize">Medicine</h6>
-
+            <div className="w-full py-6">
+            <h6 className="pb-5 font-bold text-lg  px-1.5 lg:px-6 capitalize">Medicine</h6>
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
-                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border">     
+                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid bg-clip-border">     
                       <div className="flex-auto px-0 pt-0 pb-2">
                         <div className="p-0 overflow-x-auto ">
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine_Category</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Medicine</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Supplier</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total_Quantity</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Price</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Barcode</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Aisle</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Expiry_Date</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Updated_Date</th>
+                                <th className="relative p-4 text-md font-medium tracking-wider text-center text-black flex">Medicine_Category
+                                {medicineDropdown ? (
+                                      <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                      ) : (
+                                        <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                  )}
+                                {medicineDropdown && (
+                                  <div className="absolute w-36 lg:w-44 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setMedicineDropdown(false)}>
+                                    <div className="py-1">
+                                        <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Pain Killer</p>
+                                    </div>
+
+                                    <div className="py-1">
+                                        <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Antibiotics</p>
+                                    </div>
+
+                                    <div className="py-1">
+                                        <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">etc</p>
+                                    </div>
+                                  </div>
+                               )}
+                                </th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Medicine</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Supplier</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total_Quantity</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Price</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Barcode</th>
+                                <th className="relative p-4 text-md font-medium tracking-wider text-left text-black flex">Aisle
+                                  {aisleDropdown ? (
+                                        <span  onClick={toggleAisleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                        ) : (
+                                          <span  onClick={toggleAisleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                    )}
+                                  {aisleDropdown && (
+                                    <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setAisleDropdown(false)}>
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Aisle 1</p>
+                                      </div>
+
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Aisle 2</p>
+                                      </div>
+
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Aisle 3</p>
+                                      </div>
+                                    </div>
+                                )}
+                                </th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Expiry_Date</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Updated_Date</th>
                               </tr>
                           </thead>
                             <tbody className="bg-white ">

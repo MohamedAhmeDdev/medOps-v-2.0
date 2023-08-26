@@ -6,6 +6,13 @@ import UseSidebar from '../../utils/constant/useSidebar';
 
 function Orders() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [statusDropdown, setStatusDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setStatusDropdown(!statusDropdown);
+  };
+
+
 
   return (
      <div className="flex flex-col h-screen overflow-hidden ">
@@ -38,16 +45,40 @@ function Orders() {
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Phone Number</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total Amount</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Status</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black"></th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Customer_Name</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
+                                <th className="relative p-4 text-md font-medium tracking-wider text-left text-black  flex">Status
+                                    {statusDropdown ? (
+                                            <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                            ) : (
+                                              <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                        )}
+                                      {statusDropdown && (
+                                        <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setStatusDropdown(false)}>
+                                          <div className="py-1">
+                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Delivered</p>
+                                          </div>
+                                          <div className="py-1">
+                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Packed</p>
+                                          </div>
+                                          <div className="py-1">
+                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Cancelled</p>
+                                          </div>
+                                          <div className="py-1">
+                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Pending</p>
+                                          </div>
+                                        </div>
+                                    )}
+                                </th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black"></th>
                               </tr>
                           </thead>
                             <tbody className="bg-white">
                               <tr className="bg-gray-50">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
                                 <td className="p-4 whitespace-nowrap">
@@ -59,6 +90,7 @@ function Orders() {
                               </tr>  
                               <tr>
                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
+                             <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> $2300</td>
                                 <td className="p-4 whitespace-nowrap">
@@ -70,6 +102,7 @@ function Orders() {
                               </tr>
                               <tr className="bg-gray-50 ">
                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
+                             <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
                                 <td className="p-4 text-md text-gray-400 text-center whitespace-nowrap">  $2300</td>
                                 <td className="p-4 whitespace-nowrap">
@@ -81,6 +114,7 @@ function Orders() {
                               </tr>       
                               <tr>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>              
                                 <td className="p-4 whitespace-nowrap">
@@ -92,6 +126,7 @@ function Orders() {
                               </tr>
                               <tr className="bg-gray-50 ">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>              
                                 <td className="p-4 whitespace-nowrap">
@@ -103,6 +138,7 @@ function Orders() {
                               </tr>
                               <tr>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
                                 <td className="p-4 whitespace-nowrap">
