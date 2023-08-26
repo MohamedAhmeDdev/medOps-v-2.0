@@ -30,11 +30,11 @@ function Delivery() {
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Phone Number</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total Amount</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Status</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black"></th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Status</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black"></th>
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
