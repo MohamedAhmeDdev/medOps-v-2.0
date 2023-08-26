@@ -23,7 +23,7 @@ function MedicineCategory() {
            <nav className="bg-white py-2.5">
                <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
                    <div className=" mx-auto">                       
-                       <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
+                       <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for M Category" />
                        <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
                    </div>                    
                </div>
@@ -33,7 +33,7 @@ function MedicineCategory() {
              <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Medicine Category</h6>
              <Link to='/createCategory'>
                  <div className="flex justify-end pr-5">
-                   <div className="flex hover:bg-blue-200 text-blue-800 text-sm cursor-pointer ml-auto px-2.5 py-1.5 rounded-md">
+                   <div className="flex hover:bg-blue-200 text-blue-800 text-sm cursor-pointer ml-auto px-2.5 py-1.5">
                      <span className="material-symbols-outlined">add</span>
                      <p className="text-md text-blue-800 capitalize">create medicine Category</p>
                    </div>
@@ -48,9 +48,9 @@ function MedicineCategory() {
                            <table className="min-w-full divide-y divide-gray-200 ">
                            <thead className="align-bottom">
                                <tr>
-                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine_Category</th>
-                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Medicine</th>
-                                 <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black"></th>
+                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Medicine_Category</th>
+                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Medicine</th>
+                                 <th className="p-4 text-md font-medium tracking-wider text-left text-black"></th>
                                </tr>
                            </thead>
                              <tbody className="bg-white ">

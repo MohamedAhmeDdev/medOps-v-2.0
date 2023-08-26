@@ -6,6 +6,12 @@ import UseSidebar from '../../utils/constant/useSidebar';
 
 function Order() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [Dropdown, setDropdown] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdown(!Dropdown);
+  };
+
 
 return (
      <div className="flex flex-col h-screen overflow-hidden ">
@@ -38,12 +44,34 @@ return (
                           <table className="min-w-full divide-y divide-gray-200 ">
                           <thead className="align-bottom">
                               <tr>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Phone Number</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black">Total Amount</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Status</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-left text-black">Action</th>
-                                <th className="p-4 text-md lg:text-lg font-medium tracking-wider text-center text-black"></th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
+                                <th className="relative p-4 text-md font-medium tracking-wider text-left text-black flex">Status
+                                  {Dropdown ? (
+                                        <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                        ) : (
+                                          <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                    )}
+                                  {Dropdown && (
+                                    <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setDropdown(false)}>
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Delivered</p>
+                                      </div>
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Packed</p>
+                                      </div>
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Cancelled</p>
+                                      </div>
+                                      <div className="py-1">
+                                          <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Pending</p>
+                                      </div>
+                                    </div>
+                                )}
+                                </th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Action</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black"></th>
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
