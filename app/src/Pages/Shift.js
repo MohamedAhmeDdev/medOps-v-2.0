@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside';
 import UseSidebar from '../utils/constant/useSidebar';
@@ -7,14 +7,24 @@ import UseSidebar from '../utils/constant/useSidebar';
 function Shift() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   const handleLoginClick = () => {
-    setIsLoggedIn(true);
+    setIsLoggedIn(!isLoggedIn);
   };
 
-  const handleLogoutClick = () => {
-    setIsLoggedIn(false);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const isAfter7AM = currentTime.getHours() >= 7;
+
 
 
   return(
@@ -31,21 +41,23 @@ function Shift() {
           <h6 className="pb-5 font-bold text-2xl px-3 lg:px-6 lg:text-lg capitalize">Shift</h6>
 
           <h6 className='text-lg py-3 font-bold px-3 lg:px-6'>Clock IN </h6>
-          <div className={`w-72 px-3 space-x-5 mb-6 sm:flex-none xl:mb-0 ${isLoggedIn ? 'slide-left' : ''}`}>
-            <div className="relative flex flex-col bg-white shadow-soft-xl rounded-lg bg-clip-border">
-              <div className="flex flex-row py-2">
-                <div className="px-3 text-right basis-1/3">
-                  <button className={`w-20 h-12 text-center rounded-lg bg-red-500 text-white ${ isLoggedIn ? 'hidden' : '' }`} onClick={handleLoginClick}> Login </button>
-                </div>
-                <div className="px-3 ml-20 text-right basis-1/3">
-                  <button className={`w-20 h-12 text-center rounded-lg bg-green-500 text-white ${  !isLoggedIn ? 'hidden' : ''  }`} onClick={handleLogoutClick}>Logout</button>
+              <div className='w-32 px-3  mb-6 sm:flex-none xl:mb-0 '>
+                <div className="relative flex flex-col bg-white shadow-soft-xl rounded-lg bg-clip-border w-32">
+                  <div className="flex flex-row py-2 px-5">
+                    {isAfter7AM ? (
+                      <>
+                       <button className={`w-20 h-12 text-center rounded-lg ${isLoggedIn ? 'bg-green-500 text-white' : 'bg-red-500 text-white'} transition-all`}
+                         onClick={handleLoginClick}
+                       >
+                        {isLoggedIn ? 'Logout' : 'Login'}
+                      </button>
+                      </>
+                    ) : (
+                      <p className='text-center capitalize font-semibold text-red-500'>Wait Until 7 am</p>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-
-          
-
 
           <div className="flex flex-wrap py-5">
             <div className="flex-none w-full max-w-full pb-2 lg:pb-1">
