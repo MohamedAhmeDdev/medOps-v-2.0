@@ -63,7 +63,7 @@ function LogisticSidebar({ sidebarOpen, toggleSidebar }) {
                </li>
                 <li className="mt-0.5 w-full">
                   <Link to='/createCategory' className="py-2.5  px-10 text-sm hover:shadow-lg hover:bg-white my-0 mx-3 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
-                    <span className="ml-5 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Create Category</span>
+                    <span className="ml-5 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Add Category</span>
                   </Link>
                 </li>
               </ul>
@@ -93,7 +93,7 @@ function LogisticSidebar({ sidebarOpen, toggleSidebar }) {
                </li>
                 <li className="mt-0.5 w-full">
                   <Link to='/createMedicine' className="py-2.5  px-10 text-sm hover:shadow-lg hover:bg-white my-0 mx-3 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
-                    <span className="ml-5 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Create Medicine</span>
+                    <span className="ml-5 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Add Medicine</span>
                   </Link>
                 </li>
               </ul>
