@@ -60,7 +60,7 @@ function OperatorSidebar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/supplier' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                <span class="material-symbols-outlined">warehouse</span>
+                <span className="material-symbols-outlined">warehouse</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Supplier</span>
             </Link>
@@ -69,7 +69,7 @@ function OperatorSidebar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/transport' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                <span class="material-symbols-outlined">local_shipping</span>
+                <span className="material-symbols-outlined">local_shipping</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Transport</span>
             </Link>
@@ -78,7 +78,7 @@ function OperatorSidebar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/staff' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                  <span class="material-symbols-outlined">Supervisor_account</span>
+                  <span className="material-symbols-outlined">Supervisor_account</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Staff</span>
             </Link>
@@ -87,7 +87,7 @@ function OperatorSidebar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/user' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                <span class="material-symbols-outlined">person</span>
+                <span className="material-symbols-outlined">person</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Users</span>
             </Link>
