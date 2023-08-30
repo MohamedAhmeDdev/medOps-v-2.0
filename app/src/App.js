@@ -8,15 +8,10 @@ import StaffForgotPassword from "./Pages/AccountRecovery/ForgotPassword";
 
 
 
-import SupervisorDashboard from "./Pages/Supervisor/Dashboard";
-import SupervisorMedicine from "./Pages/Supervisor/Medicine";
-import SupervisorOrderReport from "./Pages/Supervisor/OrderReport";
-import SupervisorStaff from "./Pages/Supervisor/Staff";
-import SupervisorSupplier from "./Pages/Supervisor/Supplier";
-import SupervisorTransport from "./Pages/Supervisor/Transport";
-import SupervisorWarehouses from "./Pages/Supervisor/Warehouse/Warehouses";
-import SupervisorCreateWarehouse from "./Pages/Supervisor/Warehouse/CreateWarehouse";
-import SupervisorUpdateWarehouse from "./Pages/Supervisor/Warehouse/UpdateWarehouse";
+import AdminDashboard from "./Pages/Admin/Dashboard";
+import AdminWarehouses from "./Pages/Admin/Warehouse/Warehouses";
+import AdminCreateWarehouse from "./Pages/Admin/Warehouse/CreateWarehouse";
+import AdminUpdateWarehouse from "./Pages/Admin/Warehouse/UpdateWarehouse";
 
 import ManagerDashboard from "./Pages/Manager/Dashboard";
 import ManagerMedicine from "./Pages/Manager/Medicine";
@@ -86,15 +81,10 @@ function App() {
 
 
          
-            <Route path="/Supervisor" element={<SupervisorDashboard/>}/>
-            <Route path="/Supervisor/Medicine" element={<SupervisorMedicine/>}/>
-            <Route path="/Supervisor/OrderReport" element={<SupervisorOrderReport/>}/>
-            <Route path="/Supervisor/Staff" element={<SupervisorStaff/>}/>
-            <Route path="/Supervisor/Supplier " element={<SupervisorSupplier/>}/>
-            <Route path="/Supervisor/Transport" element={<SupervisorTransport/>}/>
-            <Route path="/Supervisor/Warehouse" element={<SupervisorWarehouses/>}/>
-            <Route path="/Supervisor/CreateWarehouse" element={<SupervisorCreateWarehouse/>}/>
-            <Route path="/Supervisor/UpdateWarehouse/:id" element={<SupervisorUpdateWarehouse/>}/>
+            <Route path="/admin" element={<AdminDashboard/>}/>
+            <Route path="/Warehouse" element={<AdminWarehouses/>}/>
+            <Route path="/CreateWarehouse" element={<AdminCreateWarehouse/>}/>
+            <Route path="/UpdateWarehouse" element={<AdminUpdateWarehouse/>}/>
       
 
    
