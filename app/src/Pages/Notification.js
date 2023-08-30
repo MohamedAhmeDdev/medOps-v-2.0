@@ -23,6 +23,17 @@ function Notification() {
         
           <h6 className="pb-5 font-bold text-lg px-2 lg:px-6 lg:text-lg capitalize">Notifications</h6>
 
+       
+                 <div className="flex justify-end pr-5">
+                   <div className="flex bg-gray-200 rounded-2xl shadow-md text-black text-sm cursor-pointer ml-auto px-4 py-3">
+                   <Link to='/CreateNotification'>
+                     <p className="text-md text-black-800 capitalize">Create Notification</p>
+                       </Link>
+                   </div>
+                 </div>
+          
+
+
           <div className="flex flex-wrap -mx-3 py-5 pb-10">
           <div className="flex-none w-full max-w-full px-3">
             <div className="flex flex-col mb-6 break-words border-0 border-transparent border-solid"> 

@@ -35,7 +35,7 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/orderReport' className="py-2.5 px-10 hover:shadow-lg  hover:bg-white text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center p-5">
-                <span class="material-symbols-outlined">report</span>
+                <span className="material-symbols-outlined">report</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Order Report</span>
             </Link>
@@ -63,13 +63,13 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
           <li>
               <Link onClick={() =>setOpenSupplier(!openSupplier)} className="py-2.5  px-10 text-sm hover:shadow-lg hover:bg-white my-0 mx-2.5 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
                 <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                  <span class="material-symbols-outlined">warehouse</span>
+                  <span className="material-symbols-outlined">warehouse</span>
                   </div>
                   <span className="text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Supplier</span>
                     {openSupplier ? (
-                    <span class="material-symbols-outlined">expand_less</span>
+                    <span className="material-symbols-outlined">expand_less</span>
                     ) : (
-                      <span class="material-symbols-outlined">expand_more</span>
+                      <span className="material-symbols-outlined">expand_more</span>
                   )}
               </Link>
               {openSupplier && (
@@ -94,13 +94,13 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
             <li>
               <Link onClick={() =>setOpenTransport(!openTransport)} className="py-2.5  px-10 text-sm hover:shadow-lg hover:bg-white my-0 mx-2.5 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
                 <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                   <span class="material-symbols-outlined">local_shipping</span>
+                   <span className="material-symbols-outlined">local_shipping</span>
                   </div>
                   <span className="text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Transport</span>
                     {openTransport ? (
-                    <span class="material-symbols-outlined">expand_less</span>
+                    <span className="material-symbols-outlined">expand_less</span>
                     ) : (
-                      <span class="material-symbols-outlined">expand_more</span>
+                      <span className="material-symbols-outlined">expand_more</span>
                   )}
               </Link>
               {openTransport && (
@@ -124,13 +124,13 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
             <li>
               <Link onClick={() =>setOpenStaff(!openStaff)} className="py-2.5  px-10 text-sm hover:shadow-lg hover:bg-white my-0 mx-2.5 flex items-center whitespace-nowrap rounded-lg font-semibold text-slate-700 transition-colors">
                 <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                  <span class="material-symbols-outlined">Supervisor_account</span>
+                  <span className="material-symbols-outlined">Supervisor_account</span>
                   </div>
                   <span className="text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Staff</span>
                     {openStaff ? (
-                    <span class="material-symbols-outlined">expand_less</span>
+                    <span className="material-symbols-outlined">expand_less</span>
                     ) : (
-                      <span class="material-symbols-outlined">expand_more</span>
+                      <span className="material-symbols-outlined">expand_more</span>
                   )}
               </Link>
               {openStaff && (
@@ -154,7 +154,7 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
             <li className="mt-0.5 w-full">
             <Link to='/passwordRequest' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-0 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                 <span class="material-symbols-outlined">lock_open</span>
+                 <span className="material-symbols-outlined">lock_open</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Password Request</span>
             </Link>
@@ -163,7 +163,7 @@ function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
           <li className="mt-0.5 w-full">
             <Link to='/user' className="py-2.5 px-10 text-sm hover:shadow-lg hover:bg-white ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg  font-semibold text-slate-700 transition-colors">
               <div className="shadow-lg mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center  p-5">
-                <span class="material-symbols-outlined">person</span>
+                <span className="material-symbols-outlined">person</span>
               </div>
               <span className="ml-1 text-4.5 duration-300 opacity-100 pointer-events-none ease-soft">Users</span>
             </Link>

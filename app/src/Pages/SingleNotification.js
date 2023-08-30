@@ -17,17 +17,17 @@ function SingleNotification() {
           <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
             <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
       
-            <main class="max-h-screen flex flex-col  h-[100vh]"> 
-            <div class="w-full px-3 lg:px-6 py-6 mx-auto">
+            <main className="max-h-screen flex flex-col  h-[100vh]"> 
+            <div className="w-full px-3 lg:px-6 py-6 mx-auto">
             
-              <h6 class="pb-5 font-bold text-4xl capitalize">Notifications</h6>
+              <h6 className="pb-5 font-bold text-2xl capitalize">Notifications</h6>
     
-              <div class="flex flex-wrap -mx-3 py-5">
-              <div class="flex-none w-full max-w-full px-3">
-                    <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border"> 
-                        <div class="p-4 leading-loose">
-                            <p class="text-lg"><span className='font-semibold'>Subject: </span><span>Request for a Meeting</span></p>
-                            <p class="text-lg"><span className='font-semibold'>From:</span><span> fdfdd , [Manager]</span></p>
+              <div className="flex flex-wrap -mx-3 py-5">
+              <div className="flex-none w-full max-w-full px-3">
+                    <div className="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border"> 
+                        <div className="p-4 leading-loose">
+                            <p className="text-lg"><span className='font-semibold'>Subject: </span><span>Request for a Meeting</span></p>
+                            <p className="text-lg"><span className='font-semibold'>From:</span><span> fdfdd , [Manager]</span></p>
                                 <div className='p-5'> 
                                 <p>Hello [Recipient's Name],</p>
                                 
