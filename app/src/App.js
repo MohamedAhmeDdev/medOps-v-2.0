@@ -65,6 +65,7 @@ import TransportDashboard from "./Pages/Transporter/Dashboard";
 
 import Notification from "./Pages/Notification";
 import SingleNotification from "./Pages/SingleNotification";
+import CreateNotification from "./Pages/CreateNotification";
 
 
 function App() { 
@@ -80,6 +81,7 @@ function App() {
           <Route path="/PasswordReport/:id" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
           <Route path="/Notification" element={<Notification/>}/>  
+          <Route path="/CreateNotification" element={<CreateNotification/>}/>  
           <Route path="/SingleNotification" element={<SingleNotification/>}/>  
 
 
