@@ -33,7 +33,7 @@ function Medicine() {
               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
                  <div className=" mx-auto">                       
                       <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Medicine" />
-                      <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
+                      <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
                   </div>                                       
               </div>
           </nav>
@@ -50,9 +50,9 @@ function Medicine() {
                               <tr>
                                 <th className="relative p-4 text-md font-medium tracking-wider text-center text-black flex">Medicine_Category
                                 {medicineDropdown ? (
-                                      <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                      <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_less</span>
                                       ) : (
-                                        <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                        <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_more</span>
                                   )}
                                 {medicineDropdown && (
                                   <div className="absolute w-36 lg:w-44 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setMedicineDropdown(false)}>
@@ -77,9 +77,9 @@ function Medicine() {
                                 <th className="p-4 text-md font-medium tracking-wider text-left text-black">Barcode</th>
                                 <th className="relative p-4 text-md font-medium tracking-wider text-left text-black flex">Aisle
                                   {aisleDropdown ? (
-                                        <span  onClick={toggleAisleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                        <span  onClick={toggleAisleDropdown} className="material-symbols-outlined cursor-pointer">expand_less</span>
                                         ) : (
-                                          <span  onClick={toggleAisleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                          <span  onClick={toggleAisleDropdown} className="material-symbols-outlined cursor-pointer">expand_more</span>
                                     )}
                                   {aisleDropdown && (
                                     <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setAisleDropdown(false)}>

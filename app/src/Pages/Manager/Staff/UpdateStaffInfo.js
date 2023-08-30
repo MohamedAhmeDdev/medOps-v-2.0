@@ -47,7 +47,7 @@ function UpdateStaffInfo() {
                           </div>
                           <div className="col-span-6 sm:col-span-3 py-3">
                               <label htmlFor="role" className="block mb-2 text-sm font-medium text-gray-900">Role</label>
-                              <input type="text"class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 focus:bg-white focus:outline-none"/>
+                              <input type="text" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 focus:bg-white focus:outline-none"/>
                           </div>
                           <div className="col-span-6 sm:col-span-3 py-3">
                               <label htmlFor="department" className="block mb-2 text-sm font-medium text-gray-900">Function</label>
@@ -55,7 +55,7 @@ function UpdateStaffInfo() {
                           </div>
                          </div>
                         </form>
-                          <button class="mt-10 justify-center w-full px-4 py-2 text-md font-medium text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-blue-600 ">
+                          <button className="mt-10 justify-center w-full px-4 py-2 text-md font-medium text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-blue-600 ">
                             Update
                         </button>
                   </div>

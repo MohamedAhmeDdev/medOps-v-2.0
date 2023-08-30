@@ -49,9 +49,9 @@ function Transport() {
                                 <th className="p-4 text-md font-medium border-gray-400 text-center text-black">Driving_License</th>
                                 <th className="relative p-4 text-md font-medium border-gray-400 text-center text-black ml-10 flex">Status
                                     {statusDropdown ? (
-                                            <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_less</span>
+                                            <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_less</span>
                                             ) : (
-                                              <span  onClick={toggleDropdown} class="material-symbols-outlined cursor-pointer">expand_more</span>
+                                              <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_more</span>
                                         )}
                                       {statusDropdown && (
                                         <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setStatusDropdown(false)}>
