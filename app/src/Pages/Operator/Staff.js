@@ -20,7 +20,7 @@ function Staff() {
               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
                   <div className=" mx-auto">                       
                       <input type="text" className="text-md w-40 relative flex-auto rounded-l-lg border border-solid border-gray-300 bg-white py-2.5 px-3 text-black focus:outline-none" placeholder="search for Staff" />
-                      <button type="submit" class="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
+                      <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
                   </div>      
               </div>
              </nav>
