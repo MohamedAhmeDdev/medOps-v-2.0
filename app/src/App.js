@@ -8,11 +8,6 @@ import StaffForgotPassword from "./Pages/AccountRecovery/ForgotPassword";
 
 
 
-import AdminDashboard from "./Pages/Admin/Dashboard";
-import AdminWarehouses from "./Pages/Admin/Warehouse/Warehouses";
-import AdminCreateWarehouse from "./Pages/Admin/Warehouse/CreateWarehouse";
-import AdminUpdateWarehouse from "./Pages/Admin/Warehouse/UpdateWarehouse";
-
 import ManagerDashboard from "./Pages/Manager/Dashboard";
 import ManagerMedicine from "./Pages/Manager/Medicine";
 import ManagerMedicineCategory from "./Pages/Manager/MedicineCategory";
@@ -61,6 +56,13 @@ import TransportDashboard from "./Pages/Transporter/Dashboard";
 import Notification from "./Pages/Notification";
 import SingleNotification from "./Pages/SingleNotification";
 import CreateNotification from "./Pages/CreateNotification";
+import Medicine from "./Pages/User/Medicine";
+import Cart from "./Pages/User/Cart";
+import Checkout from "./Pages/User/Checkout";
+import Orders from "./Pages/User/Orders";
+import ProductDetail from "./Pages/User/ProductDetail";
+import SingleOrder from "./Pages/User/SingleOrder";
+import Profile from "./Pages/User/Profile";
 
 
 function App() { 
@@ -80,15 +82,17 @@ function App() {
           <Route path="/SingleNotification" element={<SingleNotification/>}/>  
 
 
-         
-            <Route path="/admin" element={<AdminDashboard/>}/>
-            <Route path="/Warehouse" element={<AdminWarehouses/>}/>
-            <Route path="/CreateWarehouse" element={<AdminCreateWarehouse/>}/>
-            <Route path="/UpdateWarehouse" element={<AdminUpdateWarehouse/>}/>
+          {/* <Route path="/medicine" element={<Medicine/>}/>
+          <Route path="/productDetail" element={<ProductDetail/>}/>
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/order" element={<Orders/>}/>
+          <Route path="/singleOrder" element={<SingleOrder/>}/>
+          <Route path="/profile" element={<Profile/>}/> */}
       
 
-   
-            <Route path="/manager" element={<ManagerDashboard/>}/>
+
+            {/* <Route path="/manager" element={<ManagerDashboard/>}/>
             <Route path="/medicine" element={<ManagerMedicine/>}/>
             <Route path="/medicineCategory" element={<ManagerMedicineCategory/>}/>
             <Route path="/supplier" element={<ManagerSupplier/>}/>
@@ -104,21 +108,21 @@ function App() {
             <Route path="/StaffShift" element={<ManagerSingleStaffShift/>} />  
             <Route path="/createStaff" element={<ManagerCreateStaff/>}/>
             <Route path="/updateStaffInfo" element={<ManagerUpdateStaffInfo/>}/>
-            <Route path="/user" element={<ManagerUser/>}/>
+            <Route path="/user" element={<ManagerUser/>}/> */}
           
 
      
           
-            {/* <Route path="/operator" element={<OperatorDashboard/>}/>
-            <Route path="/delivery" element={<OperatorDelivery/>}/>
-            <Route path="/medicine" element={<OperatorMedicine/>}/>
-            <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
-            <Route path="/orders" element={<OperatorOrders/>}/>
-            <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
-            <Route path="/supplier" element={<OperatorSupplier/>}/>
-            <Route path="/transport" element={<OperatorTransport/>}/>
-            <Route path="/staff" element={<OperatorStaff/>}/>
-            <Route path="/user" element={<OperatorUser/>} /> */}
+          <Route path="/operator" element={<OperatorDashboard/>}/>
+          <Route path="/delivery" element={<OperatorDelivery/>}/>
+          <Route path="/medicine" element={<OperatorMedicine/>}/>
+          <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
+          <Route path="/orders" element={<OperatorOrders/>}/>
+          <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
+          <Route path="/supplier" element={<OperatorSupplier/>}/>
+          <Route path="/transport" element={<OperatorTransport/>}/>
+          <Route path="/staff" element={<OperatorStaff/>}/>
+          <Route path="/user" element={<OperatorUser/>} />
           
 
       
@@ -135,9 +139,9 @@ function App() {
 
 
     
-            {/* <Route path="/transporter" element={<TransportDashboard/>}/>
-            <Route path="/delivery" element={<TransporterDelivery/>}/>
-            <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/> */}
+          {/* <Route path="/transporter" element={<TransportDashboard/>}/>
+          <Route path="/delivery" element={<TransporterDelivery/>}/>
+          <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/> */}
           
        
         </Routes>
