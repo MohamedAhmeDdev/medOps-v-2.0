@@ -1,6 +1,6 @@
 const {
     getAllMedicineCategory,
-}= require("../../Controllers/Logistic/medicineCategoryController");
+}= require("../../Controllers/Operator/medicineCategoryController");
 
 const AuthRouter = require("express").Router();
 
