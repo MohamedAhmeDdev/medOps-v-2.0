@@ -1,0 +1,193 @@
+const Medicine = require('../../Models/medicineModel')
+const Supplier = require('../../Models/SupplierModel')
+const MedicineCategory = require('../../Models/medicineCategoryModel')
+const cloudinary = require("cloudinary").v2;
+const dotenv = require('dotenv');
+dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
+
+const createMedicine = async (req, res) => {
+  const { medicine_category, company_name, medicine_image, medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
+  
+  if (!medicine_category || !company_name || !medicine_image || !medicine_name || !total_quantity || !price || !barcode || !aisle || !expiry_date) {
+  return res.status(400).json({ success: false, message: "All Fields Are Required" });
+  }
+  
+  const getMedicineById = await MedicineCategory.findOne({ where: { medicine_category: medicine_category } });
+  if (!getMedicineById) {
+  return res.status(400).json({ success: false, message: "Medicine_category Is Not Found" });
+  }
+  
+  const getSupplierById = await Supplier.findOne({ where: { company_name: company_name } });
+  if (!getSupplierById) {
+  return res.status(400).json({ success: false, message: "Supplier Is Not Found" });
+  }
+  
+  const result = await cloudinary.uploader.upload(stream, { folder: "Medicine" });
+  
+  try {
+  const medicine = await Medicine.create({
+  medicine_category_id: getMedicineById.medicine_category_id,
+  supplier_id: getSupplierById.supplier_id,
+  medicine_image: result.secure_url,
+  medicine_name: medicine_name,
+  total_quantity: total_quantity,
+  price: price,
+  barcode: barcode,
+  aisle: aisle,
+  expiry_date: expiry_date,
+  date_supplied: new Date(),
+  });
+  return res.status(200).json({ success: true, medicine });
+  } catch (error) {
+  return res.status(500).json({ success: false, message: error.message });
+  }
+  };
+
+
+
+const searchApi = async (req, res) => {
+  try {
+    const { medicine_name,  medicine_category, barcode, aisle, date_supplied, expiry_date } = req.query;
+
+    const medicines = await Medicine.findAll({
+      include: [{
+        model: MedicineCategory,
+      },{
+        model: Supplier,
+      }],
+      order: [['medicine_name', 'ASC']],
+    });
+    const searchMedicine = medicines.filter(medicine => {
+      if (
+        // If the condition evaluates to true exists and the medicine.medicine_name is not equal n this case, the filter function will return false
+        (medicine_name && medicine.medicine_name !== String(medicine_name)) ||
+        (medicine_category && medicine.medicineCategory.medicine_category  !== String(medicine_category)) ||
+        (barcode && medicine.barcode !== Number(barcode)) ||
+        (aisle && medicine.aisle !== Number(aisle)) ||
+        (date_supplied && medicine.date_supplied.toISOString().split('T')[0] !== date_supplied) ||
+        (expiry_date && medicine.expiry_date.toISOString().split('T')[0] !== expiry_date)
+      ) {
+        return false;
+      }
+      return true;
+    });
+ 
+    if (searchMedicine.length === 0) {
+      return res.status(404).json({ success: false, message: "No matching results found"});
+    }
+
+    return res.status(200).json({ success: true, medicine: searchMedicine });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+
+
+const getMedicine = async (req, res) => {
+  try {
+    const AllMedicine = await Medicine.findAll({
+        include: [{
+            model: MedicineCategory,
+            attributes: ['medicine_category'],
+          }],
+          order: [['medicine_name', 'ASC']],
+    });
+
+    if (AllMedicine.length === 0) {
+      return res.status(404).json({ success: false, message: "Medicine Not found"});
+    }
+
+    return res.status(200).json({success: true, medicine: AllMedicine });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message});
+  }
+}
+
+
+ 
+const getMedicineById = async (req, res) => {
+  const id = req.params.id
+  try {
+    const medicineById = await Medicine.findAll({ 
+        where: { medicine_id: id},
+        include: [{
+          model: MedicineCategory,
+          attributes: ['medicine_category'],
+        }],
+     });
+
+    return res.status(200).json({success: true, medicine: medicineById });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+
+
+const updateMedicine = async (req, res) => {
+     const id = req.params.id
+    const {medicine_category , company_name,  medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
+
+    try {  
+      let medicineCategoryId
+      let supplierId
+
+      if (medicine_category) { 
+        const getMedicineCategory = await MedicineCategory.findOne({where:{ medicine_category: medicine_category }});
+         medicineCategoryId = getMedicineCategory.medicine_category_id;
+      }
+  
+      if (company_name) {
+        const getSupplierById = await Supplier.findOne({where:{ company_name: company_name }});
+        supplierId = getSupplierById.supplier_id;
+      }
+
+      const UpdateMedicine = await Medicine.update({ 
+            medicine_category_id: medicineCategoryId,
+            supplier_id: supplierId,
+            medicine_name: medicine_name,
+            total_quantity: total_quantity,
+            price: price,
+            aisle: aisle,
+            barcode: barcode,
+            expiry_date: expiry_date,
+     },{where: {medicine_id: id} });
+      return res.status(200).json({ success: true, medicine: UpdateMedicine});
+    } catch (error) {
+      return res.status(500).json({ success: false, message: error.message});
+    }
+};
+
+
+
+const deleteMedicine = async (req, res) => {
+  try {
+      await Medicine.destroy({where: {medicine_id: req.params.id}});
+
+    return res.status(200).json({ success: true, medicine: deleteMedicine});
+  } catch (error) {
+      res.json({ message: error.message });
+  }  
+}
+
+
+ 
+module.exports = {
+    createMedicine,
+    searchApi,
+    getMedicine,
+    getMedicineById,
+    updateMedicine,
+    deleteMedicine
+};
+  
+ 
