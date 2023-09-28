@@ -2,10 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+
+const Auth = require('./Routes/Auth');
+
 const User = require('./Routes/User/userRoute');
 const UserOrder = require('./Routes/User/orderRoute');
+const UserMedicine = require('./Routes/User/medicineRoute');
 
-const Staff = require('./Routes/Staff/StaffRoute');
+
 const StaffShift = require('./Routes/Staff/ShiftRoute');
 const StaffPasswordReport = require('./Routes/Staff/PasswordReport');
 
@@ -41,14 +45,17 @@ const ManagerOrderReport = require('./Routes/Manager/orderReportRoute');
 app.use(express.json());
 app.use(cors());
 
+//Auth
+app.use('/auth', Auth)
+
 // //User Api
 app.use('/Users', User)
-app.use('/Users/Orders', UserOrder)
+app.use('/Orders', UserOrder)
+app.use('/medicine', UserMedicine)
 
 // //Staff Login 
-app.use('/Staff', Staff)
-app.use('/Staff/Shift', StaffShift)
-app.use('/Staff/PasswordReport', StaffPasswordReport)
+app.use('/Shift', StaffShift)
+app.use('/PasswordReport', StaffPasswordReport)
 
 
 
