@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../App.css'
-
 import { SERVER_URL } from "../utils/constant/severUrl";
 import axios from "axios";
 import { UseAuthContext } from "../utils/Hook/StaffAuth";
 import { Link, useNavigate } from 'react-router-dom';
-import { showError, showAlert } from '../Component/Alert';
+import { getUserInfo } from "../utils/Token";
+import { useNotification } from '../utils/context/NotificationContext';
+
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -13,46 +14,56 @@ function Login() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const { dispatch } = UseAuthContext();
   const navigate = useNavigate();
-
+  const userInfo = getUserInfo();
+  const role = userInfo ? userInfo.role : null;
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
-
+  const { showSuccessNotification, showErrorNotification } = useNotification();
 
   const loginAuth = async (e) => {
     e.preventDefault();
     try {
-        await axios.post(`${SERVER_URL}/Staff/login`, {
+      const response = await axios.post(`${SERVER_URL}/auth/login`, {
           username: username,
           password: password,
         })
-        .then((response) => {
-          const user = response.data.user;
-          localStorage.setItem("user", JSON.stringify(user));
-          dispatch({ type: "LOGIN", payload: user });
-
-          dispatch({ type: "LOGIN", payload: user });
-
-          const userRole = user.role;
-          if (userRole === 'SUPERVISOR') {
-            navigate('/Supervisor');
-          } else if (userRole === 'MANAGER') {
-            navigate('/Manager');
-          }  else if (userRole === 'OPERATOR') {
-            navigate('/Operator');
-          } else if (userRole === 'LOGISTIC') {
-            navigate('/Logistics');
-          } else if (userRole === 'TRANSPORTER' ) {
-            navigate('/Transporter');
+        if (response.status === 200) {
+            const user = response.data.user;
+            localStorage.setItem('user', JSON.stringify(user));
+            dispatch({ type: 'LOGIN', payload: user });
+            
+            switch (role) {
+              case 'User':
+                navigate('/medicine');
+                break;
+              case 'Manager':
+                navigate('/manager');
+                break;
+              case 'Operator':
+                navigate('/operator');
+                break;
+                case 'Logistics':
+                  navigate('/logistics');
+                  break;
+              case 'Transport':
+                navigate('/transporter');
+                break;
+              default:
+                // Handle unknown roles or provide a default route
+                navigate('/');
+            } 
           }
-        });
+       
       } catch (error) {
         if (error.response?.status === 400) {
-          showError('Username or password is missing. Try again');
-        } else if (error.response?.status === 401) {
-          showAlert('Invalid login credentials. Try again');
-        } else if (error.response?.status === 403) {
-          showAlert('Unauthorized');
+          showErrorNotification('Username or password is missing. Try again');
+        } else if (error.response?.status === 410) {
+          showErrorNotification('Invalid login credentials. Try again');
+        }else if (error.response?.status === 401) {
+          showErrorNotification('Incorrect Password');
+        }else if (error.response?.status === 403) {
+          showErrorNotification('Unauthorized');
         }
       }
   };
@@ -76,7 +87,7 @@ function Login() {
                 value={password} onChange={(e) => setPassword(e.target.value)}  placeholder="Password" type={passwordVisible ? 'text' : 'password'}
               />
               <div className="absolute top-14 right-3 transform -translate-y-1/2 cursor-pointer" onClick={togglePasswordVisibility}>
-                {passwordVisible ? <span class="material-symbols-outlined">visibility</span> : <span class="material-symbols-outlined">visibility_off</span>}
+                {passwordVisible ? <span className="material-symbols-outlined">visibility</span> : <span className="material-symbols-outlined">visibility_off</span>}
               </div>
             </div>
           </div>
@@ -85,7 +96,10 @@ function Login() {
             <button className="bg-blue-500 text-white font-bold text-5 py-2 px-5 rounded-sm focus:outline-none focus:shadow-outline border-none shadow-md" type="submit">
               login
             </button>
-              <Link to="/ForgotPassword" className="text-gray-400 hover:text-white text-lg">Forgot Password? </Link>
+             <div className='flex-col'>
+              <div><Link to="/ForgotPassword" className="text-gray-400 hover:text-white text-sm">Forgot Password?</Link></div>
+              <div><Link to="/account/signup" className="text-gray-400 hover:text-white text-sm">signUp?</Link></div>
+             </div>
             </div>
       </form>
     </div>
