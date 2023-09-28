@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import Login from "./Pages/Login";
 import StaffShift from "./Pages/Shift";
 import StaffResetPassword from "./Pages/AccountRecovery/ResetPassword";
@@ -56,6 +55,7 @@ import TransportDashboard from "./Pages/Transporter/Dashboard";
 import Notification from "./Pages/Notification";
 import SingleNotification from "./Pages/SingleNotification";
 import CreateNotification from "./Pages/CreateNotification";
+
 import Medicine from "./Pages/User/Medicine";
 import Cart from "./Pages/User/Cart";
 import Checkout from "./Pages/User/Checkout";
@@ -63,7 +63,9 @@ import Orders from "./Pages/User/Orders";
 import ProductDetail from "./Pages/User/ProductDetail";
 import SingleOrder from "./Pages/User/SingleOrder";
 import Profile from "./Pages/User/Profile";
+import Signup from "./Pages/Signup";
 
+import {getUserRole} from './utils/Token' 
 
 function App() { 
 
@@ -73,26 +75,30 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login/>} />
+          <Route path="/account/signup" element={<Signup/>} />
           <Route path="/Shift" element={<StaffShift/>} />
-          <Route path="/ResetPassword/:id" element={<StaffResetPassword/>} />
-          <Route path="/PasswordReport/:id" element={<StaffPasswordReport/>} />
+          <Route path="/ResetPassword/:token" element={<StaffResetPassword/>} />
+          <Route path="/PasswordReport/:token" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
           <Route path="/Notification" element={<Notification/>}/>  
           <Route path="/CreateNotification" element={<CreateNotification/>}/>  
           <Route path="/SingleNotification" element={<SingleNotification/>}/>  
 
-
-          {/* <Route path="/medicine" element={<Medicine/>}/>
-          <Route path="/productDetail" element={<ProductDetail/>}/>
+          {getUserRole() === 'User' && (
+            <>
+          <Route path="/medicine" element={<Medicine/>}/>
+          <Route path="/productDetail/:id" element={<ProductDetail/>}/>
           <Route path="/cart" element={<Cart/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/order" element={<Orders/>}/>
-          <Route path="/singleOrder" element={<SingleOrder/>}/>
-          <Route path="/profile" element={<Profile/>}/> */}
-      
+          <Route path="/singleOrder/:id" element={<SingleOrder/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+             </>
+          )}
 
-
-            {/* <Route path="/manager" element={<ManagerDashboard/>}/>
+            {getUserRole() === 'Manager' && (
+               <>
+            <Route path="/manager" element={<ManagerDashboard/>}/>
             <Route path="/medicine" element={<ManagerMedicine/>}/>
             <Route path="/medicineCategory" element={<ManagerMedicineCategory/>}/>
             <Route path="/supplier" element={<ManagerSupplier/>}/>
@@ -108,25 +114,28 @@ function App() {
             <Route path="/StaffShift" element={<ManagerSingleStaffShift/>} />  
             <Route path="/createStaff" element={<ManagerCreateStaff/>}/>
             <Route path="/updateStaffInfo" element={<ManagerUpdateStaffInfo/>}/>
-            <Route path="/user" element={<ManagerUser/>}/> */}
-          
+            <Route path="/user" element={<ManagerUser/>}/>
+            </>
+            )}
 
-     
-          
-          <Route path="/operator" element={<OperatorDashboard/>}/>
-          <Route path="/delivery" element={<OperatorDelivery/>}/>
-          <Route path="/medicine" element={<OperatorMedicine/>}/>
-          <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
-          <Route path="/orders" element={<OperatorOrders/>}/>
-          <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
-          <Route path="/supplier" element={<OperatorSupplier/>}/>
-          <Route path="/transport" element={<OperatorTransport/>}/>
-          <Route path="/staff" element={<OperatorStaff/>}/>
-          <Route path="/user" element={<OperatorUser/>} />
-          
+          {getUserRole() === 'Operator' && (
+            <>
+            <Route path="/operator" element={<OperatorDashboard/>}/>
+            <Route path="/delivery" element={<OperatorDelivery/>}/>
+            <Route path="/medicine" element={<OperatorMedicine/>}/>
+            <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
+            <Route path="/orders" element={<OperatorOrders/>}/>
+            <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
+            <Route path="/supplier" element={<OperatorSupplier/>}/>
+            <Route path="/transport" element={<OperatorTransport/>}/>
+            <Route path="/staff" element={<OperatorStaff/>}/>
+            <Route path="/user" element={<OperatorUser/>} />
+          </>
+          )}
 
-      
-          {/* <Route path="/logistics" element={<LogisticDashboard/>}/>
+          {getUserRole() === 'logistics' && (
+            <>
+          <Route path="/logistics" element={<LogisticDashboard/>}/>
           <Route path="/medicineCategory" element={<LogisticsMedicineCategory/>}/>
           <Route path="/medicine" element={<LogisticsMedicine/>}/>
           <Route path="/createCategory" element={<LogisticsCreateCategory/>}/>
@@ -134,15 +143,17 @@ function App() {
           <Route path="/updateMedicineCategory" element={<LogisticsUpdateMedicineCategory/>}/>
           <Route path="/updateMedicine" element={<LogisticsUpdateMedicine/>}/>
           <Route path="/order" element={<LogisticsOrder/>}/>
-          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/> */}
-         
+          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/>
+          </>
+          )}
 
-
-    
-          {/* <Route path="/transporter" element={<TransportDashboard/>}/>
-          <Route path="/delivery" element={<TransporterDelivery/>}/>
-          <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/> */}
-          
+         {getUserRole() === 'Transport' && (
+            <>
+              <Route path="/transporter" element={<TransportDashboard/>}/>
+              <Route path="/delivery" element={<TransporterDelivery/>}/>
+              <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/>
+          </>
+         )}
        
         </Routes>
       </BrowserRouter>
