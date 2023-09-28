@@ -4,12 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './utils/context/AuthContext';
+import { CartContextProvider } from './utils/context/CartContext';
+import { NotificationProvider } from './utils/context/NotificationContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
      <AuthContextProvider>
-     <App />
+      <CartContextProvider>
+      <NotificationProvider>
+        <App/>
+       </NotificationProvider>
+     </CartContextProvider>
     </AuthContextProvider>
   </React.StrictMode>
 );
