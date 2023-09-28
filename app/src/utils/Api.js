@@ -1,15 +1,12 @@
-import { SERVER_URL } from "../utils/Constant";
+import { SERVER_URL } from "./constant/severUrl";
 import axios from "axios";
 
 
-export const API = async (url, method, data = {}, headers = {}) => {
+export const Api = async (url, method, data = {}, headers = {}) => {
 
   const user = localStorage.getItem("user");
   const token = user ? JSON.parse(user).token : null; 
-  const config = {
-    headers: { Authorization: `${token}`, ...headers },
-  };
-
+  const config = { headers: { Authorization: `${token}`, ...headers }};
   try {
     const res = await axios({
       method,
