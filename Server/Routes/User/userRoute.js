@@ -1,21 +1,15 @@
 const {  
-  signupForUser, 
-  login,
   updateUserInfo,
-  forgotPassword,
-  resetPassword,  
+  getUsersById
 }= require("../../Controllers/User/userController");
 
 
+const { verifyToken } = require("../../middleware/VerifyToken");
 
 const AuthRouter = require("express").Router();
 
-AuthRouter.post("/createAccount", signupForUser);
-AuthRouter.post("/login", login);
-AuthRouter.patch("/updateInfo/:id", updateUserInfo);
-AuthRouter.post("/forgotPassword", forgotPassword);
-AuthRouter.patch("/resetPassword/:id", resetPassword);
-
+AuthRouter.patch("/updateInfo/:id", verifyToken, updateUserInfo);
+AuthRouter.get("/:id", verifyToken, getUsersById);
 
 
 module.exports = AuthRouter;

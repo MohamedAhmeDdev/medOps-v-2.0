@@ -5,7 +5,7 @@ const {
 const AuthRouter = require("express").Router();
   
  
-AuthRouter.post("/", passwordReport);
+AuthRouter.post("/:token", passwordReport);
   
   
 module.exports = AuthRouter;

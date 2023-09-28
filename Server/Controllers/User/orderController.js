@@ -5,24 +5,19 @@ const Medicine = require('../../Models/medicineModel')
 
 
 const createOrder = async (req, res) => {
-  // const user_id = req.user.id;
-    const { user_id, medicineOrders } = req.body;
+  const user_id = req.user.user_id;
+    const { medicineOrders } = req.body;
     if (!user_id || !medicineOrders) {
       return res.status(400).json({ success: false, message: "All Fields Are Required" });
     }
   
-    try {
-      const foundUser = await User.findOne({ where: {user_id: user_id } });
-      if (!foundUser.username ||!foundUser.phoneNumber || !foundUser.address) {
-        return res.status(404).json({ success: false, message: "username , phoneNumber and address should be filled before purchasing" });
-      }
-        
-      for (const medicine of medicineOrders) {
-        const findMedicine = await Medicine.findOne({where:{medicine_id:medicine.medicine_id }});
-        if (findMedicine.total_quantity <= 100) {
-          return res.status(400).json({ success: false, message: "Total quantity is less than 100" });
-        }
-      }
+    try {   
+      // for (const medicine of medicineOrders) {
+      //   const findMedicine = await Medicine.findOne({where:{medicine_id:medicine.medicine_id }});
+      //   if (findMedicine.total_quantity <= 100) {
+      //     return res.status(400).json({ success: false, message: "Total quantity is less than 100" });
+      //   }
+      // }
       const total_price = medicineOrders.reduce((acc,medicineOrders) => {  return acc + medicineOrders.quantity * medicineOrders.price},0);
   
       
@@ -45,6 +40,7 @@ const createOrder = async (req, res) => {
       const orderList = await OrderList.bulkCreate(orderListData);
       
       const updateQuantity = medicineOrders.map(async (medicine) => {
+        console.log(medicineOrders);
       const medicine_id = medicine.medicine_id;
       const quantity = medicine.quantity;
       const findMedicine = await Medicine.findOne({ where: { medicine_id: medicine_id } });
@@ -63,9 +59,7 @@ const createOrder = async (req, res) => {
 
 const getOrderForSingleUser = async (req, res) => {
   try {
-      // const user_id = req.user.id;
-      const {user_id} = req.body;
-
+    const user_id = req.user.user_id;
     const AllOrder = await Order.findAll({
       where: { user_id },
       include:[{
@@ -99,7 +93,7 @@ try {
     }],
     },{
         model: User,
-        attributes: ['username', 'address', 'phoneNumber'],
+        attributes: ['username', 'address', 'phoneNumber', 'email'],
     }],
   });
   if (!orderById) {
@@ -123,7 +117,7 @@ const UpdateOrderStatus = async (req, res) => {
     if (!order) {
       return res.status(404).json({ success: false, message: "Order not found"})
     }
-   const updateOrder = await Order.update({ order_status }, { where: { order_id: id } });
+   const updateOrder = await Order.update({ order_status: order_status}, { where: { order_id: id } });
 
     return res.status(200).json({ success: true, order: updateOrder, });
   } catch (error) {
