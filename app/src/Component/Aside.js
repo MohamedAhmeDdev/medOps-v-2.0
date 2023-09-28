@@ -1,6 +1,4 @@
 import React  from "react";
-import { Link } from 'react-router-dom'
-import logo from '../assets/img/logo.jpg'
 import ManagerSideBar from "./ManagerSideBar";
 import OperatorSidebar from "./OperatorSidebar";
 import LogisticSidebar from "./LogisticSidebar";
