@@ -53,7 +53,7 @@ function Login() {
             case 'Logistics':
               navigate('/logistics');
               break;
-            case 'Transport':
+            case 'Transporter':
               navigate('/transporter');
               break;
             default:
