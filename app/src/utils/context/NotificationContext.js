@@ -67,11 +67,11 @@ export const NotificationProvider = ({ children }) => {
         } flex justify-around transform fixed w-72 h-20 bottom-10 left-10 right-0 bg-green-400 text-white p-2 rounded-lg transition-transform duration-300 ease-in-out`}
       >
        <div className='bg-white rounded-full w-8 h-8 mt-5'>
-         <span class="material-symbols-outlined mx-auto pt-1 pl-1 text-green-300">check</span>
+         <span className="material-symbols-outlined mx-auto pt-1 pl-1 text-green-300">check</span>
        </div>
         <div className='mt-5'>{successNotification}</div>
         <button onClick={removeErrorNotification} className="ml-2 text-white font-bold absolute top-2 right-1">
-          <span class="material-symbols-outlined">close</span>
+          <span className="material-symbols-outlined">close</span>
         </button>
       </div>
 
@@ -79,11 +79,11 @@ export const NotificationProvider = ({ children }) => {
         } flex justify-around transform fixed w-72 h-20 bottom-10 left-10 right-0 bg-red-400 text-white p-2 rounded-lg transition-transform duration-300 ease-in-out`}
       >
           {/* <div className='bg-white rounded-full w-8 h-8 mt-5'> */}
-           <span class="material-symbols-outlined mx-auto mt-5 pt-1 pl-1 text-white">error</span>
+           <span className="material-symbols-outlined mx-auto mt-5 pt-1 pl-1 text-white">error</span>
          {/* </div> */}
           <div className='mt-5'>{errorNotification}</div>
         <button onClick={removeErrorNotification} className="ml-2 text-white font-bold absolute top-2 right-1">
-          <span class="material-symbols-outlined">close</span>
+          <span className="material-symbols-outlined">close</span>
         </button>
       </div>
     </NotificationContext.Provider>
