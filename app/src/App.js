@@ -133,7 +133,7 @@ function App() {
           </>
           )}
 
-          {getUserRole() === 'logistics' && (
+          {getUserRole() === 'Logistics' && (
             <>
           <Route path="/logistics" element={<LogisticDashboard/>}/>
           <Route path="/medicineCategory" element={<LogisticsMedicineCategory/>}/>
@@ -147,7 +147,7 @@ function App() {
           </>
           )}
 
-         {getUserRole() === 'Transport' && (
+         {getUserRole() === 'Transporter' && (
             <>
               <Route path="/transporter" element={<TransportDashboard/>}/>
               <Route path="/delivery" element={<TransporterDelivery/>}/>
