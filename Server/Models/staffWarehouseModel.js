@@ -10,6 +10,9 @@ const UserWarehouse = database.define("staffWarehouses",{
             key: 'user_id',
         }
     },
+    staff_function:{
+        type: DataTypes.STRING,
+    },
     account_status:{
         type: DataTypes.STRING,
     }//ACTIVE ,InActive

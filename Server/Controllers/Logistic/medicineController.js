@@ -13,42 +13,56 @@ cloudinary.config({
 
 
 const createMedicine = async (req, res) => {
-  const { medicine_category, company_name, medicine_image, medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
-  
+  const {
+    medicine_category,
+    company_name,
+    medicine_image,
+    medicine_name,
+    total_quantity,
+    price,
+    barcode,
+    aisle,
+    expiry_date,
+  } = req.body;
+console.log(req.body);
   if (!medicine_category || !company_name || !medicine_image || !medicine_name || !total_quantity || !price || !barcode || !aisle || !expiry_date) {
-  return res.status(400).json({ success: false, message: "All Fields Are Required" });
+    return res.status(400).json({ success: false, message: "All Fields Are Required" });
   }
-  
+
   const getMedicineById = await MedicineCategory.findOne({ where: { medicine_category: medicine_category } });
   if (!getMedicineById) {
-  return res.status(400).json({ success: false, message: "Medicine_category Is Not Found" });
+    return res.status(401).json({ success: false, message: "Medicine_category Is Not Found" });
   }
-  
+
   const getSupplierById = await Supplier.findOne({ where: { company_name: company_name } });
   if (!getSupplierById) {
-  return res.status(400).json({ success: false, message: "Supplier Is Not Found" });
+    return res.status(402).json({ success: false, message: "Supplier Is Not Found" });
   }
-  
-  const result = await cloudinary.uploader.upload(stream, { folder: "Medicine" });
-  
+
+  if (!req.file) {
+    return res.status(402).json({ success: false, message: "No file uploaded" });
+  }
+
+  const result = await cloudinary.uploader.upload(req.file.path, { folder: "medOps" });
+
   try {
-  const medicine = await Medicine.create({
-  medicine_category_id: getMedicineById.medicine_category_id,
-  supplier_id: getSupplierById.supplier_id,
-  medicine_image: result.secure_url,
-  medicine_name: medicine_name,
-  total_quantity: total_quantity,
-  price: price,
-  barcode: barcode,
-  aisle: aisle,
-  expiry_date: expiry_date,
-  date_supplied: new Date(),
-  });
-  return res.status(200).json({ success: true, medicine });
+    const medicine = await Medicine.create({
+      medicine_category_id: getMedicineById.medicine_category_id,
+      supplier_id: getSupplierById.supplier_id,
+      medicine_image: result.secure_url,
+      medicine_name: medicine_name,
+      total_quantity: total_quantity,
+      price: price,
+      barcode: barcode,
+      aisle: aisle,
+      expiry_date: expiry_date,
+      date_supplied: new Date(),
+    });
+    return res.status(200).json({ success: true, medicine });
   } catch (error) {
-  return res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ success: false, message: error.message });
   }
-  };
+};
 
 
 
@@ -90,6 +104,25 @@ const searchApi = async (req, res) => {
 };
 
 
+const getAllSupplierInfo = async (req, res) => {
+  try {
+    const supplierInfo = await Supplier.findAll({ order: [['company_name', 'ASC']],});  
+    return res.status(200).json({ success: true, supplier: supplierInfo  });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+
+const getAllMedicineCategory = async (req, res) => {
+  try {
+    const AllMedicineCategory = await MedicineCategory.findAll({  order: [['medicine_category', 'ASC']],});
+    return res.status(200).json({success: true, medicineCategory: AllMedicineCategory });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message});
+  }
+}
 
 
 const getMedicine = async (req, res) => {
@@ -184,6 +217,8 @@ const deleteMedicine = async (req, res) => {
 module.exports = {
     createMedicine,
     searchApi,
+    getAllMedicineCategory,
+    getAllSupplierInfo,
     getMedicine,
     getMedicineById,
     updateMedicine,

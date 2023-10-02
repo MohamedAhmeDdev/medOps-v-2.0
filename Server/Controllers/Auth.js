@@ -78,7 +78,7 @@ const login = async (req, res) => {
         return res.status(410).json({ success: false, message: "Incorrect username" });
       }
   
-      if (foundUser.role === 'User') {
+      if (foundUser.role === "User" || foundUser.role === "Manager") {
         const dbPassword = foundUser.password;
         bcrypt.compare(password, dbPassword, async (err, match) => {
           if (err || !match) {

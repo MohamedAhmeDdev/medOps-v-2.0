@@ -12,19 +12,19 @@ const {Op} = require('sequelize')
 
 //create account for staff
 const CreateAccountForStaff = async (req, res) => {
-  const { username, phoneNumber, address, email, role } = req.body;
+  const { username, phoneNumber, address, email, role, staffFunction } = req.body;
 
-  if (!username || !phoneNumber || !address || !email || !role) {
+  if (!username || !phoneNumber || !address || !email || !role || !staffFunction) {
     return res.status(400).json({success: false, message: "All Fields Are Required"});
   }
 
   if (!validator.isMobilePhone(phoneNumber, "en-KE")) {
-    return res.status(400).json({success: false, message:("Please enter a valid phone number")});
+    return res.status(401).json({success: false, message:("Please enter a valid phone number")});
   }
 
   const checkingIfEmailExists = await User.findOne({ where: { email: email } });
   if (checkingIfEmailExists) {
-    return res.status(401).json({success: false, message: "Email already exists"});
+    return res.status(402).json({success: false, message: "Email already exists"});
   } else {
     try {
       const password = generatePassword.generate({
@@ -45,6 +45,7 @@ const CreateAccountForStaff = async (req, res) => {
 
       const staffWarehouse = await StaffWarehouse.create({
         user_id: getUserId.user_id,
+        staff_function: staffFunction,
         account_status: "Active"
       });
 

@@ -97,20 +97,23 @@ const getTransportById = async (req, res) => {
 const getUserTransport = async (req, res) => {
   try {
     const UserTransport = await User.findAll({
-      where: { role: 'Transport' },
-      include: [{
-       model: StaffWarehouse,
-         attributes: ['account_status'],
-      }],
+      where: { role: 'Transporter' },
+      attributes: ['username'],
+      include: [
+        {
+          model: StaffWarehouse,
+          attributes: ['account_status', 'staff_function'],
+        },
+      ],
       order: [['username', 'ASC']],
-      });
-  
+    });
+    const staffTransport = UserTransport.filter((user) => user.staffWarehouses.some((warehouse) => warehouse.staff_function === "staff"));
 
-    if (UserTransport.length === 0) {
-      return res.status(400).json({ success: false, message: "staff not found" });
+    if (staffTransport.length === 0) {
+      return res.status(400).json({ success: false, message: "Staff not found" });
     }
-    
-    return res.status(200).json({ success: true, user: UserTransport });
+
+    return res.status(200).json({ success: true, user: staffTransport });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
