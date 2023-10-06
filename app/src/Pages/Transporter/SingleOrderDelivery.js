@@ -21,7 +21,6 @@ function SingleOrderDelivery() {
   
         if (deliveryData) {
           setDeliveryData(deliveryData);
-          console.log(deliveryData);
         } else {
           console.error("No delivery data found");
         }
@@ -105,7 +104,12 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                    <span className="bg-green-100 text-green-500 rounded-md text-sm  mr-2 px-2.5 py-0.5 border border-green-50">{deliveryData.order?.order_status}</span>
+                      {deliveryData.order?.order_status === 'Packed' && (
+                        <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-purple-50">{deliveryData.order?.order_status}</span>
+                       )}
+                      {deliveryData.order?.order_status === 'Delivered' && (
+                        <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">{deliveryData.order?.order_status}</span>
+                      )}
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">

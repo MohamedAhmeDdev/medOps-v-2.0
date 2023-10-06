@@ -42,7 +42,6 @@ const getDeliveryForSingleTransport = async (req, res) => {
 
 const getDeliveryById = async (req, res) => {
   const { id }  = req.params;
-  console.log(id);
   try {
     const delivery = await Delivery.findOne({
       where: { order_id: id },

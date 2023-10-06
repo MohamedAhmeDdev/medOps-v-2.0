@@ -61,7 +61,12 @@ function Delivery() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{item.transport.user.phoneNumber}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{item.order.total_price}</td>       
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">{item.order.order_status}</span>
+                                  {item.order.order_status === 'Packed' && (
+                                    <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-purple-50">{item.order.order_status}</span>
+                                  )}
+                                   {item.order.order_status === 'Delivered' && (
+                                    <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">{item.order.order_status}</span>
+                                  )}                          
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
