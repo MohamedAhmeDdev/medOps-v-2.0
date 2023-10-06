@@ -151,7 +151,7 @@ function App() {
             <>
               <Route path="/transporter" element={<TransportDashboard/>}/>
               <Route path="/delivery" element={<TransporterDelivery/>}/>
-              <Route path="/SingleOrderDelivery" element={<TransporterSingleOrderDelivery/>}/>
+              <Route path="/SingleOrderDelivery/:id" element={<TransporterSingleOrderDelivery/>}/>
           </>
          )}
        

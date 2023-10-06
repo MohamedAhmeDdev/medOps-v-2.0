@@ -1,11 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
-
+import { useParams } from "react-router-dom";
+import { SERVER_URL } from "../../utils/constant/severUrl";
+import axios from "axios";
+import {formatDate} from '../../utils/constant/formatDate'
 
 function SingleOrderDelivery() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [deliveryData, setDeliveryData] = useState({});
+  const { id } = useParams();
+
+
+  useEffect(() => {
+    const getDelivery = async () => {
+      try {
+        const res = await axios.get(`${SERVER_URL}/Transport/Deliveries/${id}`);
+        const deliveryData = res.data.delivery;
+  
+        if (deliveryData) {
+          setDeliveryData(deliveryData);
+          console.log(deliveryData);
+        } else {
+          console.error("No delivery data found");
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    getDelivery();
+  }, [id]);
 
  return(
   <div className="flex flex-col h-screen overflow-hidden ">
@@ -24,7 +50,7 @@ function SingleOrderDelivery() {
 
          <div className="flex flex-wrap pb-20 -mx-3">
           <div className="w-full max-w-full px-3 mt-6 md:w-7/12 md:flex-none">
-          <div className="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-lg bg-clip-border">
+          <div className="relative md:flex flex-col min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-lg bg-clip-border">
               <div className="p-6 px-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
                 <h6 className="mb-0 text-xl">Orders</h6>
               </div>
@@ -34,30 +60,15 @@ function SingleOrderDelivery() {
                     <div className="flex items-center">
                       <div className="flex flex-col">
                       <span className="mb-2 font-semibold text-md lg:text-lg capitalize">Medicine Name</span>
-                      <span className="mb-2 text-md capitalize">Maramoja</span>
+                      <span className="mb-2 text-md capitalize">{deliveryData.order?.orderLists?.[0]?.medicine?.medicine_name}</span>
                       </div>
                     </div>
 
                     <div className="flex flex-col items-center justify-center">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Price</span>
-                      <span className="mb-2 text-md">955</span>
+                      <span className="mb-2 text-md">{deliveryData.order?.orderLists?.[0]?.price}</span>
                     </div>
                   </li>
-
-                  <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit bg-gray-100">
-                    <div className="flex items-center">
-                      <div className="flex flex-col">
-                      <span className="mb-2 font-semibold text-md lg:text-lg capitalize">Medicine Name</span>
-                      <span className="mb-2 text-md capitalize">Maramoja</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-center justify-center">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Price</span>
-                      <span className="mb-2 text-md">955</span>
-                    </div>
-                  </li>
-
                 </ul>
               </div>
           </div>
@@ -74,7 +85,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                      <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">5454</p>
+                      <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">{deliveryData.order_id}</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -84,7 +95,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">January 13, 2023 7:22 PM</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">{formatDate(deliveryData.delivery_date)}</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -94,7 +105,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                    <span className="bg-green-100 text-green-500 rounded-md text-sm  mr-2 px-2.5 py-0.5 border border-green-50">Cancelled</span>
+                    <span className="bg-green-100 text-green-500 rounded-md text-sm  mr-2 px-2.5 py-0.5 border border-green-50">{deliveryData.order?.order_status}</span>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -104,7 +115,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">eastleigh</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">{deliveryData.transport?.user?.address}</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -114,7 +125,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">eastleigh</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text">{deliveryData.transport?.user?.phoneNumber}</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -124,7 +135,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">Mohamed ahmed</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">{deliveryData.transport?.user?.username}</p>
                     </div>
                   </li>
                   <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 border-t-0 text-inherit rounded-xl">
@@ -134,7 +145,7 @@ function SingleOrderDelivery() {
                       </div>
                     </div>
                     <div className="flex flex-col items-center justify-center">
-                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-slg bg-clip-text">Ksh 584845</p>
+                         <p className="relative inline-block m-0 leading-normal text-slate-700 text-slg bg-clip-text">{deliveryData.order?.total_price}</p>
                     </div>
                   </li>       
                 </ul>

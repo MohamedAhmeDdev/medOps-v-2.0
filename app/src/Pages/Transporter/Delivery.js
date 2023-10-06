@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
+import { Api } from "../../utils/Api";
 
 function Delivery() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [items, setItems] = useState([]);
+
+
+  useEffect(() => {
+		const getDeliveries = async () => {
+		  const data = await Api("/Transport/Deliveries", "GET");
+			setItems(data.delivery);			
+		};
+	
+		getDeliveries();
+	}, []);
 
 
   return (
@@ -38,76 +50,25 @@ function Delivery() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
-                              <tr className="bg-gray-50">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
+                            {items?.length === 0 &&(
+                              <tr className="text-center">
+                                <td className="p-4 text-md text-center text-gray-400">no deliveries</td>
+                                </tr>
+                            )}
+                              {items.map((item, id) => (
+                              <tr key={id} className="bg-gray-50">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{item.order_id}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{item.transport.user.phoneNumber}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{item.order.total_price}</td>       
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">Delivered</span>
+                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">{item.order.order_status}</span>
                                 </td>
                                 
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
+                                    <Link to={`/SingleOrderDelivery/${item.order_id}`} className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
                                 </td>
                               </tr>  
-                              <tr>
-                              < td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
-                                </td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
-                                </td>
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
-                                </td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
-                                </td>
-                              </tr>       
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
-                                </td>
-                                
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
-                                </td>      
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
-                                </td>
-                                
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
-                                </td>      
-                              </tr>
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">Packed</span>
-                                </td>
-                                
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to='/SingleOrderDelivery' className="text-md leading-tight font-semibold text-slate-400 hover:text-blue-500"> View </Link>
-                                </td>      
-                              </tr>
+                              ))}
                             </tbody>
                           </table>
                         </div>
