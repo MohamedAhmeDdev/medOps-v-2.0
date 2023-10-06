@@ -13,8 +13,7 @@ function Orders() {
   useEffect(() => {
 		const getOrders = async () => {
 		  const data = await Api("/Operator/Orders", "GET");
-			setOrders(data.order);														
-			console.log(data.order);														
+			setOrders(data.order);																										
 		};
 	
 		getOrders();

@@ -15,8 +15,7 @@ function Medicine() {
   useEffect(() => {
 		const getMedicine = async () => {
 		  const data = await Api("/Operator/Medicines", "GET");
-			setMedicines(data.medicine);									
-			console.log(data.medicine);									
+			setMedicines(data.medicine);																
 		};
 	
 		getMedicine();

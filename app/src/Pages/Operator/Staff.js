@@ -11,8 +11,7 @@ function Staff() {
   useEffect(() => {
 		const getUsers = async () => {
 		  const data = await Api("/Operator/UserStaffs", "GET");
-			setStaff(data.user);								
-			console.log(data.user);								
+			setStaff(data.user);															
 		};
 	
 		getUsers();
