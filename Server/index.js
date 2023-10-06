@@ -11,6 +11,7 @@ const UserMedicine = require('./Routes/User/medicineRoute');
 
 
 const StaffShift = require('./Routes/Staff/ShiftRoute');
+const StaffNotification = require('./Routes/Staff/Notification');
 const StaffPasswordReport = require('./Routes/Staff/PasswordReport');
 
 
@@ -56,6 +57,7 @@ app.use('/medicine', UserMedicine)
 
 // //Staff Login 
 app.use('/Shift', StaffShift)
+app.use('/notification', StaffNotification)
 app.use('/PasswordReport', StaffPasswordReport)
 
 
