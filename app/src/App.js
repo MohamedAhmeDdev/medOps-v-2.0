@@ -121,11 +121,11 @@ function App() {
           {getUserRole() === 'Operator' && (
             <>
             <Route path="/operator" element={<OperatorDashboard/>}/>
-            <Route path="/delivery" element={<OperatorDelivery/>}/>
+            <Route path="/delivery/:id" element={<OperatorDelivery/>}/>
             <Route path="/medicine" element={<OperatorMedicine/>}/>
             <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
             <Route path="/orders" element={<OperatorOrders/>}/>
-            <Route path="/singleOrder" element={<OperatorSingleOrder/>}/>
+            <Route path="/singleOrder/:id" element={<OperatorSingleOrder/>}/>
             <Route path="/supplier" element={<OperatorSupplier/>}/>
             <Route path="/transport" element={<OperatorTransport/>}/>
             <Route path="/staff" element={<OperatorStaff/>}/>

@@ -56,7 +56,7 @@ const getAllOrder = async (req, res) => {
       const AllOrder = await Order.findAll({
         include: [{
             model: User,
-            attributes: ['username'],
+            attributes: ['username', 'phoneNumber'],
         }],
         order: [['createdAt', 'DESC']],
       });

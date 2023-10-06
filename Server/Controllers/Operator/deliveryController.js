@@ -88,7 +88,7 @@ const getDeliveryById = async (req, res) => {
   const { id }  = req.params;
   try {
     const delivery = await Delivery.findOne({
-      where: { delivery_id: id },
+      where: { order_id: id },
       include: [{
         model: Transport,
         attributes: ['user_id'],

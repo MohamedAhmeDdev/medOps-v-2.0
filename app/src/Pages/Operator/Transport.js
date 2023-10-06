@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
 import { Link } from 'react-router-dom';
-
+import { Api } from "../../utils/Api";
 
 function Transport() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [statusDropdown, setStatusDropdown] = useState(false);
+  const [transports, setTransports] = useState([]);
+
+  useEffect(() => {
+		const getTransport = async () => {
+		  const data = await Api("/Operator/Transports", "GET");
+			setTransports(data.transport);									
+		};
+	
+		getTransport();
+	}, []);
+
 
   const toggleDropdown = () => {
     setStatusDropdown(!statusDropdown);
@@ -61,42 +72,25 @@ function Transport() {
                               </tr>
                           </thead>
                             <tbody className="bg-white">
+                              {transports?.map((item) =>(
                               <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">maikel</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.user.username}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">Kbc 55dd</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">65655</td>       
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.driver_license_number}</td>       
                                 <td className="p-4 whitespace-nowrap border-b text-center">
-                                <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">Available</span>
+                                  {item.status === 'Available' && (
+                                      <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">{item.status}</span>
+                                  )}
+                                    {item.status === 'Unavailable' && (
+                                      <span className="bg-red-100 text-red-400 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-red-50 ">{item.status}</span>  
+                                  )}
                                 </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">10/10</td> 
                                 <td className="p-4 text-md text-gray-400 text-center whitespace-nowrap border-b">
-                                 <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
+                                 <Link to={`/delivery/${item.transport_id}`} className="text-sm font-semibold leading-tight text-slate-400">More</Link>
                                 </td>
                               </tr>  
-                              <tr>
-                             <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">kcc 655d</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">656556</td>
-                                <td className="p-4 whitespace-nowrap border-b text-center">
-                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-green-50">Available</span>
-                                </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">10/10</td> 
-                                <td className="p-4 text-md font-semibold text-gray-400 text-center whitespace-nowrap border-b">
-                                 <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
-                                </td>
-                              </tr>     
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">ali</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">kac 656e</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">2555</td>              
-                                <td className="p-4 whitespace-nowrap border-b text-center">
-                                  <span className="bg-red-100 text-red-400 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-red-50 ">Unavailable</span>
-                                </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">10/10</td> 
-                                <td className="p-4 text-md font-semibold text-gray-400 text-center whitespace-nowrap border-b">
-                                 <Link to='/delivery' className="text-sm font-semibold leading-tight text-slate-400">More</Link>
-                                </td>      
-                              </tr>
+                              ))}
                             </tbody>
                           </table>
                         </div>

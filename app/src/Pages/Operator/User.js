@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
+import { Api } from "../../utils/Api";
 
 function User() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [users, setUsers] = useState([]);
+
+
+    useEffect(() => {
+		const getUsers = async () => {
+		  const data = await Api("/Operator/Users", "GET");
+			setUsers(data.user);					
+		};
+	
+		getUsers();
+	}, []);
 
 
   return (
@@ -43,96 +55,23 @@ function User() {
                         </tr>
                       </thead>
                       <tbody>
+                        {users.map((user)=> (
                         <tr>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
+                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">{}</h6>
+                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{user.email}</p>                      
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
+                            <p className="mb-0 text-sm leading-tight">{user.phoneNumber}</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
+                            <p className="mb-0 text-sm leading-tight capitalize">{user.address}</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
+                            <p className="mb-0 text-sm leading-tight">{user.role}</p>
                           </td>
                         </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">User</p>
-                          </td>
-                        </tr>
+                        ))}
                       </tbody>
                     </table>
                       <div className="grid w-full place-items-right rounded-lg p-6">

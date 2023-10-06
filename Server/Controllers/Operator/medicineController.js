@@ -41,7 +41,14 @@ const searchApi = async (req, res) => {
 
 const getMedicine = async (req, res) => {
   try {
-    const AllMedicine = await Medicine.findAll({ order: [['medicine_name', 'ASC']],});
+    const AllMedicine = await Medicine.findAll({ 
+      include: [{
+        model: MedicineCategory,
+      },{
+        model: Supplier,
+      }],
+      order: [['medicine_name', 'ASC']],
+    });
 
     if (AllMedicine.length === 0) {
       return res.status(404).json({ success: false, message: "Medicine Not found"});

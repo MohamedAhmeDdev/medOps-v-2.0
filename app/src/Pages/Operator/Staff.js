@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
+import { Api } from "../../utils/Api";
 
 function Staff() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [staffs, setStaff] = useState([]);
+
+  useEffect(() => {
+		const getUsers = async () => {
+		  const data = await Api("/Operator/UserStaffs", "GET");
+			setStaff(data.user);								
+			console.log(data.user);								
+		};
+	
+		getUsers();
+	}, []);
 
   return (
      <div className="flex flex-col h-screen overflow-hidden ">
@@ -39,118 +51,34 @@ function Staff() {
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Phone_Number</th>
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Address</th>
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Role</th>
+                          <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Function</th>
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Shift Status</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {staffs.map((staff) => (
                         <tr>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
+                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">{staff.username}</h6>
+                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{staff.email}</p>                      
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
+                            <p className="mb-0 text-sm leading-tight">{staff.phoneNumber}</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
+                            <p className="mb-0 text-sm leading-tight capitalize">{staff.address}</p>
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
+                            <p className="mb-0 text-sm leading-tight">{staff.role}</p>
+                          </td>
+                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                            <p className="mb-0 text-sm leading-tight">{staff.function}</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in</span>
+                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in  </span>
                           </td>
                         </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
-                          </td>
-                          <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Not Logged In</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
-                          </td>
-                          <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
-                          </td>
-                          <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Not Logged In</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">John Michael</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">john@creative-tim.com</p>                      
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
-                          </td>
-                          <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in</span>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">Alexa Liras</h6>
-                              <p className="mb-0 text-xs text-center leading-tight text-slate-400">alexa@creative-tim.com</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">058255</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight capitalize">new york</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">Manager</p>
-                          </td>
-                          <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-slate-600 to-slate-300 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Not Logged In</span>
-                          </td>
-                        </tr>
+                        ))}
                       </tbody>
                     </table>
                       <div className="grid w-full place-items-right rounded-lg p-6">

@@ -16,7 +16,7 @@ const searchForUser = async (req, res) => {
     return true;
    });
 
-      const getOnlyUsers = searchUser.filter((user) => user.role === "USER");
+      const getOnlyUsers = searchUser.filter((user) => user.role === "User");
       if (getOnlyUsers.length === 0) {
       return res.status(404).json({success: false, message: "No matching results found"});
     }
@@ -32,7 +32,7 @@ const searchForUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const getUser = await User.findAll({order: [['username', 'ASC']],});
-    const getOnlyUsers = getUser.filter((user) => user.role === "USER");
+    const getOnlyUsers = getUser.filter((user) => user.role === "User");
 
     return res.status(200).json({success: true, user: getOnlyUsers });
   } catch (error) {
