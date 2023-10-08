@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../../Component/Navbar';
 import Sidebar from '../../../Component/Aside';
 import { Link } from 'react-router-dom';
 import UseSidebar from '../../../utils/constant/useSidebar';
-
+import { Api } from "../../../utils/Api";
+import {formatDate} from '../../../utils/constant/formatDate'
 
 function MedicineCategory() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [medicineCategories, setMedicineCategories] = useState([]);
 
+  useEffect(() => {
+		const getMedicineCategory = async () => {
+		  const data = await Api("/Logistic/MedicineCategories", "GET");
+			setMedicineCategories(data.medicineCategory);									
+		};
+	
+		getMedicineCategory();
+	}, []);
    
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
@@ -54,27 +64,15 @@ function MedicineCategory() {
                                </tr>
                            </thead>
                              <tbody className="bg-white ">
-                               <tr className="bg-gray-50 ">
-                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                  <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">7/5/2023</td>
+                              {medicineCategories.map((category, id) =>(
+                               <tr key={id} className="bg-gray-50 ">
+                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">{category.medicine_category}</td>
+                                  <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">{formatDate(category.createdAt)}</td>
                                   <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                     <Link to='/updateMedicineCategory' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
+                                     <Link to={`/updateMedicineCategory/${category.medicine_category_id}`} className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
                                  </td>
                                </tr>  
-                               <tr>
-                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                  <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">7/5/2023</td>
-                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                    <Link to='/updateMedicineCategory' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
-                                 </td>
-                               </tr>
-                               <tr className="bg-gray-50 ">
-                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">pain killer</td>
-                                  <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">7/5/2023</td>
-                                  <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 cursor-pointer">
-                                    <Link to='/updateMedicineCategory' className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500">Edit </Link>
-                                 </td>
-                               </tr>       
+                               ))}       
                              </tbody>
                            </table>
                              <div className="grid w-full place-items-right rounded-lg p-6">

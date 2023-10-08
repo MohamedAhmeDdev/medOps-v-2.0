@@ -1,6 +1,7 @@
 const Medicine = require('../../Models/medicineModel')
 const Supplier = require('../../Models/SupplierModel')
 const MedicineCategory = require('../../Models/medicineCategoryModel')
+
 const cloudinary = require("cloudinary").v2;
 const dotenv = require('dotenv');
 dotenv.config();
@@ -106,7 +107,13 @@ const searchApi = async (req, res) => {
 
 const getAllSupplierInfo = async (req, res) => {
   try {
-    const supplierInfo = await Supplier.findAll({ order: [['company_name', 'ASC']],});  
+    const supplierInfo = await Supplier.findAll({      include: [{
+      model: MedicineCategory,
+    },{
+      model: Supplier,
+    }],
+    order: [['medicine_name', 'ASC']],
+  });
     return res.status(200).json({ success: true, supplier: supplierInfo  });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });

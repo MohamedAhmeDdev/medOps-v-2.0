@@ -140,10 +140,10 @@ function App() {
           <Route path="/medicine" element={<LogisticsMedicine/>}/>
           <Route path="/createCategory" element={<LogisticsCreateCategory/>}/>
           <Route path="/createMedicine" element={<LogisticsCreateMedicine/>}/>
-          <Route path="/updateMedicineCategory" element={<LogisticsUpdateMedicineCategory/>}/>
-          <Route path="/updateMedicine" element={<LogisticsUpdateMedicine/>}/>
+          <Route path="/updateMedicineCategory/:id" element={<LogisticsUpdateMedicineCategory/>}/>
+          <Route path="/updateMedicine/:id" element={<LogisticsUpdateMedicine/>}/>
           <Route path="/order" element={<LogisticsOrder/>}/>
-          <Route path="/singleOrder" element={<LogisticsSingleOrder/>}/>
+          <Route path="/singleOrder/:id" element={<LogisticsSingleOrder/>}/>
           </>
           )}
 

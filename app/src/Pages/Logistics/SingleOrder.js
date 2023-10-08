@@ -1,14 +1,35 @@
-import React, { useState, useRef } from 'react';
+import React, {useEffect, useState, useRef } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
 import ReactToPrint from "react-to-print";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../../utils/constant/severUrl";
+import {formatDate} from '../../utils/constant/formatDate'
 
 
 function SingleOrder() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
   let componentRef = useRef();
+  const [singleOrder, setSingleOrder] = useState({});
+  const { id } = useParams();
+
+
+  useEffect(() => {
+    const getSingleOrder = async () => {
+      try {
+        const res = await axios.get(`${SERVER_URL}/Operator/Orders/${id}`);
+         setSingleOrder(res.data.order)
+        console.log(res.data.order)
+              
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    getSingleOrder();
+  }, [id]);
 
 
   return (
@@ -22,7 +43,7 @@ function SingleOrder() {
 
       <main className="max-h-screen flex flex-col  h-[100vh]"> 
        <div className="w-full px-3 lg:px-6 py-6 mx-auto">
-          <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Order Id 5454</h6>
+          <h6 className="pb-5 font-bold text-lg lg:text-4xl capitalize">Order Id {singleOrder.order_id}</h6>
 
           <div className="w-full text-right">
             <ReactToPrint trigger={() => <button className='hover:bg-blue-100 text-blue-500 text-sm cursor-pointer mr-2 px-2.5 py-1.5'>Print Shipping Label</button>} content={() => componentRef} />
@@ -40,39 +61,21 @@ function SingleOrder() {
                     <div className="flex items-center">
                       <div className="flex flex-col">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>
-                      <span className="mb-2 text-md">Maramoja</span>
+                      <span className="mb-2 text-md">{singleOrder.orderLists?.[0]?.medicine?.medicine_name}</span>
                       </div>
                     </div>
 
                     <div className="flex flex-col items-center justify-center">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Price</span>
-                      <span className="mb-2 text-md">Ksh 955</span>
+                      <span className="mb-2 text-md">{singleOrder.orderLists?.[0]?.price}</span>
                     </div>
 
                     <div className="flex flex-col items-center justify-center">
                       <span className="mb-2 font-semibold text-md lg:text-lg">Quantity</span>
-                      <span className="mb-2 text-md">55</span>
+                      <span className="mb-2 text-md">{singleOrder.orderLists?.[0]?.quantity}</span>
                     </div>
                   </li>
 
-                  <li className="relative flex justify-around p-6 mb-2 border-0 rounded-t-inherit bg-gray-100">
-                    <div className="flex items-center">
-                      <div className="flex flex-col">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Medicine Name</span>
-                      <span className="mb-2 text-md">Maramoja</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-center justify-center">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Price</span>
-                      <span className="mb-2 text-md">Ksh 955</span>
-                    </div>
-
-                    <div className="flex flex-col items-center justify-center">
-                      <span className="mb-2 font-semibold text-md lg:text-lg">Quantity</span>
-                      <span className="mb-2 text-md">55</span>
-                    </div>
-                  </li>
 
                 </ul>
               </div>
@@ -97,10 +100,9 @@ function SingleOrder() {
               
               <div className="mb-6">
                 <h6 className="my-4 font-bold leading-tight uppercase text-xs text-slate-500">Recipient's Information:</h6>
-                <p className="text-sm font-medium">Customer Name</p>
-                <p>123 Elm Street</p>
-                <p>Townsville, State 98765</p>
-                <p>Phone: (987) 654-3210</p>
+                <p className="text-sm">customer name: {singleOrder.user?.username}</p>
+                <p>address: {singleOrder.user?.address}</p>
+                <p>Phone: {`0${singleOrder.user?.phoneNumber}`}</p>
               </div>
               
               <div className="mb-6 border-t border-black">
