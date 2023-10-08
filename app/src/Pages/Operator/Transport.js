@@ -72,8 +72,8 @@ function Transport() {
                               </tr>
                           </thead>
                             <tbody className="bg-white">
-                              {transports?.map((item) =>(
-                              <tr>
+                              {transports?.map((item, id) =>(
+                              <tr key={id}>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.user.username}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">Kbc 55dd</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.driver_license_number}</td>       

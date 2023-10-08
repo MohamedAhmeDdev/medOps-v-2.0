@@ -55,8 +55,8 @@ function Staff() {
                         </tr>
                       </thead>
                       <tbody>
-                        {staffs.map((staff) => (
-                        <tr>
+                        {staffs.map((staff, id) => (
+                        <tr key={id}>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
                               <h6 className="mb-0 text-sm text-center leading-normal capitalize">{staff.username}</h6>
                               <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{staff.email}</p>                      

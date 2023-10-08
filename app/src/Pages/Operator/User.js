@@ -55,8 +55,8 @@ function User() {
                         </tr>
                       </thead>
                       <tbody>
-                        {users.map((user)=> (
-                        <tr>
+                        {users.map((user, id)=> (
+                        <tr key={id}>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
                               <h6 className="mb-0 text-sm text-center leading-normal capitalize">{}</h6>
                               <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{user.email}</p>                      
