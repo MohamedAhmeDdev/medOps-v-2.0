@@ -93,6 +93,7 @@ function Medicine() {
                                )}
                                 </th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Medicine</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">medicine_Image</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total_Quantity</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Price</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Barcode</th>
@@ -128,6 +129,9 @@ function Medicine() {
                               <tr key={id} className="bg-gray-50 ">
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400 capitalize">{medicine.medicineCategory.medicine_category}</td>
                                 <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">{medicine.medicine_name}</td>
+                                <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">
+                                  <img className="w-20 h-20" src={medicine.medicine_image}/>
+                                  </td>
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">{medicine.total_quantity}</td>       
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">{medicine.price}</td>  
                                 <td className="p-4 text-md text-center text-gray-900 whitespace-nowrap dark:text-gray-400">{medicine.barcode}</td>  

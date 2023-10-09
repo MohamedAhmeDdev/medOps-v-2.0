@@ -19,7 +19,7 @@ AuthRouter.get("/", getMedicine);
 AuthRouter.get("/medicineCategory", getAllMedicineCategory);
 AuthRouter.get("/supplier", getAllSupplierInfo);
 AuthRouter.get("/:id", getMedicineById);
-AuthRouter.patch("/:id", updateMedicine);
+AuthRouter.patch("/:id", uploadImage, updateMedicine);
 AuthRouter.delete("/:id",  deleteMedicine);
 
 module.exports = AuthRouter;

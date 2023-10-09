@@ -25,20 +25,14 @@ function CreateMedicine() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setMedicine_image(URL.createObjectURL(file));
-    } else {
-      setMedicine_image(null);
+      setMedicine_image(file)
     }
   };
 
 
   const getMedicineCategory = async () => {
-    try {
       const response = await axios.get(`${SERVER_URL}/Logistic/Medicines/medicineCategory`);
       setCategoryList(response.data.medicineCategory);
-    } catch (error) {
-      console.error('Error fetching transporter data:', error);
-    }
   };
 
   useEffect(() => {
@@ -46,12 +40,8 @@ function CreateMedicine() {
   }, []);
 
   const getSupplier = async () => {
-    try {
-      const response = await axios.get(`${SERVER_URL}/Logistic/Medicines/supplier`);
+      const response = await axios.get(`${SERVER_URL}/Logistic/Suppliers`);
       setSupplierList(response.data.supplier);
-    } catch (error) {
-      console.error('Error fetching transporter data:', error);
-    }
   };
 
   useEffect(() => {
@@ -64,7 +54,7 @@ function CreateMedicine() {
     try {
       const formData = new FormData();
 
-      formData.append("medicine_image", medicine_image);
+      formData.append("image", medicine_image);
       formData.append("medicine_name", medicine_name);
       formData.append("medicine_category", medicine_category);
       formData.append("company_name", company_name);
@@ -75,7 +65,9 @@ function CreateMedicine() {
       formData.append("expiry_date", expiry_date);
 
       await axios.post(`${SERVER_URL}/Logistic/Medicines`,  formData, {
-        "Content-Type": "multipart/form-data",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }).then((response) => {
         showSuccessNotification('transport created successfully.');
       });
@@ -89,8 +81,8 @@ function CreateMedicine() {
     } catch (error) {
       if (error.response?.status === 400) {
         showErrorNotification('All Fields Are Required.');
-      } if (error.response?.status === 402) {
-        showErrorNotification('"No file uploaded.');
+      } else if (error.response?.status === 402) {
+        showErrorNotification('No file uploaded.');
       }
     }
   };
@@ -125,9 +117,11 @@ function CreateMedicine() {
                                         <label htmlFor="first name" className="inline-block mb-2 ml-1 font-bold text-md text-slate-700 capitalize">Medicine_Image</label>
                                         <input type="file"  accept="image/*"  onChange={handleImageChange} className="focus:shadow-lg focus:shadow-blue-100 text-sm ease block w-full rounded-md border border-solid border-gray-300 bg-white px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"/>
                                       
-                                         {medicine_image && (
-                                            <img className="w-20 h-20 mt-2" src={medicine_image} alt="preview" />
-                                          )}
+                                        {medicine_image && (
+                                            <div className="mt-2">
+                                               <img className="w-20 h-20" src={URL.createObjectURL(medicine_image)} alt="preview" />
+                                          </div>
+                                        )}
                                       </div>
                                     </div>
 

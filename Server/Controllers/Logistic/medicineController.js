@@ -1,7 +1,6 @@
 const Medicine = require('../../Models/medicineModel')
 const Supplier = require('../../Models/SupplierModel')
 const MedicineCategory = require('../../Models/medicineCategoryModel')
-
 const cloudinary = require("cloudinary").v2;
 const dotenv = require('dotenv');
 dotenv.config();
@@ -17,7 +16,6 @@ const createMedicine = async (req, res) => {
   const {
     medicine_category,
     company_name,
-    medicine_image,
     medicine_name,
     total_quantity,
     price,
@@ -25,8 +23,8 @@ const createMedicine = async (req, res) => {
     aisle,
     expiry_date,
   } = req.body;
-console.log(req.body);
-  if (!medicine_category || !company_name || !medicine_image || !medicine_name || !total_quantity || !price || !barcode || !aisle || !expiry_date) {
+  
+  if (!medicine_category || !company_name || !medicine_name || !total_quantity || !price || !barcode || !aisle || !expiry_date) {
     return res.status(400).json({ success: false, message: "All Fields Are Required" });
   }
 
@@ -174,38 +172,52 @@ const getMedicineById = async (req, res) => {
 
 
 const updateMedicine = async (req, res) => {
-     const id = req.params.id
-    const {medicine_category , company_name,  medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
+  const id = req.params.id;
+  console.log(id);
+  const { medicine_category, company_name, medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
 
-    try {  
-      let medicineCategoryId
-      let supplierId
+  try {
+    let medicineCategoryId;
+    let supplierId;
 
-      if (medicine_category) { 
-        const getMedicineCategory = await MedicineCategory.findOne({where:{ medicine_category: medicine_category }});
-         medicineCategoryId = getMedicineCategory.medicine_category_id;
-      }
-  
-      if (company_name) {
-        const getSupplierById = await Supplier.findOne({where:{ company_name: company_name }});
-        supplierId = getSupplierById.supplier_id;
-      }
-
-      const UpdateMedicine = await Medicine.update({ 
-            medicine_category_id: medicineCategoryId,
-            supplier_id: supplierId,
-            medicine_name: medicine_name,
-            total_quantity: total_quantity,
-            price: price,
-            aisle: aisle,
-            barcode: barcode,
-            expiry_date: expiry_date,
-     },{where: {medicine_id: id} });
-      return res.status(200).json({ success: true, medicine: UpdateMedicine});
-    } catch (error) {
-      return res.status(500).json({ success: false, message: error.message});
+    if (medicine_category) {
+      const getMedicineCategory = await MedicineCategory.findOne({ where: { medicine_category: medicine_category } });
+      medicineCategoryId = getMedicineCategory.medicine_category_id;
     }
+
+    if (company_name) {
+      const getSupplierById = await Supplier.findOne({ where: { company_name: company_name } });
+      supplierId = getSupplierById.supplier_id;
+    }
+
+
+
+    // Check if a new image file is provided in the request
+    if (req.file) {
+      // If a new image is provided, update the medicine_image field
+      const result = await cloudinary.uploader.destroy('image.public_id');
+      const updatedImage = await cloudinary.uploader.upload(req.file.path, { folder: "medOps" });
+      updateFields = updatedImage.secure_url;
+    }
+
+    const UpdateMedicine = await Medicine.update({
+      medicine_category_id: medicineCategoryId,
+      supplier_id: supplierId,
+      medicine_name: medicine_name,
+      medicine_image: updateFields,
+      total_quantity: total_quantity,
+      price: price,
+      aisle: aisle,
+      barcode: barcode,
+      expiry_date: expiry_date,
+    }, { where: { medicine_id: id } });
+    return res.status(200).json({ success: true, medicine: UpdateMedicine });
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
+
 
 
 
