@@ -5,10 +5,10 @@ const {
 
 const AuthRouter = require("express").Router();
   
- 
+const { verifyToken } = require("../../middleware/VerifyToken");
 
 AuthRouter.get("/", getAllPasswordReport);
-AuthRouter.patch("/:id", reportApproval);
+AuthRouter.patch("/:id", verifyToken, reportApproval);
   
   
 module.exports = AuthRouter;

@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
+import { Api } from "../../utils/Api";
+import {formatDate} from '../../utils/constant/formatDate'
 
 function Medicine() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [medicineDropdown, setMedicineDropdown] = useState(false);
   const [aisleDropdown, setAisleDropdown] = useState(false);
+  const [medicines, setMedicines] = useState([]);
+
+  useEffect(() => {
+		const getMedicine = async () => {
+		  const data = await Api("/Manager/medicines", "GET");
+			setMedicines(data.medicine);																
+		};
+	
+		getMedicine();
+	}, []);
+
 
   const toggleDropdown = () => {
     setMedicineDropdown(!medicineDropdown);
@@ -71,6 +84,7 @@ function Medicine() {
                                )}
                                 </th>
                                 <th className="p-4 text-md font-medium tracking-wider text-left text-black">Medicine</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-left text-black">Medicine_Image</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-left text-black">Supplier</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total_Quantity</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-left text-black">Price</th>
@@ -102,73 +116,25 @@ function Medicine() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
-                              <tr className="bg-gray-50">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
+                              {medicines.length === 0 && (
+                                <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                               )} 
+                              {medicines.map((medicine, id) => (
+                              <tr key={id} className="bg-gray-50">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{medicine.medicineCategory.medicine_category}</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.medicine_name}</td>
+                                <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">
+                                  <img className="w-20 h-20" src={medicine.medicine_image}/>
+                                </td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.supplier.company_name}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{medicine.total_quantity}</td>       
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">{medicine.price}</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654{medicine.barcode}</td>  
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.aisle}</td>
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{formatDate(medicine.expiry_date)}</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{formatDate(medicine.updatedAt)}</td>  
                               </tr>  
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                              </tr>       
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>       
-
-                              </tr>
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">pain killer</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Mara moja</td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Cane Industry</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">44</td>       
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">Ksh 55</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654</td>  
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">Aisle 5</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">7/5/2023</td>      
-                              </tr>
+                              ))}
                             </tbody>
                           </table>
                             <div className="grid w-full place-items-right rounded-lg p-6">

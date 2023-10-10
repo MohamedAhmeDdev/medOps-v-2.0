@@ -121,7 +121,8 @@ const searchForStaff = async (req, res) => {
 
 
     if (searchStaff.length === 0) {
-      return res.status(404).json({ success: false, message: "No matching results found"});
+      console.log("No matching results found");
+      // return res.status(404).json({ success: false, message: "No matching results found"});
     }
 
     return res.status(200).json({ success: true, user: searchStaff });
@@ -153,7 +154,8 @@ const getStaff = async (req, res) => {
   
     const getOnlyStaff = staff.filter((user) => user.role !== "User");
     if (getOnlyStaff.length === 0) {
-      return res.status(400).json({ success: false, message: "staff not found" });
+      console.log("staff not found");
+      // return res.status(400).json({ success: false, message: "staff not found" });
     }
 
     return res.status(200).json({ success: true, staff: getOnlyStaff });
@@ -177,7 +179,8 @@ const getAllStaffById = async (req, res) => {
     
 
     if (staffById.length === 0) {
-      return res.status(400).json({ success: false, message: "staff not found" });
+      console.log("staff not found");
+      // return res.status(400).json({ success: false, message: "staff not found" });
     }
 
 
@@ -209,15 +212,21 @@ const getSingleShift = async (req, res) => {
 const updateStaff = async (req, res) => { 
   const  id  = req.params.id
   const { username, email, phoneNumber, address, role } = req.body;
- 
-  if (!validator.isMobilePhone(phoneNumber, "en-KE")) {
-    return res.status(400).json({success: false, message:("Please enter a valid phone number")});
+
+  let validatePhoneNumber = "";
+  if (phoneNumber !== undefined && phoneNumber !== null) {
+    const phoneNumberStr = phoneNumber.toString();
+    if (!validator.isMobilePhone(`0${phoneNumberStr}`, "en-KE")) {
+      return res.status(400).json({ success: false, message: "Please enter a valid phone number" });
+    }
+    validatePhoneNumber = phoneNumberStr;
   }
+
   
   try {
    const updatedUserRole =  await User.update({
       username: username,
-      phoneNumber: phoneNumber,
+      phoneNumber: validatePhoneNumber,
       address: address,
       email: email,
       role: role
@@ -226,6 +235,7 @@ const updateStaff = async (req, res) => {
 
     res.status(200).json({ success: true, user: updatedUserRole});
   } catch (error) {
+    console.log(error.message);
     return res.status(500).json({ success: false, message: error.message });
   }
 };

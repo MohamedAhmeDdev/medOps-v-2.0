@@ -34,7 +34,7 @@ const searchForUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const getUser = await User.findAll({order: [['username', 'ASC']],});
-    const getOnlyUsers = getUser.filter((user) => user.role === "USER");
+    const getOnlyUsers = getUser.filter((user) => user.role === "User");
 
     return res.status(200).json({success: true, user: getOnlyUsers });
   } catch (error) {

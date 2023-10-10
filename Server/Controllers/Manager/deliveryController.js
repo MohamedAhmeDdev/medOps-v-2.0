@@ -139,7 +139,8 @@ const getAllDelivery = async (req, res) => {
     });
   
     if(AllDelivery.length === 0){
-      return res.status(400).json({success: true,  message: "delivery not found" });
+      console.log("delivery not found");
+      // return res.status(400).json({success: true,  message: "delivery not found" });
     }
 
     return res.status(200).json({ success: true, delivery: AllDelivery});

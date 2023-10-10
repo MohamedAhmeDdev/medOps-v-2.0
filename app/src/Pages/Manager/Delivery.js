@@ -1,12 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
-
+import axios from "axios";
+import { SERVER_URL } from "../../utils/constant/severUrl";
+import { useParams } from "react-router-dom";
 
 function Delivery() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [deliveries, setDeliveries] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+		const getDeliveries = async () => {
+      const data = await axios.get(`${SERVER_URL}/Manager/Deliveries/${id}`);
+			setDeliveries(data.data.delivery)																																																																	
+		};
+	
+		getDeliveries();
+	}, []);
+
 
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
@@ -31,71 +45,35 @@ function Delivery() {
                           <thead className="align-bottom">
                               <tr>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
+                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Username</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
                                 <th className="p-4 text-md font-medium tracking-wider text-center text-black">Status</th>
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
-                              <tr className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
+                              {deliveries.length === 0 && (
+                                <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                               )} 
+                            {deliveries?.map((delivery, id)=>(
+                              <tr key={id} className="bg-gray-50 ">
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order_id}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.username}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.phoneNumber}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order.total_price}</td>       
                                 <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">Delivered</span>
+                                  {delivery.order.order_status === 'Pending' && (
+                                     <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">{delivery.order.order_status}</span>
+                                  )}
+                                    {delivery.order.order_status === 'Packed' && (
+                                    <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 border border-purple-50">{delivery.order.order_status}</span>
+                                  )}
+                                   {delivery.order.order_status === 'Delivered' && (
+                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">{delivery.order.order_status}</span>
+                                  )}        
                                 </td>
-                                
                               </tr>  
-                              <tr>
-                              < td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-red-100 text-red-400 rounded-md text-sm mr-2 px-2.5 border border-red-50">Cancelled</span>
-                                </td>
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">4545454</td>
-                              <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 border border-purple-50">Pending</span>
-                                </td>
-                              </tr>       
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
-                                </td>
-                                      
-                              </tr>
-                              <tr className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
-                                </td>
-                                      
-                              </tr>
-                              <tr>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 654654 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">jane</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> 6556655 </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap"> -$560 </td>             
-                                <td className="p-4 whitespace-nowrap text-center">
-                                  <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">Packed</span>
-                                </td>
-                                      
-                              </tr>
+                              ))}
                             </tbody>
                           </table>
                         </div>

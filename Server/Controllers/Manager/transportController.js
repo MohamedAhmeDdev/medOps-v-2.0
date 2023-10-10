@@ -69,7 +69,8 @@ const getTransport = async (req, res) => {
       });
     
       if( AllTransport.length === 0){
-        return res.status(200).json({success: true,  message: "transport not found" });
+        console.log("transport not found");
+        // return res.status(200).json({success: true,  message: "transport not found" });
       }
   
       return res.status(200).json({ success: true, transport:  AllTransport });
@@ -82,12 +83,18 @@ const getTransport = async (req, res) => {
 const getTransportById = async (req, res) => {
   const id = req.params.id
   try {
-    const transportById = await Transport.findAll({ where: { transport_id: id},});
+    const transportById = await Transport.findAll({
+      include: [{
+        model: User,
+        attributes: ['username'],
+      }],
+       where: { transport_id: id},});
 
       if(transportById.length === 0){
-        return res.status(200).json({success: true,  message: "transport not found" });
+        console.log("transport not found");
+        // return res.status(200).json({success: true,  message: "transport not found" });
       }
-    return res.status(200).json({success: true, warehouse: transportById });
+    return res.status(200).json({success: true, transport: transportById });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -110,7 +117,8 @@ const getUserTransport = async (req, res) => {
     const staffTransport = UserTransport.filter((user) => user.staffWarehouses.some((warehouse) => warehouse.staff_function === "staff"));
 
     if (staffTransport.length === 0) {
-      return res.status(400).json({ success: false, message: "Staff not found" });
+      console.log("Staff not found");
+      // return res.status(400).json({ success: false, message: "Staff not found" });
     }
 
     return res.status(200).json({ success: true, user: staffTransport });

@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import UseSidebar from '../../utils/constant/useSidebar';
 import * as XLSX from "xlsx";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
+import { Api } from "../../utils/Api";
+import {formatDate} from '../../utils/constant/formatDate'
 
 function OrderReport() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [fromDateDropdown, setFromDateDropdown] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [orderReports, setOrderReports] = useState([]);
 
   const handleDateChange = (date) => {
     setSelectedDate(date);
@@ -22,16 +24,19 @@ function OrderReport() {
   };
 
 
-  const sheetData = [
-    {id: 1 ,Medicine: 'pain killer', Quantity_Sold: '555', Total_Sale: 30, From_Date: '7/5/2023' , To_Date: '7/5/2023' },
-    {id: 2, Medicine: 'pain killer', Quantity_Sold: '555', Total_Sale: 30, From_Date: '7/5/2023' , To_Date: '7/5/2023' },
-    {id: 3 ,Medicine: 'pain killer', Quantity_Sold: '555', Total_Sale: 30, From_Date: '7/5/2023' , To_Date: '7/5/2023' },
-    {id: 4 , Medicine: 'pain killer', Quantity_Sold: '555', Total_Sale: 30, From_Date: '7/5/2023' , To_Date: '7/5/2023' },
-  ];
+  useEffect(() => {
+		const getOrderReport = async () => {
+		  const data = await Api("/Manager/orderReport", "GET");
+			setOrderReports(data.orderReport);																																																												
+		};
+	
+		getOrderReport();
+	}, []);
+
 
 
   const handleOnExport = () =>{
-    const ws = XLSX.utils.json_to_sheet(sheetData);
+    const ws = XLSX.utils.json_to_sheet(orderReports);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Orders Report");
     XLSX.writeFile(wb, "Orders Report.xlsx");
@@ -125,13 +130,13 @@ function OrderReport() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
-                                {sheetData.map((data, id) => (
+                                {orderReports.map((data, id) => (
                                 <tr className="bg-gray-50" key={id}>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.Medicine}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.Quantity_Sold}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.Total_Sale}</td>
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{data.From_Date}</td>  
-                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{data.To_Date}</td>  
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.medicine_name}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.quantity_sold}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{data.total_sale}</td>
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{formatDate(data.startDate)}</td>  
+                                <td className="p-4 text-sm text-center text-gray-400 whitespace-nowrap">{formatDate(data.endDate)}</td>  
                                 </tr> 
                               ))}
                              

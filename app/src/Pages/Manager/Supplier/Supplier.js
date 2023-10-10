@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Navbar from '../../../Component/Navbar';
 import Sidebar from '../../../Component/Aside';
 import { Link } from 'react-router-dom';
 import UseSidebar from '../../../utils/constant/useSidebar';
+import { Api } from "../../../utils/Api";
 
 function Supplier() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [suppliers, setSupplier] = useState([]);
+
+  useEffect(() => {
+		const getSupplier = async () => {
+		  const data = await Api("/Manager/Supplier", "GET");
+			setSupplier(data.supplier);			
+		};
+	
+		getSupplier();
+	}, []);
+
 
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
@@ -46,26 +58,21 @@ function Supplier() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">xy</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">ddd</td>
-                         <td className="p-2 px-5 text-md   text-center text-slate-400  border-b whitespace-nowrap">xy@gmail.com</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">2526552</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
+                       {suppliers.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                        )} 
+                      {suppliers.map((supplier,id) => (
+                      <tr key={id}>
+                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_name}</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_person}</td>
+                         <td className="p-2 px-5 text-md   text-center text-slate-400  border-b whitespace-nowrap">{supplier.email}</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">{supplier.phone}</td>
+                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_address}</td>
                          <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">
-                           <Link to='/updateSupplier' className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
+                           <Link to={`/updateSupplier/${supplier.supplier_id}`} className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
                          </td>
                       </tr>
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">cane</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">wew</td>
-                         <td className="p-2 px-5 text-md  text-center text-slate-400  border-b whitespace-nowrap">cone@gmail.com</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">2526552</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">new york</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">
-                           <Link to='/updateSupplier' className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
-                         </td>
-                      </tr>     
+                      ))}    
                     </tbody>
                   </table>
                 </div>

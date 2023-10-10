@@ -107,7 +107,8 @@ const getOderReport = async (req, res) => {
   });
 
     if (orderReport.length === 0) {
-      return res.status(404).json({ success: false, message: "Report Not found"});
+      console.log("Report Not found");
+      // return res.status(404).json({ success: false, message: "Report Not found"});
     }
 
     return res.status(200).json({ success: true, orderReport: orderReport });

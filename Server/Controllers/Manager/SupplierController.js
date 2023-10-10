@@ -45,7 +45,8 @@ const searchForSupplier = async (req, res) => {
     });
 
   if (searchSupplier.length === 0) {
-    return res.status(404).json({ success: false, message: "No matching results found"});
+    console.log("No matching results found");
+    // return res.status(404).json({ success: false, message: "No matching results found"});
   }
 
     return res.status(200).json({ success: true, supplier: searchSupplier });
@@ -71,7 +72,7 @@ const getSupplierById = async (req, res) => {
   try {
     const supplierById = await Supplier.findAll({ where: { supplier_id: id}});
 
-    return res.status(200).json({success: true, warehouse: supplierById });
+    return res.status(200).json({success: true, supplier: supplierById });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -83,12 +84,21 @@ const UpdateSupplierInfo = async (req, res) => {
   const id = req.params.id
   const {company_name,contact_person, email, phone, company_address  } = req.body;
 
+  let validatePhoneNumber = "";
+  if (phone !== undefined && phone !== null) {
+    const phoneNumberStr = phone.toString();
+    if (!validator.isMobilePhone(`0${phoneNumberStr}`, "en-KE")) {
+      return res.status(400).json({ success: false, message: "Please enter a valid phone number" });
+    }
+    validatePhoneNumber = phoneNumberStr;
+  }
+
     try {  
       const UpdateSupplier = await Supplier.update({ 
         company_name: company_name ,
         contact_person: contact_person,
         email: email,
-        phone: phone,
+        phone: validatePhoneNumber,
         company_address:company_address, 
      },{where: {supplier_id: id} });
       return res.status(200).json({ success: true, supplier:UpdateSupplier});
