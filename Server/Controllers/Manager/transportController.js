@@ -46,7 +46,7 @@ const searchForTransport = async (req, res) => {
         return true;
       });
     
-    if (searchTransport.length === 0) {
+    if (!searchTransport) {
         return res.status(404).json({success: false, message: "No matching results found"});
     }
 
@@ -68,9 +68,8 @@ const getTransport = async (req, res) => {
         order: [[User, 'username', 'ASC']],
       });
     
-      if( AllTransport.length === 0){
-        console.log("transport not found");
-        // return res.status(200).json({success: true,  message: "transport not found" });
+      if(!AllTransport){
+        return res.status(200).json({success: true,  message: "transport not found" });
       }
   
       return res.status(200).json({ success: true, transport:  AllTransport });
@@ -90,9 +89,8 @@ const getTransportById = async (req, res) => {
       }],
        where: { transport_id: id},});
 
-      if(transportById.length === 0){
-        console.log("transport not found");
-        // return res.status(200).json({success: true,  message: "transport not found" });
+      if(!transportById){
+        return res.status(200).json({success: true,  message: "transport not found" });
       }
     return res.status(200).json({success: true, transport: transportById });
   } catch (error) {
@@ -116,9 +114,8 @@ const getUserTransport = async (req, res) => {
     });
     const staffTransport = UserTransport.filter((user) => user.staffWarehouses.some((warehouse) => warehouse.staff_function === "staff"));
 
-    if (staffTransport.length === 0) {
-      console.log("Staff not found");
-      // return res.status(400).json({ success: false, message: "Staff not found" });
+    if (!staffTransport) {
+      return res.status(400).json({ success: false, message: "Staff not found" });
     }
 
     return res.status(200).json({ success: true, user: staffTransport });

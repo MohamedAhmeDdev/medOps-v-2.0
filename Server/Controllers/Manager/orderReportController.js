@@ -88,7 +88,7 @@ const searchForReport = async (req, res) => {
         return true;
       });
 
-    if (searchOrder.length === 0) {
+    if (!searchOrder) {
       return res.status(404).json({ success: false, message: "No matching results found" });
     }
 
@@ -106,9 +106,8 @@ const getOderReport = async (req, res) => {
      order: [['startDate', 'ASC']]
   });
 
-    if (orderReport.length === 0) {
-      console.log("Report Not found");
-      // return res.status(404).json({ success: false, message: "Report Not found"});
+    if (!orderReport) {
+      return res.status(404).json({ success: false, message: "Report Not found"});
     }
 
     return res.status(200).json({ success: true, orderReport: orderReport });

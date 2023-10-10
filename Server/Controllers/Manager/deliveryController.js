@@ -138,9 +138,8 @@ const getAllDelivery = async (req, res) => {
       order: [[ Order ,'order_date','DESC']]
     });
   
-    if(AllDelivery.length === 0){
-      console.log("delivery not found");
-      // return res.status(400).json({success: true,  message: "delivery not found" });
+    if(!AllDelivery){
+      return res.status(400).json({success: true,  message: "delivery not found" });
     }
 
     return res.status(200).json({ success: true, delivery: AllDelivery});

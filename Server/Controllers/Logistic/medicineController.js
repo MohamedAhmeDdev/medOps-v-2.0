@@ -92,9 +92,8 @@ const searchApi = async (req, res) => {
       return true;
     });
  
-    if (searchMedicine.length === 0) {
-      console.log("No matching results found");
-      // return res.status(404).json({ success: false, message: "No matching results found"});
+    if (!searchMedicine) {
+      return res.status(404).json({ success: false, message: "No matching results found"});
     }
 
     return res.status(200).json({ success: true, medicine: searchMedicine });
@@ -143,9 +142,8 @@ const getMedicine = async (req, res) => {
           order: [['medicine_name', 'ASC']],
     });
 
-    if (AllMedicine.length === 0) {
-      console.log("Medicine Not found");
-      // return res.status(404).json({ success: false, message: "Medicine Not found"});
+    if (!AllMedicine) {;
+      return res.status(404).json({ success: false, message: "Medicine Not found"});
     }
 
     return res.status(200).json({success: true, medicine: AllMedicine });
@@ -219,7 +217,6 @@ const updateMedicine = async (req, res) => {
     }, { where: { medicine_id: id } });
     return res.status(200).json({ success: true, medicine: UpdateMedicine });
   } catch (error) {
-    console.log(error.message);
     return res.status(500).json({ success: false, message: error.message });
   }
 };

@@ -120,9 +120,8 @@ const searchForStaff = async (req, res) => {
     });
 
 
-    if (searchStaff.length === 0) {
-      console.log("No matching results found");
-      // return res.status(404).json({ success: false, message: "No matching results found"});
+    if (!searchStaff) {
+      return res.status(404).json({ success: false, message: "No matching results found"});
     }
 
     return res.status(200).json({ success: true, user: searchStaff });
@@ -153,9 +152,8 @@ const getStaff = async (req, res) => {
 
   
     const getOnlyStaff = staff.filter((user) => user.role !== "User");
-    if (getOnlyStaff.length === 0) {
-      console.log("staff not found");
-      // return res.status(400).json({ success: false, message: "staff not found" });
+    if (!getOnlyStaff) {
+      return res.status(400).json({ success: false, message: "staff not found" });
     }
 
     return res.status(200).json({ success: true, staff: getOnlyStaff });
@@ -178,9 +176,8 @@ const getAllStaffById = async (req, res) => {
     });
     
 
-    if (staffById.length === 0) {
-      console.log("staff not found");
-      // return res.status(400).json({ success: false, message: "staff not found" });
+    if (!staffById) {
+      return res.status(400).json({ success: false, message: "staff not found" });
     }
 
 

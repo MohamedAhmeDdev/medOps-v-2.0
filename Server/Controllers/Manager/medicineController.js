@@ -58,9 +58,8 @@ const getMedicine = async (req, res) => {
       order: [['medicine_name', 'ASC']],
     });
 
-    if (AllMedicine.length === 0) {
-      console.log("Medicine Not found");
-      // return res.status(404).json({ success: false, message: "Medicine Not found"});
+    if (!AllMedicine) {
+      return res.status(404).json({ success: false, message: "Medicine Not found"});
     }
 
     return res.status(200).json({success: true, medicine: AllMedicine });
