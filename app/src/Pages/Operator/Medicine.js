@@ -115,6 +115,9 @@ function Medicine() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
+                            {medicines.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                             )}
                               {medicines.map((medicine, id) =>(
                               <tr key={id} className="bg-gray-50">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{medicine.medicineCategory.medicine_category}</td>

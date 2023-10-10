@@ -28,7 +28,7 @@ const searchApi = async (req, res) => {
       return true;
     });
 
-    if (searchMedicine.length === 0) {
+    if (!searchMedicine) {
       return res.status(404).json({ success: false, message: "No matching results found"});
     }
 
@@ -50,7 +50,7 @@ const getMedicine = async (req, res) => {
       order: [['medicine_name', 'ASC']],
     });
 
-    if (AllMedicine.length === 0) {
+    if (!AllMedicine) {
       return res.status(404).json({ success: false, message: "Medicine Not found"});
     }
 

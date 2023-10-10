@@ -53,12 +53,16 @@ function User() {
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Address</th>
                           <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Role</th>
                         </tr>
-                      </thead>
+                      </thead>z
                       <tbody>
+                         {users.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                           )}
+
                         {users.map((user, id)=> (
                         <tr key={id}>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">{}</h6>
+                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">{user.username}</h6>
                               <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{user.email}</p>                      
                           </td>
                           <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">

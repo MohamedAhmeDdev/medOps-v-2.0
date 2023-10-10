@@ -54,12 +54,15 @@ function Delivery() {
                               </tr>
                           </thead>
                             <tbody className="bg-white ">
+                             {deliveries.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                              )}
                               {deliveries?.map((delivery, id)=>(
                               <tr key={id} className="bg-gray-50 ">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order_id}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.username}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">6466564</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">$2300</td>       
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.phoneNumber}</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order.total_price}</td>       
                                 <td className="p-4 whitespace-nowrap text-center">
                                   {delivery.order.order_status === 'Pending' && (
                                      <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">{delivery.order.order_status}</span>

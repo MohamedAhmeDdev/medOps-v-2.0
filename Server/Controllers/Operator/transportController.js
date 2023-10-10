@@ -26,7 +26,7 @@ const searchForTransport = async (req, res) => {
       });
     
 
-    if (searchTransport.length === 0) {
+    if (!searchTransport) {
         return res.status(404).json({success: false, message: "No matching results found"});
     }
 
@@ -51,7 +51,7 @@ const getTransport = async (req, res) => {
         order: [[User, 'username', 'ASC']],
       });
      
-      if(AllTransport.length === 0){
+      if(!AllTransport){
         return res.status(200).json({success: true,  message: "transport not found" });
       }
   

@@ -35,7 +35,7 @@ const searchForStaff = async (req, res) => {
       return true;
     });
 
-    if (searchStaff.length === 0) {
+    if (!searchStaff) {
       return res.status(404).json({ success: false, message: "No matching results found"});
     }
 
@@ -66,7 +66,7 @@ const getStaff = async (req, res) => {
     });
 
 
-    if (staff.length === 0) {
+    if (!staff) {
       return res.status(400).json({ success: false, message: "staff not found" });
     }
 

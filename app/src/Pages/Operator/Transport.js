@@ -72,10 +72,14 @@ function Transport() {
                               </tr>
                           </thead>
                             <tbody className="bg-white">
+                            {transports.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                             )}
+
                               {transports?.map((item, id) =>(
                               <tr key={id}>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.user.username}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">Kbc 55dd</td>
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.truck_number}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.driver_license_number}</td>       
                                 <td className="p-4 whitespace-nowrap border-b text-center">
                                   {item.status === 'Available' && (

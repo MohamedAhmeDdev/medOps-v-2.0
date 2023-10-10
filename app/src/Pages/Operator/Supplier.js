@@ -49,6 +49,9 @@ function Supplier() {
                       </tr>
                     </thead>
                     <tbody>
+                      {suppliers.length === 0 && (
+                         <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                      )}
                       {suppliers.map((supplier, id) =>(
                       <tr key={id}>
                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_name}</td>

@@ -38,7 +38,7 @@ const searchForOrder = async (req, res) => {
           return true;
         });
       
-      if (searchOrder.length === 0) {
+      if (!searchOrder) {
         return res.status(404).json({ success: false, message: "No matching results found" });
       }
   
@@ -61,7 +61,7 @@ const getAllOrder = async (req, res) => {
         order: [['createdAt', 'DESC']],
       });
 
-      if (AllOrder.length === 0) {
+      if (!AllOrder) {
         return res.status(404).json({ success: false, message: "order Not found"});
       }
   

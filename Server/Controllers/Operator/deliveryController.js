@@ -41,7 +41,7 @@ const searchDelivery = async (req, res) => {
     });
 
 
-      if (searchDelivery.length === 0) {
+      if (!searchDelivery) {
         return res.status(404).json({ success: false, message: "No matching results found"});
       }
 
@@ -73,7 +73,7 @@ const getAllDelivery = async (req, res) => {
       order: [[ Order ,'order_date','DESC']]
     });
 
-    if(AllDelivery.length === 0){
+    if(!AllDelivery){
       return res.status(400).json({success: true,  message: "delivery not found" });
     }
 

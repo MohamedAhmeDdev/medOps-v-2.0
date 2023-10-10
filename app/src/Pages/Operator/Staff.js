@@ -55,6 +55,10 @@ function Staff() {
                         </tr>
                       </thead>
                       <tbody>
+                         {setStaff.length === 0 && (
+                              <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
+                          )}
+
                         {staffs.map((staff, id) => (
                         <tr key={id}>
                           <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            

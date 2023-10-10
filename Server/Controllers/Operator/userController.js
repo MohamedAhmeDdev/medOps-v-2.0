@@ -17,7 +17,7 @@ const searchForUser = async (req, res) => {
    });
 
       const getOnlyUsers = searchUser.filter((user) => user.role === "User");
-      if (getOnlyUsers.length === 0) {
+      if (!getOnlyUsers) {
       return res.status(404).json({success: false, message: "No matching results found"});
     }
 
