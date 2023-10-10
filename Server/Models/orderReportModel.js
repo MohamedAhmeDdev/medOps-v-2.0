@@ -17,13 +17,6 @@ const orderReport = database.define("ordersReports",{
     total_sale:{
         type: DataTypes.INTEGER,
     },
-    warehouse_id:{
-        type: DataTypes.INTEGER,
-        references: {
-         model: Warehouse,
-         key: 'warehouse_id',
-        },
-    },
     startDate:{
         type: DataTypes.DATE,
     },

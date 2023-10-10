@@ -29,7 +29,7 @@ const getDeliveryForSingleTransport = async (req, res) => {
       order: [['createdAt', 'ASC']],
     });
 
-    if(delivery.length === 0){
+    if(!delivery){
       return res.status(200).json({success: true,  message: "transport not found" });
     }
 

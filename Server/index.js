@@ -41,6 +41,8 @@ const ManagerDelivery = require('./Routes/Manager/deliveryRoute');
 const ManagerTransport = require('./Routes/Manager/transportRoute');
 const ManagerSupplier = require('./Routes/Manager/SupplierRoute');
 const ManagerOrderReport = require('./Routes/Manager/orderReportRoute');
+const ManagerMedicineCategory = require('./Routes/Manager/medicineCategoryRoute');
+const ManagerMedicine = require('./Routes/Manager/medicineRoute');
 
 
 
@@ -91,6 +93,8 @@ app.use('/Manager/Deliveries', ManagerDelivery)
 app.use('/Manager/Transports', ManagerTransport)
 app.use('/Manager/Supplier', ManagerSupplier)
 app.use('/Manager/orderReport', ManagerOrderReport)
+app.use('/Manager/medicineCategory', ManagerMedicineCategory)
+app.use('/Manager/medicines', ManagerMedicine)
 
 
 

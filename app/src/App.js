@@ -103,17 +103,17 @@ function App() {
             <Route path="/medicineCategory" element={<ManagerMedicineCategory/>}/>
             <Route path="/supplier" element={<ManagerSupplier/>}/>
             <Route path="/createSupplier" element={<ManagerCreateSupplier/>}/>
-            <Route path="/updateSupplier" element={<ManagerUpdateSupplier/>}/>
+            <Route path="/updateSupplier/:id" element={<ManagerUpdateSupplier/>}/>
             <Route path="/transport" element={<ManagerTransport/>}/>
             <Route path="/createTransport" element={<ManagerCreateTransport/>}/>
-            <Route path="/updateTransport" element={<ManagerUpdateTransport/>}/>
-            <Route path="/delivery" element={<ManagerDelivery/>}/>
+            <Route path="/updateTransport/:id" element={<ManagerUpdateTransport/>}/>
+            <Route path="/delivery/:id" element={<ManagerDelivery/>}/>
             <Route path="/orderReport" element={<ManagerOrderReport/>}/>
             <Route path="/passwordRequest" element={<ManagerPasswordRequest/>}/>
             <Route path="/staff" element={<ManagerStaff/>}/>
             <Route path="/StaffShift" element={<ManagerSingleStaffShift/>} />  
             <Route path="/createStaff" element={<ManagerCreateStaff/>}/>
-            <Route path="/updateStaffInfo" element={<ManagerUpdateStaffInfo/>}/>
+            <Route path="/updateStaffInfo/:id" element={<ManagerUpdateStaffInfo/>}/>
             <Route path="/user" element={<ManagerUser/>}/>
             </>
             )}

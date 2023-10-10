@@ -15,6 +15,9 @@ const PasswordReport = database.define("passwordReports",{
         key: 'user_id'
       }
     },
+    // approver: {
+    //   type: DataTypes.STRING,
+    // },
     reason: {
       type: DataTypes.STRING,
     },
