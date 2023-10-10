@@ -19,9 +19,8 @@ function SingleOrder() {
   useEffect(() => {
     const getSingleOrder = async () => {
       try {
-        const res = await axios.get(`${SERVER_URL}/Operator/Orders/${id}`);
+        const res = await axios.get(`${SERVER_URL}/Logistic/Order/${id}`);
          setSingleOrder(res.data.order)
-        console.log(res.data.order)
               
       } catch (error) {
         console.error("Error fetching data:", error);

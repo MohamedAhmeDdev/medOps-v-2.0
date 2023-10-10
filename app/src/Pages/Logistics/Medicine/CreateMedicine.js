@@ -69,7 +69,7 @@ function CreateMedicine() {
           "Content-Type": "multipart/form-data",
         },
       }).then((response) => {
-        showSuccessNotification('transport created successfully.');
+        showSuccessNotification('medicine created successfully.');
       });
         setCompany_name("");
         setMedicine_image("");

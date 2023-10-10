@@ -33,7 +33,7 @@ function UpdateMedicineCategory() {
         medicine_category: medicine_category,
     
       }).then((response) => {
-        showSuccessNotification('staff created successfully.');
+        showSuccessNotification('medicine category updated successfully.');
       });
       setMedicine_category("");
  

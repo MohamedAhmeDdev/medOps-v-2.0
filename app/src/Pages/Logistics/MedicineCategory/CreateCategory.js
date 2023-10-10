@@ -22,7 +22,7 @@ function CreateCategory() {
         medicine_category: medicine_category,
     
       }).then((response) => {
-        showSuccessNotification('staff created successfully.');
+        showSuccessNotification('medicine category created successfully.');
       });
       setMedicine_category("");
  

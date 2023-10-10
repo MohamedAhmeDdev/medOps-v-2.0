@@ -45,7 +45,8 @@ const searchForSupplier = async (req, res) => {
     });
 
   if (searchSupplier.length === 0) {
-    return res.status(404).json({ success: false, message: "No matching results found"});
+    console.log("No matching results found");
+    // return res.status(404).json({ success: false, message: "No matching results found"});
   }
 
     return res.status(200).json({ success: true, supplier: searchSupplier });

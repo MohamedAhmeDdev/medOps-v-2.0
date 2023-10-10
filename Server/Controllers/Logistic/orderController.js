@@ -55,13 +55,14 @@ const getAllOrder = async (req, res) => {
       const AllOrder = await Order.findAll({
         include: [{
             model: User,
-            attributes: ['username'],
+            attributes: ['username', 'phoneNumber'],
         }],
         order: [['createdAt', 'DESC']],
       });
    
       if (AllOrder.length === 0) {
-        return res.status(404).json({ success: false, message: "order Not found"});
+        console.log( "order Not found");
+        // return res.status(404).json({ success: false, message: "order Not found"});
       }
   
       return res.status(200).json({ success: true, order: AllOrder });

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../../Component/Navbar';
 import Sidebar from '../../../Component/Aside';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UseSidebar from '../../../utils/constant/useSidebar';
 import {SERVER_URL} from '../../../utils/constant/severUrl';
 import { useNotification } from '../../../utils/context/NotificationContext';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
+import {formatDate} from '../../../utils/constant/formatDate'
 
 function UpdateMedicine() {
    const { sidebarOpen, toggleSidebar } = UseSidebar();
@@ -35,32 +36,39 @@ function UpdateMedicine() {
       getMedicineCategory();
     }, []);
 
-    const getSupplier = async () => {
+    const getMedicine = async () => {
         const response = await axios.get(`${SERVER_URL}/Logistic/Suppliers`);
         setSupplierList(response.data.supplier);
     };
 
     useEffect(() => {
-      getSupplier();
+      getMedicine();
     }, []);
 
   
     useEffect(() => {
-     const getSingCategory = async () => {
+      const getSingCategory = async () => {
         const res = await axios.get(`${SERVER_URL}/Logistic/Medicines/${id}`);
-         setMedicine_image(res.data.medicine[0].medicine_image)
-         setMedicine_category(res.data.medicine[0].medicine_category)
-         setMedicine_name(res.data.medicine[0].medicine_name)
-         setCompany_name(res.data.medicine[0].company_name)
-         setExpiry_date(res.data.medicine[0].expiry_date)
-         setBarcode(res.data.medicine[0].barcode)
-         setTotal_quantity(res.data.medicine[0].total_quantity)
-         setPrice(res.data.medicine[0].price)
-         setAisle(res.data.medicine[0].aisle)
-    };
-  
+        setMedicine_image(res.data.medicine[0].medicine_image);
+        setMedicine_category(res.data.medicine[0].medicineCategory.medicine_category);
+        setMedicine_name(res.data.medicine[0].medicine_name);
+        setCompany_name(res.data.medicine[0].supplier.company_name);
+    
+        // Format expiry_date to 'YYYY-MM-DD' (assuming it's in that format)
+        const expiryDateFromApi = res.data.medicine[0].expiry_date;
+        const formattedExpiryDate = new Date(expiryDateFromApi).toISOString().split('T')[0];
+    
+        setExpiry_date(formattedExpiryDate); // Set the formatted date
+    
+        setBarcode(res.data.medicine[0].barcode);
+        setTotal_quantity(res.data.medicine[0].total_quantity);
+        setPrice(res.data.medicine[0].price);
+        setAisle(res.data.medicine[0].aisle);
+      };
+    
       getSingCategory();
     }, [id]);
+    
 
 
   const update_medicine = async (e) => {
@@ -83,7 +91,7 @@ function UpdateMedicine() {
           "Content-Type": "multipart/form-data",
         },
         }).then((response) => {
-          showSuccessNotification('transport created successfully.');
+          showSuccessNotification('medicine updated successfully.');
         });
          navigate('/medicine')
       } catch (error) {
@@ -171,7 +179,7 @@ function UpdateMedicine() {
                                     <div className="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                       <div className="mb-4 py-3">
                                         <label htmlFor="first name" className="inline-block mb-2 ml-1 font-bold text-md text-slate-700 capitalize">expiry_date</label>
-                                        <input type="date" value={expiry_date} onChange={(e) => setExpiry_date(e.target.value)} className="focus:shadow-lg focus:shadow-blue-100 text-sm ease block w-full rounded-md border border-solid border-gray-300 bg-white px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"/>
+                                        <input type='date' value={expiry_date} onChange={(e) => setExpiry_date(e.target.value)} className="focus:shadow-lg focus:shadow-blue-100 text-sm ease block w-full rounded-md border border-solid border-gray-300 bg-white px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none"/>
                                       </div>
                                     </div>
                                     <div className="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
