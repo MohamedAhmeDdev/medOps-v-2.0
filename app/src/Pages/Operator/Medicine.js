@@ -123,7 +123,13 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{medicine.medicineCategory.medicine_category}</td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.medicine_name}</td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.supplier.company_name}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{medicine.total_quantity}</td>       
+                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">
+                                  {medicine.total_quantity <= 10 ? (
+                                    <span className="text-red-500 font-bold">{medicine.total_quantity}</span>
+                                  ):(
+                                    <span>{medicine.total_quantity}</span>
+                                  )}
+                                </td>       
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">{medicine.price}</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">{medicine.barcode}</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.aisle}</td>

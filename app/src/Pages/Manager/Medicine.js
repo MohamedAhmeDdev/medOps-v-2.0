@@ -126,7 +126,13 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">
                                   <img className="w-20 h-20" src={medicine.medicine_image}/>
                                 </td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.supplier.company_name}</td>
+                                <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">
+                                  {medicine.total_quantity <= 10 ? (
+                                    <span className="text-red-500 font-bold">{medicine.total_quantity}</span>
+                                  ):(
+                                    <span>{medicine.total_quantity}</span>
+                                  )}
+                                </td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{medicine.total_quantity}</td>       
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">{medicine.price}</td>  
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap">545445654{medicine.barcode}</td>  
