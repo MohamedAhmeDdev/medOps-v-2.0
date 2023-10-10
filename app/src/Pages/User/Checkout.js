@@ -14,7 +14,7 @@ function Checkout() {
   const address = userInfo ? userInfo.address : null;
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors] = useState("");
   const navigate = useNavigate();
 
   const placeOrder = (e) => {

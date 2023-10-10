@@ -124,7 +124,7 @@ function Medicine() {
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{medicine.medicineCategory.medicine_category}</td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">{medicine.medicine_name}</td>
                                 <td className="p-4 text-md text-center text-gray-500 whitespace-nowrap dark:text-gray-400 capitalize">
-                                  <img className="w-20 h-20" src={medicine.medicine_image}/>
+                                  <img className="w-20 h-20" src={medicine.medicine_image} alt={medicine.medicine_name} />
                                 </td>
                                 <td className="p-4 text-md text-gray-400 whitespace-nowrap capitalize">
                                   {medicine.total_quantity <= 10 ? (
@@ -143,7 +143,7 @@ function Medicine() {
                               ))}
                             </tbody>
                           </table>
-                            <div className="grid w-full place-items-right rounded-lg p-6">
+                            {/* <div className="grid w-full place-items-right rounded-lg p-6">
                                 <nav>
                                     <ul className="flex">
                                         <li>
@@ -167,7 +167,7 @@ function Medicine() {
                                         </li>
                                     </ul>
                                 </nav>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>

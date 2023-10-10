@@ -6,7 +6,7 @@ import ReactToPrint from "react-to-print";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { SERVER_URL } from "../../utils/constant/severUrl";
-import {formatDate} from '../../utils/constant/formatDate'
+
 
 
 function SingleOrder() {

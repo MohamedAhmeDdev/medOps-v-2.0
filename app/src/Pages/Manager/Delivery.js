@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
-import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
 import axios from "axios";
 import { SERVER_URL } from "../../utils/constant/severUrl";
@@ -19,7 +18,7 @@ function Delivery() {
 		};
 	
 		getDeliveries();
-	}, []);
+	}, [id]);
 
 
   return (

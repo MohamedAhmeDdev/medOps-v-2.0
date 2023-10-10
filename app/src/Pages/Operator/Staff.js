@@ -84,7 +84,7 @@ function Staff() {
                         ))}
                       </tbody>
                     </table>
-                      <div className="grid w-full place-items-right rounded-lg p-6">
+                      {/* <div className="grid w-full place-items-right rounded-lg p-6">
                                   <nav>
                                       <ul className="flex">
                                           <li>
@@ -108,7 +108,7 @@ function Staff() {
                                           </li>
                                       </ul>
                                   </nav>
-                      </div>
+                      </div> */}
                   </div>
                 </div>
                 </div>

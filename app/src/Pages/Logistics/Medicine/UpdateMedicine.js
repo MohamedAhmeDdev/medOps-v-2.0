@@ -7,7 +7,7 @@ import {SERVER_URL} from '../../../utils/constant/severUrl';
 import { useNotification } from '../../../utils/context/NotificationContext';
 import axios from 'axios'
 import { useParams } from "react-router-dom";
-import {formatDate} from '../../../utils/constant/formatDate'
+
 
 function UpdateMedicine() {
    const { sidebarOpen, toggleSidebar } = UseSidebar();

@@ -116,7 +116,7 @@ function Orders() {
                               ))}
                             </tbody>
                           </table>
-                            <div className="grid w-full place-items-right rounded-lg p-6">
+                            {/* <div className="grid w-full place-items-right rounded-lg p-6">
                                   <nav>
                                       <ul className="flex">
                                           <li>
@@ -140,7 +140,7 @@ function Orders() {
                                           </li>
                                       </ul>
                                   </nav>
-                            </div>
+                            </div> */}
                         </div>
                       </div>
                     </div>

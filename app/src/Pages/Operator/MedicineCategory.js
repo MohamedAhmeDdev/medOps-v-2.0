@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
-import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
 import { Api } from "../../utils/Api";
 import {formatDate} from '../../utils/constant/formatDate'
@@ -66,7 +65,7 @@ function MedicineCategory() {
                                    ))}       
                                  </tbody>
                                </table>
-                                 <div className="grid w-full place-items-right rounded-lg p-6">
+                                 {/* <div className="grid w-full place-items-right rounded-lg p-6">
                                      <nav>
                                          <ul className="flex">
                                              <li>
@@ -90,7 +89,7 @@ function MedicineCategory() {
                                              </li>
                                          </ul>
                                      </nav>
-                               </div>
+                               </div> */}
                              </div>
                            </div>
                          </div>

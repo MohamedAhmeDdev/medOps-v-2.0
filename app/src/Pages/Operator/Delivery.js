@@ -3,7 +3,6 @@ import Navbar from '../../Component/Navbar';
 import Sidebar from '../../Component/Aside';
 import { Link } from 'react-router-dom';
 import UseSidebar from '../../utils/constant/useSidebar';
-import { Api } from "../../utils/Api";
 import axios from "axios";
 import { SERVER_URL } from "../../utils/constant/severUrl";
 import { useParams } from "react-router-dom";
@@ -20,7 +19,7 @@ function Delivery() {
 		};
 	
 		getDeliveries();
-	}, []);
+	}, [id]);
 
 
   return (
