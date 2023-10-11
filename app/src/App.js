@@ -4,8 +4,9 @@ import StaffShift from "./Pages/Shift";
 import StaffResetPassword from "./Pages/AccountRecovery/ResetPassword";
 import StaffPasswordReport from "./Pages/AccountRecovery/PasswordReport";
 import StaffForgotPassword from "./Pages/AccountRecovery/ForgotPassword";
-
-
+import { useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
+import { UseAuthContext } from "./utils/Hook/StaffAuth";
 
 import ManagerDashboard from "./Pages/Manager/Dashboard";
 import ManagerMedicine from "./Pages/Manager/Medicine";
@@ -68,6 +69,39 @@ import Signup from "./Pages/Signup";
 import {getUserRole} from './utils/Token' 
 
 function App() { 
+  const { dispatch } = UseAuthContext();
+
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (!user) {
+         console.log('Token not found');
+         return;
+      }
+        const decodedToken = jwt_decode(user.token);
+      if (!decodedToken.exp) {
+            console.error('Token does not have an expiration time:', user.token);
+              return;
+      }
+      const expirationDate = new Date(decodedToken.exp * 1000);
+      const currentTime = new Date();
+      const timeDifference = expirationDate.getTime() - currentTime.getTime();
+      if (timeDifference <= 0) {
+        localStorage.removeItem("user");
+        dispatch({ type: "LOGOUT" });
+      } else {
+        setTimeout(() => {
+          dispatch({ type: "LOGOUT" });
+        }, timeDifference);
+      }
+    };
+
+    checkTokenExpiration();
+    const intervalId = setInterval(checkTokenExpiration, 60000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [dispatch]);
 
 
   return (
