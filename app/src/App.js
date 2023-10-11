@@ -82,7 +82,7 @@ function App() {
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
           <Route path="/Notification" element={<Notification/>}/>  
           <Route path="/CreateNotification" element={<CreateNotification/>}/>  
-          <Route path="/SingleNotification" element={<SingleNotification/>}/>  
+          <Route path="/SingleNotification/:id" element={<SingleNotification/>}/>  
 
           {getUserRole() === 'User' && (
             <>

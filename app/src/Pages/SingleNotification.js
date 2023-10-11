@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside'
 import UseSidebar from '../utils/constant/useSidebar';
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { SERVER_URL } from "../utils/constant/severUrl";
 
 function SingleNotification() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [message, setMessage] = useState('');
+  const [subject, setSubject] = useState('');
+  const [username, setUsername] = useState('');
+  const [role, setRole] = useState('');
+  const { id } = useParams();
 
 
-      return(
+  useEffect(() => {
+    const getSingleNotification = async () => {
+      try {
+        const res = await axios.get(`${SERVER_URL}/notification/${id}`);
+         setMessage(res.data.notification[0].message)
+         setSubject(res.data.notification[0].subject)
+         setUsername(res.data.notification[0].user.username)
+         setRole(res.data.notification[0].user.role)
+              
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+  
+    getSingleNotification();
+  }, [id]);
+
+
+  return(
         <div className="flex flex-col h-screen overflow-hidden ">
         <div className="flex flex-1 relative">
       
@@ -26,29 +51,13 @@ function SingleNotification() {
               <div className="flex-none w-full max-w-full px-3">
                     <div className="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border"> 
                         <div className="p-4 leading-loose">
-                            <p className="text-lg"><span className='font-semibold'>Subject: </span><span>Request for a Meeting</span></p>
-                            <p className="text-lg"><span className='font-semibold'>From:</span><span> fdfdd , [Manager]</span></p>
+                            <p className="text-lg"><span className='font-semibold'>Subject: </span><span>{role}</span></p>
+                            <p className="text-lg"><span className='font-semibold'>From:</span><span> {username}, [{role}]</span></p>
                                 <div className='p-5'> 
-                                <p>Hello [Recipient's Name],</p>
+                                <p>Hello ,</p>
                                 
-                                <p>I hope this email finds you well. I would like to request a meeting to discuss [briefly mention the topic or purpose of the meeting]. Given the importance of this matter, I believe that a discussion would greatly benefit our project/department/team.</p>
+                                <p>{message}</p>
                                 
-                                <p>Could we please find a suitable time for the meeting? I suggest some possible time slots:</p>
-                                
-                                <ul>
-                                    <li>[Date and Time Option 1]</li>
-                                    <li>[Date and Time Option 2]</li>
-                                    <li>[Date and Time Option 3]</li>
-                                </ul>
-                                
-                                <p>Please let me know your availability or suggest any alternate timings that work for you. Your flexibility in this regard is highly appreciated.</p>
-                                
-                                <p>Looking forward to your response and the opportunity to discuss this matter further.</p>
-                                
-                                <p>Best regards,</p>
-                                <p>[Your Name]</p>
-                                <p>[Your Title/Position]</p>
-                                <p>[Your Contact Information]</p>
                             </div>
                         </div>
                     </div>

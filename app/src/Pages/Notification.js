@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside'
 import { Link } from 'react-router-dom';
 import UseSidebar from '../utils/constant/useSidebar';
-
+import { Api } from "../utils/Api";
+import {formatTime} from '../utils/constant/formatDate'
 
 function Notification() {
   const { sidebarOpen, toggleSidebar } = UseSidebar();
+  const [notifications, setNotifications] = useState([]);
 
+  useEffect(() => {
+		const getNotification = async () => {
+		  const data = await Api("/notification", "GET");
+			setNotifications(data.notification);																													
+		};
+	
+		getNotification();
+	}, []);
 
   return(
     <div className="flex flex-col h-screen overflow-hidden ">
@@ -40,74 +50,29 @@ function Notification() {
 
               <div className="flex-auto  pt-0 pb-2">
                 <div className="overflow-x-auto px-2 pt-3">
-                  
-                    <Link to='/SingleNotification'>
+                  {notifications.map((notification,id) => (
+                    <Link key={id} to={`/SingleNotification/${notification.notification_id}`}>
                         <div className=" pt-2">
                           <div className="rounded bg-gray-100 px-2 py-5">
                               <div className=" flex items-center justify-between">
                                 <div className='flex'>
                                     <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-lg text-black'>A</p>
+                                      <p className='text-lg text-black'>{notification.user.username}</p>
                                     </div>
                                     <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
-                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
+                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">{notification.user.role}</span></p>                          
+                                      <p className="focus:outline-none text-md leading-none">{notification.user.username}</p>                          
                                     </div>
                                 </div>
-                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
+                                  <p className='text-black text-sm uppercase'>{formatTime(notification.createdAt)}</p>                      
                               </div>                 
                           <div>
-                          <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
+                          <p className="focus:outline-none text-md pt-1 text-gray-500">{notification.message}</p>
                           </div>
                           </div>
                         </div>
                     </Link>
-
-                    <Link to='/SingleNotification'>
-                        <div className=" pt-2">
-                          <div className="rounded bg-gray-100 px-2 py-5">
-                              <div className=" flex items-center justify-between">
-                                <div className='flex'>
-                                    <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-lg text-black'>A</p>
-                                    </div>
-                                    <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
-                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
-                                    </div>
-                                </div>
-                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
-                              </div>                 
-                          <div>
-                          <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
-                          </div>
-                          </div>
-                        </div>
-                    </Link>
-
-
-                    <Link to='/SingleNotification'>
-                        <div className=" pt-2">
-                          <div className="rounded bg-gray-100 px-2 py-5">
-                              <div className=" flex items-center justify-between">
-                                <div className='flex'>
-                                    <div className="focus:outline-none w-9 h-9 border rounded-full border-gray-200 bg-white flex items-center justify-center">
-                                      <p className='text-lg text-black'>A</p>
-                                    </div>
-                                    <div className="pl-3">
-                                      <p className="focus:outline-none text-sm leading-none"><span className="text-indigo-700 text-md">Manager</span></p>                          
-                                      <p className="focus:outline-none text-md leading-none">maanyu</p>                          
-                                    </div>
-                                </div>
-                                  <p className='text-black text-sm uppercase'>12:00 Pm</p>                      
-                              </div>                 
-                          <div>
-                          <p className="focus:outline-none text-md pt-1 text-gray-500">Meeting 12 o'clock</p>
-                          </div>
-                          </div>
-                        </div>
-                    </Link>
-
+                    ))}
                 </div>
               </div>
               </div>

@@ -29,7 +29,8 @@ const Notification = database.define("notifications",{
 }
 );
 
-User.hasMany(Notification, { foreignKey: 'user_id' });
+// User.hasMany(Notification, { foreignKey: 'user_id' });
+Notification.belongsTo(User, { foreignKey: 'user_id' });
 
 database.sync()
   .then(() => {

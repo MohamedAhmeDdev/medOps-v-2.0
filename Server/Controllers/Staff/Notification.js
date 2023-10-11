@@ -1,4 +1,5 @@
 const Notification = require('../../Models/Notification')
+const User = require('../../Models/userModel')
 
 
 const createNotification = async (req, res) => {
@@ -26,7 +27,11 @@ const createNotification = async (req, res) => {
 
 const getAllNotificationInfo = async (req, res) => {
     try {
-      const notificationInfo = await Notification.findAll({ order: [['company_name', 'ASC']],});  
+      const notificationInfo = await Notification.findAll({   
+      include: [{
+        model: User,
+      }],
+       order: [['createdAt', 'DESC']],});  
       return res.status(200).json({ success: true, notification: notificationInfo  });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
@@ -38,7 +43,11 @@ const getAllNotificationInfo = async (req, res) => {
 const getNotificationById = async (req, res) => {
   const id = req.params.id
   try {
-    const notificationById = await Notification.findAll({ where: { supplier_id: id}});
+    const notificationById = await Notification.findAll({ 
+      include: [{
+      model: User,
+    }],
+    where: { notification_id: id}});
 
     return res.status(200).json({success: true, notification: notificationById });
   } catch (error) {

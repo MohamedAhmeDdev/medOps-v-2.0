@@ -13,7 +13,7 @@ const reportApproval = async (req, res) => {
         return res.status(404).json({ success: false, message: "password Report not found"})
       }
      const updateOrder = await PasswordReport.update({ 
-        // approver: user_id,
+        approver: user_id,
         status: status,
         approval_time : new Date(),
       },{ where:{request_id: id }});    
