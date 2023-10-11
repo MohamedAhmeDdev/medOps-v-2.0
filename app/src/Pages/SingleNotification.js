@@ -51,7 +51,7 @@ function SingleNotification() {
               <div className="flex-none w-full max-w-full px-3">
                     <div className="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid rounded-lg bg-clip-border"> 
                         <div className="p-4 leading-loose">
-                            <p className="text-lg"><span className='font-semibold'>Subject: </span><span>{role}</span></p>
+                            <p className="text-lg"><span className='font-semibold'>Subject: </span><span>{subject}</span></p>
                             <p className="text-lg"><span className='font-semibold'>From:</span><span> {username}, [{role}]</span></p>
                                 <div className='p-5'> 
                                 <p>Hello ,</p>

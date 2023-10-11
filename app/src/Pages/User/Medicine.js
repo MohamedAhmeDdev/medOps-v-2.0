@@ -10,7 +10,7 @@ function Medicine() {
     const [medicine, setMedicine] = useState([]);
       const [searchQuery, setSearchQuery] = useState('');
     const { addToCart, } = UseCartContext();
-    const { showSuccessNotification, showErrorNotification } = useNotification();
+    const { showSuccessNotification } = useNotification();
 
     const handleAddToCart = (item) => {
       // Add the item to the cart

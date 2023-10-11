@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside';
 import UseSidebar from '../utils/constant/useSidebar';
 import { useNotification } from '../utils/context/NotificationContext';
-import axios from 'axios'
 import { Api } from "../utils/Api";
 
 function CreateNotification() {
@@ -16,7 +15,7 @@ function CreateNotification() {
       e.preventDefault();
   
       try {
-        const response = await Api('/notification', 'POST',{
+       await Api('/notification', 'POST',{
           subject: subject,
           message: message,
       

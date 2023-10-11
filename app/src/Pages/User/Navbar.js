@@ -1,5 +1,5 @@
-import { Fragment, useState, useEffect } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Fragment, useState} from "react";
+import { Menu, Transition } from "@headlessui/react";
 import logo from '../../assets/img/logo.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 import { UseCartContext } from "../../utils/Hook/UseCartContext";
