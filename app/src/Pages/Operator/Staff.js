@@ -11,7 +11,7 @@ function Staff() {
   useEffect(() => {
 		const getUsers = async () => {
 		  const data = await Api("/Operator/UserStaffs", "GET");
-			setStaff(data.user);															
+			setStaff(data.user);																												
 		};
 	
 		getUsers();
@@ -75,7 +75,7 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight">{staff.role}</p>
                           </td>
                            <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">{staff.function}</p>
+                            <p className="mb-0 text-sm leading-tight">{staff.staffWarehouses[0]?.staff_function}</p>
                           </td>
                           <td className="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in  </span>

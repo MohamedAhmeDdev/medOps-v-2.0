@@ -145,7 +145,6 @@ const getStaff = async (req, res) => {
         required: false
       },{
         model: StaffWarehouse,
-        attributes: ['account_status'],
       }],
       order: [['username', 'ASC']],
     });
@@ -171,7 +170,6 @@ const getAllStaffById = async (req, res) => {
       where: { user_id: id },
       include: [{
         model: StaffWarehouse,
-         attributes: ['account_status'],
       }]
     });
     
@@ -208,7 +206,7 @@ const getSingleShift = async (req, res) => {
 //update user role
 const updateStaff = async (req, res) => { 
   const  id  = req.params.id
-  const { username, email, phoneNumber, address, role } = req.body;
+  const { username, email, phoneNumber, address, role, staffFunction } = req.body;
 
   let validatePhoneNumber = "";
   if (phoneNumber !== undefined && phoneNumber !== null) {
@@ -229,8 +227,12 @@ const updateStaff = async (req, res) => {
       role: role
    },{where: {user_id: id}});
 
+   const updateStaffWarehouse = await StaffWarehouse.update({
+    staff_function: staffFunction,
+  },{where: {user_id: id}});
+  
 
-    res.status(200).json({ success: true, user: updatedUserRole});
+    res.status(200).json({ success: true, user: updatedUserRole, updateStaffWarehouse});
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ success: false, message: error.message });

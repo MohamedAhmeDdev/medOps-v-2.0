@@ -29,7 +29,7 @@ function UpdateStaffInfo() {
     setPhoneNumber(response.data.user.phoneNumber);
     setAddress(response.data.user.address);
     setRole(response.data.user.role);
-    setStaffFunction(response.data.user.function);
+    setStaffFunction(response.data.user?.staffWarehouses[0].staff_function);
 };
 
 useEffect(() => {

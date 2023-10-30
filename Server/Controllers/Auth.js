@@ -54,7 +54,7 @@ const signupForUser = async (req, res) => {
           email: email,
           role: 'User',
         });
-        const token = createToken(user.user_id, user.role, user.address, user.username);
+        const token = createToken(user.user_id, user.role, user.staff_function, user.address, user.username);
         return res.status(200).json({ success: true,user: { token: token }
         });
       } catch (error) {
@@ -100,7 +100,7 @@ const login = async (req, res) => {
             if (err || !match) {
               return res.status(401).json({ success: false, message: "Incorrect Password" });
             } else {
-              const token = createToken(foundUser.user_id, foundUser.role, foundUser.address, foundUser.username);
+              const token = createToken(foundUser.user_id, foundUser.role, foundUser.staff_function, foundUser.address, foundUser.username);
               return res.status(200).json({ success: true,user: { token: token }
               });
             }

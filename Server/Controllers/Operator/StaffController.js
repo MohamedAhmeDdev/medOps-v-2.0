@@ -59,9 +59,8 @@ const getStaff = async (req, res) => {
         required: false,
       },{
         model: StaffWarehouse,
-        attributes: ['account_status'],
       }],
-      where:{role:["Transport", "Operator", "Logistic"]},
+      where:{role:["Transporter", "Operator", "Logistics"]},
       order: [['username', 'ASC']],
     });
 
