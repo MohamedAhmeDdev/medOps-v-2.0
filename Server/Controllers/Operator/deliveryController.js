@@ -1,9 +1,9 @@
-const Delivery = require('../../Models/deliveryModel')
-const Order = require('../../Models/orderModel')
-const Transport = require('../../Models/transportModel')
-const User = require('../../Models/userModel')
-const OrderList = require('../../Models/orderListModel')
-const Medicine = require('../../Models/medicineModel')
+const Delivery = require('../../Models/delivery')
+const Order = require('../../Models/order')
+const Transport = require('../../Models/transport')
+const User = require('../../Models/user')
+const OrderList = require('../../Models/orderList')
+const Medicine = require('../../Models/medicine')
 
 
 const searchDelivery = async (req, res) => {

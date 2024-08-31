@@ -1,4 +1,4 @@
-const User = require("../../Models/userModel")
+const User = require("../../Models/user")
 
 
 //search for user

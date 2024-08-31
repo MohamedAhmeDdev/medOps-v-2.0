@@ -11,7 +11,6 @@ const UserMedicine = require('./Routes/User/medicineRoute');
 
 
 const StaffShift = require('./Routes/Staff/ShiftRoute');
-const StaffNotification = require('./Routes/Staff/Notification');
 const StaffPasswordReport = require('./Routes/Staff/PasswordReport');
 
 
@@ -33,14 +32,13 @@ const OperatorOrder = require('./Routes/Operator/orderRoute');
 const OperatorDelivery = require('./Routes/Operator/deliveryRoute');
 const OperatorTransport = require('./Routes/Operator/transportRoute');
 
-const ManagerWarehouse = require('./Routes/Manager/warehouseRoute');
+
 const ManagerUserStaff = require('./Routes/Manager/StaffRoute');
 const ManagerUsers = require('./Routes/Manager/User');
 const ManagerPasswordReport = require('./Routes/Manager/PasswordReport');
 const ManagerDelivery = require('./Routes/Manager/deliveryRoute');
 const ManagerTransport = require('./Routes/Manager/transportRoute');
 const ManagerSupplier = require('./Routes/Manager/SupplierRoute');
-const ManagerOrderReport = require('./Routes/Manager/orderReportRoute');
 const ManagerMedicineCategory = require('./Routes/Manager/medicineCategoryRoute');
 const ManagerMedicine = require('./Routes/Manager/medicineRoute');
 
@@ -59,7 +57,6 @@ app.use('/medicine', UserMedicine)
 
 // //Staff Login 
 app.use('/Shift', StaffShift)
-app.use('/notification', StaffNotification)
 app.use('/PasswordReport', StaffPasswordReport)
 
 
@@ -85,14 +82,12 @@ app.use('/Operator/Deliveries', OperatorDelivery)
 app.use('/Operator/Transports', OperatorTransport)
 
 // //Manager API
-app.use('/Manager/Warehouse', ManagerWarehouse)
 app.use('/Manager/StaffWarehouse', ManagerUserStaff)
 app.use('/Manager/Users',  ManagerUsers)
 app.use('/Manager/PasswordReport', ManagerPasswordReport)
 app.use('/Manager/Deliveries', ManagerDelivery)
 app.use('/Manager/Transports', ManagerTransport)
 app.use('/Manager/Supplier', ManagerSupplier)
-app.use('/Manager/orderReport', ManagerOrderReport)
 app.use('/Manager/medicineCategory', ManagerMedicineCategory)
 app.use('/Manager/medicines', ManagerMedicine)
 

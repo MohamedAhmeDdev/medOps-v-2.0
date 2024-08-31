@@ -1,4 +1,4 @@
-const Supplier = require('../../Models/SupplierModel')
+const Supplier = require('../../Models/Supplier')
 
 
 

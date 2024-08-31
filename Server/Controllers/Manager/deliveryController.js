@@ -1,7 +1,7 @@
-const Delivery = require('../../Models/deliveryModel')
-const Order = require('../../Models/orderModel')
-const Transport = require('../../Models/transportModel')
-const User = require('../../Models/userModel')
+const Delivery = require('../../Models/delivery')
+const Order = require('../../Models/order')
+const Transport = require('../../Models/transport')
+const User = require('../../Models/user')
 const cron = require('node-cron');
 const {Op} = require('sequelize')
 

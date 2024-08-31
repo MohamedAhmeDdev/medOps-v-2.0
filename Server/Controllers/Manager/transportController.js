@@ -1,6 +1,6 @@
-const Transport = require('../../Models/transportModel')
-const User = require('../../Models/userModel')
-const StaffWarehouse = require("../../Models/staffWarehouseModel");
+const Transport = require('../../Models/transport')
+const User = require('../../Models/user')
+const StaffWarehouse = require("../../Models/staff");
 
 
 const createTransport = async (req, res) => {

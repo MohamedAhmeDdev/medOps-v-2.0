@@ -1,5 +1,5 @@
-const PasswordReport = require("../../Models/PasswordReportModel");
-const User = require("../../Models/userModel");
+const PasswordReport = require("../../Models/PasswordReport");
+const User = require("../../Models/user");
 
 
 

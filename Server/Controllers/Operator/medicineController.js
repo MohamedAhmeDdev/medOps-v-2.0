@@ -1,6 +1,6 @@
-const Medicine = require('../../Models/medicineModel')
-const Supplier = require('../../Models/SupplierModel')
-const MedicineCategory = require('../../Models/medicineCategoryModel')
+const Medicine = require('../../Models/medicine')
+const Supplier = require('../../Models/Supplier')
+const MedicineCategory = require('../../Models/medicineCategory')
 
 
 const searchApi = async (req, res) => {

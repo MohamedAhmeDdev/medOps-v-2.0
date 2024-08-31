@@ -1,4 +1,4 @@
-const User = require("../../Models/userModel");
+const User = require("../../Models/user");
 const validator =require('validator')
 
 

@@ -1,7 +1,7 @@
-const Shift = require('../../Models/shiftLogsModel')
-const User = require('../../Models/userModel')
-const StaffWarehouse = require('../../Models/staffWarehouseModel')
-const Transport = require('../../Models/transportModel')
+const Shift = require('../../Models/shiftLogs')
+const User = require('../../Models/user')
+const StaffWarehouse = require('../../Models/staff')
+const Transport = require('../../Models/transport')
 
 
 

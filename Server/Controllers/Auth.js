@@ -1,8 +1,8 @@
-const User = require("../Models/userModel");
+const User = require("../Models/user");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
 const { JWT_SECRET, } = require('../constant/index');
-const StaffWarehouse = require("../Models/staffWarehouseModel");
+const StaffWarehouse = require("../Models/staff");
 const validator =require('validator')
 const nodemailer =require('nodemailer')
 const { EMAIL_PASS, EMAIL_USER, } = require('../constant/index');

@@ -1,6 +1,6 @@
-const User = require("../../Models/userModel");
-const StaffWarehouse = require("../../Models/staffWarehouseModel");
-const ShiftLogs = require("../../Models/shiftLogsModel");
+const User = require("../../Models/user");
+const StaffWarehouse = require("../../Models/staff");
+const ShiftLogs = require("../../Models/shiftLogs");
 
 
 

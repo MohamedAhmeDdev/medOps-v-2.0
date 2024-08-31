@@ -1,5 +1,5 @@
-const Transport = require('../../Models/transportModel')
-const User = require('../../Models/userModel')
+const Transport = require('../../Models/transport')
+const User = require('../../Models/user')
 
 
 

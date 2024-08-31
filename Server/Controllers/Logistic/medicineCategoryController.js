@@ -1,4 +1,4 @@
-const MedicineCategory = require('../../Models/medicineCategoryModel')
+const MedicineCategory = require('../../Models/medicineCategory')
 
 
 const createMedicineCategory = async (req, res) => {

@@ -1,7 +1,7 @@
-const Order = require('../../Models/orderModel')
-const OrderList = require('../../Models/orderListModel')
-const User = require('../../Models/userModel')
-const Medicine = require('../../Models/medicineModel')
+const Order = require('../../Models/order')
+const OrderList = require('../../Models/orderList')
+const User = require('../../Models/user')
+const Medicine = require('../../Models/medicine')
 
 
 const createOrder = async (req, res) => {
