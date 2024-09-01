@@ -14,7 +14,7 @@ const User = database.define("users",{
         type: DataTypes.STRING,
     },
     phoneNumber:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
     },
     password:{
         type: DataTypes.STRING,

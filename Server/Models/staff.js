@@ -1,6 +1,5 @@
 const {DataTypes} = require('sequelize')
 const database = require('../config/database')
-const User = require('./user')
 const Role = require('./roles')
 
 const staff = database.define("staffs",{
@@ -9,12 +8,20 @@ const staff = database.define("staffs",{
         primaryKey: true,
         autoIncrement: true,
     },
-    user_id:{
-        type: DataTypes.INTEGER,
-        references: {
-            model: User,
-            key: 'user_id',
-        }
+    name:{
+        type: DataTypes.STRING,
+    },
+    email:{
+        type: DataTypes.STRING,
+    },
+    phoneNumber:{
+        type: DataTypes.STRING,
+    },
+    password:{
+        type: DataTypes.STRING,
+    },  
+    address:{
+        type: DataTypes.STRING,
     },
     role_id:{
         type: DataTypes.INTEGER,
@@ -33,7 +40,7 @@ const staff = database.define("staffs",{
 }
 );
 
-User.hasMany(staff, { foreignKey: 'user_id' });
+
 staff.belongsTo(Role, { foreignKey: 'role_id' });
 
 database.sync()

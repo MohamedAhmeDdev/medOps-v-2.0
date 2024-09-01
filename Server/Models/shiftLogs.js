@@ -1,6 +1,6 @@
 const {DataTypes} = require('sequelize')
 const database = require('../config/database')
-const Role = require('./staff')
+const Staff = require('./staff')
 
 const Shift = database.define("shifts",{
     shift_id:{
@@ -8,11 +8,11 @@ const Shift = database.define("shifts",{
         primaryKey: true,
         autoIncrement: true,
     },
-    role_id:{
+    staff_id:{
         type: DataTypes.INTEGER,
         references: {
-            model: Role,
-            key: 'role_id',
+            model: Staff,
+            key: 'staff_id',
         }
     },
     shift_status:{
@@ -35,8 +35,8 @@ const Shift = database.define("shifts",{
 );
 
 
-Shift.belongsTo(Role, { foreignKey: 'role_id' });
-Role.hasMany(Shift, { foreignKey: 'role_id' });
+Shift.belongsTo(Staff, { foreignKey: 'staff_id' });
+Staff.hasMany(Shift, { foreignKey: 'staff_id' });
 
 database.sync()
   .then(() => {
