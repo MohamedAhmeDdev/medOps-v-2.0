@@ -1,10 +1,10 @@
 const PasswordReport = require("../../Models/PasswordReport");
-const User = require("../../Models/user");
+const Staff = require("../../Models/staff");
 
 
 
 const reportApproval = async (req, res) => {
-     const user_id = req.user.user_id;
+     const staff_id = req.Role.Role_id;
      const { id }  = req.params;
      const {status} = req.body
     try {  
@@ -13,11 +13,10 @@ const reportApproval = async (req, res) => {
         return res.status(404).json({ success: false, message: "password Report not found"})
       }
      const updateOrder = await PasswordReport.update({ 
-        approver: user_id,
+        approver: staff_id,
         status: status,
         approval_time : new Date(),
       },{ where:{request_id: id }});    
-
 
       return res.status(200).json({ success: true, report: updateOrder, });
     } catch (error) {
@@ -27,12 +26,12 @@ const reportApproval = async (req, res) => {
 
 
 
-const getAllPasswordReport = async (req, res) => {
+const getAllPasswordReport = async (req, res) => {  
   try {
     const report = await PasswordReport.findAll({ 
       include: [{
-        model: User,
-        attributes: ['username']
+        model: Staff,
+        attributes: ['name']
       }],
       order: [['createdAt', 'ASC']],});  
     return res.status(200).json({ success: true, report  });

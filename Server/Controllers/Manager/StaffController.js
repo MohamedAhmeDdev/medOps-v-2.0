@@ -1,6 +1,7 @@
-const User = require("../../Models/user");
-const StaffWarehouse = require("../../Models/staff");
+const Role = require("../../Models/roles");
+const Staff = require("../../Models/staff");
 const ShiftLogs = require("../../Models/shiftLogs");
+const PasswordReport = require("../../Models/PasswordReport");
 const validator =require('validator')
 const generatePassword = require('generate-password');
 const nodemailer =require('nodemailer')
@@ -12,9 +13,9 @@ const {Op} = require('sequelize')
 
 //create account for staff
 const CreateAccountForStaff = async (req, res) => {
-  const { username, phoneNumber, address, email, role, staffFunction } = req.body;
+  const { name, phoneNumber, address, email, role } = req.body;
 
-  if (!username || !phoneNumber || !address || !email || !role || !staffFunction) {
+  if (!name || !phoneNumber || !address || !email || !role) {
     return res.status(400).json({success: false, message: "All Fields Are Required"});
   }
 
@@ -22,30 +23,27 @@ const CreateAccountForStaff = async (req, res) => {
     return res.status(401).json({success: false, message:("Please enter a valid phone number")});
   }
 
-  const checkingIfEmailExists = await User.findOne({ where: { email: email } });
-  if (checkingIfEmailExists) {
+  const emailIfExists = await Staff.findOne({ where: { email: email } });
+  if (emailIfExists) {
     return res.status(402).json({success: false, message: "Email already exists"});
   } else {
     try {
       const password = generatePassword.generate({
         length:8, numbers:true, symbols:false,uppercase:true, excludeSimilarCharacters:true,
       });
-      const encryptedPassword = await bcrypt.hash(password, 10);
+      console.log(password);
       
-      const user = await User.create({
-        username: username,
+      const encryptedPassword = await bcrypt.hash(password, 10); 
+       
+      const roles = await Role.findOne({ where: { role: role } });
+
+      const staff = await Staff.create({
+        name: name,
         phoneNumber: phoneNumber,
         address: address,
         email: email,
         password: encryptedPassword,
-        role: role
-      });
-       
-      const getUserId = await User.findOne({ where: { email: email } });
-
-      const staffWarehouse = await StaffWarehouse.create({
-        user_id: getUserId.user_id,
-        staff_function: staffFunction,
+        role_id: roles.role_id,
         account_status: "Active"
       });
 
@@ -57,7 +55,7 @@ const CreateAccountForStaff = async (req, res) => {
         }
       })
       const mailOption = {
-        to: `${getUserId.email}`,
+        to: `${staff.email}`,
         subject: "Login Credentials For MedOps",
         html: `
           <html>
@@ -65,7 +63,7 @@ const CreateAccountForStaff = async (req, res) => {
               <div class="max-w-md mx-auto p-8 bg-white rounded-md shadow-md">
                 <h2>MedOps</h2>
                 <p class="text-2xl mb-4">Login Credentials</p>
-                <p class="mb-4">Email: <b>${getUserId.email}</b></p>
+                <p class="mb-4">Email: <b>${staff.email}</b></p>
                 <p class="mb-4">Password: <b>${password}</b></p>
                 <p class="mb-4">Only for your Eyes, login in medOps system. Please remember to change your password after logging in.</p>
               </div>
@@ -78,11 +76,10 @@ const CreateAccountForStaff = async (req, res) => {
             console.log('There was an error',err);
           }else{
             console.log('There was a response ',response);
-            res.status(200).json('recovery email sent ')
+            res.status(200).json('email sent ')
           }
       })
-
-      return res.status(200).json({ success: true, user, staffWarehouse });
+      return res.status(200).json({ success: true, staff });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }
@@ -91,93 +88,40 @@ const CreateAccountForStaff = async (req, res) => {
 
 
 
-const searchForStaff = async (req, res) => {
-    const today = new Date();
-  const shiftDate = today.toISOString().split('T')[0];
-  try {
-    const { username, phoneNumber, email,  } = req.query;
-    const users = await User.findAll({ order: [['username', 'ASC']],
-    include: [{
-      model: ShiftLogs,
-      attributes: ['shift_status', 'start_time', 'end_time', 'Date'],
-      where: {Date: shiftDate,},
-      required: false,
-    },{
-        model: StaffWarehouse,
-         attributes: ['account_status'],
-      }],
-    });
-
-    const searchStaff = users.filter(user => {
-      if (
-        (username && user.username !== String(username)) ||
-        (phoneNumber && user.phoneNumber !== Number(phoneNumber)) ||
-        (email && user.email !== String(email))
-      ){
-        return false;
-      }
-      return true;
-    });
 
 
-    if (!searchStaff) {
-      return res.status(404).json({ success: false, message: "No matching results found"});
-    }
-
-    return res.status(200).json({ success: true, user: searchStaff });
-  } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-
-
+//get all
 const getStaff = async (req, res) => {
   const today = new Date();
   const shiftDate = today.toISOString().split('T')[0];
 
   try {
-    const staff = await User.findAll({
+    const staffs = await Staff.findAll({
       include: [{
         model: ShiftLogs,
         attributes: ['shift_status', 'start_time', 'end_time'],
         where: {Date: shiftDate,},
         required: false
-      },{
-        model: StaffWarehouse,
       }],
-      order: [['username', 'ASC']],
     });
 
-  
-    const getOnlyStaff = staff.filter((user) => user.role !== "User");
-    if (!getOnlyStaff) {
-      return res.status(400).json({ success: false, message: "staff not found" });
-    }
-
-    return res.status(200).json({ success: true, staff: getOnlyStaff });
+    return res.status(200).json({ success: true, staff: staffs });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
 }
 
 
+
 //get all staff by id
 const getAllStaffById = async (req, res) => {
   const  id  = req.params.id
   try {
-    const staffById = await User.findOne({
-      where: { user_id: id },
-      include: [{
-        model: StaffWarehouse,
-      }]
-    });
-    
-
+    const staffById = await Staff.findOne({where: { staff_id: id }});
+  
     if (!staffById) {
       return res.status(400).json({ success: false, message: "staff not found" });
     }
-
 
     return res.status(200).json({ success: true, user: staffById });
   } catch (error) {
@@ -186,12 +130,19 @@ const getAllStaffById = async (req, res) => {
 }
 
 
-
+// get all shift for staff
 const getSingleShift = async (req, res) => {
   const { id } = req.params;
+
+  const staffs = await Staff.findOne({ where: {	staff_id: id } });
+  if (!staffs) {
+    return res.status(404).json({
+      success: false,
+      message: "staff not found",
+    });
+  }
  try {
-   const shift = await ShiftLogs.findAll({
-     where: {user_id : id },
+   const shift = await ShiftLogs.findAll({where: {staff_id : id },
      order: [['Date', 'DESC']],
    });
 
@@ -206,7 +157,7 @@ const getSingleShift = async (req, res) => {
 //update user role
 const updateStaff = async (req, res) => { 
   const  id  = req.params.id
-  const { username, email, phoneNumber, address, role, staffFunction } = req.body;
+  const { name, email, phoneNumber, address, role,  } = req.body;
 
   let validatePhoneNumber = "";
   if (phoneNumber !== undefined && phoneNumber !== null) {
@@ -216,23 +167,20 @@ const updateStaff = async (req, res) => {
     }
     validatePhoneNumber = phoneNumberStr;
   }
-
   
   try {
-   const updatedUserRole =  await User.update({
-      username: username,
+   const updatedRole =  await  Staff.update({
+      name: name,
       phoneNumber: validatePhoneNumber,
       address: address,
       email: email,
       role: role
-   },{where: {user_id: id}});
+   },{where: {user_id: id}});  
 
-   const updateStaffWarehouse = await StaffWarehouse.update({
-    staff_function: staffFunction,
-  },{where: {user_id: id}});
-  
-
-    res.status(200).json({ success: true, user: updatedUserRole, updateStaffWarehouse});
+    res.status(200).json({ 
+      success: true,
+      message: "Please enter a valid phone number",
+      user: updatedRole});
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({ success: false, message: error.message });
@@ -240,16 +188,30 @@ const updateStaff = async (req, res) => {
 };
 
 
+
+
 //user deactivate function
-const UserDeactivate = async (req, res) => {
+const staffStatus = async (req, res) => {
   const  id  = req.params.id
   const { account_status } = req.body;
 
+  const staffs = await Staff.findOne({ where: {	staff_id: id } });
+  if (!staffs) {
+    return res.status(404).json({
+      success: false,
+      message: "staff not found",
+    });
+  }
+
   try {
-     const deactivate =  await StaffWarehouse.update({
-      account_status: account_status
-     },{ where: {  user_id: id} });
-     res.status(200).json({ success: true, user: deactivate});
+     const userStatus =  await Staff.update({account_status: account_status},{
+       where: {  staff_id: id}
+       });
+     res.status(200).json({
+       success: true,
+       message: "status updated",
+       userStatus
+      });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
   }
@@ -257,37 +219,46 @@ const UserDeactivate = async (req, res) => {
 
 
 
- 
-const deleteShiftLogs = async () => {
+// delete staff
+const deleteStaff = async (req, res) => {
+  const id = req.params.id;
   try {
-    const currentDate = new Date();
-    const previousMonth = currentDate.getMonth() - 2;
-    const year = currentDate.getFullYear();
-    const startDate = new Date(year, previousMonth, 1);
-    const endDate = new Date(year, previousMonth + 1, 0);
+    const staffs = await Staff.findOne({ where: { staff_id: id } });
+    if (!staffs) {
+      return res.status(404).json({
+        success: false,
+        message: "Staff not found",
+      });
+    } else {
+      await ShiftLogs.destroy({ where: { staff_id: id } });
+      await PasswordReport.destroy({ where: { staff_id: id } });
+      await Staff.destroy({ where: { staff_id: id } });
 
-    await Shift.destroy({
-      where:{Date:{[Op.between]:[startDate, endDate]}},
-    });
-
-    console.log('shiftLogins deleted successfully on the 2nd day of the month.');
+      return res.status(200).json({
+        success: true,
+        message: "Staff deleted",
+        staff_id: id,
+      });
+    }
   } catch (error) {
-    console.log('An error occurred during deleting shiftLogins :', error);
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 
-cron.schedule('0 0 2 * *', () => {
-  deleteShiftLogs();
-});
+
+
 
 
 
 module.exports = {
   CreateAccountForStaff,
-  searchForStaff,
   getStaff,
   getAllStaffById,
   getSingleShift,
   updateStaff,
-  UserDeactivate,
+  staffStatus,
+  deleteStaff
 };

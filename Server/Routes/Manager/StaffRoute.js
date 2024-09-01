@@ -1,22 +1,22 @@
 const {
     CreateAccountForStaff,
-    searchForStaff,
     getStaff,
     getSingleShift,
     getAllStaffById,
     updateStaff,
-    UserDeactivate,
+    staffStatus,
+    deleteStaff
 } = require("../../Controllers/Manager/StaffController");
 
 const AuthRouter = require("express").Router();
 
 AuthRouter.post("/", CreateAccountForStaff);
-AuthRouter.get("/search", searchForStaff);
 AuthRouter.get("/", getStaff);
-AuthRouter.get("/getSingleShift/:id", getSingleShift);
 AuthRouter.get("/:id", getAllStaffById);
+AuthRouter.get("/shifts/:id", getSingleShift);
 AuthRouter.patch("/updateStaff/:id", updateStaff);
-AuthRouter.patch("/UserDeactivate/:id", UserDeactivate);
+AuthRouter.patch("/staffStatus/:id", staffStatus);
+AuthRouter.delete("/staff/:id", deleteStaff);
 
   
   

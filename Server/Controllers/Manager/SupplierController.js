@@ -7,10 +7,7 @@ const createSupplier = async (req, res) => {
       return res.status(400).json({success: false, message: "All Fields Are Required"});
     }
 
-    if (!validator.isMobilePhone(phone, "en-KE")) {
-      return res.status(401).json({success: false, message:("Please enter a valid phone number")});
-    }
-
+  
     try {
       const supplier = await Supplier.create({
         company_name: company_name ,
@@ -19,40 +16,17 @@ const createSupplier = async (req, res) => {
         phone: phone,
         company_address:company_address, 
        });
-        return res.status(200).json({ success: true,  supplier});
+        return res.status(200).json({
+           success: true,
+           message: "supervisor created",
+           supplier
+            });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }  
 }
 
 
-
-const searchForSupplier = async (req, res) => {
-  try {
-    const { company_name, contact_person, email, phone, } = req.query;
-
-    const supplier = await Supplier.findAll({ order: [['company_name', 'ASC']],});
-    const searchSupplier = supplier.filter((supplier) => {
-      if (
-        (company_name && supplier.company_name !== String(company_name)) ||
-        (contact_person && supplier.contact_person !== String(contact_person)) ||
-        (email && supplier.email !== String(email)) ||
-        (phone && supplier.phone !== Number(phone))
-      ) {
-        return false;
-      }
-      return true;
-    });
-
-  if (!searchSupplier) {
-    return res.status(404).json({ success: false, message: "No matching results found"});
-  }
-
-    return res.status(200).json({ success: true, supplier: searchSupplier });
-  } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
-  }
-};
 
 
 const getAllSupplierInfo = async (req, res) => {
@@ -66,8 +40,18 @@ const getAllSupplierInfo = async (req, res) => {
 
 
 
+
 const getSupplierById = async (req, res) => {
   const id = req.params.id
+
+  const supplier = await Supplier.findOne({ where: { supplier_id: id } });
+  if (!supplier) {
+    return res.status(404).json({
+      success: false,
+      message: "supplier not found",
+    });
+  }
+
   try {
     const supplierById = await Supplier.findAll({ where: { supplier_id: id}});
 
@@ -83,24 +67,18 @@ const UpdateSupplierInfo = async (req, res) => {
   const id = req.params.id
   const {company_name,contact_person, email, phone, company_address  } = req.body;
 
-  let validatePhoneNumber = "";
-  if (phone !== undefined && phone !== null) {
-    const phoneNumberStr = phone.toString();
-    if (!validator.isMobilePhone(`0${phoneNumberStr}`, "en-KE")) {
-      return res.status(400).json({ success: false, message: "Please enter a valid phone number" });
-    }
-    validatePhoneNumber = phoneNumberStr;
-  }
-
     try {  
       const UpdateSupplier = await Supplier.update({ 
         company_name: company_name ,
         contact_person: contact_person,
         email: email,
-        phone: validatePhoneNumber,
+        phone: phone,
         company_address:company_address, 
      },{where: {supplier_id: id} });
-      return res.status(200).json({ success: true, supplier:UpdateSupplier});
+      return res.status(200).json({ 
+        success: true,
+        message: "supplier updated",
+        supplier:UpdateSupplier});
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message});
     }
@@ -110,7 +88,6 @@ const UpdateSupplierInfo = async (req, res) => {
  
 module.exports = {
     createSupplier,
-    searchForSupplier,
     getAllSupplierInfo,
     getSupplierById,
     UpdateSupplierInfo,

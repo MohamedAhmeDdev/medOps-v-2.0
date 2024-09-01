@@ -33,10 +33,10 @@ const OperatorDelivery = require('./Routes/Operator/deliveryRoute');
 const OperatorTransport = require('./Routes/Operator/transportRoute');
 
 
-const ManagerUserStaff = require('./Routes/Manager/StaffRoute');
+const ManagerRoles = require('./Routes/Manager/roleRoute');
+const ManagerStaff = require('./Routes/Manager/StaffRoute');
 const ManagerUsers = require('./Routes/Manager/User');
 const ManagerPasswordReport = require('./Routes/Manager/PasswordReport');
-const ManagerDelivery = require('./Routes/Manager/deliveryRoute');
 const ManagerTransport = require('./Routes/Manager/transportRoute');
 const ManagerSupplier = require('./Routes/Manager/SupplierRoute');
 const ManagerMedicineCategory = require('./Routes/Manager/medicineCategoryRoute');
@@ -47,22 +47,25 @@ const ManagerMedicine = require('./Routes/Manager/medicineRoute');
 app.use(express.json());
 app.use(cors());
 
+
 //Auth
 app.use('/auth', Auth)
+
 
 // //User Api
 app.use('/Users', User)
 app.use('/Orders', UserOrder)
 app.use('/medicine', UserMedicine)
 
+
 // //Staff Login 
 app.use('/Shift', StaffShift)
 app.use('/PasswordReport', StaffPasswordReport)
 
 
-
 // //Transporter API
 app.use('/Transport/Deliveries', TransportDelivery)
+
 
 // //Logistic API
 app.use('/Logistic/Suppliers',  LogisticSupplier)
@@ -81,16 +84,16 @@ app.use('/Operator/Orders', OperatorOrder)
 app.use('/Operator/Deliveries', OperatorDelivery)
 app.use('/Operator/Transports', OperatorTransport)
 
-// //Manager API
-app.use('/Manager/StaffWarehouse', ManagerUserStaff)
-app.use('/Manager/Users',  ManagerUsers)
-app.use('/Manager/PasswordReport', ManagerPasswordReport)
-app.use('/Manager/Deliveries', ManagerDelivery)
-app.use('/Manager/Transports', ManagerTransport)
-app.use('/Manager/Supplier', ManagerSupplier)
-app.use('/Manager/medicineCategory', ManagerMedicineCategory)
-app.use('/Manager/medicines', ManagerMedicine)
 
+// //Manager API
+app.use('/manager/role',  ManagerRoles)
+app.use('/manager/staff', ManagerStaff)
+app.use('/manager/user',  ManagerUsers)
+app.use('/manager/passwordReport', ManagerPasswordReport)
+app.use('/manager/transports', ManagerTransport)
+app.use('/manager/supplier', ManagerSupplier)
+app.use('/manager/medicineCategory', ManagerMedicineCategory)
+app.use('/manager/medicine', ManagerMedicine)
 
 
 
