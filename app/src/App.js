@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
 import Login from "./Pages/Login";
 import StaffShift from "./Pages/Shift";
-import StaffResetPassword from "./Pages/AccountRecovery/ResetPassword";
-import StaffPasswordReport from "./Pages/AccountRecovery/PasswordReport";
-import StaffForgotPassword from "./Pages/AccountRecovery/ForgotPassword";
+import StaffResetPassword from "./AccountRecovery/ResetPassword";
+import StaffPasswordReport from "./AccountRecovery/PasswordReport";
+import StaffForgotPassword from "./AccountRecovery/ForgotPassword";
 import { useEffect } from 'react';
 import jwt_decode from 'jwt-decode';
 import { UseAuthContext } from "./utils/Hook/StaffAuth";
@@ -53,9 +53,7 @@ import TransporterDelivery from "./Pages/Transporter/Delivery";
 import TransporterSingleOrderDelivery from "./Pages/Transporter/SingleOrderDelivery";
 import TransportDashboard from "./Pages/Transporter/Dashboard";
 
-import Notification from "./Pages/Notification";
-import SingleNotification from "./Pages/SingleNotification";
-import CreateNotification from "./Pages/CreateNotification";
+
 
 import Medicine from "./Pages/User/Medicine";
 import Cart from "./Pages/User/Cart";
@@ -114,9 +112,6 @@ function App() {
           <Route path="/ResetPassword/:token" element={<StaffResetPassword/>} />
           <Route path="/PasswordReport/:token" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
-          <Route path="/Notification" element={<Notification/>}/>  
-          <Route path="/CreateNotification" element={<CreateNotification/>}/>  
-          <Route path="/SingleNotification/:id" element={<SingleNotification/>}/>  
 
           {getUserRole() === 'User' && (
             <>
