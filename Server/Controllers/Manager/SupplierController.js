@@ -1,5 +1,7 @@
 const Supplier = require('../../Models/Supplier')
-const validator =require('validator')
+
+
+
 
 const createSupplier = async (req, res) => {
     const {company_name,contact_person, email, phone, company_address  } = req.body;
@@ -7,7 +9,6 @@ const createSupplier = async (req, res) => {
       return res.status(400).json({success: false, message: "All Fields Are Required"});
     }
 
-  
     try {
       const supplier = await Supplier.create({
         company_name: company_name ,
@@ -16,16 +17,11 @@ const createSupplier = async (req, res) => {
         phone: phone,
         company_address:company_address, 
        });
-        return res.status(200).json({
-           success: true,
-           message: "supervisor created",
-           supplier
-            });
+        return res.status(200).json({ success: true,  supplier});
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }  
 }
-
 
 
 
@@ -43,23 +39,15 @@ const getAllSupplierInfo = async (req, res) => {
 
 const getSupplierById = async (req, res) => {
   const id = req.params.id
-
-  const supplier = await Supplier.findOne({ where: { supplier_id: id } });
-  if (!supplier) {
-    return res.status(404).json({
-      success: false,
-      message: "supplier not found",
-    });
-  }
-
   try {
     const supplierById = await Supplier.findAll({ where: { supplier_id: id}});
 
-    return res.status(200).json({success: true, supplier: supplierById });
+    return res.status(200).json({success: true, warehouse: supplierById });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
 }
+
 
 
 
@@ -75,10 +63,7 @@ const UpdateSupplierInfo = async (req, res) => {
         phone: phone,
         company_address:company_address, 
      },{where: {supplier_id: id} });
-      return res.status(200).json({ 
-        success: true,
-        message: "supplier updated",
-        supplier:UpdateSupplier});
+      return res.status(200).json({ success: true, supplier:UpdateSupplier});
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message});
     }
