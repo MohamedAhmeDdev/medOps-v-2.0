@@ -59,8 +59,8 @@ app.use('/medicine', UserMedicine)
 
 
 // //Staff Login 
-app.use('/Shift', StaffShift)
-app.use('/PasswordReport', StaffPasswordReport)
+app.use('/shift', StaffShift)
+app.use('/passwordReport', StaffPasswordReport)
 
 
 // //Transporter API

@@ -16,7 +16,7 @@ const passwordReport = async (req, res) => {
        const foundUser = await User.findOne({ where: { user_id: decoded.id } });
 
         const report = await PasswordReport.create({
-          user_id:  foundUser.user_id ,
+          staff_id:  foundUser.staff_id ,
           reason: reason,
           status: 'Pending',
         });
