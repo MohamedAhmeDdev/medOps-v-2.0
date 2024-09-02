@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../assets/img/logo.jpg'
-import { UseAuthContext } from "../utils/Hook/StaffAuth";
+import { UseAuthContext } from "../Hook/StaffAuth";
 
 function ManagerSideBar({ sidebarOpen, toggleSidebar }) {
   const [openSupplier, setOpenSupplier] = useState(false);

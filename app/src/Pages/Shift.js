@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../Component/Navbar';
 import Sidebar from '../Component/Aside';
-import UseSidebar from '../utils/constant/useSidebar';
+import UseSidebar from '../constant/useSidebar';
 
 
 function Shift() {

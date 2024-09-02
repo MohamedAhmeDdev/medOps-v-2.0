@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import img from '../assets/img/Medical_Mobile.jpg'
-import { SERVER_URL } from "../utils/constant/severUrl";
+import { SERVER_URL } from "../constant/severUrl";
 import axios from "axios";
-import { UseAuthContext } from "../utils/Hook/StaffAuth";
+import { UseAuthContext } from "../Hook/StaffAuth";
 import { Link, useNavigate } from 'react-router-dom';
 import { showError, showAlert } from '../Component/Alert';
 
