@@ -10,18 +10,13 @@ const User = require('../../Models/user')
 
 
 const getDeliveryForSingleTransport = async (req, res) => {
-  const user_id = req.user.user_id;
+  const staff_id = req.user.user_id;
 
   try {
     const delivery = await Delivery.findAll({
       include: [{
-        where: { user_id },
+        where: { staff_id },
         model: Transport,
-        attributes: ['user_id'],
-        include: [{
-          model: User,
-          attributes: ['username', 'address', 'phoneNumber'],
-        }],
       },{
         model: Order,
         attributes: ['order_status', 'total_price'],
@@ -40,6 +35,8 @@ const getDeliveryForSingleTransport = async (req, res) => {
 };
 
 
+
+
 const getDeliveryById = async (req, res) => {
   const { id }  = req.params;
   try {
@@ -47,11 +44,6 @@ const getDeliveryById = async (req, res) => {
       where: { order_id: id },
       include: [{
         model: Transport,
-        attributes: ['user_id'],
-        include: [{
-          model: User,
-          attributes: ['username','address','phoneNumber'],
-        }],
       },{
         model: Order,
         attributes: ['order_status', 'total_price'],
