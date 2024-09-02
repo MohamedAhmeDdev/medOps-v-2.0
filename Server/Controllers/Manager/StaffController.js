@@ -92,15 +92,22 @@ const CreateAccountForStaff = async (req, res) => {
 
 //get all
 const getStaff = async (req, res) => {
-  const today = new Date();
-  const shiftDate = today.toISOString().split('T')[0];
+
+    const startOfDay = new Date();
+    startOfDay.setUTCHours(0, 0, 0, 0);
+    const endOfDay = new Date();
+    endOfDay.setUTCHours(23, 59, 59, 999);
 
   try {
     const staffs = await Staff.findAll({
       include: [{
         model: ShiftLogs,
         attributes: ['shift_status', 'start_time', 'end_time'],
-        where: {Date: shiftDate,},
+        where:{
+          Date: {
+            [Op.between]: [startOfDay.toISOString(), endOfDay.toISOString()]
+          }
+         },
         required: false
       }],
     });
