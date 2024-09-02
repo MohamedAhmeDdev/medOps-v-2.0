@@ -5,6 +5,7 @@
   "main": "public/electron.js",
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -15,10 +16,13 @@
     "react": "^18.2.0",
     "react-datepicker": "^4.16.0",
     "react-dom": "^18.2.0",
+    "react-notifications": "^1.7.4",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "react-to-print": "^2.14.15",
     "sweetalert2": "^11.7.21",
+    "theme-change": "^2.2.0",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"
   },
@@ -48,6 +52,8 @@
     ]
   },
   "devDependencies": {
-    "tailwindcss": "^3.3.3"
+    "@tailwindcss/typography": "^0.5.10",
+    "tailwindcss": "^3.3.3",
+    "daisyui": "^4.4.19"
   }
 }
