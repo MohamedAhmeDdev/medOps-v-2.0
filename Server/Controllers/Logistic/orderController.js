@@ -4,58 +4,16 @@ const User = require('../../Models/user')
 const Medicine = require('../../Models/medicine')
 
 
-  
-const searchForOrder = async (req, res) => {
-    try {
-      const { username, order_id, order_status, } = req.query; 
 
-      const order = await Order.findAll({
-        include: [{
-            model: OrderList,
-            include: [{
-              model: Medicine,
-              attributes: ['medicine_name'],
-          }],
-          },{
-              model: User,
-              attributes: ['username','address','phoneNumber'],
-          }],
-          order: [[User, 'username', 'ASC']],
-        });
-  
-        const searchOrder = order.filter((order) => {
-            const user = order.user;
-          if (
-            (username && user.username !== String(username)) ||
-            (order_status && order.order_status !== order_status) ||
-            (order_id && order.order_id !== Number(order_id) )
-          ) {
-            return false;
-          }
-          return true;
-        });
-      
-  
-      if (!searchOrder) {
-        return res.status(404).json({ success: false, message: "No matching results found" });
-      }
-  
-      return res.status(200).json({ success: true, order: searchOrder });
-    } catch (error) {
-      return res.status(500).json({ success: false, message: error.message });
-    }
-};
 
 
 
 const getAllOrder = async (req, res) => { 
-
     try {
-
       const AllOrder = await Order.findAll({
         include: [{
             model: User,
-            attributes: ['username', 'phoneNumber'],
+            attributes: ['name', 'phoneNumber'],
         }],
         order: [['createdAt', 'DESC']],
       });
@@ -88,7 +46,7 @@ const getOrderById = async (req, res) => {
             }],
             },{
                 model: User,
-                attributes: ['username', 'address', 'phoneNumber'],
+                attributes: ['name', 'address', 'phoneNumber'],
             }],
         });
     if (!orderById) {
@@ -101,6 +59,7 @@ const getOrderById = async (req, res) => {
     }
 };
  
+
 
 const UpdateOrderStatus = async (req, res) => {
     const { id }  = req.params;
@@ -125,7 +84,6 @@ const UpdateOrderStatus = async (req, res) => {
 
 
 module.exports = {
-    searchForOrder,
     getAllOrder,
     getOrderById,
     UpdateOrderStatus,

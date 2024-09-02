@@ -17,7 +17,7 @@ const StaffPasswordReport = require('./Routes/Staff/PasswordReport');
 const TransportDelivery = require('./Routes/Transporter/deliveryRoute');
 
 
-const LogisticSupplier = require('./Routes/Logistics/SupplierRoute');
+
 const LogisticMedicineCategory = require('./Routes/Logistics/medicineCategoryRoute');
 const LogisticMedicine = require('./Routes/Logistics/medicineRoute');
 const LogisticOrder = require('./Routes/Logistics/orderRoute');
@@ -64,14 +64,13 @@ app.use('/PasswordReport', StaffPasswordReport)
 
 
 // //Transporter API
-app.use('/Transport/Deliveries', TransportDelivery)
+app.use('/transport/delivery', TransportDelivery)
 
 
 // //Logistic API
-app.use('/Logistic/Suppliers',  LogisticSupplier)
-app.use('/Logistic/MedicineCategories',  LogisticMedicineCategory)
-app.use('/Logistic/Medicines',  LogisticMedicine)
-app.use('/Logistic/Order', LogisticOrder)
+app.use('/logistic/medicineCategories',  LogisticMedicineCategory)
+app.use('/logistic/medicine',  LogisticMedicine)
+app.use('/logistic/order', LogisticOrder)
 
 
 // //Operator API
