@@ -1,38 +1,34 @@
 const Transport = require('../../Models/transport')
-const User = require('../../Models/user')
+const Staff = require('../../Models/staff')
+const Role = require('../../Models/roles')
 
 
 
 
-const searchForTransport = async (req, res) => {
+
+const getTransport = async (req, res) => {
   try {
-    const { status } = req.query;
-
-    const transport = await Transport.findAll({
-      include: [{
-        model: User,
-        attributes: ['username', 'email'],
-      }],
-      order: [[User, 'username', 'ASC']],
+      const AllTransport = await Transport.findAll({
+          include: [{
+              model: Staff,
+              include: [{
+                  model: Role,
+                  where: {
+                    role: 'transporter'
+                  }
+              }],
+              attributes: ['name', 'email'],
+          }],
+          order: [[Staff, 'name', 'ASC']],
       });
 
-      const searchTransport = transport.filter((transport) => {
-        if (
-          (status && transport.status !== status)
-        ) {
-          return false;
-        }
-        return true;
-      });
-    
+      if (!AllTransport || AllTransport.length === 0) {
+          return res.status(200).json({ success: true, message: "Transport not found" });
+      }
 
-    if (!searchTransport) {
-        return res.status(404).json({success: false, message: "No matching results found"});
-    }
-
-    return res.status(200).json({ success: true, transport: searchTransport });
+      return res.status(200).json({ success: true, AllTransport });
   } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
+      return res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -41,31 +37,6 @@ const searchForTransport = async (req, res) => {
 
 
 
-const getTransport = async (req, res) => {
-    try {
-      const AllTransport = await Transport.findAll({
-        include: [{
-          model: User,
-          attributes: ['username', 'email'],
-        }],
-        order: [[User, 'username', 'ASC']],
-      });
-     
-      if(!AllTransport){
-        return res.status(200).json({success: true,  message: "transport not found" });
-      }
-  
-      return res.status(200).json({ success: true, transport: AllTransport });
-    } catch (error) {
-      return res.status(500).json({ success: false, message: error.message });
-    }
-};
-
-
-
-
-
 module.exports = {
-  searchForTransport,
   getTransport,
 };

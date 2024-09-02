@@ -1,5 +1,4 @@
 const {
-    searchForStaff,
     getStaff,
     getSingleShift
 } = require("../../Controllers/Operator/StaffController");
@@ -9,7 +8,7 @@ const {
 const AuthRouter = require("express").Router();
   
 
-AuthRouter.get("/search", searchForStaff);
+
 AuthRouter.get("/", getStaff);
 AuthRouter.get("/:id", getSingleShift);
 

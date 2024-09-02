@@ -23,7 +23,7 @@ const LogisticMedicine = require('./Routes/Logistics/medicineRoute');
 const LogisticOrder = require('./Routes/Logistics/orderRoute');
 
 
-const OperatorUserStaff = require('./Routes/Operator/StaffRoute');
+const OperatorStaff = require('./Routes/Operator/StaffRoute');
 const OperatorUsers = require('./Routes/Operator/User');
 const OperatorSupplier = require('./Routes/Operator/SupplierRoute');
 const OperatorMedicineCategory = require('./Routes/Operator/medicineCategoryRoute');
@@ -75,14 +75,14 @@ app.use('/Logistic/Order', LogisticOrder)
 
 
 // //Operator API
-app.use('/Operator/UserStaffs', OperatorUserStaff)
-app.use('/Operator/Users', OperatorUsers)
-app.use('/Operator/Suppliers', OperatorSupplier)
-app.use('/Operator/MedicinesCategory', OperatorMedicineCategory)
-app.use('/Operator/Medicines', OperatorMedicine)
-app.use('/Operator/Orders', OperatorOrder)
-app.use('/Operator/Deliveries', OperatorDelivery)
-app.use('/Operator/Transports', OperatorTransport)
+app.use('/operator/staff', OperatorStaff)
+app.use('/operator/user', OperatorUsers)
+app.use('/operator/supplier', OperatorSupplier)
+app.use('/operator/medicinesCategory', OperatorMedicineCategory)
+app.use('/operator/medicine', OperatorMedicine)
+app.use('/operator/order', OperatorOrder)
+app.use('/operator/delivery', OperatorDelivery)
+app.use('/operator/transport', OperatorTransport)
 
 
 // //Manager API
