@@ -168,3 +168,99 @@ const searchForUser = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
+
+
+
+
+const searchForOrder = async (req, res) => {
+  try {
+    const { username, email, order_status, order_id } = req.query; 
+
+    const order = await Order.findAll({
+      include: [{
+          model: OrderList,
+          include: [{
+            model: Medicine,
+            attributes: ['medicine_name'],
+        }],
+        },{
+            model: User,
+            attributes: ['username','address','phoneNumber'],
+        }],
+        order: [[User, 'username', 'ASC']],
+      });
+
+      const searchOrder = order.filter((order) => {
+          const user = order.user;
+        if (
+          (username && user.username !== String(username)) ||
+          (email && user.email !== String(email)) ||
+          (truck_number && user.truck_number !== String(truck_number)) ||
+          (order_id && order.order_id !== Number(order_id)) ||
+          (order_status && order.order_status !== order_status)
+        ) {
+          return false;
+        }
+        return true;
+      });
+    
+    if (!searchOrder) {
+      return res.status(404).json({ success: false, message: "No matching results found" });
+    }
+
+    return res.status(200).json({ success: true, order: searchOrder });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
+
+
+
+
+const searchDelivery = async (req, res) => {
+  try {
+    const { username, order_id} = req.query;
+
+    const delivery = await Delivery.findAll({
+        include: [{
+           model: Transport,
+          include: [{
+            model: User,
+            attributes: ['username'],
+          }],
+        },{
+          model: Order,
+          attributes: ['order_status', "order_id"],
+          include: [{
+            model: User,
+            attributes: ['username'],
+          }],
+        }],
+        order: [[{model:Order, include:[User]}, User,'username','ASC']]
+    });
+
+    const searchDelivery = delivery.filter(userDelivery =>{
+        const user = userDelivery.order.user;
+
+      if (
+        (username && user.username !== String(username))||
+        (order_id && userDelivery.order_id !== Number(order_id))
+      ){
+        return false;
+      }
+      return true;
+    });
+
+
+      if (!searchDelivery) {
+        return res.status(404).json({ success: false, message: "No matching results found"});
+      }
+
+      return res.status(200).json({ success: true, delivery: searchDelivery });
+    } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+   }
+};
