@@ -4,102 +4,17 @@ import StaffShift from "./Pages/Shift";
 import StaffResetPassword from "./AccountRecovery/ResetPassword";
 import StaffPasswordReport from "./AccountRecovery/PasswordReport";
 import StaffForgotPassword from "./AccountRecovery/ForgotPassword";
-import { useEffect } from 'react';
-import jwt_decode from 'jwt-decode';
-import { UseAuthContext } from "./utils/Hook/StaffAuth";
+import { lazy } from 'react';
 
-import ManagerDashboard from "./Pages/Manager/Dashboard";
-import ManagerMedicine from "./Pages/Manager/Medicine";
-import ManagerMedicineCategory from "./Pages/Manager/MedicineCategory";
-import ManagerSupplier from "./Pages/Manager/Supplier/Supplier";
-import ManagerCreateSupplier from "./Pages/Manager/Supplier/CreateSupplier";
-import ManagerUpdateSupplier from "./Pages/Manager/Supplier/UpdateSupplier";
-import ManagerTransport from "./Pages/Manager/Transport/Transport";
-import ManagerCreateTransport from "./Pages/Manager/Transport/CreateTransport";
-import ManagerUpdateTransport from "./Pages/Manager/Transport/UpdateTransport";
-import ManagerDelivery from "./Pages/Manager/Delivery";
-import ManagerOrderReport from "./Pages/Manager/OrderReport";
-import ManagerPasswordRequest from "./Pages/Manager/PasswordRequest";
-import ManagerStaff from "./Pages/Manager/Staff/Staff";
-import ManagerSingleStaffShift from "./Pages/Manager/Staff/SingleStaffShift";
-import ManagerCreateStaff from "./Pages/Manager/Staff/CreateStaff";
-import ManagerUpdateStaffInfo from "./Pages/Manager/Staff/UpdateStaffInfo";
-import ManagerUser from "./Pages/Manager/User";
-
-import OperatorDashboard from "./Pages/Operator/Dashboard";
-import OperatorDelivery from "./Pages/Operator/Delivery";
-import OperatorMedicine from "./Pages/Operator/Medicine";
-import OperatorMedicineCategory from "./Pages/Operator/MedicineCategory";
-import OperatorOrders from "./Pages/Operator/Orders";
-import OperatorSingleOrder from "./Pages/Operator/SingleOrder";
-import OperatorStaff from "./Pages/Operator/Staff";
-import OperatorSupplier from "./Pages/Operator/Supplier";
-import OperatorTransport from "./Pages/Operator/Transport";
-import OperatorUser from "./Pages/Operator/User";
-
-import LogisticDashboard from "./Pages/Logistics/Dashboard";
-import LogisticsMedicine from "./Pages/Logistics/Medicine/Medicine";
-import LogisticsUpdateMedicine from "./Pages/Logistics/Medicine/UpdateMedicine";
-import LogisticsOrder from "./Pages/Logistics/Order";
-import LogisticsSingleOrder from "./Pages/Logistics/SingleOrder";
-import LogisticsCreateCategory from "./Pages/Logistics/MedicineCategory/CreateCategory";
-import LogisticsCreateMedicine from "./Pages/Logistics/Medicine/CreateMedicine";
-import LogisticsUpdateMedicineCategory from "./Pages/Logistics/MedicineCategory/UpdateMedicineCategory";
-import LogisticsMedicineCategory from "./Pages/Logistics/MedicineCategory/MedicineCategory";
-
-
-
-import TransporterDelivery from "./Pages/Transporter/Delivery";
-import TransporterSingleOrderDelivery from "./Pages/Transporter/SingleOrderDelivery";
-import TransportDashboard from "./Pages/Transporter/Dashboard";
-
-
-
-import Medicine from "./Pages/User/Medicine";
-import Cart from "./Pages/User/Cart";
-import Checkout from "./Pages/User/Checkout";
-import Orders from "./Pages/User/Orders";
-import ProductDetail from "./Pages/User/ProductDetail";
-import SingleOrder from "./Pages/User/SingleOrder";
-import Profile from "./Pages/User/Profile";
 import Signup from "./Pages/Signup";
+const Layout = lazy(() => import('./Manager/containers/Layout'))
 
-import {getUserRole} from './utils/Token' 
+
 
 function App() { 
-  const { dispatch } = UseAuthContext();
+ 
 
-  useEffect(() => {
-    const checkTokenExpiration = () => {
-      const user = JSON.parse(localStorage.getItem('user'));
-      if (!user) {
-         console.log('Token not found');
-         return;
-      }
-        const decodedToken = jwt_decode(user.token);
-      if (!decodedToken.exp) {
-            console.error('Token does not have an expiration time:', user.token);
-              return;
-      }
-      const expirationDate = new Date(decodedToken.exp * 1000);
-      const currentTime = new Date();
-      const timeDifference = expirationDate.getTime() - currentTime.getTime();
-      if (timeDifference <= 0) {
-        localStorage.removeItem("user");
-        dispatch({ type: "LOGOUT" });
-      } else {
-        setTimeout(() => {
-          dispatch({ type: "LOGOUT" });
-        }, timeDifference);
-      }
-    };
 
-    checkTokenExpiration();
-    const intervalId = setInterval(checkTokenExpiration, 60000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [dispatch]);
 
 
   return (
@@ -113,76 +28,7 @@ function App() {
           <Route path="/PasswordReport/:token" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
 
-          {getUserRole() === 'User' && (
-            <>
-          <Route path="/medicine" element={<Medicine/>}/>
-          <Route path="/productDetail/:id" element={<ProductDetail/>}/>
-          <Route path="/cart" element={<Cart/>}/>
-          <Route path="/checkout" element={<Checkout/>}/>
-          <Route path="/order" element={<Orders/>}/>
-          <Route path="/singleOrder/:id" element={<SingleOrder/>}/>
-          <Route path="/profile" element={<Profile/>}/>
-             </>
-          )}
-
-            {getUserRole() === 'Manager' && (
-               <>
-            <Route path="/manager" element={<ManagerDashboard/>}/>
-            <Route path="/medicine" element={<ManagerMedicine/>}/>
-            <Route path="/medicineCategory" element={<ManagerMedicineCategory/>}/>
-            <Route path="/supplier" element={<ManagerSupplier/>}/>
-            <Route path="/createSupplier" element={<ManagerCreateSupplier/>}/>
-            <Route path="/updateSupplier/:id" element={<ManagerUpdateSupplier/>}/>
-            <Route path="/transport" element={<ManagerTransport/>}/>
-            <Route path="/createTransport" element={<ManagerCreateTransport/>}/>
-            <Route path="/updateTransport/:id" element={<ManagerUpdateTransport/>}/>
-            <Route path="/delivery/:id" element={<ManagerDelivery/>}/>
-            <Route path="/orderReport" element={<ManagerOrderReport/>}/>
-            <Route path="/passwordRequest" element={<ManagerPasswordRequest/>}/>
-            <Route path="/staff" element={<ManagerStaff/>}/>
-            <Route path="/StaffShift" element={<ManagerSingleStaffShift/>} />  
-            <Route path="/createStaff" element={<ManagerCreateStaff/>}/>
-            <Route path="/updateStaffInfo/:id" element={<ManagerUpdateStaffInfo/>}/>
-            <Route path="/user" element={<ManagerUser/>}/>
-            </>
-            )}
-
-          {getUserRole() === 'Operator' && (
-            <>
-            <Route path="/operator" element={<OperatorDashboard/>}/>
-            <Route path="/delivery/:id" element={<OperatorDelivery/>}/>
-            <Route path="/medicine" element={<OperatorMedicine/>}/>
-            <Route path="/medicineCategory" element={<OperatorMedicineCategory/>}/>
-            <Route path="/orders" element={<OperatorOrders/>}/>
-            <Route path="/singleOrder/:id" element={<OperatorSingleOrder/>}/>
-            <Route path="/supplier" element={<OperatorSupplier/>}/>
-            <Route path="/transport" element={<OperatorTransport/>}/>
-            <Route path="/staff" element={<OperatorStaff/>}/>
-            <Route path="/user" element={<OperatorUser/>} />
-          </>
-          )}
-
-          {getUserRole() === 'Logistics' && (
-            <>
-          <Route path="/logistics" element={<LogisticDashboard/>}/>
-          <Route path="/medicineCategory" element={<LogisticsMedicineCategory/>}/>
-          <Route path="/medicine" element={<LogisticsMedicine/>}/>
-          <Route path="/createCategory" element={<LogisticsCreateCategory/>}/>
-          <Route path="/createMedicine" element={<LogisticsCreateMedicine/>}/>
-          <Route path="/updateMedicineCategory/:id" element={<LogisticsUpdateMedicineCategory/>}/>
-          <Route path="/updateMedicine/:id" element={<LogisticsUpdateMedicine/>}/>
-          <Route path="/order" element={<LogisticsOrder/>}/>
-          <Route path="/singleOrder/:id" element={<LogisticsSingleOrder/>}/>
-          </>
-          )}
-
-         {getUserRole() === 'Transporter' && (
-            <>
-              <Route path="/transporter" element={<TransportDashboard/>}/>
-              <Route path="/delivery" element={<TransporterDelivery/>}/>
-              <Route path="/SingleOrderDelivery/:id" element={<TransporterSingleOrderDelivery/>}/>
-          </>
-         )}
+          <Route path="/manager/*" element={<Layout />} />
        
         </Routes>
       </BrowserRouter>

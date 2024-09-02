@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AuthContextProvider } from './utils/context/AuthContext';
-import { CartContextProvider } from './utils/context/CartContext';
-import { NotificationProvider } from './utils/context/NotificationContext';
+import { AuthContextProvider } from './context/AuthContext';
+import { CartContextProvider } from './context/CartContext';
+import { NotificationProvider } from './context/NotificationContext';
+import store from './store'
+import { Provider } from 'react-redux'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +16,9 @@ root.render(
      <AuthContextProvider>
       <CartContextProvider>
       <NotificationProvider>
-        <App/>
+        <Provider store={store}>
+         <App/>
+        </Provider>
        </NotificationProvider>
      </CartContextProvider>
     </AuthContextProvider>
