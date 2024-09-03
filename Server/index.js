@@ -10,6 +10,7 @@ const UserOrder = require('./Routes/User/orderRoute');
 const UserMedicine = require('./Routes/User/medicineRoute');
 
 
+const StaffAuth = require('./Routes/Staff/Auth');
 const StaffShift = require('./Routes/Staff/ShiftRoute');
 const StaffPasswordReport = require('./Routes/Staff/PasswordReport');
 
@@ -59,6 +60,7 @@ app.use('/medicine', UserMedicine)
 
 
 // //Staff Login 
+app.use('/staffAuth', StaffAuth)
 app.use('/shift', StaffShift)
 app.use('/passwordReport', StaffPasswordReport)
 

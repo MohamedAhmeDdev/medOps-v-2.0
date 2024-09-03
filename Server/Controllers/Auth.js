@@ -23,13 +23,6 @@ const createToken = (id, role, address, username) => {
 };
 
 
-const resetPasswordToken = (id) => {
-  return JWT.sign({
-      id: id,
-    },
-    JWT_SECRET, { expiresIn: 120 }
-  );
-};
 
 
 //user signup
@@ -78,7 +71,6 @@ const login = async (req, res) => {
         return res.status(410).json({ success: false, message: "Incorrect username" });
       }
   
-      if (foundUser.role === "User" || foundUser.role === "Manager") {
         const dbPassword = foundUser.password;
         bcrypt.compare(password, dbPassword, async (err, match) => {
           if (err || !match) {
@@ -89,29 +81,14 @@ const login = async (req, res) => {
             });
           }
         });
-      }else{     
-        const CheckUserIfIsActive = await StaffWarehouse.findOne({ where: { user_id: foundUser.user_id } });
-        if (!CheckUserIfIsActive || CheckUserIfIsActive.account_status !== "Active") {
-          return res.status(403).json({ success: false, message: "User is inactive" });
-        }
-
-        const dbPassword = foundUser.password;
-          bcrypt.compare(password, dbPassword, async (err, match) => {
-            if (err || !match) {
-              return res.status(401).json({ success: false, message: "Incorrect Password" });
-            } else {
-              const token = createToken(foundUser.user_id, foundUser.role, foundUser.staff_function, foundUser.address, foundUser.username);
-              return res.status(200).json({ success: true,user: { token: token }
-              });
-            }
-          });
-    }
+      
     } catch (error) {
       return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
   };
 
    
+
 const forgotPassword = async(req,res)=>{
     const { email} = req.body;
     
@@ -122,7 +99,7 @@ const forgotPassword = async(req,res)=>{
       const user = await User.findOne({ where: { email: email } });
       if(!user){
         return res.status(401).json({ success: false, message: "Email Does Not Exist"});
-      }else if (user.role === "User" || user.role === "Manager") {
+      }else {
         const token = resetPasswordToken(user.user_id);
 
         const transporter = nodemailer.createTransport({
@@ -149,33 +126,6 @@ const forgotPassword = async(req,res)=>{
             console.log('There was a response ',response);
             res.status(200).json('recovery email sent ')
           }
-          })
-      }else{
-          const token = resetPasswordToken(user.user_id);
-          const transporter = nodemailer.createTransport({
-            service:'gmail',
-            auth:{
-              user: EMAIL_USER,
-              pass: EMAIL_PASS
-            }
-          })
-          const mailOption = {
-              to: `${user.email}`,
-              subject: "Forgot password link",
-              html: `
-                <p>You have received this email because a password report has been generated for your account.</p
-                <p>Please review the password report to ensure the security of your account.</p>
-                <p><a href="http://localhost:3000/PasswordReport/${token}">View Password Report</a>
-                <p>If you did not request this report or have any concerns, please ignore this email.</p>
-              `
-          };
-          transporter.sendMail(mailOption,(err ,response)=>{
-            if(err){
-              console.log('There was an error',err);
-            }else{
-              console.log('There was a response ',response);
-              res.status(200).json('recovery email sent ')
-            }
           })
       }
     } catch (error) {
