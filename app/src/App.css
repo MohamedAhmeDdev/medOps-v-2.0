@@ -1,11 +1,19 @@
 /* styles.css */
 .bg-image {
-    background-image: url('./assets/img/Medical_Mobile.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+   background-image: url('./assets/img/logo2.jpg');
+  /* background-size: cover; */
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+
+}
+
+@media screen and (max-width: 640px) {
+  .bg-image {
+    background-size: cover; /* Adjust to cover the entire screen on small devices */
   }
-  
+}
   /* width */
 ::-webkit-scrollbar {
 	width: 10px;
