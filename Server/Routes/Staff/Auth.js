@@ -8,7 +8,7 @@ const {
   
   const AuthRouter = require("express").Router();
   
-  AuthRouter.post("/auth", StaffLogin);
+  AuthRouter.post("/login", StaffLogin);
   AuthRouter.post("/forgotPassword", forgotPassword);
   AuthRouter.patch("/resetPassword/:token", resetPassword);
 

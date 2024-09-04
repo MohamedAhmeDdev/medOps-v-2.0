@@ -1,5 +1,5 @@
 const PasswordReport = require("../../Models/PasswordReport");
-const User = require("../../Models/user");
+const Staff = require("../../Models/staff");
 const JWT = require("jsonwebtoken");
 const { JWT_SECRET, } = require('../../constant/index');
 
@@ -13,7 +13,7 @@ const passwordReport = async (req, res) => {
     }
     try {
       const decoded = JWT.verify(token, JWT_SECRET);
-       const foundUser = await User.findOne({ where: { user_id: decoded.id } });
+       const foundUser = await Staff.findOne({ where: { staff_id: decoded.id } });
 
         const report = await PasswordReport.create({
           staff_id:  foundUser.staff_id ,
@@ -26,7 +26,11 @@ const passwordReport = async (req, res) => {
         return res.status(410).json({ success: false, message: 'Token has expired' });
       }
   
-      return res.status(500).json({ success: false, message: error.message });
+      return res.status(500).json({ 
+        success: false,
+        message: 'Password Reported have been saved',
+        message: error.message
+         });
     }  
 }
 

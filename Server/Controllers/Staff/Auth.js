@@ -1,4 +1,5 @@
 const Staff = require("../../Models/staff");
+const Roles = require("../../Models/roles");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
 const { JWT_SECRET, EMAIL_PASS, EMAIL_USER } = require('../../constant/index');
@@ -41,44 +42,40 @@ const StaffLogin = async (req, res) => {
     }
   
     try {
-      const foundStaff = await Staff.findOne({ where: { name: name } });
-      console.log('staff',foundStaff.dataValues);
-      
+      const foundStaff = await Staff.findOne({ where: { name: name } });        
       if (!foundStaff) {
         return res.status(410).json({ success: false, message: "Incorrect name" });
       }
   
-      if (foundStaff.role === "manager") {
-        const dbPassword = foundStaff.password;
-        bcrypt.compare(password, dbPassword, async (match) => {
-          if (!match) {
-            return res.status(401).json({ success: false, message: "Incorrect Password" });
-          } else {
-            const token = createToken(foundStaff.dataValues);
-             return res.status(200).json({ success: true,user: { token: token }
-            });
-          }
-        });
-      }else{     
+        const  role = await Roles.findOne({ where: { role_id: foundStaff.role_id } });      
+        
         const CheckUserIfIsActive = await Staff.findOne({ where: { staff_id: foundStaff.staff_id } });
+        
         if (!CheckUserIfIsActive || CheckUserIfIsActive.account_status == "InActive") {
           return res.status(403).json({ success: false, message: "staff is inactive" });
         }
 
         const dbPassword = foundStaff.password;
-          bcrypt.compare(password, dbPassword, async (match) => {
-            if (!match) {
-              return res.status(401).json({ success: false, message: "Incorrect Password" });
-            } else {
-              const token = createToken(foundStaff.dataValues);
-              return res.status(200).json({
-                 success: true,
-                 message: "staff login",
-                 staff: token
-              });
-            }
-          });
-    }
+        bcrypt.compare(password, dbPassword, (err, match) => {
+          if (err) {
+            return res.status(500).json({ success: false, message: "Internal Server Error" });
+          }
+          
+          if (!match) {
+            return res.status(401).json({ success: false, message: "Incorrect Password" });
+          } else {
+            console.log('sd');
+            
+            const token = createToken(foundStaff.staff_id, role.role, foundStaff.address, foundStaff.name);
+            return res.status(200).json({
+              success: true,
+              message: "logged successful",
+              staff: token 
+            });
+          }
+        });
+        
+    
     } catch (error) {
       return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
@@ -96,9 +93,11 @@ const forgotPassword = async(req,res)=>{
       }
       const staff = await Staff.findOne({ where: { email: email } });
 
+      const role = await Roles.findOne({ where: { role_id: staff.role_id } });
+
       if(!staff){
         return res.status(401).json({ success: false, message: "Email Does Not Exist"});
-      }else if (staff.role === "manager") {
+      }else if (role.role === "manager") {
         const token = resetPasswordToken(staff.staff_id);
 
         const transporter = nodemailer.createTransport({
@@ -122,12 +121,12 @@ const forgotPassword = async(req,res)=>{
           transporter.sendMail(mailOption,(err ,response)=>{
           if(err){
             console.log('There was an error',err);
+            return res.status(401).json({ success: false, message: "There was an error" });
           }else{
-            console.log('There was a response ',response);
-            res.status(200).json('recovery email sent ')
+            res.status(200).json({ success: false, message: 'recovery email sent' })
           }
           })
-      }else{
+      }else{       
           const token = resetPasswordToken(staff.staff_id);
           const transporter = nodemailer.createTransport({
             service:'gmail',
@@ -150,9 +149,9 @@ const forgotPassword = async(req,res)=>{
           transporter.sendMail(mailOption,(err ,response)=>{
             if(err){
               console.log('There was an error',err);
+              return res.status(401).json({ success: false, message: "There was an error" });
             }else{
-              console.log('There was a response ',response);
-              res.status(200).json('recovery email sent ')
+              res.status(200).json({ success: false, message: 'Report Password email sent' })
             }
           })
       }
@@ -185,14 +184,16 @@ const resetPassword = async (req, res) => {
 
     const foundStaff = await Staff.findOne({ where: { staff_id: decoded.id } });
     const updatedPassword = await Staff.update({password: encryptPassword}, { where: { staff_id: foundStaff.staff_id}})
-    res.status(200).json({ success: true, updatedPassword});
+    res.status(200).json({ 
+      success:true,
+      message: 'Password Updated',
+      updatedPassword});
 
   } catch (error) {
     console.log( error.message);
     if (error.name === 'TokenExpiredError') {
       return res.status(410).json({ success: false, message: 'Token has expired' });
     }
-
     return res.status(500).json({ success: false, message: 'An error occurred' });
   }
 };
