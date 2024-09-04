@@ -12,21 +12,15 @@ function ForgotPassword() {
   const forgotPassword = async (e) => {
     e.preventDefault();
     try {
-        await axios.post(`${SERVER_URL}/auth/forgotPassword`, {
+        await axios.post(`${SERVER_URL}/staffAuth/forgotPassword`, {
           email: email,
         })
-        .then((res) => {
-          if (res.status === 200) {
-            showSuccessNotification("Recovery email sent");
+        .then((response) => {
+            showSuccessNotification(response.data.message);
             setEmail('');
-          }
         })
     } catch (error) {
-      if (error.response?.status === 400) {
-        showErrorNotification("Email is missing. try again"); 
-      } else if (error.response?.status === 401) {
-        showErrorNotification("Email Does Not Exist");
-      }
+      showErrorNotification(error.response.data.message);
     }
   };
 
@@ -37,7 +31,7 @@ function ForgotPassword() {
       <h2 className="text-lg text-white text-center mb-4">Forgot Password</h2>
       
         <div className="mb-4">
-          <input type="email" className="w-full text-white text-md bg-gray-700 rounded px-3 py-2 outline-none" placeholder='@gmail.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input type="email" className="w-full text-white text-md bg-gray-700 rounded px-3 py-3 outline-none" placeholder='Enter Gmail' value={email} onChange={(e) => setEmail(e.target.value)}/>
         </div>
         <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2" >
           Submit

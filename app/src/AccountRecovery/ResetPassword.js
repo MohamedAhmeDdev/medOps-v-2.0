@@ -23,20 +23,16 @@ function ResetPassword() {
           password: password,
           confirm_password: confirm_password,
         })
-        .then((res) => {
-          if (res.status === 200) {
-            showSuccessNotification("Password Updated");
+        .then((response) => {
+            showSuccessNotification(response.data.message);
             setPassword('');
             setConfirm_password('');
-          }
         })
     } catch (error) {
       if (error.response?.status === 410) {
         setTokenExpired(true);
-      } else if (error.response?.status === 401) {
-        return showErrorNotification("confirm_password or password is missing"); 
-      }else if (error.response?.status === 400) {
-        return showErrorNotification("Password Does Not Much");
+      } else{
+        showErrorNotification(error.response.data.message);
       }
     }
   };
@@ -45,13 +41,14 @@ function ResetPassword() {
   return (
     <div className="flex justify-center items-center h-screen bg-gray-900">
     <div className="w-1/3 flex flex-col justify-center items-center bg-gray-800 py-8">
-      <h2 className="text-2xl text-white mb-4">Reset Password</h2>
+      
 
-      {tokenExpired ? (
+       {tokenExpired ? (
             <p className="text-red-500">Token has expired. Please request a new password link.</p>
           ) : (
 
         <form onSubmit={forgotPassword} className="w-2/3">
+          <h2 className="text-2xl text-white mb-4">Reset Password</h2>
           <div className="mb-4">
             <input type="text" className="w-full text-white bg-gray-700 rounded px-3 py-2 outline-none" placeholder="password"
             value={password} onChange={(e) => setPassword(e.target.value)} 
