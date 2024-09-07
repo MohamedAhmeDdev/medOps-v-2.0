@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes, } from "react-router-dom";
 import { lazy } from 'react';
-import Login from "./Pages/Login";
+import Login from "./Dashboards/Login";
 import StaffResetPassword from "./AccountRecovery/ResetPassword";
 import StaffPasswordReport from "./AccountRecovery/PasswordReport";
 import StaffForgotPassword from "./AccountRecovery/ForgotPassword";
@@ -17,15 +17,11 @@ import Signup from "./Pages/User/Auth/Signup";
 import UserForgotPassword from "./Pages/User/Auth/UserForgotPassword";
 import UserResetPassword from "./Pages/User/Auth/UserResetPassword";
 
-const Layout = lazy(() => import('./Manager/containers/Layout'))
+const Layout = lazy(() => import('./Dashboards/Manager/containers/Layout'))
 
 
 
 function App() { 
- 
-
-
-
 
   return (
     <div>
