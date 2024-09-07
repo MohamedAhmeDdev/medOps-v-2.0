@@ -6,6 +6,8 @@ const Medicine = require('../../Models/medicine')
 
 const createOrder = async (req, res) => {
   const user_id = req.user.user_id;
+  console.log(user_id);
+  
     const { medicineOrders } = req.body;
     if (!user_id || !medicineOrders) {
       return res.status(400).json({ success: false, message: "All Fields Are Required" });
@@ -64,7 +66,7 @@ const getOrderForSingleUser = async (req, res) => {
       where: { user_id },
       include:[{
           model: User,
-          attributes: ['username', 'address', 'phoneNumber'],
+          attributes: ['name', 'address', 'phoneNumber'],
       }],
       order: [['createdAt', 'DESC']],
     });
@@ -93,7 +95,7 @@ try {
     }],
     },{
         model: User,
-        attributes: ['username', 'address', 'phoneNumber', 'email'],
+        attributes: ['name', 'address', 'phoneNumber', 'email'],
     }],
   });
   if (!orderById) {

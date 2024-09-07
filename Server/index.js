@@ -3,8 +3,7 @@ const cors = require('cors');
 const app = express();
 
 
-const Auth = require('./Routes/Auth');
-
+const Auth = require('./Routes/User/Auth');
 const User = require('./Routes/User/userRoute');
 const UserOrder = require('./Routes/User/orderRoute');
 const UserMedicine = require('./Routes/User/medicineRoute');
@@ -49,33 +48,30 @@ app.use(express.json());
 app.use(cors());
 
 
-//Auth
+//User Api
 app.use('/auth', Auth)
-
-
-// //User Api
 app.use('/Users', User)
 app.use('/Orders', UserOrder)
 app.use('/medicine', UserMedicine)
 
 
-// //Staff Login 
+//Staff Login 
 app.use('/staffAuth', StaffAuth)
 app.use('/shift', StaffShift)
 app.use('/passwordReport', StaffPasswordReport)
 
 
-// //Transporter API
+//Transporter API
 app.use('/transport/delivery', TransportDelivery)
 
 
-// //Logistic API
+//Logistic API
 app.use('/logistic/medicineCategories',  LogisticMedicineCategory)
 app.use('/logistic/medicine',  LogisticMedicine)
 app.use('/logistic/order', LogisticOrder)
 
 
-// //Operator API
+//Operator API
 app.use('/operator/staff', OperatorStaff)
 app.use('/operator/user', OperatorUsers)
 app.use('/operator/supplier', OperatorSupplier)
@@ -86,7 +82,7 @@ app.use('/operator/delivery', OperatorDelivery)
 app.use('/operator/transport', OperatorTransport)
 
 
-// //Manager API
+//Manager API
 app.use('/manager/role',  ManagerRoles)
 app.use('/manager/staff', ManagerStaff)
 app.use('/manager/user',  ManagerUsers)
