@@ -17,7 +17,10 @@ import Signup from "./Pages/User/Auth/Signup";
 import UserForgotPassword from "./Pages/User/Auth/UserForgotPassword";
 import UserResetPassword from "./Pages/User/Auth/UserResetPassword";
 
-const Layout = lazy(() => import('./Dashboards/Manager/containers/Layout'))
+const ManagerLayout = lazy(() => import('./Dashboards/Manager/containers/Layout'))
+const OperatorLayout = lazy(() => import('./Dashboards/Operator/containers/Layout'))
+const LogisticsLayout = lazy(() => import('./Dashboards/Logistics/containers/Layout'))
+const TransporterLayout = lazy(() => import('./Dashboards/Transporter/containers/Layout'))
 
 
 
@@ -43,7 +46,11 @@ function App() {
           <Route path="/ResetPassword/:token" element={<StaffResetPassword/>} />
           <Route path="/PasswordReport/:token" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
-          <Route path="/manager/*" element={<Layout />} />
+
+          <Route path="/manager/*" element={<ManagerLayout />} />
+          <Route path="/operate/*" element={<OperatorLayout />} />
+          <Route path="/logistics/*" element={<LogisticsLayout />} />
+          <Route path="/transporter/*" element={<TransporterLayout />} />
        
         </Routes>
       </BrowserRouter>
