@@ -1,4 +1,4 @@
-import { SERVER_URL } from "./constant/severUrl";
+import { SERVER_URL } from "../constant/severUrl";
 import axios from "axios";
 
 
