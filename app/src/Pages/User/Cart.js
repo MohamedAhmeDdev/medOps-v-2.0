@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar';
-import { UseCartContext } from "../../utils/Hook/UseCartContext";
-import { SERVER_URL } from "../../utils/constant/severUrl";
+import { UseCartContext } from "../../Hook/UseCartContext";
+import { SERVER_URL } from "../../constant/severUrl";
 
 
 function Cart() {
@@ -50,7 +50,6 @@ function Cart() {
           {cartItems.map((item, id) => (
               <div key={id} className="flex flex-col items-start justify-start w-full border-b border-gray-200 md:mt-6 md:flex-row md:items-center md:space-x-6 xl:space-x-8">
                   <div className="flex flex-col items-start justify-between w-full pb-6 space-x-4 space-y-2 md:flex-row md:space-y-0">
-                    <img className="flex-shrink-0 object-cover w-full h-40 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={`${SERVER_URL}/${item?.image}`} alt="Polaroid camera"/>
                       <div className="flex flex-col items-start justify-start w-full space-y-4">
                           <h2 className="text-lg font-semibold leading-6 text-gray-800 ">{item.medicine_name}</h2>
                       </div>

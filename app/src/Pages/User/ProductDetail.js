@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from './Navbar'
-import { UseCartContext } from "../../utils/Hook/UseCartContext";
-import { SERVER_URL } from "../../utils/constant/severUrl";
+import { UseCartContext } from "../../Hook/UseCartContext";
+import { SERVER_URL } from "../../constant/severUrl";
 import axios from "axios";
 import { useParams , Link} from "react-router-dom";
 

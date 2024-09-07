@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
 import { Api } from "../../utils/Api";
-import {formatDate} from '../../utils/constant/formatDate'
-import { SERVER_URL } from "../../utils/constant/severUrl";
-import { useNotification } from '../../utils/context/NotificationContext';
+import {formatDate} from '../../constant/formatDate'
+import { SERVER_URL } from "../../constant/severUrl";
+import { useNotification } from '../../context/NotificationContext';
 
 function Orders() {
 	const [orders, setOrders] = useState([]);

@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 import Navbar from './Navbar'
-import { UseCartContext } from "../../utils/Hook/UseCartContext";
-import { SERVER_URL } from "../../utils/constant/severUrl";
+import { UseCartContext } from "../../Hook/UseCartContext";
+import { SERVER_URL } from "../../constant/severUrl";
 import axios from "axios";
-import { useNotification } from '../../utils/context/NotificationContext';
+
 
 function Medicine() {
     const [medicine, setMedicine] = useState([]);
-      const [searchQuery, setSearchQuery] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
     const { addToCart, } = UseCartContext();
-    const { showSuccessNotification } = useNotification();
 
+    
     const handleAddToCart = (item) => {
-      // Add the item to the cart
       addToCart(item);
-  
-      // Show a success notification
-      showSuccessNotification('Item added to cart successfully');
     };
 
     useEffect(() => {
@@ -43,29 +39,38 @@ function Medicine() {
         />
         <section className="py-5 mt-20 lg:h-screen font-poppins">
           <div className="mx-auto bg-white rounded-lg overflow-hidden">
-            <ul className="divide-y divide-gray-300">
-              {medicine?.length === 0 ? (
-                <li className="py-2 px-2 text-center">No match found</li>
-              ) : (
-                medicine?.map((item, id) => (
-                  <li key={id} className="py-2 px-2 flex items-center">
-                    <Link to={`/productDetail/${item.medicine_id}`}>
-                      <img src={`${SERVER_URL}/${item?.medicine_image}`} alt="Medicine 1" className="w-16 h-16 mr-4"/>
-                    </Link>
-                    <div className="flex text-center mx-auto">
-                      <Link to={`/productDetail/${item.medicine_id}`}><h2 className="text-xl font-semibold"> {item.medicine_name} </h2> </Link>
-                    </div>
-  
-                    <div className="flex text-center mx-auto">
-                      <p className="text-green-600 font-semibold">Ksh {item.price}</p>
-                    </div>
-                    <button onClick={() => handleAddToCart(item)}className="ml-auto bg-blue-500 hover:bg-blue-600 text-white px-1.5 py-2 rounded-md"> Add to Cart </button>
-                  </li>
+          <section className="bg-gray-50">
+            <h1 className="text-3xl font-bold text-center  pt-10">Medicines</h1>
+          <div className="w-fit mx-auto grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-items-center justify-center gap-y-20 mt-10 mb-5">
+              {medicine?.map((item, id) => (
+                      <div  key={id} className="group flex-shrink-0 m-6 relative overflow-hidden bg-white rounded-lg max-w-xs border border-gray-200">
+                        <Link to={`/productDetail/${item.medicine_id}`}>
+                          <div className="relative pt-10 px-10 flex items-center justify-center">
+                            <div className="w-36 h-40">
+                              <img className="relative w-full h-full" src={item?.medicine_image} alt={item?.medicine_name || 'Medicine Image'} />
+                            </div>
+                          </div>
+                        </Link>
+                        <div className="relative text-black py-6 space-y-1.5 px-6 mt-6">
+                          <span className="block opacity-75 -mb-1">{item.medicine_name}</span>
+                          <span className="block font-bold opacity-75 pt-4 -mb-1">Ksh {item.price}</span>
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 transition-all duration-300 transform translate-y-full group-hover:translate-y-0">
+                          <button onClick={() => handleAddToCart(item)} className="block w-full text-center rounded-none bg-slate-900 px-5 py-1.5 text-sm font-medium text-white hover:bg-gray-700 focus:outline-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="inline-block mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Add to cart
+                          </button>
+                        </div>
+                      </div>
                 ))
-              )}
-            </ul>
+              }
+              </div>
+              </section>
           </div>
         </section>
+
       </>
     );
   }

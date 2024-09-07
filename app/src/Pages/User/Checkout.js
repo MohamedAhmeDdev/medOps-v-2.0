@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Navbar from './Navbar';
-import { UseCartContext } from "../../utils/Hook/UseCartContext";
-import { SERVER_URL } from "../../utils/constant/severUrl";
+import { UseCartContext } from "../../Hook/UseCartContext";
+import { SERVER_URL } from "../../constant/severUrl";
 import { Api } from "../../utils/Api";
 import { getUserInfo } from "../../utils/Token";
 import {useNavigate } from 'react-router-dom';
@@ -99,8 +99,7 @@ function Checkout() {
               <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
                 {cartItems.map((item, id) => (
                   <div key={id} className="flex flex-col rounded-lg bg-white sm:flex-row">
-                    <img className="flex-shrink-0 object-cover w-full h-40 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500" src={`${SERVER_URL}/${item?.image}`} alt="Polaroid camera"/>
-                    <div className="flex w-full flex-col px-4 py-4">
+                    <div className="flex w-full justify-around px-4 py-4">
                       <span className="font-semibold">{item.medicine_name}</span>
                       <p className="text-lg font-bold">Ksh {item.price}</p>
                     </div>
