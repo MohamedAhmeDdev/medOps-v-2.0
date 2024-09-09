@@ -17,6 +17,8 @@ const reportApproval = async (req, res) => {
   const staff_id = req.user.staff_id; 
   const { id } = req.params;
   const { status } = req.body;
+  console.log(status);
+  
 
   try {
     const passwordReport = await PasswordReport.findOne({ where: { request_id: id } });
@@ -62,10 +64,10 @@ const reportApproval = async (req, res) => {
 
     transporter.sendMail(mailOption, (err, response) => {
       if (err) {
-        console.error('There was an error:', err);
-        return res.status(500).json({ success: false, message: "There was an error sending the email" });
+        return res.status(401).json({ success: false, message: "There was an error sending the email" });
       } else {
-        return res.status(200).json({ success: true, message: 'Recovery email sent' });
+        console.log('password reset Approved');
+        return res.status(200).json({ success: true, message: 'password reset Approved' });
       }
     });
 

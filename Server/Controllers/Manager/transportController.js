@@ -16,7 +16,11 @@ const createTransport = async (req, res) => {
         driver_license_number: driver_license_number, 
         truck_number: truck_number,
        });
-        return res.status(200).json({ success: true, transport});
+        return res.status(200).json({ 
+          success: true, 
+          message: "transport created",
+          transport
+        });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }  
@@ -88,9 +92,16 @@ const UpdateTransport = async (req, res) => {
       },{ where:{transport_id: id}}
       );
 
-    return res.status(200).json({ success: true, transport: updatedTransport });
+    return res.status(200).json({
+       success: true, 
+       message: "transport updated",
+       transport: updatedTransport
+       });
   } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
+    return res.status(500).json({ 
+      success: false,
+      message: error.message
+    });
   }
 };
 

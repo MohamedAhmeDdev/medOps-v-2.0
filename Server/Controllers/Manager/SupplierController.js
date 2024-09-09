@@ -17,7 +17,11 @@ const createSupplier = async (req, res) => {
         phone: phone,
         company_address:company_address, 
        });
-        return res.status(200).json({ success: true,  supplier});
+        return res.status(200).json({ 
+          success: true,
+          message: "supplier created",
+          supplier
+          });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }  
@@ -42,7 +46,7 @@ const getSupplierById = async (req, res) => {
   try {
     const supplierById = await Supplier.findAll({ where: { supplier_id: id}});
 
-    return res.status(200).json({success: true, warehouse: supplierById });
+    return res.status(200).json({success: true, supplier: supplierById });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -63,7 +67,11 @@ const UpdateSupplierInfo = async (req, res) => {
         phone: phone,
         company_address:company_address, 
      },{where: {supplier_id: id} });
-      return res.status(200).json({ success: true, supplier:UpdateSupplier});
+      return res.status(200).json({ 
+        success: true,
+        message: "supplier updated",
+        supplier:UpdateSupplier
+      });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message});
     }

@@ -19,9 +19,7 @@ const CreateAccountForStaff = async (req, res) => {
     return res.status(400).json({success: false, message: "All Fields Are Required"});
   }
 
-  if (!validator.isMobilePhone(phoneNumber, "en-KE")) {
-    return res.status(401).json({success: false, message:("Please enter a valid phone number")});
-  }
+ 
 
   const emailIfExists = await Staff.findOne({ where: { email: email } });
   if (emailIfExists) {
@@ -79,7 +77,11 @@ const CreateAccountForStaff = async (req, res) => {
             res.status(200).json('email sent ')
           }
       })
-      return res.status(200).json({ success: true, staff });
+      return res.status(200).json({ 
+          success: true,
+          message: "Staff created",
+          staff
+         });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }
@@ -109,6 +111,8 @@ const getStaff = async (req, res) => {
           }
          },
         required: false
+      },{
+        model: Role,
       }],
     });
 
@@ -124,14 +128,22 @@ const getStaff = async (req, res) => {
 const getAllStaffById = async (req, res) => {
   const  id  = req.params.id
   try {
-    const staffById = await Staff.findOne({where: { staff_id: id }});
+    const staff = await Staff.findOne({
+      where: { staff_id: id },
+      include: [{
+        model: Role, 
+        attributes: ['role']
+      }]
+    });
   
-    if (!staffById) {
+    if (!staff) {
       return res.status(400).json({ success: false, message: "staff not found" });
     }
 
-    return res.status(200).json({ success: true, user: staffById });
+    return res.status(200).json({ success: true, staff });
   } catch (error) {
+    console.log(error);
+    
     return res.status(500).json({ success: false, message: error.message });
   }
 }
@@ -165,28 +177,29 @@ const getSingleShift = async (req, res) => {
 const updateStaff = async (req, res) => { 
   const  id  = req.params.id
   const { name, email, phoneNumber, address, role,  } = req.body;
-
-  let validatePhoneNumber = "";
-  if (phoneNumber !== undefined && phoneNumber !== null) {
-    const phoneNumberStr = phoneNumber.toString();
-    if (!validator.isMobilePhone(`0${phoneNumberStr}`, "en-KE")) {
-      return res.status(400).json({ success: false, message: "Please enter a valid phone number" });
-    }
-    validatePhoneNumber = phoneNumberStr;
-  }
+  console.log(role);
   
+
+  const roles = await Role.findOne({ where: {	role: role } }); 
+  if (!roles) {
+    return res.status(404).json({
+      success: false,
+      message: "role not found",
+    });
+  }
+
   try {
    const updatedRole =  await  Staff.update({
       name: name,
-      phoneNumber: validatePhoneNumber,
+      phoneNumber: phoneNumber,
       address: address,
       email: email,
-      role: role
-   },{where: {user_id: id}});  
+      role_id: roles.role_id
+   },{where: {staff_id: id}});  
 
     res.status(200).json({ 
       success: true,
-      message: "Please enter a valid phone number",
+      message: "Staff updated successfully",
       user: updatedRole});
   } catch (error) {
     console.log(error.message);
