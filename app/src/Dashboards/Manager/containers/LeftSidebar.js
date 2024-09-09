@@ -18,7 +18,7 @@ function LeftSidebar(){
     return(
         <div className="drawer-side  z-30  ">
             <label  className="drawer-overlay"></label> 
-            <ul className="menu  pt-2 w-80 bg-base-100 min-h-full   text-base-content">
+            <ul className="menu  pt-2 w-60 bg-base-100 min-h-full   text-base-content">
             <button className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={() => close()}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  className="h-6 w-6">
                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
