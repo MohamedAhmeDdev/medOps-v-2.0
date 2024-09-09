@@ -8,13 +8,15 @@ const verifyToken = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
 
-    // Check if the token starts with "Bearer" and remove it
+    console.log("Authorization Header:", token);
+
     if (token && token.startsWith("Bearer ")) {
       token = token.slice(7, token.length);
+    } else {
+      return res.status(401).json({ success: false, message: "Authorization token missing" });
     }
-    
+
     const decoded = JWT.verify(token, JWT_SECRET);
- 
     const foundStaff = await Staff.findOne({ where: { staff_id: decoded.id } });
 
     if (!foundStaff) {
@@ -27,6 +29,7 @@ const verifyToken = async (req, res, next) => {
     return res.status(401).json({ success: false, message: "Invalid or expired token" });
   }
 };
+
 
 
 const verifyUserToken = async (req, res, next) => {
