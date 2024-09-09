@@ -64,7 +64,7 @@ export const NotificationProvider = ({ children }) => {
     >
       {children}
       <div className={`${ showSuccess ? '-translate-x-0 opacity-100' : '-translate-x-full opacity-0'
-         } flex items-center transform fixed w-full max-w-xs p-4 mb-4 top-10 right-10 bg-green-400 text-white rounded-lg transition-transform duration-300 ease-in-out`} >
+         } flex items-center transform fixed w-full max-w-xs p-4 mb-4 top-20 right-4 bg-green-400 text-white rounded-lg transition-transform duration-300 ease-in-out`} >
         <div
               class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-700 rounded-lg">
               <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -81,11 +81,10 @@ export const NotificationProvider = ({ children }) => {
              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
             </svg>
           </button>
-        
       </div>
 
       <div className={`${ showError ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        } flex items-center transform fixed w-full max-w-xs p-4 mb-4 top-10 right-10 bg-red-400 text-white rounded-lg transition-transform duration-300 ease-in-out`} >
+        } flex items-center transform fixed w-full max-w-xs p-4 mb-4 top-20 right-4 bg-red-400 text-white rounded-lg transition-transform duration-300 ease-in-out`} >
           <div
             class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-700  rounded-lg ">
             <svg class="w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
