@@ -69,11 +69,11 @@ function Login() {
                 <h3 class="text-lg text-white font-bold text-center uppercase">login to account</h3>                
                 <div>
                     <label class="text-white font-bold block py-1">Username</label>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" class="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-zinc-700 text-zinc-700 focus:shadow-outline focus:outline-zinc-500 focus:outline outline-offset-2 outline-2"/>
+                    <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" class="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-zinc-700 text-white focus:shadow-outline focus:outline-zinc-500 focus:outline outline-offset-2 outline-2"/>
                 </div>
                 <div>
                     <label class="text-white font-bold block py-1">Password</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" class="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-zinc-700 text-zinc-700 focus:shadow-outline focus:outline-zinc-500 focus:outline outline-offset-2 outline-2"/>
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" class="shadow appearance-none text-md lg:text-md border round w-full py-2 px-3 border-none  bg-opacity-75 bg-zinc-700 text-white focus:shadow-outline focus:outline-zinc-500 focus:outline outline-offset-2 outline-2"/>
                 </div>
                 <div class="flex flex-row justify-end mb-8">
                   <Link to="/ForgotPassword" class="mr-4 text-sm font-medium text-white">Forget password?</Link>
