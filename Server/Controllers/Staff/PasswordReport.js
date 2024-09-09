@@ -18,7 +18,7 @@ const passwordReport = async (req, res) => {
         const report = await PasswordReport.create({
           staff_id:  foundUser.staff_id ,
           reason: reason,
-          status: 'Pending',
+          status: 'pending',
         });
         return res.status(200).json({ success: true,  report});
     } catch (error) {
