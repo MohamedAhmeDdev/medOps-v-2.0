@@ -12,7 +12,7 @@ function Orders() {
 
 	useEffect(() => {
 		const getOrders = async () => {
-		  const data = await Api("/Orders", "GET");
+		  const data = await Api(`${SERVER_URL}/Orders`, "GET");
 		  if (data) {
 			setOrders(data.order);
 		  }

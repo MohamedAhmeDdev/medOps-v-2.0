@@ -29,7 +29,7 @@ function Checkout() {
       delivery_address: address,
     };
     try {
-    Api("/Orders", "POST", order)
+    Api(`${SERVER_URL}/Orders`, "POST", order)
       .then((res) => {  setSuccessMessage("Order Confirmed.");
       setTimeout(() => {
        navigate('/order');
