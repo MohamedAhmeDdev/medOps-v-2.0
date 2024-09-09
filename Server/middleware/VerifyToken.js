@@ -8,8 +8,6 @@ const verifyToken = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
 
-    console.log("Authorization Header:", token);
-
     if (token && token.startsWith("Bearer ")) {
       token = token.slice(7, token.length);
     } else {
@@ -36,19 +34,20 @@ const verifyUserToken = async (req, res, next) => {
   try {
     let token = req.headers.authorization;
 
-    // Check if the token starts with "Bearer" and remove it
     if (token && token.startsWith("Bearer ")) {
       token = token.slice(7, token.length);
+    } else {
+      return res.status(401).json({ success: false, message: "Authorization token missing" });
     }
-    
+
     const decoded = JWT.verify(token, JWT_SECRET);
- 
     const foundUser = await User.findOne({ where: { user_id: decoded.id } });
 
     if (!foundUser) {
       return res.status(401).json({ success: false, message: "Invalid login credentials" });
     }
-
+    
+  
     req.user = foundUser;
     next();
   } catch (error) {
