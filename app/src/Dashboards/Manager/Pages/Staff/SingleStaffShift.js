@@ -66,13 +66,13 @@ function SingleStaffShift() {
 
 
               <div className="flex justify-between items-center mb-4">
-                <button onClick={goToPreviousWeek} className="bg-blue-500 text-white px-4 py-2">Previous Week</button>
+                <button onClick={goToPreviousWeek} className="bg-gray-500 rounded-md text-white px-4 py-2">Previous Week</button>
 
                 <span className="font-semibold text-lg">
                   {formatDate(startOfWeek)} - {formatDate(endOfWeek)}
                 </span>
 
-                <button onClick={goToNextWeek} className="bg-blue-500 text-white px-4 py-2" disabled={weekOffset === 0}>Next Week</button>
+                <button onClick={goToNextWeek} className="bg-gray-500 rounded-md text-white px-4 py-2" disabled={weekOffset === 0}>Next Week</button>
               </div>
 
               <div className="flex flex-wrap py-5">
@@ -91,9 +91,9 @@ function SingleStaffShift() {
                           <tbody>
                             {shifts.map((shift, id) => (
                               <tr key={id} className="border-b">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap capitalize">{getDayName(shift.Date)} </td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap uppercase">{shift.start_time}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap uppercase"> {shift.end_time} </td>
+                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap capitalize">{getDayName(shift.Date)} </td>
+                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap uppercase">{shift.start_time}</td>
+                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap uppercase"> {shift.end_time} </td>
                               </tr>
                             ))}
                           </tbody>
