@@ -152,24 +152,41 @@ const getAllStaffById = async (req, res) => {
 // get all shift for staff
 const getSingleShift = async (req, res) => {
   const { id } = req.params;
+  const { weekOffset = 0 } = req.query;
 
-  const staffs = await Staff.findOne({ where: {	staff_id: id } });
+  const staffs = await Staff.findOne({ where: { staff_id: id } });
   if (!staffs) {
     return res.status(404).json({
       success: false,
-      message: "staff not found",
+      message: "Staff not found",
     });
   }
- try {
-   const shift = await ShiftLogs.findAll({where: {staff_id : id },
-     order: [['Date', 'DESC']],
-   });
 
-   return res.status(200).json({ success: true, shift });
- } catch (error) {
-   return res.status(500).json({ success: false, message: error.message });
- }
+  try {
+    let startOfWeek = new Date();
+     // Calculate start of the week based on weekOffset
+    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() - (weekOffset * 7));
+    let endOfWeek = new Date(startOfWeek);
+    // End of the calculated week
+    endOfWeek.setDate(startOfWeek.getDate() + 6); 
+
+    const shift = await ShiftLogs.findAll({
+      where: {
+        staff_id: id,
+        Date: {
+          [Op.between]: [startOfWeek, endOfWeek],
+        },
+      },
+      order: [['Date', 'ASC']],
+    });
+
+    return res.status(200).json({ success: true, shift });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
+
+
 
 
 
