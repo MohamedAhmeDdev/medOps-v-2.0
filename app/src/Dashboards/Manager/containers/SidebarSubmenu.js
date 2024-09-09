@@ -28,11 +28,11 @@ function SidebarSubmenu({submenu, name, icon}){
                 {
                     submenu.map((m, k) => {
                         return(
-                            <li key={k}>
+                            <li className="my-1" key={k}>
                                 <Link to={m.path}>
                                     {m.icon} {m.name}
                                     {
-                                            location.pathname == m.path ? (<span className="absolute mt-1 mb-1 inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary "
+                                            location.pathname == m.path ? (<span className="absolute mt-1 mb-1 inset-y-0 left-0 w-1"
                                                 aria-hidden="true"></span>) : null
                                     }
                                 </Link>

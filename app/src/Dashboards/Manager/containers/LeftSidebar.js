@@ -3,6 +3,7 @@ import { NavLink,  Routes, Link , useLocation} from 'react-router-dom'
 import SidebarSubmenu from './SidebarSubmenu';
 // import XMarkIcon  from '@heroicons/react/24/outline/XMarkIcon'
 import { useDispatch } from 'react-redux';
+import logo  from '../../../assets/img/logo2.jpg'
 
 function LeftSidebar(){
     const location = useLocation();
@@ -16,29 +17,29 @@ function LeftSidebar(){
 
     return(
         <div className="drawer-side  z-30  ">
-            <label htmlFor="left-sidebar-drawer" className="drawer-overlay"></label> 
+            <label  className="drawer-overlay"></label> 
             <ul className="menu  pt-2 w-80 bg-base-100 min-h-full   text-base-content">
             <button className="btn btn-ghost bg-base-300  btn-circle z-50 top-0 right-0 mt-4 mr-2 absolute lg:hidden" onClick={() => close()}>
-            {/* <XMarkIcon className="h-5 inline-block w-5"/> */}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"  className="h-6 w-6">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
             </button>
 
-                <li className="mb-2 font-semibold text-xl">
-                    
-                    <p ><img className="mask mask-squircle w-10" src="/logo192.png" alt="DashWind Logo"/>DashWind</p> </li>
-                {
-                    routes.map((route, k) => {
+                <div className="mb-2  h-36 font-semibold text-xl">
+                   <img className="w-full  h-full" src={logo} alt="Logo"/>
+                 </div>
+                { routes.map((route, k) => {
                         return(
-                            <li className="" key={k}>
-                                {
-                                    route.submenu ? 
-                                        <SidebarSubmenu {...route}/> : 
+                            <li className="my-1" key={k}>
+                                { route.submenu ? 
+                                   <SidebarSubmenu {...route}/> : 
                                     (<NavLink
                                         end
                                         to={route.path}
-                                        className={({isActive}) => `${isActive ? 'font-semibold  bg-base-200 ' : 'font-normal'}`} >
+                                        className="" >
                                            {route.icon} {route.name}
                                             {
-                                                location.pathname === route.path ? (<span className="absolute inset-y-0 left-0 w-1 rounded-tr-md rounded-br-md bg-primary "
+                                                location.pathname === route.path ? (<span className="absolute mt-1 mb-1 inset-y-0 left-0 w-1 "
                                                 aria-hidden="true"></span>) : null
                                             }
                                     </NavLink>)
