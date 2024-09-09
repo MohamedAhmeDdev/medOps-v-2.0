@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../../Component/Navbar';
-import Sidebar from '../../../Component/Aside';
-import UseSidebar from '../../../utils/constant/useSidebar';
-import {SERVER_URL} from '../../../utils/constant/severUrl';
-import { useNotification } from '../../../utils/context/NotificationContext';
+import {MANAGER_SERVER_URL} from '../../../../constant/severUrl';
+import { useNotification } from '../../../../context/NotificationContext';
 import axios from 'axios'
 
 function CreateTransport() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [transporter, setTransporter] = useState([]);
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [truck_number, setTruck_number] = useState("");
   const [driver_license_number, setDriver_license_number] = useState("");
   const { showErrorNotification ,  showSuccessNotification} = useNotification();
@@ -17,8 +13,8 @@ function CreateTransport() {
 
   const getTransporter = async () => {
     try {
-      const response = await axios.get(`${SERVER_URL}/Manager/Transports/getUserTransport`);
-      setTransporter(response.data.user);
+      const response = await axios.get(`${MANAGER_SERVER_URL}/transports`);
+      setTransporter(response.data.transport);
     } catch (error) {
       console.error('Error fetching transporter data:', error);
     }
@@ -33,22 +29,15 @@ function CreateTransport() {
     e.preventDefault();
 
     try {
-      await axios.post(`${SERVER_URL}/Manager/Transports`, {
-        username: username,
+      await axios.post(`${MANAGER_SERVER_URL}/transports`, {
+        name: name,
         truck_number: truck_number,
        driver_license_number:driver_license_number,
       }).then((response) => {
-        showSuccessNotification('transport created successfully.');
+        showSuccessNotification(response.data.message);
       });
-      setUsername("");
-      setTruck_number("");
-      setDriver_license_number("");
-
-
     } catch (error) {
-      if (error.response?.status === 400) {
-        showErrorNotification('All Fields Are Required.');
-      }
+      showErrorNotification(error.response.data.message);
     }
   };
 
@@ -57,12 +46,7 @@ function CreateTransport() {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
     <div className="flex flex-1 relative">
-
-      <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
-      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-        <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
+      <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto">
         <main className="max-h-screen flex flex-col py-5 h-[100vh]"> 
           <div className="w-full px-3  mx-auto">
         
@@ -70,10 +54,10 @@ function CreateTransport() {
 
 
            <div className="max-w-full pb-20 lg:mb-0 lg:w-full lg:flex-none">
-                <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid rounded-lg">
+                <div className="relative flex flex-col min-w-0 mt-6 break-words  border-0 border-transparent border-solid rounded-lg">
                 <section >
                   <div>
-                      <div className="p-6 bg-white rounded-lg">
+                      <div className="p-6 rounded-lg">
                           <div className="pb-6 border-b">
                               <h2 className="text-xl font-bold text-gray-800 md:text-3xl dark:text-gray-300">Create Transport</h2>
                           </div>
@@ -85,11 +69,11 @@ function CreateTransport() {
                                         <p className="text-base font-semibold text-gray-700 dark:text-gray-400">Staff</p>
                                     </div>
                                     <div className="w-full p-3 md:flex-1">
-                                    <select value={username} onChange={(e) => setUsername(e.target.value)} className="appearance-none dark:text-gray-400 w-full py-2.5 px-4 text-black text-base font-normal border border-gray-200 rounded-lg focus:outline-none">
+                                    <select value={name} onChange={(e) => setName(e.target.value)} className="appearance-none dark:text-gray-400 w-full py-2.5 px-4 text-black text-base font-normal border border-gray-200 rounded-lg focus:outline-none">
                                     <option value="">Choose</option>
-                                    {transporter.map((user, id) => (
-                                        <option key={id} value={user.username}>
-                                        {user.username}
+                                    {transporter.map((staff, id) => (
+                                        <option key={id} value={staff.name}>
+                                        {staff.staff.name}
                                         </option>
                                     ))}
                                     </select>
@@ -126,7 +110,7 @@ function CreateTransport() {
 
                               <div className="w-full md:w-auto mt-10 p-1.5">
                                   <button
-                                      className="flex flex-wrap justify-center w-full px-4 py-2 text-md font-medium text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-blue-600 ">
+                                      className="flex flex-wrap justify-center w-full px-4 py-2 text-md font-medium text-white bg-gray-500 border border-gray-500 rounded-md hover:bg-gray-600 ">
                                       Create
                                   </button>
                               </div>

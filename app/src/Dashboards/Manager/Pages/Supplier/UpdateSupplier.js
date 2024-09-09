@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../../Component/Navbar';
-import Sidebar from '../../../Component/Aside';
-import UseSidebar from '../../../utils/constant/useSidebar';
 import axios from 'axios'
-import {SERVER_URL} from '../../../utils/constant/severUrl';
-import { useNotification } from '../../../utils/context/NotificationContext';
+import {MANAGER_SERVER_URL} from '../../../..//constant/severUrl';
+import { useNotification } from '../../../../context/NotificationContext';
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 
 function UpdateSupplier() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const { showErrorNotification ,  showSuccessNotification} = useNotification();
   const [company_name, setCompany_name] = useState("");
   const [contact_person, setContact_person] = useState("");
@@ -22,7 +18,9 @@ function UpdateSupplier() {
   
 
   const getSupplier = async () => {
-    const response = await axios.get(`${SERVER_URL}/Manager/Supplier/${id}`);
+    const response = await axios.get(`${MANAGER_SERVER_URL}/supplier/${id}`);
+    console.log(response.data.supplier);
+    
     setCompany_name(response.data.supplier[0].company_name);
     setContact_person(response.data.supplier[0].contact_person);
     setPhone(response.data.supplier[0].phone);
@@ -39,46 +37,31 @@ function UpdateSupplier() {
     e.preventDefault();
   
     try {
-      await axios.patch(`${SERVER_URL}/Manager/Supplier/${id}`, {
+      await axios.patch(`${MANAGER_SERVER_URL}/supplier/${id}`, {
         company_name: company_name,
         email: email,
         contact_person: contact_person,
        phone:phone,
         company_address: company_address,
       }).then((response) => {
-        showSuccessNotification('supplier updated successfully.');
+        showSuccessNotification(response.data.message);
       });
-     navigate('/supplier')
-
     } catch (error) {
-      if (error.response?.status === 400) {
-        showErrorNotification('All Fields Are Required.');
-      } else if (error.response?.status === 401) {
-        showErrorNotification('Please enter a valid phone number.');
-      }
+      showErrorNotification(error.response.data.message);
     }
   };
   
  return (
     <div className="flex flex-col h-screen overflow-hidden">
     <div className="flex flex-1 relative">
-
-      <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
-      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-        <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
+      <div className="flex flex-col flex-1  overflow-x-hidden overflow-y-auto">
         <main className="max-h-screen flex flex-col py-5 h-[100vh]"> 
           <div className="w-full px-3  mx-auto">
-        
-          <h6 className="pb-5 font-bold text-lg lg:text-lg capitalize">Dashboard</h6>
-
-
            <div className="max-w-full pb-20 lg:mb-0 lg:w-full lg:flex-none">
-                <div className="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 border-transparent border-solid rounded-lg">
+                <div className="relative flex flex-col min-w-0 mt-6 break-words border-0 border-transparent border-solid rounded-lg">
                 <section >
                   <div>
-                      <div className="p-6 bg-white rounded-lg">
+                      <div className="p-6 rounded-lg">
                           <div className="pb-6 border-b">
                               <h2 className="text-xl font-bold text-gray-800 md:text-3xl dark:text-gray-300">Update Supplier</h2>
                           </div>
@@ -149,7 +132,7 @@ function UpdateSupplier() {
                           </div>
                               <div className="w-full md:w-auto mt-10 p-1.5">
                                   <button
-                                      className="flex flex-wrap justify-center w-full px-4 py-2 text-md font-medium text-white bg-blue-500 border border-blue-500 rounded-md hover:bg-blue-600 ">
+                                      className="flex flex-wrap justify-center w-full px-4 py-2 text-md font-medium text-white bg-gray-500 border border-gray-500 rounded-md hover:bg-gray-600 ">
                                       Update
                                   </button>
                               </div>

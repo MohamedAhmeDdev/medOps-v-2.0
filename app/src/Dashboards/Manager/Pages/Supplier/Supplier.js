@@ -1,17 +1,17 @@
 import React, { useState,useEffect } from 'react';
-import Navbar from '../../../Component/Navbar';
-import Sidebar from '../../../Component/Aside';
 import { Link } from 'react-router-dom';
-import UseSidebar from '../../../utils/constant/useSidebar';
-import { Api } from "../../../utils/Api";
+import { Api } from "../../../../utils/Api";
+import {MANAGER_SERVER_URL} from '../../../..//constant/severUrl';
+import axios from 'axios'
 
 function Supplier() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [suppliers, setSupplier] = useState([]);
 
   useEffect(() => {
 		const getSupplier = async () => {
-		  const data = await Api("/Manager/Supplier", "GET");
+		  const data = await Api(`${MANAGER_SERVER_URL}/supplier`);
+      console.log(data.supplier);
+      
 			setSupplier(data.supplier);			
 		};
 	
@@ -21,40 +21,32 @@ function Supplier() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
-    <div className="flex flex-1 relative">
-  
-      <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-  
-      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-        <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-  
+    <div className="flex flex-1 relative">  
+      <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto"> 
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
         <div className="w-full py-6 mx-auto">
-          <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-lg capitalize">Supplier</h6> 
-
-          <Link to='/createSupplier'>
-                 <div className="flex justify-end pr-5">
-                   <div className="flex hover:bg-blue-200 text-blue-800 text-sm cursor-pointer ml-auto px-2.5 py-1.5">
-                     <span className="material-symbols-outlined">add</span>
-                     <p className="text-md text-blue-800 capitalize">Add Supplier</p>
-                   </div>
-                 </div>
-            </Link>
+          <Link to='/manager/add-supplier'>
+                  <div className="flex justify-end pr-5">
+                    <div className="flex bg-gray-400  text-white text-sm font-bold cursor-pointer ml-auto px-2.5 py-1.5">
+                      <p className="text-md capitalize">Add Supplier</p>
+                    </div>
+                  </div>
+              </Link>
 
           <div className="flex flex-wrap py-5">
           <div className="flex-none w-full max-w-full pb-5">
-            <div className="relative flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid">
+            <div className="relative flex flex-col mb-6 break-words border-0 border-transparent border-solid">
               <div className="flex-auto px-0 pt-0 pb-2">
                 <div className="p-0 overflow-x-auto">
-                  <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                    <thead className="align-bottom">
+                <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                   <thead className="align-bottom bg-slate-500">
                       <tr>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black">Company_Name</th>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black">Contact_Person</th>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black">Email</th>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black">Phone_Number</th>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black">Company_Address</th>
-                        <th className="px-4 py-3 font-medium text-center border-b border-gray-400 text-md border-b-solid whitespace-nowrap text-black"></th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Company_Name</th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Contact_Person</th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Email</th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Phone_Number</th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Company_Address</th>
+                        <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70"></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -63,13 +55,13 @@ function Supplier() {
                         )} 
                       {suppliers.map((supplier,id) => (
                       <tr key={id}>
-                        <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_name}</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_person}</td>
-                         <td className="p-2 px-5 text-md   text-center text-slate-400  border-b whitespace-nowrap">{supplier.email}</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap">{supplier.phone}</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">{supplier.company_address}</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400  border-b whitespace-nowrap capitalize">
-                           <Link to={`/updateSupplier/${supplier.supplier_id}`} className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
+                        <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.company_name}</td>
+                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.contact_person}</td>
+                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.email}</td>
+                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.phone}</td>
+                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.company_address}</td>
+                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                           <Link to={`/manager/supplier/${supplier.supplier_id}`} className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
                          </td>
                       </tr>
                       ))}    
