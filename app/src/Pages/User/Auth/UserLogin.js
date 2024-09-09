@@ -17,24 +17,21 @@ function UserLogin() {
 
 
   const userAuth = async (e) => {
-
-console.log('erre');
     e.preventDefault();
   
     try {
       await axios.post(`${SERVER_URL}/auth/login`, {
-        username: username,
+        name: username,
         password: password,
       }).then((response) => {
         const user = response.data.user;
         localStorage.setItem("user", JSON.stringify(user));
-        dispatch({ type: "LOGIN", payload: user });
+         dispatch({ type: "LOGIN", payload: user });
          showSuccessNotification(response.data.message);
+         setTimeout(() => {
+          navigate('/medicine');
+          }, 2000); 
       });
-
-       setTimeout(() => {
-        navigate('/medicine');
-        }, 2000); 
     } catch (error) {
       showErrorNotification(error.response.data.message);
     }
