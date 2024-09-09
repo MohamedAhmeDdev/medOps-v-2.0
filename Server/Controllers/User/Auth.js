@@ -84,7 +84,10 @@ const login = async (req, res) => {
             return res.status(401).json({ success: false, message: "Incorrect Password" });
           } else {
             const token = createToken(foundUser.user_id, foundUser.role, foundUser.name);
-             return res.status(200).json({ success: true,user: { token: token }
+             return res.status(200).json({ 
+               success: true,
+               message: "user logged in",
+               user: token
             });
           }
         });
