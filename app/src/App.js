@@ -48,7 +48,7 @@ function App() {
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
 
           <Route path="/manager/*" element={<ManagerLayout />} />
-          <Route path="/operate/*" element={<OperatorLayout />} />
+          <Route path="/operator/*" element={<OperatorLayout />} />
           <Route path="/logistics/*" element={<LogisticsLayout />} />
           <Route path="/transporter/*" element={<TransporterLayout />} />
        
