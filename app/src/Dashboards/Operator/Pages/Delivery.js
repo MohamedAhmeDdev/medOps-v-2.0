@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from "react";
-import Navbar from '../../Component/Navbar';
-import Sidebar from '../../Component/Aside';
 import { Link } from 'react-router-dom';
-import UseSidebar from '../../utils/constant/useSidebar';
+import { OPERATOR_SERVER_URL } from "../../../constant/severUrl";
 import axios from "axios";
-import { SERVER_URL } from "../../utils/constant/severUrl";
 import { useParams } from "react-router-dom";
 
 function Delivery() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [deliveries, setDeliveries] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
 		const getDeliveries = async () => {
-      const data = await axios.get(`${SERVER_URL}/Operator/Deliveries/${id}`);
-			setDeliveries(data.data.delivery)																	
+      const data = await axios.get(`${OPERATOR_SERVER_URL}/delivery`);
+			setDeliveries(data.data.delivery)																
 		};
 	
 		getDeliveries();
@@ -25,57 +21,60 @@ function Delivery() {
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
       <div className="flex flex-1 relative">
-
-        <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
-        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-          <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
+        <div className="flex flex-col flex-1  overflow-x-hidden overflow-y-auto">
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
-            <div className="w-full py-6 mx-auto">
-          
-            <h6 className="pb-5 font-bold px-1.5 lg:px-6 text-lg capitalize">Deliveries</h6>
+          <div class="px-4 mt-8">
+                <label for="" class="sr-only"> Search </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 right-0 flex items-center pl-3 pointer-events-none">
+                    <button type="submit" className="cursor-pointer  px-10 py-2 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">
+                      <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    </div>
+                    <input type="search" name="" id="" class="block w-full py-2 px-2 border border-gray-300 rounded-lg focus:outline-none sm:text-sm" placeholder="Search here" />
+                </div>
+            </div>
 
+            <div className="w-full py-6 mx-auto">
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
-                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid">     
+                    <div className=" flex flex-col mb-10 break-words border-0 border-transparent border-solid">     
                       <div className="flex-auto px-0 pt-0 pb-2">
                         <div className="p-0 overflow-x-auto">
-                          <table className="min-w-full divide-y divide-gray-200 ">
-                          <thead className="align-bottom">
+                          <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                            <thead className="align-bottom bg-slate-500">
                               <tr>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Username</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Status</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black"></th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Order Id</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Username</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Phone Number</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Total Amount</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Status</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70"></th>
                               </tr>
                           </thead>
-                            <tbody className="bg-white ">
+                            <tbody className="">
                              {deliveries.length === 0 && (
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                               )}
                               {deliveries?.map((delivery, id)=>(
-                              <tr key={id} className="bg-gray-50 ">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order_id}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.username}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.transport.user.phoneNumber}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{delivery.order.total_price}</td>       
-                                <td className="p-4 whitespace-nowrap text-center">
+                              <tr key={id} className="">
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order_id}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.user.name}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.user.phoneNumber}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.total_price}</td>       
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                   {delivery.order.order_status === 'Pending' && (
                                      <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">{delivery.order.order_status}</span>
-                                  )}
-                                    {delivery.order.order_status === 'Packed' && (
-                                    <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 border border-purple-50">{delivery.order.order_status}</span>
                                   )}
                                    {delivery.order.order_status === 'Delivered' && (
                                   <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">{delivery.order.order_status}</span>
                                   )}        
                                 </td>
                                 
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to={`/singleOrder/${delivery.order_id}`} className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500"> View </Link>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                    <Link to={`/operator/singleOrder/${delivery.order_id}`} className="text-md font-semibold leading-tight text-slate-400 hover:text-blue-500"> View </Link>
                                 </td>
                               </tr>  
                               ))}

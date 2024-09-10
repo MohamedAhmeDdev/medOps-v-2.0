@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Navbar from '../../Component/Navbar';
-import Sidebar from '../../Component/Aside';
 import { Link } from 'react-router-dom';
-import UseSidebar from '../../utils/constant/useSidebar';
-import { Api } from "../../utils/Api";
+import { OPERATOR_SERVER_URL } from "../../../constant/severUrl";
+import axios from "axios";
 
 function Orders() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [statusDropdown, setStatusDropdown] = useState(false);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
 		const getOrders = async () => {
-		  const data = await Api("/Operator/Orders", "GET");
-			setOrders(data.order);																										
+		  const data = await axios.get(`${OPERATOR_SERVER_URL}/order`);
+			setOrders(data.data.order);																										
 		};
 	
 		getOrders();
@@ -29,75 +26,52 @@ function Orders() {
   return (
      <div className="flex flex-col h-screen overflow-hidden ">
       <div className="flex flex-1 relative">
-
-        <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
-        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-          <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-
+        <div className="flex flex-col flex-1  overflow-x-hidden overflow-y-auto">
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
         
-            <nav className="bg-white py-2.5">
-               <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
-                 <div className=" mx-auto">                       
-                      <input type="text" className="text-sm w-40 rounded-l-lg border border-gray-300 bg-white py-2.5 px-3 focus:outline-none" placeholder="search for Order" />
-                      <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
-                  </div>                    
-               </div>
-            </nav>
+          <div class="px-4 mt-8">
+                <label for="" class="sr-only"> Search </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 right-0 flex items-center pl-3 pointer-events-none">
+                    <button type="submit" className="cursor-pointer  px-10 py-2 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">
+                      <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    </div>
+                    <input type="search" name="" id="" class="block w-full py-2 px-2 border border-gray-300 rounded-lg focus:outline-none sm:text-sm" placeholder="Search here" />
+                </div>
+            </div>
           
             <div className="w-full py-6 mx-auto">
             <h6 className="pb-5 font-bold text-lg px-1.5 lg:px-6 capitalize">Orders</h6>
 
                <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
-                    <div className=" flex flex-col mb-10 break-words bg-white border-0 border-transparent border-solid bg-clip-border">     
+                    <div className=" flex flex-col mb-10 break-words border-0 border-transparent border-solid bg-clip-border">     
                       <div className="flex-auto px-0 pt-0 pb-2">
                         <div className="p-0 overflow-x-auto">
-                          <table className="min-w-full divide-y divide-gray-200 ">
-                          <thead className="align-bottom">
+                        <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                           <thead className="align-bottom bg-slate-500">
                               <tr>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Order Id</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Customer_Name</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Phone Number</th>
-                                <th className="p-4 text-md font-medium tracking-wider text-center text-black">Total Amount</th>
-                                <th className="relative p-4 text-md font-medium tracking-wider text-left text-black  flex">Status
-                                    {statusDropdown ? (
-                                            <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_less</span>
-                                            ) : (
-                                              <span  onClick={toggleDropdown} className="material-symbols-outlined cursor-pointer">expand_more</span>
-                                        )}
-                                      {statusDropdown && (
-                                        <div className="absolute w-36 lg:w-28 mt-10 origin-top-right bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none" onClick={() => setStatusDropdown(false)}>
-                                          <div className="py-1">
-                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer capitalize">Delivered</p>
-                                          </div>
-                                          <div className="py-1">
-                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Packed</p>
-                                          </div>
-                                          <div className="py-1">
-                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Cancelled</p>
-                                          </div>
-                                          <div className="py-1">
-                                              <p className="flex px-4 py-2 text-sm text-gray-700 border-l-2 border-transparent dark:text-gray-400 dark:hover:text-gray-300 hover:text-black cursor-pointer">Pending</p>
-                                          </div>
-                                        </div>
-                                    )}
-                                </th>
-                                <th className="p-4 text-md font-medium tracking-wider text-left text-black"></th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Order Id</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Customer_Name</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Phone Number</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Total Amount</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Status</th>
                               </tr>
                           </thead>
-                            <tbody className="bg-white">
+                            <tbody className="">
                             {orders.length === 0 && (
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                              )}
                               {orders.map((order, id) =>(
                               <tr key={id} className="bg-gray-50">
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{order.order_id}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{order.user.username}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{order.user.phoneNumber}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap">{order.total_price}</td>       
-                                <td className="p-4 whitespace-nowrap">
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{order.order_id}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{order.user.name}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{order.user.phoneNumber}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{order.total_price}</td>       
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                   {order.order_status === 'Packed' && (
                                     <span className="bg-purple-100 text-purple-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-purple-50">{order.order_status}</span>
                                   )}
@@ -108,9 +82,6 @@ function Orders() {
                                   <span className="bg-orange-100 text-orange-500 rounded-md text-sm mr-2 px-2.5 py-0.5 border border-orange-50">{order.order_status}</span>
                                   )}
                                
-                                </td>
-                                <td className="p-4 text-md text-gray-400 whitespace-nowrap">
-                                    <Link to={`/SingleOrder/${order.order_id}`} className="text-md font-semibold leading-tight text-slate-400"> View </Link>
                                 </td>
                               </tr>  
                               ))}

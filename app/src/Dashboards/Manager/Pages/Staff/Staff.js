@@ -77,7 +77,13 @@ function Staff() {
                             <p className="mb-0 text-sm leading-tight">{staff.role.role}</p>
                           </td>
                           <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm  px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">Logged in</span>
+                            {staff.shifts && staff.shifts.length > 0 ? (
+                              <span className="bg-gradient-to-tl from-green-600 to-lime-400 rounded-md text-sm px-2 py-2 inline-block whitespace-nowrap text-center align-baseline font-semibold leading-none text-white">
+                                {staff.shifts[0].shift_status}
+                              </span>
+                            ) : (
+                              <span className="text-sm text-gray-500">-</span>
+                            )}
                           </td>
                           <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <Link to={`/manager/shift/${staff.staff_id}`} className="text-sm font-semibold leading-tight text-slate-400">Shifts</Link>

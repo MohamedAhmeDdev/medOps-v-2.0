@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Navbar from '../../Component/Navbar';
-import Sidebar from '../../Component/Aside';
-import UseSidebar from '../../utils/constant/useSidebar';
-import { Api } from "../../utils/Api";
+import { OPERATOR_SERVER_URL } from "../../../constant/severUrl";
+import axios from "axios";
 
 function User() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
   const [users, setUsers] = useState([]);
 
 
     useEffect(() => {
 		const getUsers = async () => {
-		  const data = await Api("/Operator/Users", "GET");
-			setUsers(data.user);					
+		  const data = await axios.get(`${OPERATOR_SERVER_URL}/user`);
+			setUsers(data.data.user);					
 		};
 	
 		getUsers();
@@ -21,39 +18,36 @@ function User() {
 
   return (
     <div className="flex flex-col h-screen overflow-hidden ">
-      <div className="flex flex-1 relative">
-    
-        <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-    
-        <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-          <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-    
+      <div className="flex flex-1 relative">    
+        <div className="flex flex-col flex-1 overflow-x-hidden overflow-y-auto">    
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
-              <nav className="bg-white py-2.5">
-              <div className="flex items-center mt-2 grow sm:mt-0 sm:mr-6 md:mr-0 lg:flex">
-                 <div className=" mx-auto">                       
-                      <input type="text" className="text-md w-40 relative flex-auto rounded-l-lg border border-solid border-gray-300 bg-white py-2.5 px-3 text-black focus:outline-none" placeholder="search for User" />
-                      <button type="submit" className="px-2 py-3 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">Search</button>
-                  </div>       
-              </div>
-             </nav>
+            <div class="px-4 mt-8">
+                <label for="" class="sr-only"> Search </label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 right-0 flex items-center pl-3 pointer-events-none">
+                    <button type="submit" className="cursor-pointer  px-10 py-2 text-sm font-medium text-white rounded-r-lg bg-blue-600 hover:bg-blue-800 focus:outline-none">
+                      <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    </div>
+                    <input type="search" name="" id="" class="block w-full py-2 px-2 border border-gray-300 rounded-lg focus:outline-none sm:text-sm" placeholder="Search here" />
+                </div>
+            </div>
             <div className="w-full  py-6 mx-auto">
-            <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-lg capitalize">User</h6> 
-
             <div className="flex flex-wrap py-5">
             <div className="flex-none w-full max-w-full pb-5">
-              <div className="relative flex flex-col mb-6 break-words bg-white border-0 border-transparent border-solid">
+              <div className="relative flex flex-col mb-6 break-words border-0 border-transparent border-solid">
                 <div className="flex-auto px-0 pt-0 pb-2">
                   <div className="p-0 overflow-x-auto">
-                    <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                      <thead className="align-bottom">
+                  <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                    <thead className="align-bottom bg-slate-500">
                         <tr>
-                          <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">User</th>
-                          <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Phone_Number</th>
-                          <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Address</th>
-                          <th className="px-6 py-5 font-semibold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Role</th>
+                          <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">User</th>
+                          <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Phone_Number</th>
+                          <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Address</th>
                         </tr>
-                      </thead>z
+                      </thead>
                       <tbody>
                          {users.length === 0 && (
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
@@ -61,18 +55,15 @@ function User() {
 
                         {users.map((user, id)=> (
                         <tr key={id}>
-                          <td className="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
-                              <h6 className="mb-0 text-sm text-center leading-normal capitalize">{user.username}</h6>
-                              <p className="mb-0 text-sm  text-center leading-tight text-slate-400">{user.email}</p>                      
+                          <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
+                              <h6 className="">{user.name}</h6>
+                              <p className="">{user.email}</p>                      
                           </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <p className="mb-0 text-sm leading-tight">{user.phoneNumber}</p>
                           </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                          <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                             <p className="mb-0 text-sm leading-tight capitalize">{user.address}</p>
-                          </td>
-                          <td className="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                            <p className="mb-0 text-sm leading-tight">{user.role}</p>
                           </td>
                         </tr>
                         ))}
