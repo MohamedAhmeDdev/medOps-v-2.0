@@ -8,7 +8,7 @@ const submenuIconClasses = `h-5 w-5`
 const routes = [
 
   {
-    path: '/manager/medicine-category',
+    path: '/manager/',
     name: 'Medicine Category',
   },
   {

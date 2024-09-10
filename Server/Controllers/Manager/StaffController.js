@@ -114,6 +114,7 @@ const getStaff = async (req, res) => {
       },{
         model: Role,
       }],
+      order: [['name', 'ASC']],
     });
 
     return res.status(200).json({ success: true, staff: staffs });

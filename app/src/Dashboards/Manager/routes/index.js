@@ -24,7 +24,7 @@ const UpdateSupplier = lazy(() => import('../Pages/Supplier/UpdateSupplier'))
 
 const routes = [
   {
-    path: '/medicine-category',
+    path: '/',
     component: MedicineCategory,
   },
   {
