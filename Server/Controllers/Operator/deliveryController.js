@@ -22,7 +22,10 @@ const getAllDelivery = async (req, res) => {
         }],
       },{
         model: Order,
-        attributes: ['order_status', 'total_price',],
+        include: [{
+          model: User,
+          attributes: ['name', 'phoneNumber'],
+        }]
       }],
       order: [[ Order ,'order_date','DESC']]
     });
@@ -47,14 +50,13 @@ const getDeliveryById = async (req, res) => {
       where: { order_id: id },
       include: [{
         model: Order,
-        attributes: ['order_status'],
         include: [{
           model: OrderList,
           include: [{
             model: Medicine,
             attributes: ['medicine_name'],
         }],
-        }],
+        },{  model: User}],
       }],
     });
 

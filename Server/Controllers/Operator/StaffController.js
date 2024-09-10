@@ -7,7 +7,6 @@ const { Op } = require('sequelize');
 
 
 
-
 const getStaff = async (req, res) => {
   try {
     const startOfDay = new Date();
@@ -45,23 +44,10 @@ const getStaff = async (req, res) => {
 
 
 
-const getSingleShift = async (req, res) => {
-  const { id } = req.params;
- try {
-   const shift = await ShiftLogs.findAll({
-     where: {staff_id : id },
-     order: [['Date', 'ASC']],
-   });
 
-   return res.status(200).json({ success: true, shift });
- } catch (error) {
-   return res.status(500).json({ success: false, message: error.message });
- }
-};
 
 
 
 module.exports = {
   getStaff,
-  getSingleShift
 };
