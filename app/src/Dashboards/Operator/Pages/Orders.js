@@ -10,7 +10,7 @@ function Orders() {
   useEffect(() => {
 		const getOrders = async () => {
 		  const data = await axios.get(`${OPERATOR_SERVER_URL}/order`);
-			setOrders(data.data.order);																										
+			setOrders(data.data.order);		      																								
 		};
 	
 		getOrders();
