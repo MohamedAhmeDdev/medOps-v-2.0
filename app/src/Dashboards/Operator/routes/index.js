@@ -2,17 +2,59 @@
 
 import { lazy } from 'react'
 
-// const Dashboard = lazy(() => import('../pages/Login'))
+const MedicineCategory = lazy(() => import('../Pages/MedicineCategory'))
+const Medicine = lazy(() => import('../Pages/Medicine'))
+const Supplier = lazy(() => import('../Pages/Supplier'))
+const Transport = lazy(() => import('../Pages/Transport'))
+const Staff = lazy(() => import('../Pages/Staff'))
+const User = lazy(() => import('../Pages/User'))
+const Order = lazy(() => import('../Pages/Orders'))
+const SingleOrder = lazy(() => import('../Pages/SingleOrder'))
+const Delivery = lazy(() => import('../Pages/Delivery'))
+
+
+
 
 
 
 
 const routes = [
   {
-    path: '/dashboard', // the url
-    // component: Dashboard, // view rendered
+    path: '/', 
+    component: MedicineCategory,
   },
-
+  {
+    path: '/medicine', 
+    component: Medicine,
+  },
+  {
+    path: '/supplier', 
+    component: Supplier,
+  },
+  {
+    path: '/transport', 
+    component: Transport,
+  },
+  {
+    path: '/staff', 
+    component: Staff,
+  },
+  {
+    path: '/user', 
+    component: User,
+  },
+  {
+    path: '/order', 
+    component: Order,
+  },
+  {
+    path: '/delivery', 
+    component: Delivery,
+  },
+  {
+    path: '/singleOrder/:id', 
+    component: SingleOrder,
+  },
 ]
 
 export default routes
