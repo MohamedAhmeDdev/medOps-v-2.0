@@ -17,11 +17,7 @@ const getAllOrder = async (req, res) => {
       order: [['createdAt', 'DESC']],
     });
 
-    // Filter out orders where order_status is 'Pending'
-    const filteredOrders = AllOrder.filter(order => order.order_status !== 'Pending');
-
-   console.log(filteredOrders);
-   
+    const filteredOrders = AllOrder.filter(order => order.order_status === 'Packed' );  
 
     return res.status(200).json({ success: true, order: filteredOrders });
   } catch (error) {
