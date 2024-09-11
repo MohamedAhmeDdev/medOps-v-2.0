@@ -65,11 +65,11 @@ function Delivery() {
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.user.phoneNumber}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.total_price}</td>       
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                  {delivery.order.order_status === 'Pending' && (
-                                     <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">{delivery.order.order_status}</span>
+                                  {delivery.delivery_status === 'Pending' && (
+                                     <span className="bg-orange-100 text-orange-400 rounded-md text-sm mr-2 px-2.5 border border-orange-50">{delivery.delivery_status}</span>
                                   )}
-                                   {delivery.order.order_status === 'Delivered' && (
-                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">{delivery.order.order_status}</span>
+                                   {delivery.delivery_status === 'Delivered' && (
+                                  <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">{delivery.delivery_status}</span>
                                   )}        
                                 </td>
                                 
