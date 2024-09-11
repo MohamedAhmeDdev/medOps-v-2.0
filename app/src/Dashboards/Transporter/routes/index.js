@@ -2,15 +2,20 @@
 
 import { lazy } from 'react'
 
-// const Dashboard = lazy(() => import('../pages/Login'))
+const Delivery = lazy(() => import('../Pages/Delivery'))
+const SingleDelivery = lazy(() => import('../Pages/SingleOrderDelivery'))
 
 
 
 
 const routes = [
   {
-    path: '/dashboard', // the url
-    // component: Dashboard, // view rendered
+    path: '/', 
+    component: Delivery, 
+  },
+  {
+    path: '/:id', 
+    component: SingleDelivery, 
   },
 
 ]
