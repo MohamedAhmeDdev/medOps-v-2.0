@@ -1,4 +1,5 @@
 const {
+    assignOrders,
     getAllDelivery,
     getDeliveryById
 }= require("../../Controllers/Operator/deliveryController");
@@ -6,7 +7,7 @@ const {
 const AuthRouter = require("express").Router();
 
 
-
+AuthRouter.post("/assignOrders", assignOrders);
 AuthRouter.get("/", getAllDelivery);
 AuthRouter.get("/:id", getDeliveryById);
 
