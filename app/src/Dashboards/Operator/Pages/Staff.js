@@ -54,7 +54,7 @@ function Staff() {
                           )}
 
                         {staffs.map((staff, id) => (
-                        <tr key={id}>
+                        <tr key={id}className="bg-gray-50" >
                           <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">                            
                               <h6 className="capitalize">{staff.name}</h6>
                               <p className="">{staff.email}</p>                      

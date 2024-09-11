@@ -42,13 +42,13 @@ function Transport() {
                     <div className=" flex flex-col mb-10 break-words border-0 border-transparent border-solid">     
                       <div className="flex-auto px-0 pt-0 pb-2">
                         <div className="p-0 overflow-x-auto">
-                        <table className="min-w-full divide-y divide-gray-200 ">
-                          <thead className="align-bottom">
+                        <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                          <thead className="align-bottom bg-slate-500">
                               <tr>
-                                <th className="p-4 text-md font-medium  border-gray-400 text-center text-black">Driver</th>
-                                <th className="p-4 text-md font-medium border-gray-400 text-center text-black">Truck_Number</th>
-                                <th className="p-4 text-md font-medium border-gray-400 text-center text-black">Driving_License</th>
-                                <th className="p-4 text-md font-medium border-gray-400  text-center text-black"></th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Driver</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Truck_Number</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Driving_License</th>
+                                <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70"></th>
                               </tr>
                           </thead>
                             <tbody className="">
@@ -56,11 +56,11 @@ function Transport() {
                                <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                                )} 
                               {transports.map((transport,id) => (
-                              <tr key={id}>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{transport.staff.name}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{transport.truck_number}</td>
-                                <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{transport.driver_license_number}</td>        
-                                <td className="p-4 text-md text-gray-400 text-center whitespace-nowrap border-b">
+                              <tr key={id} className='bg-gray-50'>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{transport.staff.name}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{transport.truck_number}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{transport.driver_license_number}</td>        
+                                <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                    <Link to={`/manager/transport/${transport.transport_id}`} className="text-sm font-semibold leading-tight text-slate-400">Edit</Link>
                                 </td>
                               </tr> 

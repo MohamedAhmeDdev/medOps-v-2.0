@@ -63,7 +63,7 @@ function PasswordRequest() {
                                 <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                                )} 
                               {PasswordRequest.map((request, id) =>(
-                              <tr key={id} className='border-b'>
+                              <tr key={id} className='border-b bg-gray-50'>
                                   <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{id+1}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{request.staff.name}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">

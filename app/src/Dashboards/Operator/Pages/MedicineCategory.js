@@ -54,7 +54,7 @@ function MedicineCategory() {
                                     <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                                    )}
                                   {medicineCategories.map((category, id) =>(
-                                   <tr key={id} className="">
+                                   <tr key={id} className="bg-gray-50">
                                       <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{category.medicine_category}</td>
                                       <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{formatDate(category.createdAt)}</td>             
                                    </tr>  

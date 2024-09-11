@@ -178,7 +178,7 @@ function Orders() {
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                              )}
                               {orders.map((order, id) =>(
-                              <tr key={id} className="">
+                              <tr key={id} className="bg-gray-50">
                                 <td class="p-4 w-4">
                                   <div class="flex items-center">
                                       <input id="checkbox-table-2" 

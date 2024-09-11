@@ -65,7 +65,7 @@ function Medicine() {
                                 <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                                )} 
                               {medicines.map((medicine, id) => (
-                              <tr key={id} className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                              <tr key={id} className="bg-gray-50">
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{medicine.medicineCategory.medicine_category}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{medicine.medicine_name}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">

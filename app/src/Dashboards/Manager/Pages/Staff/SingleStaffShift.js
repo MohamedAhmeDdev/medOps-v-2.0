@@ -80,20 +80,20 @@ function SingleStaffShift() {
                   <div className="flex flex-col mb-10 break-word border-0 border-transparent border-solid bg-clip-border">
                     <div className="flex-auto px-0 pt-0 pb-2">
                       <div className="p-0 overflow-x-auto">
-                        <table className="min-w-full divide-y divide-gray-200">
-                          <thead className="align-bottom">
+                      <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500 ">
+                         <thead className="align-bottom bg-slate-500">
                             <tr>
-                              <th className="p-4 text-md font-medium tracking-wider text-center text-black">Day</th>
-                              <th className="p-4 text-md font-medium tracking-wider text-center text-black">Logged In At</th>
-                              <th className="p-4 text-md font-medium tracking-wider text-center text-black">Logged Out At</th>
+                              <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Day</th>
+                              <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Logged In At</th>
+                              <th className="px-6 py-2 font-semibold text-center text-sm uppercase align-middle bg-transparent border-b border-gray-200 shadow-none border-b-solid tracking-none whitespace-nowrap text-white opacity-70">Logged Out At</th>
                             </tr>
                           </thead>
                           <tbody>
                             {shifts.map((shift, id) => (
-                              <tr key={id} className="border-b">
-                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap capitalize">{getDayName(shift.Date)} </td>
-                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap uppercase">{shift.start_time}</td>
-                                <td className="p-4 text-md text-center text-gray-700 whitespace-nowrap uppercase"> {shift.end_time} </td>
+                              <tr key={id} className="border-b bg-gray-50">
+                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent capitalize">{getDayName(shift.Date)} </td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase">{shift.start_time}</td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase"> {shift.end_time} </td>
                               </tr>
                             ))}
                           </tbody>

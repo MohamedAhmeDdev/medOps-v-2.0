@@ -54,7 +54,7 @@ function Supplier() {
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                         )} 
                       {suppliers.map((supplier,id) => (
-                      <tr key={id}>
+                      <tr key={id} className='bg-gray-50'>
                         <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.company_name}</td>
                          <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.contact_person}</td>
                          <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{supplier.email}</td>

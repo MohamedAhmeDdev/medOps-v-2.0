@@ -44,7 +44,7 @@ function Transport() {
                              )}
 
                               {transports?.map((item, id) =>(
-                              <tr key={id}>
+                              <tr key={id} className="bg-gray-50">
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.staff.name}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.truck_number}</td>
                                 <td className="p-4 text-md text-center text-gray-400 whitespace-nowrap border-b">{item.driver_license_number}</td>       

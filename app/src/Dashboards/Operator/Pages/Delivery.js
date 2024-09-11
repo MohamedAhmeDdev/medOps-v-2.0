@@ -59,7 +59,7 @@ function Delivery() {
                               <p className="px-6 py-4 text-center whitespace-nowrap text-sm text-gray-500">No item found</p>
                               )}
                               {deliveries?.map((delivery, id)=>(
-                              <tr key={id} className="">
+                              <tr key={id} className="bg-gray-50">
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order_id}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.user.name}</td>
                                 <td className="mb-0 text-sm leading-tight p-2 py-3 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">{delivery.order.user.phoneNumber}</td>
