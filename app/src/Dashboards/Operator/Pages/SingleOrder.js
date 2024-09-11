@@ -13,7 +13,6 @@ function SingleOrder() {
       try {
         const res = await axios.get(`${OPERATOR_SERVER_URL}/delivery/${id}`);
         setSingleOrder(res.data.delivery);
-        console.log(res);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -113,7 +112,7 @@ function SingleOrder() {
                                 {singleOrder?.order?.order_status}
                               </span>
                             )}
-                            {singleOrder?.order?.order_status === "Delivered" && (
+                            {singleOrder?.order?.order_status === "Assigned" && (
                               <span className="bg-green-100 text-green-500 rounded-md text-sm mr-2 px-2.5 border border-green-50">
                                 {singleOrder?.order?.order_status}
                               </span>
@@ -131,7 +130,7 @@ function SingleOrder() {
                           </div>
                           <div className="flex flex-col items-center justify-center">
                             <p className="relative inline-block m-0 leading-normal text-slate-700 text-sm bg-clip-text capitalize">
-                              {singleOrder?.delivery_address}
+                            {singleOrder?.order?.user?.address}
                             </p>
                           </div>
                         </li>
