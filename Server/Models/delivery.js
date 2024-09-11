@@ -23,9 +23,6 @@ const Delivery = database.define("deliveries",{
             key: 'transport_id',
            },
     },
-    delivery_address:{
-        type: DataTypes.STRING,
-    },
     delivery_date:{
         type: DataTypes.DATE,
     },
