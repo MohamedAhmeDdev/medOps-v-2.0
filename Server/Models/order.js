@@ -20,7 +20,7 @@ const Order = database.define("orders",{
     },
     order_status:{
         type: DataTypes.STRING,
-    },//PENDING , PACKED , DELIVERED
+    },//PENDING , PACKED , Assigned
     order_date:{
         type: DataTypes.DATE,
     },
