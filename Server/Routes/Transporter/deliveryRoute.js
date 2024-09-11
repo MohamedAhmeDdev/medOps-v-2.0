@@ -1,4 +1,5 @@
 const {
+    OrderDelivered,
     getDeliveryForSingleTransport,
     getDeliveryById,
 }= require("../../Controllers/Transporter/deliveryController");
@@ -10,5 +11,6 @@ const AuthRouter = require("express").Router();
 
 AuthRouter.get("/", verifyToken, getDeliveryForSingleTransport);
 AuthRouter.get("/:id", getDeliveryById);
+AuthRouter.patch("/OrderDelivered/:id", OrderDelivered);
 
 module.exports = AuthRouter;
