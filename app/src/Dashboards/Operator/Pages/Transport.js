@@ -25,8 +25,6 @@ function Transport() {
         <div className="flex flex-col flex-1  overflow-x-hidden overflow-y-auto">    
           <main className="max-h-screen flex flex-col  h-[100vh]"> 
           <div className="w-full py-6 mx-auto">
-            <h6 className="pb-5 font-bold px-3 lg:px-6 text-2xl lg:text-lg capitalize">Transport</h6> 
-
             <div className="flex flex-wrap py-5">
                   <div className="flex-none w-full max-w-full">
                     <div className=" flex flex-col mb-10 break-words border-0 border-transparent border-solid">     
