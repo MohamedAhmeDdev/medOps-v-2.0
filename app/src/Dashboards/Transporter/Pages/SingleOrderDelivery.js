@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { OPERATOR_SERVER_URL } from "../../../constant/severUrl";
+import { TRANSPORTER_SERVER_URL } from "../../../constant/severUrl";
 import { formatDate } from "../../../constant/formatDate";
 
 function SingleOrder() {
@@ -11,7 +11,9 @@ function SingleOrder() {
   useEffect(() => {
     const getSingleOrder = async () => {
       try {
-        const res = await axios.get(`${OPERATOR_SERVER_URL}/delivery/${id}`);
+        const res = await axios.get(`${TRANSPORTER_SERVER_URL}/delivery/${id}`);
+        console.log(res);
+        
         setSingleOrder(res.data.delivery);
       } catch (error) {
         console.error("Error fetching data:", error);

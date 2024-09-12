@@ -52,13 +52,14 @@ const getDeliveryById = async (req, res) => {
         model: Transport,
       },{
         model: Order,
-        attributes: ['order_status', 'total_price'],
         include: [{
           model: OrderList,
           include: [{
             model: Medicine,
             attributes: ['medicine_name'],
         }],
+        },{
+          model: User
         }],
       }],
     });
