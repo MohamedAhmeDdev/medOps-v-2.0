@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Api } from "../utils/Api";
 import { SERVER_URL } from "../constant/severUrl";
-import { formatDate } from "../constant/formatDate";
+import { formatDate, formatTime } from "../constant/formatDate";
 
 
 
@@ -31,7 +31,7 @@ function Shift() {
 
 
   const getShift = async () => {
-    const data = await Api(`${SERVER_URL}/shift?weekOffset=${weekOffset}`, "GET");    
+    const data = await Api(`${SERVER_URL}/shift?weekOffset=${weekOffset}`, "GET");        
     setShift(data.shift);		
   };
 
@@ -98,8 +98,20 @@ function Shift() {
                    {shifts.map((shift, id) => (
                        <tr key={id}>
                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">{getDayName(shift.Date)}</td>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">{shift.start_time}</td>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">{shift.end_time}</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">
+                         {shift.start_time <= 0 ? (
+                            "-"
+                          ) : (
+                          formatTime(shift.start_time)
+                          )}
+                         </td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">
+                        {shift.end_time <= 0 ? (
+                            "-"
+                          ) : (
+                          formatTime(shift.end_time)
+                          )}
+                        </td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                         {shift.shift_status === 'Logged In' ? (
                               <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">
