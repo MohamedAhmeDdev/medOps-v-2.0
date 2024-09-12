@@ -1,70 +1,88 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../Component/Navbar';
-import Sidebar from '../Component/Aside';
-import UseSidebar from '../constant/useSidebar';
+import { Api } from "../utils/Api";
+import { SERVER_URL } from "../constant/severUrl";
+import { formatDate } from "../constant/formatDate";
 
+
+
+const getWeekRange = (weekOffset) => {
+  let startOfWeek = new Date();
+  startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() - (weekOffset * 7));
+
+  let endOfWeek = new Date(startOfWeek);
+  endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+  return {
+    startOfWeek: startOfWeek.toLocaleDateString(),
+    endOfWeek: endOfWeek.toLocaleDateString(),
+  };
+};
+
+
+const getDayName = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { weekday: 'long' });
+};
 
 function Shift() {
-  const { sidebarOpen, toggleSidebar } = UseSidebar();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [shifts, setShift] = useState([]);
+  const [weekOffset, setWeekOffset] = useState(0);
+  const { startOfWeek, endOfWeek } = getWeekRange(weekOffset);
 
-  const handleLoginClick = () => {
-    setIsLoggedIn(!isLoggedIn);
+
+  const getShift = async () => {
+    const data = await Api(`${SERVER_URL}/shift?weekOffset=${weekOffset}`, "GET");    
+    setShift(data.shift);		
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
+    getShift();
   }, []);
 
-  const isAfter7AM = currentTime.getHours() >= 7;
+
+  useEffect(() => {
+    getShift(weekOffset);
+  }, [weekOffset]);
+
+
+  const goToPreviousWeek = () => {
+    setWeekOffset(prevOffset => prevOffset + 1);
+    };
+
+  const goToNextWeek = () => {
+    setWeekOffset(prevOffset => Math.max(0, prevOffset - 1));
+  };
+
+
 
 
 
   return(
     <div className="flex flex-col h-screen overflow-hidden ">
-    <div className="flex flex-1 relative">
-  
-      <Sidebar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-  
-      <div className="flex flex-col flex-1 bg-gray-50 overflow-x-hidden overflow-y-auto">
-        <Navbar toggleSidebar={toggleSidebar} sidebarOpen={sidebarOpen} />
-  
+    <div className="flex flex-1 relative">  
+      <div className="flex flex-col flex-1  overflow-x-hidden overflow-y-auto">  
         <main className="max-h-screen flex flex-col  h-[100vh]"> 
         <div className="w-full py-6 mx-auto">
           <h6 className="pb-5 font-bold text-2xl px-3 lg:px-6 lg:text-lg capitalize">Shift</h6>
 
-          <h6 className='text-lg py-3 font-bold px-3 lg:px-6'>Clock IN </h6>
-              <div className='w-32 px-3  mb-6 sm:flex-none xl:mb-0 '>
-                <div className="relative flex flex-col bg-white shadow-soft-xl rounded-lg bg-clip-border w-32">
-                  <div className="flex flex-row py-2 px-5">
-                    {isAfter7AM ? (
-                      <>
-                       <button className={`w-20 h-12 text-center rounded-lg ${isLoggedIn ? 'bg-green-500 text-white' : 'bg-red-500 text-white'} transition-all`}
-                         onClick={handleLoginClick}
-                       >
-                        {isLoggedIn ? 'Logout' : 'Login'}
-                      </button>
-                      </>
-                    ) : (
-                      <p className='text-center capitalize font-semibold text-red-500'>Wait Until 7 am</p>
-                    )}
-                  </div>
-                </div>
-              </div>
-
           <div className="flex flex-wrap py-5">
             <div className="flex-none w-full max-w-full pb-2 lg:pb-1">
-            <div className="relative flex flex-col mb-1.5 break-words bg-white border-0 border-transparent border-solid">
-              <div className="p-3 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+            <div className="relative flex flex-col mb-1.5 break-words  border-0 border-transparent border-solid">
+              <div className="p-3  border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                 <h6 className='text-lg'>shift weekly report</h6>
               </div>
+
+              <div className="flex justify-between items-center mb-4">
+                <button onClick={goToPreviousWeek} className="bg-gray-500 rounded-md text-white px-4 py-2">Previous Week</button>
+
+                <span className="font-semibold text-lg">
+                  {formatDate(startOfWeek)} - {formatDate(endOfWeek)}
+                </span>
+
+                <button onClick={goToNextWeek} className="bg-gray-500 rounded-md text-white px-4 py-2" disabled={weekOffset === 0}>Next Week</button>
+              </div>
+
+
               <div className="flex-auto px-0 pt-0 pb-2">
                 <div className="p-0 overflow-x-auto">
                   <table className="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
@@ -77,54 +95,22 @@ function Shift() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
+                   {shifts.map((shift, id) => (
+                       <tr key={id}>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">{getDayName(shift.Date)}</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">{shift.start_time}</td>
+                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">{shift.end_time}</td>
                         <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged IN</span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
-                        <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged IN</span>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
-                        <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
-                        <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
-                        </td>
-                      </tr> 
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 AM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
-                        <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged Out</span>
-                        </td>
-                      </tr>      
-                      <tr>
-                        <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">23/04/18</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">8: 00 aM</td>
-                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">4: 30 PM</td>
-                        <td className="p-2 px-5 text-sm text-center leading-normal align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                          <span className="bg-gradient-to-tl from-red-600 to-red-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">Logged  Out</span>
-                        </td>
-                      </tr> 
+                        {shift.shift_status === 'Logged In' ? (
+                              <span className="bg-gradient-to-tl from-green-600 to-lime-400 px-2.5 text-md rounded-1.8 py-2 rounded-lg inline-block whitespace-nowrap text-center align-baseline leading-none text-white">
+                               {shift.shift_status}
+                              </span>
+                        ) : (
+                            <span className="text-sm text-gray-500">{shift.shift_status} </span>
+                        )}
+                       </td>
+                     </tr>
+                   ))}
                     </tbody>
                   </table>
                 </div>
