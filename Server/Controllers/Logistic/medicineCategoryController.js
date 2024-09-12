@@ -11,7 +11,11 @@ const createMedicineCategory = async (req, res) => {
       const medicineCategory = await MedicineCategory.create({
             medicine_category: medicine_category,
         });
-        return res.status(200).json({ success: true, medicineCategory});
+        return res.status(200).json({ 
+            success: true,
+            message: "Medicine Category created",
+            medicineCategory
+          });
     } catch (error) {
         res.json({ message: error.message });
     }  
@@ -47,7 +51,11 @@ const UpdateMedicineCategory = async (req, res) => {
     try {  
       const UpdateMedicineCategory = await MedicineCategory.update({medicine_category: medicine_category },
         {where: {medicine_category_id: id} });
-      return res.status(200).json({ success: true, medicineCategory: UpdateMedicineCategory});
+      return res.status(200).json({
+         success: true,
+         message: "Medicine Category Updated",
+         medicineCategory: UpdateMedicineCategory
+        });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message});
     }

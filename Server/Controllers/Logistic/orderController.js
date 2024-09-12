@@ -13,16 +13,17 @@ const getAllOrder = async (req, res) => {
       const AllOrder = await Order.findAll({
         include: [{
             model: User,
-            attributes: ['name', 'phoneNumber'],
         }],
-        order: [['createdAt', 'DESC']],
+        order: [[ 'order_date','ASC']]
       });
    
       if (!AllOrder) {
         return res.status(404).json({ success: false, message: "order Not found"});
       }
+
+      const filteredOrder = AllOrder.filter(status => status.order_status === 'Pending' );  
   
-      return res.status(200).json({ success: true, order: AllOrder });
+      return res.status(200).json({ success: true, order: filteredOrder });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }
@@ -73,7 +74,11 @@ const UpdateOrderStatus = async (req, res) => {
       }
      const updateOrder = await Order.update({ order_status }, { where: { order_id: id } });
 
-      return res.status(200).json({ success: true, order: updateOrder, });
+      return res.status(200).json({
+          success: true,
+          message: "Order Updated",
+          order: updateOrder,
+         });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message});
     }

@@ -19,12 +19,10 @@ const createMedicine = async (req, res) => {
     medicine_name,
     total_quantity,
     price,
-    barcode,
     aisle,
-    expiry_date,
   } = req.body;
   
-  if (!medicine_category || !company_name || !medicine_name || !total_quantity || !price || !barcode || !aisle || !expiry_date) {
+  if (!medicine_category || !company_name || !medicine_name || !total_quantity || !price  || !aisle) {
     return res.status(400).json({ success: false, message: "All Fields Are Required" });
   }
 
@@ -52,12 +50,13 @@ const createMedicine = async (req, res) => {
       medicine_name: medicine_name,
       total_quantity: total_quantity,
       price: price,
-      barcode: barcode,
       aisle: aisle,
-      expiry_date: expiry_date,
-      date_supplied: new Date(),
     });
-    return res.status(200).json({ success: true, medicine });
+    return res.status(200).json({ 
+        success: true,
+        message: "medicine created",
+        medicine
+       });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -69,12 +68,8 @@ const createMedicine = async (req, res) => {
 
 const getAllSupplierInfo = async (req, res) => {
   try {
-    const supplierInfo = await Supplier.findAll({      include: [{
-      model: MedicineCategory,
-    },{
-      model: Supplier,
-    }],
-    order: [['medicine_name', 'ASC']],
+    const supplierInfo = await Supplier.findAll({
+  
   });
     return res.status(200).json({ success: true, supplier: supplierInfo  });
   } catch (error) {
@@ -135,45 +130,51 @@ const getMedicineById = async (req, res) => {
 const updateMedicine = async (req, res) => {
   const id = req.params.id;
   console.log(id);
-  const { medicine_category, company_name, medicine_name, total_quantity, price, barcode, aisle, expiry_date } = req.body;
+  const { medicine_category, company_name, medicine_name, total_quantity, price, aisle } = req.body;
 
   try {
     let medicineCategoryId;
     let supplierId;
+    let updateFields = {}; 
 
     if (medicine_category) {
       const getMedicineCategory = await MedicineCategory.findOne({ where: { medicine_category: medicine_category } });
       medicineCategoryId = getMedicineCategory.medicine_category_id;
+      updateFields.medicine_category_id = medicineCategoryId;
     }
 
     if (company_name) {
       const getSupplierById = await Supplier.findOne({ where: { company_name: company_name } });
       supplierId = getSupplierById.supplier_id;
+      updateFields.supplier_id = supplierId;
     }
 
-
-
-    // Check if a new image file is provided in the request
     if (req.file) {
-      // If a new image is provided, update the medicine_image field
-      const result = await cloudinary.uploader.destroy('image.public_id');
+
+      const medicine = await Medicine.findOne({ where: { medicine_id: id } });
+      if (medicine.medicine_image) {
+        await cloudinary.uploader.destroy(medicine.medicine_image);
+      }
+  
       const updatedImage = await cloudinary.uploader.upload(req.file.path, { folder: "medOps" });
-      updateFields = updatedImage.secure_url;
+      updateFields.medicine_image = updatedImage.secure_url;
     }
 
-    const UpdateMedicine = await Medicine.update({
-      medicine_category_id: medicineCategoryId,
-      supplier_id: supplierId,
-      medicine_name: medicine_name,
-      medicine_image: updateFields,
-      total_quantity: total_quantity,
-      price: price,
-      aisle: aisle,
-      barcode: barcode,
-      expiry_date: expiry_date,
-    }, { where: { medicine_id: id } });
-    return res.status(200).json({ success: true, medicine: UpdateMedicine });
+
+    if (medicine_name) updateFields.medicine_name = medicine_name;
+    if (total_quantity) updateFields.total_quantity = total_quantity;
+    if (price) updateFields.price = price;
+    if (aisle) updateFields.aisle = aisle;
+
+    const UpdateMedicine = await Medicine.update(updateFields, { where: { medicine_id: id } });
+
+    return res.status(200).json({ 
+      success: true,
+      message: "Medicine updated successfully",
+      medicine: UpdateMedicine 
+    });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ success: false, message: error.message });
   }
 };
