@@ -11,6 +11,14 @@ const routes = [
     path: '/transporter/',
     name: 'Delivery',
   },
+  {
+    path: '/transporter/Clock-in', 
+    name: 'Clock In',
+  },
+  {
+    path: '/transporter/shift', 
+    name: 'Shift',
+  },
 ]
 
 export default routes

@@ -40,6 +40,14 @@ const routes = [
     path: '/operator/delivery',
     name: 'Delivery', 
   }, 
+  {
+    path: '/operator/Clock-in', 
+    name: 'Clock In',
+  },
+  {
+    path: '/operator/shift', 
+    name: 'Shift',
+  },
 ]
 
 export default routes

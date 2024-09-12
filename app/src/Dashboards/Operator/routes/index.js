@@ -11,7 +11,8 @@ const User = lazy(() => import('../Pages/User'))
 const Order = lazy(() => import('../Pages/Orders'))
 const SingleOrder = lazy(() => import('../Pages/SingleOrder'))
 const Delivery = lazy(() => import('../Pages/Delivery'))
-
+const Shift = lazy(() => import('../../Shift'))
+const ClockIn = lazy(() => import('../../ClockIn'))
 
 
 
@@ -55,6 +56,14 @@ const routes = [
     path: '/singleOrder/:id', 
     component: SingleOrder,
   },
+  {
+    path: '/shift', 
+    component: Shift,
+  },
+  {
+    path: '/Clock-in', 
+    component: ClockIn,
+  }
 ]
 
 export default routes
