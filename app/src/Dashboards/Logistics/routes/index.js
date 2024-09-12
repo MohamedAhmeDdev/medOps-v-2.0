@@ -10,7 +10,8 @@ const UpdateMedicineCategory = lazy(() => import('../Pages/MedicineCategory/Upda
 const CreateMedicine = lazy(() => import('../Pages/Medicine/CreateMedicine'))
 const Medicine = lazy(() => import('../Pages/Medicine/Medicine'))
 const UpdateMedicine = lazy(() => import('../Pages/Medicine/UpdateMedicine'))
-
+const Shift = lazy(() => import('../../Shift'))
+const ClockIn = lazy(() => import('../../ClockIn'))
 
 
 const routes = [
@@ -45,6 +46,14 @@ const routes = [
   {
     path: '/update-medicine/:id', 
     component: UpdateMedicine,
+  },
+  {
+    path: '/shift', 
+    component: Shift,
+  },
+  {
+    path: '/Clock-in', 
+    component: ClockIn,
   },
 ]
 

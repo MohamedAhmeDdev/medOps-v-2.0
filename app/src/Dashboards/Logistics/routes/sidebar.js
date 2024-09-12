@@ -39,6 +39,14 @@ const routes = [
       },
     ]
   },
+  {
+    path: '/logistics/Clock-in', 
+    name: 'Clock In',
+  },
+  {
+    path: '/logistics/shift', 
+    name: 'Shift',
+  },
 ]
 
 export default routes
