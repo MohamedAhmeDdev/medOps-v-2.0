@@ -8,41 +8,37 @@ const submenuIconClasses = `h-5 w-5`
 const routes = [
 
   {
-    path: '/app/dashboard',
-    name: 'Dashboard',
+    path: '/logistics', 
+    name: 'Order',
   },
   {
-    path: '/app/leads', // url
-    name: 'Leads', // name that appear in Sidebar
-  },
-  {
-    path: '/app/transactions', // url
-  
-    name: 'Transactions', // name that appear in Sidebar
-  },
-  {
-    path: '', //no url needed as this has submenu
- 
-    name: 'Settings', // name that appear in Sidebar
+    path: '', 
+    name: 'Medicine Category',
     submenu : [
       {
-        path: '/app/settings-profile', //url
- 
-        name: 'Profile', // name that appear in Sidebar
+        path: '/logistics/add-medicine-category',
+        name: 'Add Medicine Category',
       },
       {
-        path: '/app/settings-billing',
-       
-        name: 'Billing',
-      },
-      {
-        path: '/app/settings-team', // url
-     
-        name: 'Team Members', // name that appear in Sidebar
+        path: '/logistics/medicine-category-list',
+        name: 'Medicine-category',
       },
     ]
   },
-  
+  {
+    path: '', 
+    name: 'Medicine',
+    submenu : [
+      {
+        path: '/logistics/add-medicine',
+        name: 'Add Medicine',
+      },
+      {
+        path: '/logistics/medicine-list',
+        name: 'Medicine',
+      },
+    ]
+  },
 ]
 
 export default routes
