@@ -12,7 +12,7 @@ function SingleOrder() {
     const getSingleOrder = async () => {
       try {
         const res = await axios.get(`${TRANSPORTER_SERVER_URL}/delivery/${id}`);
-        console.log(res);
+
         
         setSingleOrder(res.data.delivery);
       } catch (error) {

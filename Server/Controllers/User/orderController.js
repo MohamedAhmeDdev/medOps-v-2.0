@@ -6,7 +6,7 @@ const Medicine = require('../../Models/medicine')
 
 const createOrder = async (req, res) => {
   const user_id = req.user.user_id;
-  console.log(user_id);
+
   
     const { medicineOrders } = req.body;
     if (!user_id || !medicineOrders) {
@@ -42,7 +42,6 @@ const createOrder = async (req, res) => {
       const orderList = await OrderList.bulkCreate(orderListData);
       
       const updateQuantity = medicineOrders.map(async (medicine) => {
-        console.log(medicineOrders);
       const medicine_id = medicine.medicine_id;
       const quantity = medicine.quantity;
       const findMedicine = await Medicine.findOne({ where: { medicine_id: medicine_id } });
@@ -140,7 +139,6 @@ const deleteOrderById = async (req, res) => {
       const orderLists = await OrderList.findAll({ where: { order_id: order_id } });
 
       const orderListIds = orderLists.map((orderList) => orderList.order_list_id);
-      console.log(orderListIds);
 
       await OrderList.destroy({ where: { order_list_id: orderListIds } });
       await Order.destroy({ where: { order_id: id } });

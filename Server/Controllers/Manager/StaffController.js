@@ -29,7 +29,6 @@ const CreateAccountForStaff = async (req, res) => {
       const password = generatePassword.generate({
         length:8, numbers:true, symbols:false,uppercase:true, excludeSimilarCharacters:true,
       });
-      console.log(password);
       
       const encryptedPassword = await bcrypt.hash(password, 10); 
        
@@ -71,9 +70,7 @@ const CreateAccountForStaff = async (req, res) => {
       };
       transporter.sendMail(mailOption,(err ,response)=>{
           if(err){
-            console.log('There was an error',err);
           }else{
-            console.log('There was a response ',response);
             res.status(200).json('email sent ')
           }
       })
@@ -143,7 +140,6 @@ const getAllStaffById = async (req, res) => {
 
     return res.status(200).json({ success: true, staff });
   } catch (error) {
-    console.log(error);
     
     return res.status(500).json({ success: false, message: error.message });
   }
@@ -195,7 +191,6 @@ const getSingleShift = async (req, res) => {
 const updateStaff = async (req, res) => { 
   const  id  = req.params.id
   const { name, email, phoneNumber, address, role,  } = req.body;
-  console.log(role);
   
 
   const roles = await Role.findOne({ where: {	role: role } }); 
@@ -220,7 +215,6 @@ const updateStaff = async (req, res) => {
       message: "Staff updated successfully",
       user: updatedRole});
   } catch (error) {
-    console.log(error.message);
     return res.status(500).json({ success: false, message: error.message });
   }
 };

@@ -129,7 +129,7 @@ const getMedicineById = async (req, res) => {
 
 const updateMedicine = async (req, res) => {
   const id = req.params.id;
-  console.log(id);
+
   const { medicine_category, company_name, medicine_name, total_quantity, price, aisle } = req.body;
 
   try {
@@ -174,7 +174,6 @@ const updateMedicine = async (req, res) => {
       medicine: UpdateMedicine 
     });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ success: false, message: error.message });
   }
 };

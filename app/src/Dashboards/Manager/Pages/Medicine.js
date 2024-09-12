@@ -10,9 +10,7 @@ function Medicine() {
   useEffect(() => {
 		const getMedicine = async () => {
 		  const data = await axios.get(`${MANAGER_SERVER_URL}/medicine`);
-			setMedicines(data.data.medicine);			
-      console.log(data.data.medicine);
-      													
+			setMedicines(data.data.medicine);			      													
 		};
 	
 		getMedicine();

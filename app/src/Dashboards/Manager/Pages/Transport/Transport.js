@@ -11,7 +11,7 @@ function Transport() {
 		const getTransport = async () => {
 		  const data = await axios.get(`${MANAGER_SERVER_URL}/transports`);
 			setTransports(data.data.transport);	
-      console.log(data.data.transport);
+
       																
 		};
 	

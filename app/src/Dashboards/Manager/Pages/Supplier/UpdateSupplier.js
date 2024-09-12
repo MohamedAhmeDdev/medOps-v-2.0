@@ -19,7 +19,6 @@ function UpdateSupplier() {
 
   const getSupplier = async () => {
     const response = await axios.get(`${MANAGER_SERVER_URL}/supplier/${id}`);
-    console.log(response.data.supplier);
     
     setCompany_name(response.data.supplier[0].company_name);
     setContact_person(response.data.supplier[0].contact_person);

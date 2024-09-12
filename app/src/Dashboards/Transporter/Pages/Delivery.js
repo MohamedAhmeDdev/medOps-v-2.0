@@ -22,7 +22,6 @@ function Delivery() {
 
   
   const handleOrder = async (orderId) => {
-    console.log("Order ID:", orderId);
     try {
       const response = await axios.patch(`${TRANSPORTER_SERVER_URL}/delivery/OrderDelivered/${orderId}`, {
         order_id: orderId,

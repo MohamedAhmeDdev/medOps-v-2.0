@@ -17,7 +17,6 @@ const reportApproval = async (req, res) => {
   const staff_id = req.user.staff_id; 
   const { id } = req.params;
   const { status } = req.body;
-  console.log(status);
   
 
   try {
@@ -66,7 +65,6 @@ const reportApproval = async (req, res) => {
       if (err) {
         return res.status(401).json({ success: false, message: "There was an error sending the email" });
       } else {
-        console.log('password reset Approved');
         return res.status(200).json({ success: true, message: 'password reset Approved' });
       }
     });

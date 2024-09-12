@@ -18,7 +18,7 @@ function UserForgotPassword() {
       
         
         .then((response) => {
-          console.log(response)
+
             showSuccessNotification(response.data.message);
             setEmail('');
         })

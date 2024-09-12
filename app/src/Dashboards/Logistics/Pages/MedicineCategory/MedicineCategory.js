@@ -10,7 +10,6 @@ function MedicineCategory() {
   useEffect(() => {
 		const getMedicineCategory = async () => {
 		  const data = await axios.get(`${LOGISTICS_SERVER_URL}/medicineCategories`);
-      console.log(data.data.medicineCategory);
       
 			setMedicineCategories(data.data.medicineCategory);									
 		};

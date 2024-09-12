@@ -25,7 +25,7 @@ export const Api = async (url, method, data = {}, headers = {}) => {
     return res.data;
   } catch (err) {
     const errMessage = err.response?.data?.message || "Something went wrong";
-    console.log("API Error:", errMessage);
+
     throw err;
   }
 };

@@ -10,7 +10,6 @@ function Supplier() {
   useEffect(() => {
 		const getSupplier = async () => {
 		  const data = await Api(`${MANAGER_SERVER_URL}/supplier`);
-      console.log(data.supplier);
       
 			setSupplier(data.supplier);			
 		};

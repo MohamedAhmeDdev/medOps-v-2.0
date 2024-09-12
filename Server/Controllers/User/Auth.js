@@ -93,7 +93,6 @@ const login = async (req, res) => {
         });
       
     } catch (error) {
-      console.log(error);
       
       return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
@@ -133,7 +132,6 @@ const forgotPassword = async(req,res)=>{
         };
           transporter.sendMail(mailOption,(err ,response)=>{
           if(err){
-            console.log('There was an error',err);
             return res.status(401).json({ success: false, message: "There was an error" });
           }else{
             res.status(200).json({ success: false, message: 'Email Sent' })
@@ -173,7 +171,6 @@ const resetPassword = async (req, res) => {
     });
 
   } catch (error) {
-    console.log( error.message);
     if (error.name === 'TokenExpiredError') {
       return res.status(410).json({ success: false, message: 'Token has expired' });
     }

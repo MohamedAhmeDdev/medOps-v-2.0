@@ -64,8 +64,7 @@ const StaffLogin = async (req, res) => {
           if (!match) {
             return res.status(401).json({ success: false, message: "Incorrect Password" });
           } else {
-            console.log('sd');
-            
+          
             const token = createToken(foundStaff.staff_id, role.role, foundStaff.address, foundStaff.name);
             return res.status(200).json({
               success: true,
@@ -120,7 +119,6 @@ const forgotPassword = async(req,res)=>{
         };
           transporter.sendMail(mailOption,(err ,response)=>{
           if(err){
-            console.log('There was an error',err);
             return res.status(401).json({ success: false, message: "There was an error" });
           }else{
             res.status(200).json({ success: false, message: 'recovery email sent' })
@@ -148,7 +146,6 @@ const forgotPassword = async(req,res)=>{
           };
           transporter.sendMail(mailOption,(err ,response)=>{
             if(err){
-              console.log('There was an error',err);
               return res.status(401).json({ success: false, message: "There was an error" });
             }else{
               res.status(200).json({ success: false, message: 'Report Password email sent' })
@@ -156,7 +153,6 @@ const forgotPassword = async(req,res)=>{
           })
       }
     } catch (error) {
-      console.log(error.message);
       return res.status(500).json({ success: false, message: error.message });
     }
 }
@@ -190,7 +186,6 @@ const resetPassword = async (req, res) => {
       updatedPassword});
 
   } catch (error) {
-    console.log( error.message);
     if (error.name === 'TokenExpiredError') {
       return res.status(410).json({ success: false, message: 'Token has expired' });
     }
