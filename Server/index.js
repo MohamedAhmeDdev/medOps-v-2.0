@@ -21,6 +21,7 @@ const TransportDelivery = require('./Routes/Transporter/deliveryRoute');
 const LogisticMedicineCategory = require('./Routes/Logistics/medicineCategoryRoute');
 const LogisticMedicine = require('./Routes/Logistics/medicineRoute');
 const LogisticOrder = require('./Routes/Logistics/orderRoute');
+const LogisticsMedicineInventory = require('./Routes/Logistics/MedicineInventory');
 
 
 const OperatorStaff = require('./Routes/Operator/StaffRoute');
@@ -69,6 +70,7 @@ app.use('/transport/delivery', TransportDelivery)
 app.use('/logistic/medicineCategories',  LogisticMedicineCategory)
 app.use('/logistic/medicine',  LogisticMedicine)
 app.use('/logistic/order', LogisticOrder)
+app.use('/logistic/medicineInventory', LogisticsMedicineInventory)
 
 
 //Operator API
