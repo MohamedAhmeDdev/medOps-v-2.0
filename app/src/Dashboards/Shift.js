@@ -100,14 +100,14 @@ function Shift() {
                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent">{getDayName(shift.Date)}</td>
                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">
                          {shift.start_time <= 0 ? (
-                            "-"
+                            "ewweew"
                           ) : (
                           formatTime(shift.start_time)
                           )}
                          </td>
                         <td className="p-2 px-5 text-md text-center text-slate-400 align-middle bg-transparent  border-b whitespace-nowrap shadow-transparent uppercase">
                         {shift.end_time <= 0 ? (
-                            "-"
+                            "ewweew"
                           ) : (
                           formatTime(shift.end_time)
                           )}
