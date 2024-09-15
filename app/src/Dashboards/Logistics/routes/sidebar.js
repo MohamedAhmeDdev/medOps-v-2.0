@@ -40,6 +40,18 @@ const routes = [
     ]
   },
   {
+    path: '/logistics/medicine-inventory-form', 
+    name: 'Medicine Inventory Form',
+  },
+  {
+    path: '/logistics/upload-document', 
+    name: 'Upload Document',
+  },
+  {
+    path: '/logistics/medicine-inventory', 
+    name: 'Medicine Inventories',
+  },
+  {
     path: '/logistics/Clock-in', 
     name: 'Clock In',
   },

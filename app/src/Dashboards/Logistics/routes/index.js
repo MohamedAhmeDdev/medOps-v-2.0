@@ -12,7 +12,10 @@ const Medicine = lazy(() => import('../Pages/Medicine/Medicine'))
 const UpdateMedicine = lazy(() => import('../Pages/Medicine/UpdateMedicine'))
 const Shift = lazy(() => import('../../Shift'))
 const ClockIn = lazy(() => import('../../ClockIn'))
-
+const MedicineInventoryForm = lazy(() => import('../Pages/MedicineInventoryForm'))
+const MedicineInventory = lazy(() => import('../Pages/MedicineInventories'))
+const UploadDocument = lazy(() => import('../Pages/UploadDocument'))
+const DocumentInfo = lazy(() => import('../Pages/DocumentInfo'))
 
 const routes = [
   {
@@ -54,6 +57,22 @@ const routes = [
   {
     path: '/Clock-in', 
     component: ClockIn,
+  },
+  {
+    path: '/medicine-inventory-form', 
+    component: MedicineInventoryForm,
+  },
+  {
+    path: '/medicine-inventory', 
+    component: MedicineInventory,
+  },
+  {
+    path: '/upload-document', 
+    component: UploadDocument,
+  },
+  {
+    path: '/document/:document_id', 
+    component: DocumentInfo,
   },
 ]
 
