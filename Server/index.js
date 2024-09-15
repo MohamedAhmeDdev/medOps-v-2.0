@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-
+const {PORT} = require('./constant/index');
 const Auth = require('./Routes/User/Auth');
 const User = require('./Routes/User/userRoute');
 const UserOrder = require('./Routes/User/orderRoute');
@@ -97,4 +97,4 @@ app.use('/manager/medicine', ManagerMedicine)
 
 
 
-app.listen(5000, () => console.log('Server is up and running on port 5000'));
+app.listen(PORT, () => console.log(`Server is up and running on port ${PORT}`));

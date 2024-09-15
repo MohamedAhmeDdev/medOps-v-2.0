@@ -4,14 +4,13 @@ const MedicineCategory = require('../../Models/medicineCategory')
 const Document = require('../../Models/document')
 const  Staff = require('../../Models/staff')
 const cloudinary = require("cloudinary").v2;
-const dotenv = require('dotenv');
-dotenv.config();
+const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = require('../../constant/index');
 const { Readable } = require('stream');
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET
 });
 
 

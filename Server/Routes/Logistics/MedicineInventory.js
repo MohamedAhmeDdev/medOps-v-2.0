@@ -9,9 +9,9 @@ const {
 
 const AuthRouter = require("express").Router();
 const { verifyToken } = require("../../middleware/VerifyToken");
-const { uploadImage } = require("../../middleware/multer")
+const {  uploadDocument } = require("../../middleware/multer")
 
-AuthRouter.post("/", verifyToken, uploadImage, createDocument);
+AuthRouter.post("/", verifyToken,  uploadDocument, createDocument);
 AuthRouter.get("/document", getDocument);
 AuthRouter.get("/document/:document_id", getDocumentById);
 AuthRouter.get("/medicine", getMedicine);
