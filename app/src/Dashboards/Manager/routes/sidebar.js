@@ -24,6 +24,10 @@ const routes = [
     name: 'Password Request',
   },
   {
+    path: '/manager/medicine-inventory', 
+    name: 'Medicine Inventories',
+  },
+  {
     path: '', 
     name: 'Staffs',
     submenu : [

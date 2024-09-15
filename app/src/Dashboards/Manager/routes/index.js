@@ -17,7 +17,8 @@ const UpdateTransport = lazy(() => import('../Pages/Transport/UpdateTransport'))
 const AddSupplier = lazy(() => import('../Pages/Supplier/CreateSupplier'))
 const SupplierList = lazy(() => import('../Pages/Supplier/Supplier'))
 const UpdateSupplier = lazy(() => import('../Pages/Supplier/UpdateSupplier'))
-
+const MedicineInventory = lazy(() => import('../Pages/MedicineInventories'))
+const DocumentInfo = lazy(() => import('../Pages/DocumentInfo'))
 
 
 
@@ -78,6 +79,14 @@ const routes = [
   {
     path: '/supplier/:id',
     component: UpdateSupplier
+  },
+  {
+    path: '/medicine-inventory', 
+    component: MedicineInventory,
+  },
+  {
+    path: '/document/:document_id', 
+    component: DocumentInfo,
   },
 ]
 
