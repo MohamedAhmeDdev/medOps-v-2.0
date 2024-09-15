@@ -67,7 +67,7 @@ function ClockIn() {
                 <div className="py-10">
                   <div className="flex justify-center items-center bg-white shadow-soft-xl rounded-full bg-clip-border w-40 h-40">
                     <div className="flex flex-row py-2">
-                      {isAfter7AM ? (
+                      {isAfter7AM && shiftStatus !== "Clocked Out" ? (
                         <>
                           {shiftStatus === "Clocked In" ? (
                             <button onClick={clickToClockOut} className="w-32 h-32 flex justify-center items-center rounded-full bg-green-500 text-white transition-all">
