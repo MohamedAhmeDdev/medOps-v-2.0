@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MANAGER_SERVER_URL } from "../../../../constant/severUrl";
-import { formatDate } from "../../../../constant/formatDate";
+import { formatDate, formatTime } from "../../../../constant/formatDate";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 
@@ -92,8 +92,19 @@ function SingleStaffShift() {
                             {shifts.map((shift, id) => (
                               <tr key={id} className="border-b bg-gray-50">
                                 <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent capitalize">{getDayName(shift.Date)} </td>
-                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase">{shift.start_time}</td>
-                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase"> {shift.end_time} </td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase"> {shift.start_time <= 0 ? (
+                                  "-"
+                                ) : (
+                                formatTime(shift.start_time)
+                                )}
+                               </td>
+                                <td className="mb-0 text-sm leading-tight p-2 py-4 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent uppercase"> 
+                                {shift.end_time <= 0 ? (
+                                    "-"
+                                  ) : (
+                                  formatTime(shift.end_time)
+                                  )}  
+                                </td>
                               </tr>
                             ))}
                           </tbody>
