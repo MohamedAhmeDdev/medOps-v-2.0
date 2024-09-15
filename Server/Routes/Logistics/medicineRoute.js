@@ -7,7 +7,7 @@ const {
     deleteMedicine
 }= require("../../Controllers/Logistic/medicineController");
 
-const uploadImage = require("../../middleware/multer");
+const {uploadImage} = require("../../middleware/multer");
 
 const AuthRouter = require("express").Router();
 
