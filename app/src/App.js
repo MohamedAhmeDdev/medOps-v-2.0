@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes, } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { BrowserRouter, Route, Routes,Navigate } from "react-router-dom";
 import { lazy } from 'react';
 import Login from "./Dashboards/Login";
 import StaffResetPassword from "./AccountRecovery/ResetPassword";
@@ -51,7 +52,7 @@ function App() {
           <Route path="/operator/*" element={<OperatorLayout />} />
           <Route path="/logistics/*" element={<LogisticsLayout />} />
           <Route path="/transporter/*" element={<TransporterLayout />} />
-       
+          <Route path="*" element={<Navigate to="/auth" />} />
         </Routes>
       </BrowserRouter>
     </div>
