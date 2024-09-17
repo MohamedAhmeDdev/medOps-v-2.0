@@ -98,15 +98,7 @@ function Navbar({ searchQuery, setSearchQuery, setMedicine}) {
                               leaveTo="transform opacity-0 scale-95"
                             >
                             <Menu.Items className="absolute right-5 z-10 mt-2 w-32 origin-top-right  space-y-2 rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        
-                             {user && (
-                              <Menu.Item>
-                                    {({ active }) => (
-                                    <Link to="/profile" className={( active ? "bg-gray-100" : "", "block px-4 py-1.5 mx-1 text-sm text-gray-700 hover:bg-blue-200")}>Profile</Link>
-                                    )}
-                                </Menu.Item>
-                                )}
-                          
+                                                  
                               {user && (
                                   <Menu.Item>
                                   {({ active }) => (
