@@ -29,6 +29,20 @@ const routes = [
   },
   {
     path: '', 
+    name: 'Roles',
+    submenu : [
+      {
+        path: '/manager/add-role', 
+        name: 'Add Role',
+      },
+      {
+        path: '/manager/role-lists',
+        name: 'Role List',
+      },
+    ]
+  },
+  {
+    path: '', 
     name: 'Staffs',
     submenu : [
       {

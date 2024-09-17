@@ -7,6 +7,8 @@ const MedicineCategory = lazy(() => import('../Pages/MedicineCategory'))
 const Medicine = lazy(() => import('../Pages/Medicine'))
 const Users = lazy(() => import('../Pages/User'))
 const PasswordRequest = lazy(() => import('../Pages/PasswordRequest'))
+const RoleList = lazy(() => import('../Pages/Role/Roles'))
+const AddRole = lazy(() => import('../Pages/Role/CreateRole'))
 const AddStaff = lazy(() => import('../Pages/Staff/CreateStaff'))
 const StaffList = lazy(() => import('../Pages/Staff/Staff'))
 const ShiftList = lazy(() => import('../Pages/Staff/SingleStaffShift'))
@@ -39,6 +41,14 @@ const routes = [
   {
     path: '/password-request',
     component: PasswordRequest,
+  },
+  {
+    path: '/add-role',
+    component: AddRole,
+  },
+  {
+    path: '/role-lists',
+    component: RoleList,
   },
   {
     path: '/add-staff',
