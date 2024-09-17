@@ -1,75 +1,12 @@
-<!-- import React, { useEffect } from 'react';
-import { useNotification } from './NotificationContext';
-
-const NotificationFetcher = () => {
-  const { dispatch } = useNotification();
-
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await fetch('your-api-endpoint');
-        const notifications = await response.json();
-
-        notifications.forEach((notification) => {
-          dispatch({ type: 'ADD_NOTIFICATION', payload: notification });
-        });
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
-      }
-    };
-
-    fetchNotifications();
-  }, [dispatch]);
-
-  return null;
-};
-
-export default NotificationFetcher;
+<p><a target="_blank" href="https://app.eraser.io/workspace/brDc2T09uxy58tTJjlML" id="edit-in-eraser-github-link"><img alt="Edit in Eraser" src="https://firebasestorage.googleapis.com/v0/b/second-petal-295822.appspot.com/o/images%2Fgithub%2FOpen%20in%20Eraser.svg?alt=media&amp;token=968381c8-a7e7-472a-8ed6-4a6626da5501"></a></p>
 
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNotification } from './NotificationContext';
 
-const NotificationComponent = () => {
-  const { state, dispatch } = useNotification();
 
-  const handleNotificationClick = (notificationId) => {
-    const clickedNotification = state.notifications.find(
-      (notification) => notification.id === notificationId
-    );
-
-    if (clickedNotification && !clickedNotification.read) {
-      dispatch({
-        type: 'MARK_NOTIFICATION_AS_READ',
-        payload: { id: clickedNotification.id },
-      });
-      // You can also update the backend API to mark the notification as read
-      // Here, we're only updating the state in this example
-    }
-  };
-
-  return (
-    <div>
-      <div className="absolute top-0 right-0 mt-1 flex items-center justify-center bg-green-500 rounded-full h-5 w-5 text-white text-sm font-bold">
-        {state.count}
-      </div>
-      <div className="flex flex-wrap -mx-3 py-5">
-        {state.notifications.map((notification) => (
-          <Link
-            to={`/SingleNotification/${notification.id}`}
-            key={notification.id}
-            className={`w-4/12 pt-3 p-4 ${
-              notification.read ? 'bg-gray-100' : 'bg-gray-50'
-            } rounded flex items-center justify-between`}
-            onClick={() => handleNotificationClick(notification.id)}
-          >
-            {/* Render notification details here */}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default NotificationComponent; -->
+<!-- eraser-additional-content -->
+## Diagrams
+<!-- eraser-additional-files -->
+<a href="/app/README-entity-relationship-1.eraserdiagram" data-element-id="u44ydxbVc_D-iNDPX-Fca"><img src="/.eraser/brDc2T09uxy58tTJjlML___d60JyG8IgPXfKydjGN2DGnQzwuC2___---diagram----b2062f551851d9a85f14ffa0d846c719.png" alt="" data-element-id="u44ydxbVc_D-iNDPX-Fca" /></a>
+<!-- end-eraser-additional-files -->
+<!-- end-eraser-additional-content -->
+<!--- Eraser file: https://app.eraser.io/workspace/brDc2T09uxy58tTJjlML --->
