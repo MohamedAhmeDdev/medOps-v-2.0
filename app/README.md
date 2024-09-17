@@ -1,75 +1,125 @@
-<!-- import React, { useEffect } from 'react';
-import { useNotification } from './NotificationContext';
+# MedOps - Medical Inventory Management System
 
-const NotificationFetcher = () => {
-  const { dispatch } = useNotification();
+**MedOps** is a software application designed to streamline the inventory management and distribution processes within a medical warehouse. It simplifies the tracking of medical supplies, optimizes stock levels, and ensures timely replenishment and accurate order fulfillment.
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const response = await fetch('your-api-endpoint');
-        const notifications = await response.json();
+## Features
 
-        notifications.forEach((notification) => {
-          dispatch({ type: 'ADD_NOTIFICATION', payload: notification });
-        });
-      } catch (error) {
-        console.error('Error fetching notifications:', error);
-      }
-    };
+- **Inventory Tracking**: Monitor stock levels of medical supplies.
+- **Order Management**: Generate, track, and fulfill orders efficiently.
+- **Supplier Integration**: Manage suppliers and automate order replenishment.
+- **Notifications & Alerts**: Real-time notifications for low stock levels.
+- **Reporting**: Generate detailed reports on stock usage and supply status.
+- **User Roles & Permissions**: Manage different user roles with controlled access.
+- ### User:
+- 	Ability to log in and access basic account information.
+-	View available medicines and their details.
+-	Place orders for required medicines.
+-	Track the status of their orders.
+-	View order history.
+- ### Manager:
+-	Staff CRUD: Create, Read, Update, and Delete operations for managing staff members. (Pagination)
+-	Supplier CRUD: Manage suppliers who provide the medicines. (Pagination)
+-	Transport CRUD: Oversee the management of transport vehicles. 
+-	View Medicine: Access detailed information about all medicines in the inventory. (Pagination)
+-	View Category: View and manage categories of medicines.
+-	Password Request: Handle password reset requests for users. (Pagination)
+-	View Users: Access and manage all users in the system. (Pagination)
+-	Roles CRUD 
+-	Supplier CRUD
+- ### Operator:
+-	View Delivery: Track deliveries and their statuses. (Pagination)
+-	View Medicine: Access information on all medicines stored in the warehouse. (Pagination)
+-	View Medicine Category: Monitor categories of medicines. 
+-	View Order: View details of orders placed by healthcare facilities. (Pagination)
+-	View Staff: Access information on staff members. (Pagination)
+-	View Supplier: View and manage details of suppliers. (Pagination)
+-	View Transport: Monitor transport vehicles and their schedules.
+-	View Users: Access and manage user profiles.  (Pagination)
+- ### Logistics:
+-	Medicine CRUD: Manage the inventory by adding, updating, or removing medicines. (Pagination)
+-	Medicine Category CRUD: Organize and manage categories for different types of medicines.
+-	View Order: Access and manage orders from healthcare facilities. (Pagination)
+- ### transporter
+-	View Delivery Order: Access and review delivery orders assigned to them. 
 
-    fetchNotifications();
-  }, [dispatch]);
-
-  return null;
-};
-
-export default NotificationFetcher;
 
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useNotification } from './NotificationContext';
+## Technology Stack
 
-const NotificationComponent = () => {
-  const { state, dispatch } = useNotification();
+- **Backend**: Flask (Python)
+- **Frontend**: React (JavaScript)
+- **Database**: PostgreSQL
+- **Authentication**: JSON Web Tokens (JWT)
+- **Testing**: Pytest (Backend), Jest (Frontend)
+- **Deployment**: Docker, Render
 
-  const handleNotificationClick = (notificationId) => {
-    const clickedNotification = state.notifications.find(
-      (notification) => notification.id === notificationId
-    );
+## Installation
 
-    if (clickedNotification && !clickedNotification.read) {
-      dispatch({
-        type: 'MARK_NOTIFICATION_AS_READ',
-        payload: { id: clickedNotification.id },
-      });
-      // You can also update the backend API to mark the notification as read
-      // Here, we're only updating the state in this example
-    }
-  };
+### Prerequisites
 
-  return (
-    <div>
-      <div className="absolute top-0 right-0 mt-1 flex items-center justify-center bg-green-500 rounded-full h-5 w-5 text-white text-sm font-bold">
-        {state.count}
-      </div>
-      <div className="flex flex-wrap -mx-3 py-5">
-        {state.notifications.map((notification) => (
-          <Link
-            to={`/SingleNotification/${notification.id}`}
-            key={notification.id}
-            className={`w-4/12 pt-3 p-4 ${
-              notification.read ? 'bg-gray-100' : 'bg-gray-50'
-            } rounded flex items-center justify-between`}
-            onClick={() => handleNotificationClick(notification.id)}
-          >
-            {/* Render notification details here */}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
+- react.js
+- Node.js 
+- express.js
+- mysql
 
-export default NotificationComponent; -->
+### Repository
+
+1. **Clone the repository:**
+    ```bash
+    git clone https://github.com/MohamedAhmeDdev/medOps-v-2.0
+    ```
+
+
+### Backend Setup (Express)
+
+1. **Clone the repository:**
+    ```bash
+    cd server
+    ```
+
+2. **installation:**
+    ```bash
+    npm install
+    ```
+
+3. **Run the Express server:**
+    ```bash
+    nodemon
+    ```
+
+### Frontend Setup (React)
+
+1. **Navigate to the frontend directory:**
+    ```bash
+    cd app
+    ```
+
+2. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3. **Start the React development server:**
+    ```bash
+    npm start
+    ```
+
+## Usage
+
+### Backend
+
+- The API is accessible at `http://localhost:5000`.
+
+### Frontend
+
+- The web interface is available at `http://localhost:3000`.
+
+
+
+
+
+## License
+
+MedOps is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+
