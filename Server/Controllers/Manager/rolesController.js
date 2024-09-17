@@ -13,7 +13,11 @@ const createRoles = async (req, res) => {
       const roles = await Role.create({
         role: role
        });
-        return res.status(200).json({ success: true,  roles});
+        return res.status(200).json({ 
+          success: true,
+          message: "role created",
+          roles
+        });
     } catch (error) {
       return res.status(500).json({ success: false, message: error.message });
     }  
