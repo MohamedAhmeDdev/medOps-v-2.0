@@ -30,29 +30,26 @@ function Login() {
         const user = response.data.staff;
         localStorage.setItem('user', JSON.stringify(user));
         dispatch({ type: 'LOGIN', payload: user });        
-        showSuccessNotification(response.data.message);
 
-        setTimeout(() => {
           switch (role) {
-            case 'User':
+            case 'user':
               navigate('/medicine');
               break;
-            case 'Manager':
+            case 'manager':
               navigate('/manager');
               break;
-            case 'Operator':
+            case 'operator':
               navigate('/operator');
               break;
-            case 'Logistics':
+            case 'logistics':
               navigate('/logistics');
               break;
-            case 'Transporter':
+            case 'transporter':
               navigate('/transporter');
               break;
             default:
               navigate('/');
           }
-        }, 5000);
       });
     } catch (error) {
       showErrorNotification(error.response.data.message);

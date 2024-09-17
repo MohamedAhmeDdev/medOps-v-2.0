@@ -17,6 +17,7 @@ import UserLogin from "./Pages/User/Auth/UserLogin";
 import Signup from "./Pages/User/Auth/Signup";
 import UserForgotPassword from "./Pages/User/Auth/UserForgotPassword";
 import UserResetPassword from "./Pages/User/Auth/UserResetPassword";
+import ProtectedRoute from './utils/ProtectedRoute';
 
 const ManagerLayout = lazy(() => import('./Dashboards/Manager/containers/Layout'))
 const OperatorLayout = lazy(() => import('./Dashboards/Operator/containers/Layout'))
@@ -48,10 +49,41 @@ function App() {
           <Route path="/PasswordReport/:token" element={<StaffPasswordReport/>} />
           <Route path="/ForgotPassword" element={<StaffForgotPassword/>}/>
 
-          <Route path="/manager/*" element={<ManagerLayout />} />
-          <Route path="/operator/*" element={<OperatorLayout />} />
-          <Route path="/logistics/*" element={<LogisticsLayout />} />
-          <Route path="/transporter/*" element={<TransporterLayout />} />
+       {/* Protected Routes */}
+       <Route
+            path="/manager/*"
+            element={
+              <ProtectedRoute requiredRole="manager">
+                <ManagerLayout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/operator/*"
+            element={
+              <ProtectedRoute requiredRole="operator">
+                <OperatorLayout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/logistics/*"
+            element={
+              <ProtectedRoute requiredRole="logistics">
+                <LogisticsLayout />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/transporter/*"
+            element={
+              <ProtectedRoute requiredRole="transporter">
+                <TransporterLayout />
+              </ProtectedRoute>
+            }
+          />
+          
+          {/* Redirect any unknown route to login */}
           <Route path="*" element={<Navigate to="/auth" />} />
         </Routes>
       </BrowserRouter>
