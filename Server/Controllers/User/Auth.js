@@ -126,7 +126,7 @@ const forgotPassword = async(req,res)=>{
           html: `
             <p>You requested to reset your password. You have received this email because you requested to recover your account.</p>
             <p>Click on the following link to proceed with the password reset. The link will expire in 5 minutes.</p>
-            <p><a href="http://localhost:3000/userResetPassword/${token}">Reset Password</a></p>
+            <p><a href="https://med-ops.vercel.app/userResetPassword/${token}">Reset Password</a></p>
             <p>If you did not request this, please ignore this email, and your password will remain unchanged.</p>
           `
         };
