@@ -24,8 +24,8 @@ console.log(document_id);
 
 
   return (
-    <div className="h-screen">
-      <iframe
+    <div>
+      <iframe className="h-screen "
       src={document}
       width="100%"
       height="600px"
