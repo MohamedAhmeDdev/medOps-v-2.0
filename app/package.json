@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "main": "public/electron.js",
+  "engines": {
+  "node": "18.x"
+},
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.9.0",
